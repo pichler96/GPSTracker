@@ -21,9 +21,7 @@ public class SwingMain extends JFrame {
         JPanel west = new JPanel();
         west.setPreferredSize(new Dimension(200,400));
         west.setLayout(new GridLayout(2,0));
-        //Container test = getContentPane();
-        //pane.setLayout(new BorderLayout());
-        // test.setLayout(new GridLayout(2,0));
+
 
         JButton button = new JButton("Exit");
         button.setPreferredSize(new Dimension(200,400));
@@ -54,6 +52,7 @@ public class SwingMain extends JFrame {
         JTable table = new JTable(model);
         //Scrollbar for the Table of Data
         JScrollPane tableScroll = new JScrollPane(table);
+        tableScroll.setVisible(true);
 
 
         //online Code to resize columns dynamically
@@ -90,11 +89,17 @@ public class SwingMain extends JFrame {
         tablePanel.setLayout(new BorderLayout());
         tablePanel.add(table.getTableHeader(), BorderLayout.NORTH);
         tablePanel.add(table, BorderLayout.CENTER);
+        tablePanel.add(tableScroll, BorderLayout.EAST);
         west.add(tablePanel);
 
         //west.add(button2);
         west.add(button3);
-        pane.add(button, BorderLayout.EAST);
+
+        JPanel eastPanel = new JPanel();
+        eastPanel.setLayout(new BorderLayout());
+        eastPanel.add(button, BorderLayout.CENTER);
+
+        pane.add(eastPanel, BorderLayout.EAST);
         pane.add(west, BorderLayout.CENTER);
 
 
