@@ -1,60 +1,252 @@
 package at.jku.ssw.app;
+
 import javax.swing.*;
-import java.awt.BorderLayout;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellRenderer;
+import javax.swing.table.TableColumn;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class SwingMain extends JFrame {
+
+    public SwingMain (){
+        setTitle("TestSwingGUI");
+        setSize(800,500);
+        //1920*180
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+
+        Container pane = getContentPane();
+        JPanel west = new JPanel();
+        west.setPreferredSize(new Dimension(200,400));
+        west.setLayout(new GridLayout(2,0));
+        //Container test = getContentPane();
+        //pane.setLayout(new BorderLayout());
+        // test.setLayout(new GridLayout(2,0));
+
+        JButton button = new JButton("Exit");
+        button.setPreferredSize(new Dimension(200,400));
+        button.addActionListener(e -> System.exit(0)); // e -> des is der Vorschlag vom IntelliJ "exchange with lambda
+
+        JButton button2 = new JButton("button");
+        JButton button3 = new JButton("button");
+
+        //JTABLE
+        String [][] data = {
+                {"Running","Jan", "1234 930240", "Linz", "4.36km", "00:30:24", "15", "35"},
+                {"Jogging","Jan", "1234 930240", "Linz", "4.36km", "00:30:24", "33", "220",},
+                {"Running","Jan", "1234 930240", "Linz", "4.36km", "00:30:24", "15", "35"},
+                {"Jogging","Jan", "1234 930240", "Linz", "4.36km", "00:30:24", "33", "220",},
+                {"Running","Jan", "1234 930240", "Linz", "4.36km", "00:30:24", "15", "35"},
+                {"Jogging","Jan", "1234 930240", "Linz", "4.36km", "00:30:24", "33", "220",},
+                {"Running","Jan", "1234 930240", "Linz", "4.36km", "00:30:24", "15", "35"},
+                {"Jogging","Jan", "1234 930240", "Linz", "4.36km", "00:30:24", "33", "220",},
+                {"Running","Jan", "1234 930240", "Linz", "4.36km", "00:30:24", "15", "35"},
+                {"Jogging","Jan", "1234 930240", "Linz", "4.36km", "00:30:24", "33", "220",},
+                {"Running","Jan", "1234 930240", "Linz", "4.36km", "00:30:24", "15", "35"},
+                {"Jogging","Jan", "1234 930240", "Linz", "4.36km", "00:30:24", "33", "220",},
+                {"Hiking","Jan", "1234 930240", "Linz", "4.36km", "00:30:24", "9034", "982"}
+        };
+        String [] columnNames={"Discipline","Name", "SvNr", "Place", "Distance", "Time", "speed", "altitude"};
+
+        DefaultTableModel model = new DefaultTableModel(data, columnNames);
+        JTable table = new JTable(model);
+        //Scrollbar for the Table of Data
+        JScrollPane tableScroll = new JScrollPane(table);
 
 
-public class SwingMain {
+        //online Code to resize columns dynamically
+        table.setAutoResizeMode( JTable.AUTO_RESIZE_OFF );
 
-    public static void main(String[] args) {
-        // Create and set up a frame window
-        JFrame.setDefaultLookAndFeelDecorated(true);
-        JFrame frame = new JFrame("GPSTracker");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        for (int column = 0; column < table.getColumnCount(); column++)
+        {
+            TableColumn tableColumn = table.getColumnModel().getColumn(column);
+            int preferredWidth = tableColumn.getMinWidth();
+            int maxWidth = tableColumn.getMaxWidth();
 
-        // Define new buttons with different regions
-        JButton jb1 = new JButton("NORTH");
-        JButton jb2 = new JButton("SOUTH");
-        JButton jb3 = new JButton("WEST");
-        JButton jb4 = new JButton("EAST");
-        JButton jb5 = new JButton("CENTER");
+            for (int row = 0; row < table.getRowCount(); row++)
+            {
+                TableCellRenderer cellRenderer = table.getCellRenderer(row, column);
+                Component c = table.prepareRenderer(cellRenderer, row, column);
+                int width = c.getPreferredSize().width + table.getIntercellSpacing().width;
+                preferredWidth = Math.max(preferredWidth, width);
 
-        // Define the panel to hold the buttons
-        JPanel panel = new JPanel();
-        panel.setLayout(new BorderLayout());
-        panel.add(jb1, BorderLayout.NORTH);
-        panel.add(jb2, BorderLayout.SOUTH);
-        panel.add(jb3, BorderLayout.WEST);
-        panel.add(jb4, BorderLayout.EAST);
-        panel.add(jb5, BorderLayout.CENTER);
-        frame.add(panel);
+                //  We've exceeded the maximum width, no need to check other rows
 
-        // Create the Menu Bar
-        JMenuBar menuBar = new JMenuBar();
-        frame.setJMenuBar(menuBar);
+                if (preferredWidth >= maxWidth)
+                {
+                    preferredWidth = maxWidth;
+                    break;
+                }
+            }
 
-        // Create the Menu Entries
+            tableColumn.setPreferredWidth( preferredWidth );
+        }
+        //source: https://stackoverflow.com/questions/6447984/auto-resize-the-widths-of-jtables-columns-dynamically
+
+
+        JPanel tablePanel = new JPanel();
+        tablePanel.setLayout(new BorderLayout());
+        tablePanel.add(table.getTableHeader(), BorderLayout.NORTH);
+        tablePanel.add(table, BorderLayout.CENTER);
+        west.add(tablePanel);
+
+        //west.add(button2);
+        west.add(button3);
+        pane.add(button, BorderLayout.EAST);
+        pane.add(west, BorderLayout.CENTER);
+
+
+
+        //Menubar
+        JMenuBar menu = new JMenuBar();
         JMenu file = new JMenu("File");
-        menuBar.add(file);
-        JMenu edit = new JMenu("Edit");
-        menuBar.add(edit);
-        JMenu view = new JMenu("View");
-        menuBar.add(view);
+        JMenu sports = new JMenu("Sports");
         JMenu years = new JMenu("Years");
-        menuBar.add(years);
-        JMenu columns = new JMenu("Columns");
-        menuBar.add(columns);
-        JMenu help = new JMenu("Help");
-        menuBar.add(help);
 
-        // Create the Menu Items
-        JMenuItem exit = new JMenuItem("Exit");
-        exit.addActionListener(a -> frame.dispose());
-        file.add(exit);
+        JToggleButton sportToggl = new JToggleButton(("sportart Nix"));
 
 
-        // Set the window to be visible as the default to be false
-        frame.pack();
-        frame.setVisible(true);
+        JMenuItem twentyEighteen = new JMenuItem("2018");
+        twentyEighteen.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //...
+            }
+        });
+
+        JMenuItem twentyNineteen = new JMenuItem("2019");
+        twentyNineteen.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //...
+            }
+        });
+
+        JMenuItem twentyTwenty = new JMenuItem("2020");
+        twentyTwenty.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //...
+            }
+        });
+
+        JMenuItem twentyTwentyOne = new JMenuItem("2021");
+        twentyTwentyOne.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //...
+            }
+        });
+
+        JMenuItem twentyTwentyTwo = new JMenuItem("2022");
+        twentyTwentyTwo.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //...
+            }
+        });
+
+
+
+
+        JMenuItem biking = new JMenuItem("Biking");
+        biking.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //...
+            }
+        });
+
+        JMenuItem driving = new JMenuItem("Driving");
+        driving.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //...
+            }
+        });
+
+        JMenuItem flying = new JMenuItem("Flying");
+        flying.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //...
+            }
+        });
+
+        JMenuItem hiking = new JMenuItem("Hiking");
+        hiking.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //...
+            }
+        });
+
+        JMenuItem running = new JMenuItem("Running");
+        running.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //...
+            }
+        });
+
+        JMenuItem skiing = new JMenuItem("Skiing");
+        skiing.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //...
+            }
+        });
+
+
+
+
+        JMenuItem exit2 = new JMenuItem("Exit");
+        exit2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.exit(0);
+            }
+        });
+
+        JMenuItem search = new JMenuItem("search Track");
+        search.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // tut noch nichts
+            }
+        });
+
+
+
+
+        file.add(exit2);
+        file.addSeparator();
+        file.add(search);
+
+        sports.add(biking); sports.addSeparator();
+        sports.add(driving);sports.addSeparator();
+        sports.add(flying);sports.addSeparator();
+        sports.add(running);sports.addSeparator();
+        sports.add(hiking);sports.addSeparator();
+        sports.add(skiing);
+        sports.add(sportToggl);
+
+        years.add(twentyEighteen); years.addSeparator();
+        years.add(twentyNineteen); years.addSeparator();
+        years.add(twentyTwenty); years.addSeparator();
+        years.add(twentyTwentyOne); years.addSeparator();
+        years.add(twentyTwentyTwo);
+
+
+        menu.add(file);
+        menu.add(sports);
+        menu.add(years);
+
+        //pane.add(menu, BorderLayout.NORTH); // ident zu darunter
+        setJMenuBar(menu);
     }
+
 
 }

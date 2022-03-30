@@ -4,6 +4,7 @@ import at.jku.ssw.tcxparser.TcxParser;
 import at.jku.ssw.tcxparser.schema.ActivityT;
 
 import javax.xml.bind.JAXBException;
+import java.awt.*;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -11,6 +12,15 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
+
+        EventQueue.invokeLater(new Runnable() {
+
+            @Override
+            public void run(){
+                SwingMain m= new SwingMain();
+                m.setVisible(true);
+            }
+        });
 
 
         try {
