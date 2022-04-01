@@ -104,6 +104,16 @@ public class SwingMain extends JFrame {
         JMenu file = new JMenu("File");
         JMenu sports = new JMenu("Sports");
         JMenu years = new JMenu("Years");
+<<<<<<< Updated upstream
+=======
+        menuBar.add(years);
+        JMenu columns = new JMenu("Columns");
+        menuBar.add(columns);
+        JMenu help = new JMenu("Help");
+        menuBar.add(help);
+        JMenu track = new JMenu("Track");
+        menuBar.add(help);
+>>>>>>> Stashed changes
 
         JToggleButton sportToggl = new JToggleButton(("sportart Nix"));
 
