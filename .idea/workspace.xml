@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="58cb1af4-16b4-400c-9657-a74502a6a996" name="Default Changelist" comment=".">
+    <list default="true" id="58cb1af4-16b4-400c-9657-a74502a6a996" name="Default Changelist" comment="JScrollPane für JTable funktioniert jetzt.&#10;JTable verändern der Spaltengrößen funktioniert jetzt">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/at/jku/ssw/app/SwingMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/at/jku/ssw/app/SwingMain.java" afterDir="false" />
     </list>
@@ -126,7 +126,14 @@
       <option name="project" value="LOCAL" />
       <updated>1648633400957</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="JScrollPane für JTable funktioniert jetzt.&#10;JTable verändern der Spaltengrößen funktioniert jetzt">
+      <created>1648805938260</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1648805938260</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -147,7 +154,8 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="." />
-    <option name="LAST_COMMIT_MESSAGE" value="." />
+    <MESSAGE value="JScrollPane für JTable funktioniert jetzt.&#10;JTable verändern der Spaltengrößen funktioniert jetzt" />
+    <option name="LAST_COMMIT_MESSAGE" value="JScrollPane für JTable funktioniert jetzt.&#10;JTable verändern der Spaltengrößen funktioniert jetzt" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>

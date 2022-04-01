@@ -17,8 +17,9 @@ public class SwingMain extends JFrame {
         setLocationRelativeTo(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-        Container pane = getContentPane();
-        JPanel west = new JPanel();
+        Container pane = getContentPane(); //unterste Ebene des Layouts
+
+        JPanel west = new JPanel(); //westlicher Teil des Layouts sind hier gespeichert. (Besteht aus 1 oberer und 1 unterer Hälfte)
         west.setPreferredSize(new Dimension(200,400));
         west.setLayout(new GridLayout(2,0));
 
@@ -98,27 +99,27 @@ public class SwingMain extends JFrame {
         //source: https://stackoverflow.com/questions/6447984/auto-resize-the-widths-of-jtables-columns-dynamically
 
 
+        // JTable hinzufügen zum "TablePanel"
         JPanel tablePanel = new JPanel();
         tablePanel.setLayout(new BorderLayout());
-        //tablePanel.add(table.getTableHeader(), BorderLayout.NORTH);
-
         tablePanel.add(tableScroll, BorderLayout.CENTER);
 
-        west.add(tablePanel);
 
-        //west.add(button2);
+        west.add(tablePanel); //"West" ist der westliche (linke) Teil unserer GUI.
         west.add(button3);
 
-        JPanel eastPanel = new JPanel();
+        JPanel eastPanel = new JPanel(); //"EastPanel" ist der östliche Teil (rechte) unserer GUI
         eastPanel.setLayout(new BorderLayout());
         eastPanel.add(button, BorderLayout.CENTER);
 
+
+        //Hinzufügen des östlichen & westlichen Teils zum Fenster
         pane.add(eastPanel, BorderLayout.EAST);
         pane.add(west, BorderLayout.CENTER);
 
 
 
-        //Menubar
+        //Menubar ---------------------------------------------------------------
         JMenuBar menu = new JMenuBar();
         JMenu file = new JMenu("File");
         JMenu sports = new JMenu("Sports");
@@ -239,7 +240,7 @@ public class SwingMain extends JFrame {
 
 
 
-
+        //Menubar hinzufügen der Auswahlmöglichkeiten der einzelnen Reiter:
         file.add(exit2);
         file.addSeparator();
         file.add(search);
