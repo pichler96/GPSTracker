@@ -31,36 +31,34 @@ public class SwingMain extends JFrame {
         JButton button2 = new JButton("button");
         JButton button3 = new JButton("button");
 
-        //JTABLE
+        //JTABLE links oben ---------------------------
         String [][] data = {
-                {"Running","Jan", "1234 930240", "Linz", "4.36km", "00:30:24", "15", "35"},
-                {"Jogging","Jan", "1234 930240", "Linz", "4.36km", "00:30:24", "33", "220",},
-                {"Running","Jan", "1234 930240", "Linz", "4.36km", "00:30:24", "15", "35"},
-                {"Jogging","Jan", "1234 930240", "Linz", "4.36km", "00:30:24", "33", "220",},
-                {"Running","Jan", "1234 930240", "Linz", "4.36km", "00:30:24", "15", "35"},
-                {"Jogging","Jan", "1234 930240", "Linz", "4.36km", "00:30:24", "33", "220",},
-                {"Running","Jan", "1234 930240", "Linz", "4.36km", "00:30:24", "15", "35"},
-                {"Jogging","Jan", "1234 930240", "Linz", "4.36km", "00:30:24", "33", "220",},
-                {"Running","Jan", "1234 930240", "Linz", "4.36km", "00:30:24", "15", "35"},
-                {"Running","Jan", "1234 930240", "Linz", "4.36km", "00:30:24", "15", "35"},
-                {"Jogging","Jan", "1234 930240", "Linz", "4.36km", "00:30:24", "33", "220",},
-                {"Running","Jan", "1234 930240", "Linz", "4.36km", "00:30:24", "15", "35"},
-                {"Jogging","Jan", "1234 930240", "Linz", "4.36km", "00:30:24", "33", "220",},
-                {"Running","Jan", "1234 930240", "Linz", "4.36km", "00:30:24", "15", "35"},
-                {"Jogging","Jan", "1234 930240", "Linz", "4.36km", "00:30:24", "33", "220",},
-                {"Running","Jan", "1234 930240", "Linz", "4.36km", "00:30:24", "15", "35"},
-                {"Jogging","Jan", "1234 930240", "Linz", "4.36km", "00:30:24", "33", "220",},
-                {"Running","Jan", "1234 930240", "Linz", "4.36km", "00:30:24", "15", "35"},
-                {"Jogging","Jan", "1234 930240", "Linz", "4.36km", "00:30:24", "33", "220",},
-                {"Hiking","Jan", "1234 930240", "Linz", "4.36km", "00:30:24", "9034", "982"}
+                {"Running","Max Muster", "1234 930240", "Linz", "4.36km", "00:30:24", "15", "35"},
+                {"Jogging","Max Muster", "1234 930240", "Linz", "4.36km", "00:30:24", "33", "220",},
+                {"Running","Max Muster", "1234 930240", "Linz", "4.36km", "00:30:24", "15", "35"},
+                {"Jogging","Max Muster", "1234 930240", "Linz", "4.36km", "00:30:24", "33", "220",},
+                {"Running","Max Muster", "1234 930240", "Linz", "4.36km", "00:30:24", "15", "35"},
+                {"Jogging","Max Muster", "1234 930240", "Linz", "4.36km", "00:30:24", "33", "220",},
+                {"Running","Max Muster", "1234 930240", "Linz", "4.36km", "00:30:24", "15", "35"},
+                {"Jogging","Max Muster", "1234 930240", "Linz", "4.36km", "00:30:24", "33", "220",},
+                {"Running","Max Muster", "1234 930240", "Linz", "4.36km", "00:30:24", "15", "35"},
+                {"Running","Max Muster", "1234 930240", "Linz", "4.36km", "00:30:24", "15", "35"},
+                {"Jogging","Max Muster", "1234 930240", "Linz", "4.36km", "00:30:24", "33", "220",},
+                {"Running","Max Muster", "1234 930240", "Linz", "4.36km", "00:30:24", "15", "35"},
+                {"Jogging","Max Muster", "1234 930240", "Linz", "4.36km", "00:30:24", "33", "220",},
+                {"Running","Max Muster", "1234 930240", "Linz", "4.36km", "00:30:24", "15", "35"},
+                {"Jogging","Max Muster", "1234 930240", "Linz", "4.36km", "00:30:24", "33", "220",},
+                {"Running","Max Muster", "1234 930240", "Linz", "4.36km", "00:30:24", "15", "35"},
+                {"Jogging","Max Muster", "1234 930240", "Linz", "4.36km", "00:30:24", "33", "220",},
+                {"Running","Max Muster", "1234 930240", "Linz", "4.36km", "00:30:24", "15", "35"},
+                {"Jogging","Max Muster", "1234 930240", "Linz", "4.36km", "00:30:24", "33", "220",},
+                {"Hiking","Max Muster", "1234 930240", "Linz", "4.36km", "00:30:24", "9034", "982"}
         };
         String [] columnNames={"Discipline","Name", "SvNr", "Place", "Distance", "Time", "speed", "altitude"};
 
         DefaultTableModel model = new DefaultTableModel(data, columnNames);
         JTable table = new JTable(model);
         table.getTableHeader();
-
-
 
         table.setAutoResizeMode( JTable.AUTO_RESIZE_OFF );
         //Scrollbar for the Table of Data
@@ -106,11 +104,55 @@ public class SwingMain extends JFrame {
 
 
         west.add(tablePanel); //"West" ist der westliche (linke) Teil unserer GUI.
-        west.add(button3);
+        west.add(button3); //hier gehört noch die Grafik stattdessen rein
+
+        //JTable rechts oben:-----------
+        DefaultTableModel model2 = new DefaultTableModel(data, columnNames);
+        JTable table2 = new JTable(model2);
+        table2.getTableHeader();
+
+        table2.setAutoResizeMode( JTable.AUTO_RESIZE_OFF );
+        //Scrollbar for the Table of Data
+        JScrollPane tableScroll2 = new JScrollPane(table2);
+        tableScroll2.setVisible(true);
+
+        //online Code to resize columns dynamically
+        for (int column = 0; column < table2.getColumnCount(); column++)
+        {
+            TableColumn tableColumn = table2.getColumnModel().getColumn(column);
+
+
+            int preferredWidth = tableColumn.getMinWidth();
+
+
+            int maxWidth = tableColumn.getMaxWidth();
+
+            for (int row = 0; row < table2.getRowCount(); row++)
+            {
+                TableCellRenderer cellRenderer = table2.getCellRenderer(row, column);
+                Component c = table2.prepareRenderer(cellRenderer, row, column);
+                int width = c.getPreferredSize().width + table2.getIntercellSpacing().width;
+                preferredWidth = Math.max(preferredWidth, width);
+
+                //  We've exceeded the maximum width, no need to check other rows
+
+                if (preferredWidth >= maxWidth)
+                {
+                    preferredWidth = maxWidth;
+                    break;
+                }
+            }
+
+            tableColumn.setPreferredWidth( preferredWidth );
+        }
+        //source: https://stackoverflow.com/questions/6447984/auto-resize-the-widths-of-jtables-columns-dynamically
+
+
 
         JPanel eastPanel = new JPanel(); //"EastPanel" ist der östliche Teil (rechte) unserer GUI
         eastPanel.setLayout(new BorderLayout());
-        eastPanel.add(button, BorderLayout.CENTER);
+        eastPanel.add(tableScroll2, BorderLayout.CENTER);
+        eastPanel.setPreferredSize(new Dimension(230,460));
 
 
         //Hinzufügen des östlichen & westlichen Teils zum Fenster
