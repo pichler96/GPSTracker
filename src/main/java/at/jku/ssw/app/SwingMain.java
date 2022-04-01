@@ -41,6 +41,13 @@ public class SwingMain extends JFrame {
                 {"Running","Jan", "1234 930240", "Linz", "4.36km", "00:30:24", "15", "35"},
                 {"Jogging","Jan", "1234 930240", "Linz", "4.36km", "00:30:24", "33", "220",},
                 {"Running","Jan", "1234 930240", "Linz", "4.36km", "00:30:24", "15", "35"},
+                {"Running","Jan", "1234 930240", "Linz", "4.36km", "00:30:24", "15", "35"},
+                {"Jogging","Jan", "1234 930240", "Linz", "4.36km", "00:30:24", "33", "220",},
+                {"Running","Jan", "1234 930240", "Linz", "4.36km", "00:30:24", "15", "35"},
+                {"Jogging","Jan", "1234 930240", "Linz", "4.36km", "00:30:24", "33", "220",},
+                {"Running","Jan", "1234 930240", "Linz", "4.36km", "00:30:24", "15", "35"},
+                {"Jogging","Jan", "1234 930240", "Linz", "4.36km", "00:30:24", "33", "220",},
+                {"Running","Jan", "1234 930240", "Linz", "4.36km", "00:30:24", "15", "35"},
                 {"Jogging","Jan", "1234 930240", "Linz", "4.36km", "00:30:24", "33", "220",},
                 {"Running","Jan", "1234 930240", "Linz", "4.36km", "00:30:24", "15", "35"},
                 {"Jogging","Jan", "1234 930240", "Linz", "4.36km", "00:30:24", "33", "220",},
@@ -50,18 +57,24 @@ public class SwingMain extends JFrame {
 
         DefaultTableModel model = new DefaultTableModel(data, columnNames);
         JTable table = new JTable(model);
+        table.getTableHeader();
+
+
+
+        table.setAutoResizeMode( JTable.AUTO_RESIZE_OFF );
         //Scrollbar for the Table of Data
         JScrollPane tableScroll = new JScrollPane(table);
         tableScroll.setVisible(true);
 
-
         //online Code to resize columns dynamically
-        table.setAutoResizeMode( JTable.AUTO_RESIZE_OFF );
-
         for (int column = 0; column < table.getColumnCount(); column++)
         {
             TableColumn tableColumn = table.getColumnModel().getColumn(column);
+
+
             int preferredWidth = tableColumn.getMinWidth();
+
+
             int maxWidth = tableColumn.getMaxWidth();
 
             for (int row = 0; row < table.getRowCount(); row++)
@@ -87,9 +100,10 @@ public class SwingMain extends JFrame {
 
         JPanel tablePanel = new JPanel();
         tablePanel.setLayout(new BorderLayout());
-        tablePanel.add(table.getTableHeader(), BorderLayout.NORTH);
-        tablePanel.add(table, BorderLayout.CENTER);
-        tablePanel.add(tableScroll, BorderLayout.EAST);
+        //tablePanel.add(table.getTableHeader(), BorderLayout.NORTH);
+
+        tablePanel.add(tableScroll, BorderLayout.CENTER);
+
         west.add(tablePanel);
 
         //west.add(button2);
