@@ -1,5 +1,7 @@
 package at.jku.ssw.app;
 
+import at.jku.ssw.tcxparser.schema.ActivityT;
+
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
@@ -7,6 +9,8 @@ import javax.swing.table.TableColumn;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 
 public class SwingMain extends JFrame {
 
@@ -30,6 +34,27 @@ public class SwingMain extends JFrame {
 
         JButton button2 = new JButton("button");
         JButton button3 = new JButton("button");
+
+//TEST MIT DATEN VON TCX PARSER (liste in Array geben) ++++++++++++++++++++
+        List<ActivityT> trackList = new ArrayList<>(Main.getListOfTracks());
+        String [] [] trackData= new String [trackList.size()][3];
+        for(ActivityT activity : trackList){
+            for(int i=0; i<trackList.size(); i++){
+                for(int j=0; j<3; j++){
+                    if(j==0){
+                        trackData[i][j]= activity.getSport().toString();
+                    }
+                    else if(j==1){
+                        trackData[i][j]= activity.getCreator().getName();
+                    }
+                    else{
+                        trackData[i][j]= activity.getNotes();
+                    }
+
+                }
+            }
+        }
+        //++++++++++++++++++++++
 
         //JTABLE links oben ---------------------------
         String [][] data = {
@@ -56,7 +81,8 @@ public class SwingMain extends JFrame {
         };
         String [] columnNames={"Discipline","Name", "SvNr", "Place", "Distance", "Time", "speed", "altitude"};
 
-        DefaultTableModel model = new DefaultTableModel(data, columnNames);
+        String [] trackDataColumnNames = {"Sports", "Name", "Notes"}; // vom "Test"
+        DefaultTableModel model = new DefaultTableModel(trackData, trackDataColumnNames);
         JTable table = new JTable(model);
         table.getTableHeader();
 

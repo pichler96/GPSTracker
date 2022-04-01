@@ -11,16 +11,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
+
+    private static List<ActivityT> list;
+
     public static void main(String[] args) {
 
-        EventQueue.invokeLater(new Runnable() {
 
-            @Override
-            public void run(){
-                SwingMain m= new SwingMain();
-                m.setVisible(true);
-            }
-        });
+
 
 
         try {
@@ -31,6 +28,7 @@ public class Main {
             activities.add(parser.parseTCX(new FileInputStream("data/2021/tucson.tcx")).getActivities().getActivity().get(0));
             activities.add(parser.parseTCX(new FileInputStream("data/2021/sabino.tcx")).getActivities().getActivity().get(0));
 
+            list= activities;
             for (ActivityT activity : activities) {
                 System.out.println(activity.getCreator().getName() + " start " + activity.getSport());
                 activity.getLap().forEach(a -> System.out.println("LAP start: " + a.getStartTime() + " for TotalTime " + a.getTotalTimeSeconds() + " Distance: " +a.getDistanceMeters() + " Speed: " + a.getMaximumSpeed()));
@@ -41,5 +39,19 @@ public class Main {
             e.printStackTrace();
         }
 
+        EventQueue.invokeLater(new Runnable() {
+
+            @Override
+            public void run(){
+                SwingMain m= new SwingMain();
+                m.setVisible(true);
+            }
+        });
+
     }
+
+    public static List<ActivityT> getListOfTracks(){
+        return list;
+    }
+
 }
