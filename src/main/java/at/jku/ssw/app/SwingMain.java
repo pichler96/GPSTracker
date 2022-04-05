@@ -35,7 +35,7 @@ public class SwingMain extends JFrame {
         JButton button2 = new JButton("button");
         JButton button3 = new JButton("button");
 
-//TEST MIT DATEN VON TCX PARSER (liste in Array geben) ++++++++++++++++++++
+        //TEST MIT DATEN VON TCX PARSER (liste in Array geben) ++++++++++++++++++++
         List<ActivityT> trackList = new ArrayList<>(Main.getListOfTracks());
         String [] [] trackData= new String [trackList.size()][3];
         for(ActivityT activity : trackList){
