@@ -34,27 +34,19 @@ public class SwingMain extends JFrame {
         button.setPreferredSize(new Dimension(200,400));
         button.addActionListener(e -> System.exit(0)); // e -> des is der Vorschlag vom IntelliJ "exchange with lambda
 
-        JButton button2 = new JButton("button");
         JButton button3 = new JButton("button");
 
+        // allData erhält alle Daten "in allgemeiner Form" von TableData
         String [][] allData= TableData.getTable();
         String [] allDataColumnNames={"Name", "Sport", "Start Time", "Total Time", "Distance", "Average Speed", "Max Speed", "Average Heartrate", "Max Heartrate"};
 
-        //JTABLE links oben ---------------------------
+        //JTABLE dummy Daten aktuell in der rechten Hälfte ---------------------------
         String [][] data = {
                 {"Running","Max Muster", "1234 930240", "Linz", "4.36km", "00:30:24", "15", "35"},
                 {"Jogging","Max Muster", "1234 930240", "Linz", "4.36km", "00:30:24", "33", "220",},
                 {"Running","Max Muster", "1234 930240", "Linz", "4.36km", "00:30:24", "15", "35"},
                 {"Jogging","Max Muster", "1234 930240", "Linz", "4.36km", "00:30:24", "33", "220",},
                 {"Running","Max Muster", "1234 930240", "Linz", "4.36km", "00:30:24", "15", "35"},
-                {"Jogging","Max Muster", "1234 930240", "Linz", "4.36km", "00:30:24", "33", "220",},
-                {"Running","Max Muster", "1234 930240", "Linz", "4.36km", "00:30:24", "15", "35"},
-                {"Jogging","Max Muster", "1234 930240", "Linz", "4.36km", "00:30:24", "33", "220",},
-                {"Running","Max Muster", "1234 930240", "Linz", "4.36km", "00:30:24", "15", "35"},
-                {"Running","Max Muster", "1234 930240", "Linz", "4.36km", "00:30:24", "15", "35"},
-                {"Jogging","Max Muster", "1234 930240", "Linz", "4.36km", "00:30:24", "33", "220",},
-                {"Running","Max Muster", "1234 930240", "Linz", "4.36km", "00:30:24", "15", "35"},
-                {"Jogging","Max Muster", "1234 930240", "Linz", "4.36km", "00:30:24", "33", "220",},
                 {"Running","Max Muster", "1234 930240", "Linz", "4.36km", "00:30:24", "15", "35"},
                 {"Jogging","Max Muster", "1234 930240", "Linz", "4.36km", "00:30:24", "33", "220",},
                 {"Running","Max Muster", "1234 930240", "Linz", "4.36km", "00:30:24", "15", "35"},
@@ -65,7 +57,7 @@ public class SwingMain extends JFrame {
         };
         String [] columnNames={"Discipline","Name", "SvNr", "Place", "Distance", "Time", "speed", "altitude"};
 
-        //String [] trackDataColumnNames = {"Sports", "Name", "Notes"}; // vom "Test"
+
         DefaultTableModel model = new DefaultTableModel(allData, allDataColumnNames);
         JTable table = new JTable(model);
         table.getTableHeader();
