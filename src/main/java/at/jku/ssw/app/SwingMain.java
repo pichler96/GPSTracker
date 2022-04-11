@@ -6,15 +6,17 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
+import javax.xml.bind.JAXBException;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class SwingMain extends JFrame {
 
-    public SwingMain (){
+    public SwingMain () throws JAXBException, IOException {
         setTitle("TestSwingGUI");
         setSize(800,500);
         //1920*180
@@ -32,45 +34,19 @@ public class SwingMain extends JFrame {
         button.setPreferredSize(new Dimension(200,400));
         button.addActionListener(e -> System.exit(0)); // e -> des is der Vorschlag vom IntelliJ "exchange with lambda
 
-        JButton button2 = new JButton("button");
         JButton button3 = new JButton("button");
 
-        //TEST MIT DATEN VON TCX PARSER (liste in Array geben) ++++++++++++++++++++
-        List<ActivityT> trackList = new ArrayList<>(Main.getListOfTracks());
-        String [] [] trackData= new String [trackList.size()][3];
-        for(ActivityT activity : trackList){
-            for(int i=0; i<trackList.size(); i++){
-                for(int j=0; j<3; j++){
-                    if(j==0){
-                        trackData[i][j]= activity.getSport().toString();
-                    }
-                    else if(j==1){
-                        trackData[i][j]= activity.getCreator().getName();
-                    }
-                    else{
-                        trackData[i][j]= activity.getNotes();
-                    }
+        // allData erhält alle Daten "in allgemeiner Form" von TableData
+        String [][] allData= TableData.getTable();
+        String [] allDataColumnNames={"Name", "Sport", "Start Time", "Total Time", "Distance", "Average Speed", "Max Speed", "Average Heartrate", "Max Heartrate"};
 
-                }
-            }
-        }
-        //++++++++++++++++++++++
-
-        //JTABLE links oben ---------------------------
+        //JTABLE dummy Daten aktuell in der rechten Hälfte ---------------------------
         String [][] data = {
                 {"Running","Max Muster", "1234 930240", "Linz", "4.36km", "00:30:24", "15", "35"},
                 {"Jogging","Max Muster", "1234 930240", "Linz", "4.36km", "00:30:24", "33", "220",},
                 {"Running","Max Muster", "1234 930240", "Linz", "4.36km", "00:30:24", "15", "35"},
                 {"Jogging","Max Muster", "1234 930240", "Linz", "4.36km", "00:30:24", "33", "220",},
                 {"Running","Max Muster", "1234 930240", "Linz", "4.36km", "00:30:24", "15", "35"},
-                {"Jogging","Max Muster", "1234 930240", "Linz", "4.36km", "00:30:24", "33", "220",},
-                {"Running","Max Muster", "1234 930240", "Linz", "4.36km", "00:30:24", "15", "35"},
-                {"Jogging","Max Muster", "1234 930240", "Linz", "4.36km", "00:30:24", "33", "220",},
-                {"Running","Max Muster", "1234 930240", "Linz", "4.36km", "00:30:24", "15", "35"},
-                {"Running","Max Muster", "1234 930240", "Linz", "4.36km", "00:30:24", "15", "35"},
-                {"Jogging","Max Muster", "1234 930240", "Linz", "4.36km", "00:30:24", "33", "220",},
-                {"Running","Max Muster", "1234 930240", "Linz", "4.36km", "00:30:24", "15", "35"},
-                {"Jogging","Max Muster", "1234 930240", "Linz", "4.36km", "00:30:24", "33", "220",},
                 {"Running","Max Muster", "1234 930240", "Linz", "4.36km", "00:30:24", "15", "35"},
                 {"Jogging","Max Muster", "1234 930240", "Linz", "4.36km", "00:30:24", "33", "220",},
                 {"Running","Max Muster", "1234 930240", "Linz", "4.36km", "00:30:24", "15", "35"},
@@ -81,8 +57,8 @@ public class SwingMain extends JFrame {
         };
         String [] columnNames={"Discipline","Name", "SvNr", "Place", "Distance", "Time", "speed", "altitude"};
 
-        String [] trackDataColumnNames = {"Sports", "Name", "Notes"}; // vom "Test"
-        DefaultTableModel model = new DefaultTableModel(trackData, trackDataColumnNames);
+
+        DefaultTableModel model = new DefaultTableModel(allData, allDataColumnNames);
         JTable table = new JTable(model);
         table.getTableHeader();
 

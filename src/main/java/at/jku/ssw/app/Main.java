@@ -4,6 +4,7 @@ import at.jku.ssw.tcxparser.TcxParser;
 import at.jku.ssw.tcxparser.schema.ActivityT;
 
 import javax.xml.bind.JAXBException;
+import javax.xml.bind.SchemaOutputResolver;
 import java.awt.*;
 import java.io.File;
 import java.io.FileInputStream;
@@ -41,13 +42,20 @@ public class Main {
         }
 
         // In SwingMain
-        //EventQueue.invokeLater(new Runnable() {
-        //    @Override
-        //    public void run(){
-        //        SwingMain m= new SwingMain();
-        //        m.setVisible(true);
-        //   }
-        //});
+        EventQueue.invokeLater(new Runnable() {
+            @Override
+            public void run(){
+                SwingMain m= null;
+                try {
+                    m = new SwingMain();
+                } catch (JAXBException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                m.setVisible(true);
+           }
+        });
     }
 
     public static List<ActivityT> getListOfTracks(){
