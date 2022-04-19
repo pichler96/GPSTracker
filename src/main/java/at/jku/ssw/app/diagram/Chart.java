@@ -44,6 +44,7 @@ public class Chart extends javax.swing.JPanel{
     }
 
     public void addData(ModelChart data) {
+        //add data
     }
 
     private javax.swing.JPanel panelLegend;
