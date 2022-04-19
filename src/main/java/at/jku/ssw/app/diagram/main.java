@@ -3,10 +3,6 @@ package at.jku.ssw.app.diagram;
 import java.awt.*;
 
 public class main extends javax.swing.JFrame{
-
-    /**
-     * Creates new form Main
-     */
     public main() {
         getContentPane().setBackground(new Color(250, 250, 250));
         //add data
