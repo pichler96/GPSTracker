@@ -25,10 +25,10 @@ public class TableData {
        double averageHeartRate= 0;
 
 
-       String [][] table = new String[Main.loadData().size()][9];
+       String [][] table = new String[Main.getData().size()][9];
        int counter=0;
 
-       for (TrainingCenterDatabaseT training : Main.loadData()) {
+       for (TrainingCenterDatabaseT training : Main.getData()) {
 
 
            for (ActivityT activity : training.getActivities().getActivity()) {
