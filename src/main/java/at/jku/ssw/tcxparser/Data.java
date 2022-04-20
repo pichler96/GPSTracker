@@ -44,7 +44,7 @@ public class Data {
         trainings.clear();
 
         //Parase all files at the path
-        File directoryPath = new File("data");
+        File directoryPath = new File(path);
         for(File training : directoryPath.listFiles()) {
             if (FilenameUtils.getExtension(training.getName()).equals("tcx")) {
                 trainings.add(parser.parseTCX(new FileInputStream(training.getPath())));
