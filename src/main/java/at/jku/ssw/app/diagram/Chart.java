@@ -1,11 +1,14 @@
 package at.jku.ssw.app.diagram;
 
+import at.jku.ssw.app.diagram.blankchart.BlankPlotChart;
+import at.jku.ssw.app.diagram.blankchart.BlankPlotChatRender;
+import at.jku.ssw.app.diagram.blankchart.SeriesSize;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Chart extends javax.swing.JPanel{
+public class Chart extends javax.swing.JPanel {
 
     private List<ModelLegend> legends = new ArrayList<>();
     private List<ModelChart> model = new ArrayList<>();
@@ -13,8 +16,8 @@ public class Chart extends javax.swing.JPanel{
     private final int seriesSpace = 6;
 
     public Chart() {
+        initComponents();
         blankPlotChart.setBlankPlotChatRender(new BlankPlotChatRender() {
-            @Override
             public String getLabelText(int index) {
                 return model.get(index).getLabel();
             }
@@ -31,11 +34,15 @@ public class Chart extends javax.swing.JPanel{
                     x += seriesSpace + seriesSize;
                 }
             }
+
+            @Override
+            public void renderSeries(Chart chart, Graphics2D g2, SeriesSize size, int index) {
+                System.out.println();
+            }
         });
     }
 
     public void addLegend(String name, Color color) {
-
         ModelLegend data = new ModelLegend(name, color);
         legends.add(data);
         panelLegend.add(new LegendItem(data));
@@ -44,8 +51,45 @@ public class Chart extends javax.swing.JPanel{
     }
 
     public void addData(ModelChart data) {
-        //add data
+        model.add(data);
+        blankPlotChart.setLabelCount(model.size());
+        double max = data.getMaxValues();
+        if (max > blankPlotChart.getMaxValues()) {
+            blankPlotChart.setMaxValues(max);
+        }
     }
 
+    void initComponents() {
+
+        blankPlotChart = new at.jku.ssw.app.diagram.blankchart.BlankPlotChart();
+        panelLegend = new javax.swing.JPanel();
+
+        setBackground(new java.awt.Color(255, 255, 255));
+
+        panelLegend.setOpaque(false);
+        panelLegend.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 0));
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(panelLegend, javax.swing.GroupLayout.DEFAULT_SIZE, 573, Short.MAX_VALUE)
+                                        .addComponent(blankPlotChart, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addContainerGap())
+        );
+        layout.setVerticalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(blankPlotChart, javax.swing.GroupLayout.DEFAULT_SIZE, 342, Short.MAX_VALUE)
+                                .addGap(0, 0, 0)
+                                .addComponent(panelLegend, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap())
+        );
+    }
+    private at.jku.ssw.app.diagram.blankchart.BlankPlotChart blankPlotChart;
     private javax.swing.JPanel panelLegend;
 }
