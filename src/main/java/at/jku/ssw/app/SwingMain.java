@@ -36,32 +36,18 @@ public class SwingMain extends JFrame {
 
         JButton button3 = new JButton("button");
 
-        // allData erhält alle Daten "in allgemeiner Form" von TableData
+        // JTable links - allData erhält alle Daten "in allgemeiner Form" von TableData
         String [][] allData= TableData.getTable();
-        String [] allDataColumnNames={"Name", "Sport", "Start Time", "Total Time", "Distance", "Average Speed", "Max Speed", "Average Heartrate", "Max Heartrate"};
+        String [] allDataColumnNames={"Name", "Sport", "Start Time", "Total Time", "Distance", "Avg Speed", "Max Speed", "Avg Heartrate", "Max Heartrate"};
 
-        //JTABLE dummy Daten aktuell in der rechten Hälfte ---------------------------
-        String [][] data = {
-                {"Running","Max Muster", "1234 930240", "Linz", "4.36km", "00:30:24", "15", "35"},
-                {"Jogging","Max Muster", "1234 930240", "Linz", "4.36km", "00:30:24", "33", "220",},
-                {"Running","Max Muster", "1234 930240", "Linz", "4.36km", "00:30:24", "15", "35"},
-                {"Jogging","Max Muster", "1234 930240", "Linz", "4.36km", "00:30:24", "33", "220",},
-                {"Running","Max Muster", "1234 930240", "Linz", "4.36km", "00:30:24", "15", "35"},
-                {"Running","Max Muster", "1234 930240", "Linz", "4.36km", "00:30:24", "15", "35"},
-                {"Jogging","Max Muster", "1234 930240", "Linz", "4.36km", "00:30:24", "33", "220",},
-                {"Running","Max Muster", "1234 930240", "Linz", "4.36km", "00:30:24", "15", "35"},
-                {"Jogging","Max Muster", "1234 930240", "Linz", "4.36km", "00:30:24", "33", "220",},
-                {"Running","Max Muster", "1234 930240", "Linz", "4.36km", "00:30:24", "15", "35"},
-                {"Jogging","Max Muster", "1234 930240", "Linz", "4.36km", "00:30:24", "33", "220",},
-                {"Hiking","Max Muster", "1234 930240", "Linz", "4.36km", "00:30:24", "9034", "982"}
-        };
-        String [] columnNames={"Discipline","Name", "SvNr", "Place", "Distance", "Time", "speed", "altitude"};
+        //JTABLE in der rechten Hälfte -- ALIGNMENT des Tables muss noch nach links also Header linke seite---------------------------
+        String [][] data = TableData.getLaps();
+        String [] lapTableColumns={"Name","Sport", "Start Time", "Total Time", "Max Speed", "Max Heartrate", "Distance", "Avg Heartrate", "Calories"};
 
-
+        //JTable links:
         DefaultTableModel model = new DefaultTableModel(allData, allDataColumnNames);
         JTable table = new JTable(model);
         table.getTableHeader();
-
         table.setAutoResizeMode( JTable.AUTO_RESIZE_OFF );
         //Scrollbar for the Table of Data
         JScrollPane tableScroll = new JScrollPane(table);
@@ -98,8 +84,7 @@ public class SwingMain extends JFrame {
         }
         //source: https://stackoverflow.com/questions/6447984/auto-resize-the-widths-of-jtables-columns-dynamically
 
-
-        // JTable hinzufügen zum "TablePanel"
+        // JTable(links) hinzufügen zum "TablePanel"
         JPanel tablePanel = new JPanel();
         tablePanel.setLayout(new BorderLayout());
         tablePanel.add(tableScroll, BorderLayout.CENTER);
@@ -108,8 +93,8 @@ public class SwingMain extends JFrame {
         west.add(tablePanel); //"West" ist der westliche (linke) Teil unserer GUI.
         west.add(button3); //hier gehört noch die Grafik stattdessen rein
 
-        //JTable rechts oben:-----------
-        DefaultTableModel model2 = new DefaultTableModel(data, columnNames);
+        //JTable rechts:-----------
+        DefaultTableModel model2 = new DefaultTableModel(data, lapTableColumns);
         JTable table2 = new JTable(model2);
         table2.getTableHeader();
 
