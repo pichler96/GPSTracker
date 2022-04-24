@@ -45,7 +45,7 @@ public class Main {
         EventQueue.invokeLater(new Runnable() {
             @Override
             public void run(){
-                SwingMain m= null;
+                SwingMain m = null;
                 try {
                     m = new SwingMain();
                 } catch (JAXBException e) {

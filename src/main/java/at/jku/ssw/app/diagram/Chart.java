@@ -3,8 +3,16 @@ package at.jku.ssw.app.diagram;
 import at.jku.ssw.app.diagram.blankchart.BlankPlotChart;
 import at.jku.ssw.app.diagram.blankchart.BlankPlotChatRender;
 import at.jku.ssw.app.diagram.blankchart.SeriesSize;
+import at.jku.ssw.tcxparser.TcxParser;
+import at.jku.ssw.tcxparser.schema.TrainingCenterDatabaseT;
+import org.apache.commons.io.FilenameUtils;
+
+import javax.xml.bind.JAXBException;
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -57,6 +65,22 @@ public class Chart extends javax.swing.JPanel {
         if (max > blankPlotChart.getMaxValues()) {
             blankPlotChart.setMaxValues(max);
         }
+    }
+
+    public static java.util.List<TrainingCenterDatabaseT> readInData() throws JAXBException, IOException {
+        TcxParser parser = new TcxParser();
+        List<TrainingCenterDatabaseT> trainings = new ArrayList<>();
+
+        //Parase all files in data
+        File directoryPath = new File("data");
+
+        //List of all files and directories
+        for(File training : directoryPath.listFiles()) {
+            if (FilenameUtils.getExtension(training.getName()).equals("tcx")) {
+                trainings.add(parser.parseTCX(new FileInputStream(training.getPath())));
+            }
+        }
+        return trainings;
     }
 
     void initComponents() {
