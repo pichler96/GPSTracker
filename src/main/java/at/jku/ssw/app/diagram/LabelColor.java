@@ -2,6 +2,8 @@ package at.jku.ssw.app.diagram;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.Graphics;
+
 
 public class LabelColor extends JLabel {
 
