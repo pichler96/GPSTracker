@@ -36,11 +36,11 @@ public class SwingMain extends JFrame {
 
         // JTable links - allData erhält alle Daten "in allgemeiner Form" von TableData
         String [][] allData= TableData.getTable();
-        String [] allDataColumnNames={"Name", "Sport", "Start Time", "Total Time", "Distance", "Avg Speed", "Max Speed", "Avg Heartrate", "Max Heartrate"};
+        String [] allDataColumnNames={"ID", "Sport", "Start Time", "Total Time", "Distance", "Avg Speed", "Max Speed", "Avg Heartrate", "Max Heartrate"};
 
         //JTABLE in der rechten Hälfte -- ALIGNMENT des Tables muss noch nach links also Header linke seite---------------------------
         String [][] data = TableData.getLaps();
-        String [] lapTableColumns={"Name","Sport", "Start Time", "Total Time", "Max Speed", "Max Heartrate", "Distance", "Avg Heartrate", "Calories"};
+        String [] lapTableColumns={"Start Time", "Total Time", "Max Speed", "Max Heartrate", "Distance", "Avg Heartrate", "Calories"};
 
         //JTable links:
         DefaultTableModel model = new DefaultTableModel(allData, allDataColumnNames);

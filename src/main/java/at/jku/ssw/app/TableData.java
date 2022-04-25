@@ -126,19 +126,19 @@ public class TableData {
     public static String [][] getLaps() throws JAXBException, IOException {
        int counter=0; //hier eigentlich irrelevant
        int size= Main.getData().get(0).getActivities().getActivity().get(0).getLap().size();
-        String[][] table = new String[size][9]; //die [][] Werte noch ändern!
+        String[][] table = new String[size][7]; //die [][] Werte noch ändern!
         for (TrainingCenterDatabaseT training : Main.getData()) {
             for (ActivityT activity : training.getActivities().getActivity()) {
                 for(int i=0; i< activity.getLap().size(); i++){
-                    table[counter][0]= activity.getCreator().getName();
-                    table[counter][1]= activity.getSport().toString();
-                    table[counter][2]= activity.getLap().get(i).getStartTime().toString(); //Start Time
-                    table[counter][3]= Double.toString(activity.getLap().get(i).getTotalTimeSeconds()); //TotalTime
-                    table[counter][4]= Double.toString(activity.getLap().get(i).getMaximumSpeed());//Max Speed
-                    table[counter][5]= Integer.toString(activity.getLap().get(i).getMaximumHeartRateBpm().getValue());//Max Heartrate
-                    table[counter][6]= Double.toString(activity.getLap().get(i).getDistanceMeters());//Distance
-                    table[counter][7]= Integer.toString(activity.getLap().get(i).getAverageHeartRateBpm().getValue());//Avg Heartrate
-                    table[counter][8]= Integer.toString(activity.getLap().get(i).getCalories());//Calories
+                    //table[counter][0]= activity.getCreator().getName();
+                    //table[counter][1]= activity.getSport().toString();
+                    table[counter][0]= activity.getLap().get(i).getStartTime().toString(); //Start Time
+                    table[counter][1]= Double.toString(activity.getLap().get(i).getTotalTimeSeconds()); //TotalTime
+                    table[counter][2]= Double.toString(activity.getLap().get(i).getMaximumSpeed());//Max Speed
+                    table[counter][3]= Integer.toString(activity.getLap().get(i).getMaximumHeartRateBpm().getValue());//Max Heartrate
+                    table[counter][4]= Double.toString(activity.getLap().get(i).getDistanceMeters());//Distance
+                    table[counter][5]= Integer.toString(activity.getLap().get(i).getAverageHeartRateBpm().getValue());//Avg Heartrate
+                    table[counter][6]= Integer.toString(activity.getLap().get(i).getCalories());//Calories
                     counter++;
                 }
                 return table;
