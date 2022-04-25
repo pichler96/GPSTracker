@@ -19,7 +19,6 @@ import java.util.List;
 import at.jku.ssw.tcxparser.schema.TrainingCenterDatabaseT;
 import org.apache.commons.io.FilenameUtils;
 
-
 public class Main {
 
     private static List<ActivityT> list;
@@ -33,27 +32,24 @@ public class Main {
             e.printStackTrace();
         }
 
-        for (TrainingCenterDatabaseT training : data.getTrainings()) {
-            for (ActivityT activity : training.getActivities().getActivity()) {
-                System.out.println(activity.getCreator().getName() + " start " + activity.getSport());
-                activity.getLap().forEach(a -> System.out.println("LAP start: " + a.getStartTime() + " for TotalTime " + a.getTotalTimeSeconds() + " Distance: " +a.getDistanceMeters() + " Speed: " + a.getMaximumSpeed()));
-                System.out.println();
+        // In SwingMain
+        EventQueue.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                SwingMain m = null;
+                try {
+                    m = new SwingMain();
+                } catch (JAXBException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                m.setVisible(true);
             }
-        }
-
-        EventQueue.invokeLater(() -> {
-            SwingMain m= null;
-            try {
-                m = new SwingMain();
-            } catch (JAXBException | IOException e) {
-                e.printStackTrace();
-            }
-            assert m != null;
-            m.setVisible(true);
-       });
+        });
     }
 
-    public static List<ActivityT> getListOfTracks(){
+    public static List<ActivityT> getListOfTracks() {
         return list;
     }
 

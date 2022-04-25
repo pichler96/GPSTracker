@@ -1,6 +1,6 @@
 package at.jku.ssw.app;
 
-import at.jku.ssw.tcxparser.schema.ActivityT;
+import at.jku.ssw.app.diagram.Graphics;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -11,8 +11,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 public class SwingMain extends JFrame {
 
@@ -91,7 +89,17 @@ public class SwingMain extends JFrame {
 
 
         west.add(tablePanel); //"West" ist der westliche (linke) Teil unserer GUI.
-        west.add(button3); //hier gehört noch die Grafik stattdessen rein
+
+        //Grafics start
+        Graphics graphics = new Graphics();
+        Container container = graphics.getContainer();
+        JPanel jPanelGraphic = new JPanel();
+        jPanelGraphic.setLayout(new BorderLayout());
+        jPanelGraphic.add(container, BorderLayout.CENTER);
+        JScrollPane graphicScroll = new JScrollPane(jPanelGraphic);
+        graphicScroll.setVisible(true);
+        west.add(graphicScroll);
+        //Grafics end
 
         //JTable rechts:-----------
         DefaultTableModel model2 = new DefaultTableModel(data, lapTableColumns);
