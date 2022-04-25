@@ -1,5 +1,6 @@
 package at.jku.ssw.app;
 
+import at.jku.ssw.tcxparser.Data;
 import at.jku.ssw.tcxparser.TcxParser;
 import at.jku.ssw.tcxparser.schema.ActivityT;
 
@@ -18,33 +19,23 @@ import java.util.List;
 import at.jku.ssw.tcxparser.schema.TrainingCenterDatabaseT;
 import org.apache.commons.io.FilenameUtils;
 
-
 public class Main {
 
     private static List<ActivityT> list;
+    private static Data data;
 
     public static void main(String[] args) {
 
         try {
-            for (TrainingCenterDatabaseT training : loadData()) {
-                for (ActivityT activity : training.getActivities().getActivity()) {
-                    System.out.println(activity.getCreator().getName() + " start " + activity.getSport());
-                    activity.getLap().forEach(a -> System.out.println("LAP start: " + a.getStartTime() + " for TotalTime " + a.getTotalTimeSeconds() + " Distance: " +a.getDistanceMeters() + " Speed: " + a.getMaximumSpeed()));
-                    System.out.println();
-                }
-
-            }
-
+            data = new Data("data");
         } catch (JAXBException | FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
             e.printStackTrace();
         }
 
         // In SwingMain
         EventQueue.invokeLater(new Runnable() {
             @Override
-            public void run(){
+            public void run() {
                 SwingMain m = null;
                 try {
                     m = new SwingMain();
@@ -54,27 +45,15 @@ public class Main {
                     e.printStackTrace();
                 }
                 m.setVisible(true);
-           }
+            }
         });
     }
 
-    public static List<ActivityT> getListOfTracks(){
+    public static List<ActivityT> getListOfTracks() {
         return list;
     }
 
-    public static List<TrainingCenterDatabaseT> loadData() throws JAXBException, IOException {
-        TcxParser parser = new TcxParser();
-        List<TrainingCenterDatabaseT> trainings = new ArrayList<>();
-
-        //Parase all files in data
-        File directoryPath = new File("data");
-
-        //List of all files and directories
-        for(File training : directoryPath.listFiles()) {
-            if (FilenameUtils.getExtension(training.getName()).equals("tcx")) {
-                trainings.add(parser.parseTCX(new FileInputStream(training.getPath())));
-            }
-        }
-        return trainings;
+    public static List<TrainingCenterDatabaseT> getData() {
+        return data.getTrainings();
     }
 }
