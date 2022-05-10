@@ -13,16 +13,16 @@ import java.util.List;
 public class TableData {
 
 
-   public static String[][] getTable() throws JAXBException, IOException {
-       String name = null;
-       String sport = null;
-       XMLGregorianCalendar startTime = null;
+   public static String[][] getTable() {
+       String id;
+       String sport;
+       XMLGregorianCalendar startTime;
        double totalTime=0;
        double distance=0;
        double averageSpeed=0;
        double maxSpeed=0;
-       int sumHeartRate=0;
-       int counterHeartRate=0;
+       double sumHeartRate=0;
+       double counterHeartRate=0;
        int maxHeartRate=0;
        double averageHeartRate= 0;
 
@@ -34,7 +34,7 @@ public class TableData {
 
 
            for (ActivityT activity : training.getActivities().getActivity()) {
-               name= activity.getCreator().getName();
+               id= activity.getCreator().getName();
                sport= activity.getSport().value();
                startTime= activity.getLap().get(0).getStartTime();
 
@@ -66,11 +66,11 @@ public class TableData {
 
 
                //fill Table with data:
-               if(name == null){
+               if(id == null){
                    table[counter][0]= "noName";
                }
                else{
-                   table[counter][0]= name;
+                   table[counter][0]= id;
                }
 
                if(sport == null){
@@ -102,7 +102,7 @@ public class TableData {
                counter ++;
 
                //reset variables:
-               name= null;
+               id= null;
                sport=null;
                startTime= null;
                totalTime=0;
@@ -123,14 +123,16 @@ public class TableData {
        return table;
     }
 
-    public static String [][] getLaps() throws JAXBException, IOException {
-       int counter=0; //hier eigentlich irrelevant
+    public static String [][] getLaps() {
+       int counter=0;
        int size= Main.getData().get(0).getActivities().getActivity().get(0).getLap().size();
-        String[][] table = new String[size][7]; //die [][] Werte noch ändern!
+       String[][] table = new String[size][7];
+
+
         for (TrainingCenterDatabaseT training : Main.getData()) {
             for (ActivityT activity : training.getActivities().getActivity()) {
                 for(int i=0; i< activity.getLap().size(); i++){
-                    //table[counter][0]= activity.getCreator().getName();
+                    //table[counter][0]= activity.getCreator().getName(); // we decided to not show id/name and sport in this Lap-table
                     //table[counter][1]= activity.getSport().toString();
                     table[counter][0]= activity.getLap().get(i).getStartTime().toString(); //Start Time
                     table[counter][1]= Double.toString(activity.getLap().get(i).getTotalTimeSeconds()); //TotalTime

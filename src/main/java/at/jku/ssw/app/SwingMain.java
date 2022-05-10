@@ -21,37 +21,36 @@ public class SwingMain extends JFrame {
         setLocationRelativeTo(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-        Container pane = getContentPane(); //unterste Ebene des Layouts
+        Container pane = getContentPane(); // "lowes" level of the layout
 
-        JPanel west = new JPanel(); //westlicher Teil des Layouts sind hier gespeichert. (Besteht aus 1 oberer und 1 unterer Hälfte)
+        JPanel west = new JPanel(); //western part of the layout is saved here.(Contains a top and a bottom half)
         west.setPreferredSize(new Dimension(200,400));
         west.setLayout(new GridLayout(2,0));
 
 
-        JButton button = new JButton("Exit");
+        JButton button = new JButton("Exit"); //Exit Button to exit the program via menubar
         button.setPreferredSize(new Dimension(200,400));
-        button.addActionListener(e -> System.exit(0)); // e -> des is der Vorschlag vom IntelliJ "exchange with lambda
+        button.addActionListener(e -> System.exit(0));
 
-        JButton button3 = new JButton("button");
 
-        // JTable links - allData erhält alle Daten "in allgemeiner Form" von TableData
+        // JTable -left side (west) - allData contains all data in "general form" (no lap-view) from TableData
         String [][] allData= TableData.getTable();
         String [] allDataColumnNames={"ID", "Sport", "Start Time", "Total Time", "Distance", "Avg Speed", "Max Speed", "Avg Heartrate", "Max Heartrate"};
 
-        //JTABLE in der rechten Hälfte -- ALIGNMENT des Tables muss noch nach links also Header linke seite---------------------------
+        //JTABLE -right side (east) -- we will change the formatting of this table (e.g. align the header to the left side)
         String [][] data = TableData.getLaps();
         String [] lapTableColumns={"Start Time", "Total Time", "Max Speed", "Max Heartrate", "Distance", "Avg Heartrate", "Calories"};
 
-        //JTable links:
+        //JTable -left side (west):
         DefaultTableModel model = new DefaultTableModel(allData, allDataColumnNames);
         JTable table = new JTable(model);
-        table.getTableHeader();
+        //table.getTableHeader();
         table.setAutoResizeMode( JTable.AUTO_RESIZE_OFF );
         //Scrollbar for the Table of Data
         JScrollPane tableScroll = new JScrollPane(table);
         tableScroll.setVisible(true);
 
-        //online Code to resize columns dynamically
+        //Code to resize columns dynamically
         for (int column = 0; column < table.getColumnCount(); column++)
         {
             TableColumn tableColumn = table.getColumnModel().getColumn(column);
@@ -80,17 +79,17 @@ public class SwingMain extends JFrame {
 
             tableColumn.setPreferredWidth( preferredWidth );
         }
-        //source: https://stackoverflow.com/questions/6447984/auto-resize-the-widths-of-jtables-columns-dynamically
 
-        // JTable(links) hinzufügen zum "TablePanel"
+
+        // JTable(left) add it to the "TablePanel"
         JPanel tablePanel = new JPanel();
         tablePanel.setLayout(new BorderLayout());
         tablePanel.add(tableScroll, BorderLayout.CENTER);
 
 
-        west.add(tablePanel); //"West" ist der westliche (linke) Teil unserer GUI.
+        west.add(tablePanel); //"West" contains the western (left) part of our GUI
 
-        //Grafics start
+        //Graphics start (Part of the Diagram)
         Graphics graphics = new Graphics();
         Container container = graphics.getContainer();
         JPanel jPanelGraphic = new JPanel();
@@ -99,19 +98,18 @@ public class SwingMain extends JFrame {
         JScrollPane graphicScroll = new JScrollPane(jPanelGraphic);
         graphicScroll.setVisible(true);
         west.add(graphicScroll);
-        //Grafics end
+        //Graphics end
 
-        //JTable rechts:-----------
+        //JTable right side:-----------
         DefaultTableModel model2 = new DefaultTableModel(data, lapTableColumns);
         JTable table2 = new JTable(model2);
-        table2.getTableHeader();
 
         table2.setAutoResizeMode( JTable.AUTO_RESIZE_OFF );
         //Scrollbar for the Table of Data
         JScrollPane tableScroll2 = new JScrollPane(table2);
         tableScroll2.setVisible(true);
 
-        //online Code to resize columns dynamically
+        //resize columns dynamically
         for (int column = 0; column < table2.getColumnCount(); column++)
         {
             TableColumn tableColumn = table2.getColumnModel().getColumn(column);
@@ -140,17 +138,15 @@ public class SwingMain extends JFrame {
 
             tableColumn.setPreferredWidth( preferredWidth );
         }
-        //source: https://stackoverflow.com/questions/6447984/auto-resize-the-widths-of-jtables-columns-dynamically
 
 
-
-        JPanel eastPanel = new JPanel(); //"EastPanel" ist der östliche Teil (rechte) unserer GUI
+        JPanel eastPanel = new JPanel(); //"EastPanel" contains the eastern part of our GUI
         eastPanel.setLayout(new BorderLayout());
         eastPanel.add(tableScroll2, BorderLayout.CENTER);
         eastPanel.setPreferredSize(new Dimension(230,460));
 
 
-        //Hinzufügen des östlichen & westlichen Teils zum Fenster
+        //adding the eastern & the western part to the lower layer
         pane.add(eastPanel, BorderLayout.EAST);
         pane.add(west, BorderLayout.CENTER);
 
@@ -166,118 +162,77 @@ public class SwingMain extends JFrame {
 
 
         JMenuItem twentyEighteen = new JMenuItem("2018");
-        twentyEighteen.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                //...
-            }
+        twentyEighteen.addActionListener(e -> {
+            //...
         });
 
         JMenuItem twentyNineteen = new JMenuItem("2019");
-        twentyNineteen.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                //...
-            }
+        twentyNineteen.addActionListener(e -> {
+            //...
         });
 
         JMenuItem twentyTwenty = new JMenuItem("2020");
-        twentyTwenty.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                //...
-            }
+        twentyTwenty.addActionListener(e -> {
+            //...
         });
 
         JMenuItem twentyTwentyOne = new JMenuItem("2021");
-        twentyTwentyOne.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                //...
-            }
+        twentyTwentyOne.addActionListener(e -> {
+            //...
         });
 
         JMenuItem twentyTwentyTwo = new JMenuItem("2022");
-        twentyTwentyTwo.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                //...
-            }
+        twentyTwentyTwo.addActionListener(e -> {
+            //...
         });
 
 
 
 
         JMenuItem biking = new JMenuItem("Biking");
-        biking.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                //...
-            }
+        biking.addActionListener(e -> {
+            //...
         });
 
         JMenuItem driving = new JMenuItem("Driving");
-        driving.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                //...
-            }
+        driving.addActionListener(e -> {
+            //...
         });
 
         JMenuItem flying = new JMenuItem("Flying");
-        flying.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                //...
-            }
+        flying.addActionListener(e -> {
+            //...
         });
 
         JMenuItem hiking = new JMenuItem("Hiking");
-        hiking.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                //...
-            }
+        hiking.addActionListener(e -> {
+            //...
         });
 
         JMenuItem running = new JMenuItem("Running");
-        running.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                //...
-            }
+        running.addActionListener(e -> {
+            //...
         });
 
         JMenuItem skiing = new JMenuItem("Skiing");
-        skiing.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                //...
-            }
+        skiing.addActionListener(e -> {
+            //...
         });
 
 
 
 
         JMenuItem exit2 = new JMenuItem("Exit");
-        exit2.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                System.exit(0);
-            }
-        });
+        exit2.addActionListener(e -> System.exit(0));
 
         JMenuItem search = new JMenuItem("search Track");
-        search.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // tut noch nichts
-            }
+        search.addActionListener(e -> {
+            // ...
         });
 
 
 
-        //Menubar hinzufügen der Auswahlmöglichkeiten der einzelnen Reiter:
+        //Menubar, adding the different "choice-options" to the menubar:
         file.add(exit2);
         file.addSeparator();
         file.add(search);
@@ -301,7 +256,6 @@ public class SwingMain extends JFrame {
         menu.add(sports);
         menu.add(years);
 
-        //pane.add(menu, BorderLayout.NORTH); // ident zu darunter
         setJMenuBar(menu);
     }
 

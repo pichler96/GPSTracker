@@ -21,7 +21,6 @@ import org.apache.commons.io.FilenameUtils;
 
 public class Main {
 
-    private static List<ActivityT> list;
     private static Data data;
 
     public static void main(String[] args) {
@@ -33,25 +32,17 @@ public class Main {
         }
 
         // In SwingMain
-        EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                SwingMain m = null;
-                try {
-                    m = new SwingMain();
-                } catch (JAXBException e) {
-                    e.printStackTrace();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                m.setVisible(true);
+        EventQueue.invokeLater(() -> {
+            SwingMain m = null;
+            try {
+                m = new SwingMain();
+            } catch (JAXBException | IOException e) {
+                e.printStackTrace();
             }
+            if(m!=null) m.setVisible(true);
         });
     }
 
-    public static List<ActivityT> getListOfTracks() {
-        return list;
-    }
 
     public static List<TrainingCenterDatabaseT> getData() {
         return data.getTrainings();
