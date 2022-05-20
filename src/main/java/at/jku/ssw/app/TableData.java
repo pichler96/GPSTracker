@@ -123,7 +123,11 @@ public class TableData {
        return table;
     }
 
-    public static String [][] getLaps() {
+   public static String[] getTableColumnNames(){
+       return new String[]{"ID", "Sport", "Start Time", "Total Time", "Distance", "Avg Speed", "Max Speed", "Avg Heartrate", "Max Heartrate"};
+   }
+
+    public static String [][] getTableOfLaps() {
        int counter=0;
        int size= Main.getData().get(0).getActivities().getActivity().get(0).getLap().size();
        String[][] table = new String[size][7];
@@ -151,4 +155,7 @@ public class TableData {
         return table;
     }
 
+    public static String[] getTableOfLapsColumnNames(){
+        return new String[]{"Start Time", "Total Time", "Max Speed", "Max Heartrate", "Distance", "Avg Heartrate", "Calories"};
+    }
 }
