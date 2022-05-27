@@ -4,6 +4,7 @@ import at.jku.ssw.tcxparser.schema.ActivityT;
 import at.jku.ssw.tcxparser.schema.TrainingCenterDatabaseT;
 
 import javax.xml.datatype.XMLGregorianCalendar;
+import java.util.List;
 
 
 public class TableData {
@@ -139,32 +140,37 @@ public class TableData {
    }
 
 
-    public static String [][] getTableOfLaps() {
+    public static String [][] getTableOfLaps(int row) {
        int counter=0;
-       int size= Main.getData().get(0).getActivities().getActivity().get(0).getLap().size();
+       int sizeCounter=row;
+       int size= Main.getData().get(row).getActivities().getActivity().get(0).getLap().size();
        String[][] table = new String[size][7];
 
 
         for (TrainingCenterDatabaseT training : Main.getData()) {
-            for (ActivityT activity : training.getActivities().getActivity()) {
+
+            size= Main.getData().get(sizeCounter).getActivities().getActivity().get(0).getLap().size();
+            table= new String[size][7];
+            //for (ActivityT activity : training.getActivities().getActivity()) {
+                ActivityT activity= Main.getData().get(sizeCounter).getActivities().getActivity().get(0);
                 for(int i=0; i< activity.getLap().size(); i++){
                     //table[counter][0]= activity.getCreator().getName(); // we decided to not show id/name and sport in this Lap-table
                     //table[counter][1]= activity.getSport().toString();
                     table[counter][0]= activity.getLap().get(i).getStartTime().toString(); //Start Time
                     table[counter][1]= Double.toString(Math.round(activity.getLap().get(i).getTotalTimeSeconds()*100.0)/100.0); //TotalTime
                     table[counter][2]= Double.toString(Math.round(activity.getLap().get(i).getMaximumSpeed()*100.0)/100.0);//Max Speed
-                    if(activity.getLap().get(i).getMaximumHeartRateBpm().getValue()==0) table[counter][3]="---";
+                    if(activity.getLap().get(i).getMaximumHeartRateBpm()==null) table[counter][3]="---";
+                    else if(activity.getLap().get(i).getMaximumHeartRateBpm().getValue()==0) table[counter][3]="---";
                     else table[counter][3]= Integer.toString(activity.getLap().get(i).getMaximumHeartRateBpm().getValue());//Max Heartrate
                     table[counter][4]= Double.toString(Math.round(activity.getLap().get(i).getDistanceMeters()*100.0)/100.0);//Distance
-                    if(activity.getLap().get(i).getAverageHeartRateBpm().getValue()==0) table[counter][5]="---";
+                    if(activity.getLap().get(i).getAverageHeartRateBpm()==null) table[counter][5]="---";
+                    else if(activity.getLap().get(i).getAverageHeartRateBpm().getValue()==0) table[counter][5]="---";
                     else table[counter][5]= Integer.toString(activity.getLap().get(i).getAverageHeartRateBpm().getValue());//Avg Heartrate
                     table[counter][6]= Integer.toString(activity.getLap().get(i).getCalories());//Calories
                     counter++;
                 }
+                counter=0;
                 return table;
-            }
-
-
         }
         return table;
     }

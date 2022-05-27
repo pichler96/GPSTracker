@@ -3,6 +3,8 @@ package at.jku.ssw.app;
 import at.jku.ssw.app.diagram.Graphics;
 
 import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 import javax.xml.bind.JAXBException;
 import javax.xml.datatype.DatatypeConfigurationException;
@@ -18,7 +20,7 @@ public class SwingMain extends JFrame {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         Container pane = getContentPane(); // "lowes" level of the layout
 
-        JPanel west = new JPanel(); //western part of the layout is saved here.(Contains a top and a bottom half)
+        JPanel west = new JPanel(); //western part of the layout is saved here.
         west.setPreferredSize(new Dimension(500,500));
         west.setLayout(new GridLayout(1,0));
 
@@ -32,7 +34,6 @@ public class SwingMain extends JFrame {
         //JTable -left side (west):
         DefaultTableModel model = new DefaultTableModel(allData, allDataColumnNames);
         JTable table = new JTable(model);
-        //table.getTableHeader();
         table.setAutoResizeMode( JTable.AUTO_RESIZE_OFF );
         //Scrollbar for the Table of Data
         JScrollPane tableScroll = new JScrollPane(table);
@@ -41,20 +42,20 @@ public class SwingMain extends JFrame {
         TableColumnResize resizeTable = new TableColumnResize(table);
         resizeTable.resize();
 
-
         // JTable(left) add it to the "TablePanel"
         JPanel tablePanel = new JPanel();
         tablePanel.setLayout(new BorderLayout());
         tablePanel.add(tableScroll, BorderLayout.CENTER);
-
         west.add(tablePanel); //"West" contains the western (left) part of our GUI
 
-        //JTABLE -right side (east) -- we will change the formatting of this table (e.g. align the header to the left side)
-        String [][] data = TableData.getTableOfLaps();
+
+
+        //JTABLE -right side (east) contains LapTable and Diagram
+        String [][] lapData = TableData.getTableOfLaps(0);
         String [] lapTableColumnsNames=TableData.getTableOfLapsColumnNames();
 
         //JTable right side:-----------
-        DefaultTableModel model2 = new DefaultTableModel(data, lapTableColumnsNames);
+        DefaultTableModel model2 = new DefaultTableModel(lapData, lapTableColumnsNames);
         JTable lapTable = new JTable(model2);
 
         lapTable.setAutoResizeMode( JTable.AUTO_RESIZE_OFF );
@@ -197,6 +198,56 @@ public class SwingMain extends JFrame {
         menu.add(years);
 
         setJMenuBar(menu);
+
+
+        //show the correct Laps for the chosen Track
+        ListSelectionModel listModel= table.getSelectionModel();
+        listModel.addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+                if (!listModel.isSelectionEmpty()){
+                    //eastPanel.remove(eastPanel.getComponent(0));
+                    int selectedRow= listModel.getMinSelectionIndex();
+                    String [] [] data= TableData.getTableOfLaps(selectedRow);
+                    String [] header= TableData.getTableOfLapsColumnNames();
+                    Component [] componentArray = eastPanel.getComponents();
+                    for(Component c: componentArray){
+                        if(c instanceof JScrollPane){
+                            eastPanel.remove(c);
+                        }
+                    }
+                    eastPanel.add(graphicScroll, BorderLayout.SOUTH);
+                    JScrollPane lapTablePane= getLapTable(header, data);
+                    lapTablePane.setPreferredSize(new Dimension(500,150));
+                    eastPanel.add(lapTablePane, BorderLayout.NORTH);
+                    eastPanel.revalidate();
+                    eastPanel.repaint();
+                    pane.revalidate();
+                    pane.repaint();
+                }
+            }
+        });
+    }
+
+    public JScrollPane getLapTable(String[] header, String [][] data){
+        //JTABLE -right side (east) contains LapTable and Diagram
+        String [][] lapData = data;
+        String [] lapTableColumnsNames=header;
+
+        //JTable right side:-----------
+        DefaultTableModel model2 = new DefaultTableModel(lapData, lapTableColumnsNames);
+        JTable lapTable = new JTable(model2);
+
+        lapTable.setAutoResizeMode( JTable.AUTO_RESIZE_OFF );
+        //Scrollbar for the Table of Data
+        JScrollPane tableScroll2 = new JScrollPane(lapTable);
+        tableScroll2.setVisible(true);
+
+        //Columns are displayed in the correct width:
+        TableColumnResize resizeLapTable = new TableColumnResize(lapTable);
+        resizeLapTable.resize();
+
+        return tableScroll2;
     }
 
 
