@@ -31,7 +31,6 @@ public class Main {
             e.printStackTrace();
         }
 
-        // In SwingMain
         EventQueue.invokeLater(() -> {
             SwingMain m = null;
             try {

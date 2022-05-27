@@ -123,6 +123,8 @@ public class TableData {
        return table;
     }
 
+
+
     public static String [][] getLaps() {
        int counter=0;
        int size= Main.getData().get(0).getActivities().getActivity().get(0).getLap().size();
