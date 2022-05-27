@@ -15,7 +15,6 @@ public class SwingMain extends JFrame {
     public SwingMain () throws JAXBException, IOException {
         setTitle("GPSTracker");
         setSize(800,500);
-        //1920*180
         setLocationRelativeTo(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         Container pane = getContentPane(); // "lowes" level of the layout

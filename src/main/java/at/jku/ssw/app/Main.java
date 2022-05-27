@@ -31,6 +31,8 @@ public class Main {
             e.printStackTrace();
         }
 
+        MainFrame mainFrame= new MainFrame();
+/*
         // In SwingMain
         EventQueue.invokeLater(() -> {
             SwingMain m = null;
@@ -40,7 +42,7 @@ public class Main {
                 e.printStackTrace();
             }
             if(m!=null) m.setVisible(true);
-        });
+        });*/
     }
 
 
