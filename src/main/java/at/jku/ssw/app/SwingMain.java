@@ -4,27 +4,23 @@ import at.jku.ssw.app.diagram.Graphics;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableCellRenderer;
-import javax.swing.table.TableColumn;
 import javax.xml.bind.JAXBException;
+import javax.xml.datatype.DatatypeConfigurationException;
 import java.awt.*;
 import java.io.IOException;
 
 public class SwingMain extends JFrame {
 
-    public SwingMain () throws JAXBException, IOException {
+    public SwingMain () throws JAXBException, IOException, DatatypeConfigurationException {
         setTitle("GPSTracker");
-        setSize(800,500);
+        setSize(1000,500);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         Container pane = getContentPane(); // "lowes" level of the layout
 
-      /*  JPanel west = new JPanel(); //western part of the layout is saved here.(Contains a top and a bottom half)
-        west.setPreferredSize(new Dimension(200,400));
-        west.setLayout(new GridLayout(2,0));*/
-
-        JPanel test = new JPanel(); //test
-        test.setLayout(new GridLayout(3,0));
+        JPanel west = new JPanel(); //western part of the layout is saved here.(Contains a top and a bottom half)
+        west.setPreferredSize(new Dimension(500,500));
+        west.setLayout(new GridLayout(1,0));
 
 
 
@@ -51,8 +47,7 @@ public class SwingMain extends JFrame {
         tablePanel.setLayout(new BorderLayout());
         tablePanel.add(tableScroll, BorderLayout.CENTER);
 
-   //     west.add(tablePanel); //"West" contains the western (left) part of our GUI
-        test.add(tablePanel); //test
+        west.add(tablePanel); //"West" contains the western (left) part of our GUI
 
         //JTABLE -right side (east) -- we will change the formatting of this table (e.g. align the header to the left side)
         String [][] data = TableData.getTableOfLaps();
@@ -71,7 +66,6 @@ public class SwingMain extends JFrame {
         TableColumnResize resizeLapTable = new TableColumnResize(lapTable);
         resizeLapTable.resize();
 
-        test.add(tableScroll2);
 
 
         //Graphics start (Part of the Diagram)
@@ -82,22 +76,22 @@ public class SwingMain extends JFrame {
         jPanelGraphic.add(container, BorderLayout.CENTER);
         JScrollPane graphicScroll = new JScrollPane(jPanelGraphic);
         graphicScroll.setVisible(true);
-        //west.add(graphicScroll);
-        test.add(graphicScroll);
         //Graphics end
 
 
-     /*   JPanel eastPanel = new JPanel(); //"EastPanel" contains the eastern part of our GUI
+        JPanel eastPanel = new JPanel(); //"EastPanel" contains the eastern part of our GUI
         eastPanel.setLayout(new BorderLayout());
-        eastPanel.add(tableScroll2, BorderLayout.CENTER);
-        eastPanel.setPreferredSize(new Dimension(230,460));*/
+        eastPanel.setPreferredSize(new Dimension(500,500));
+        tableScroll2.setPreferredSize(new Dimension(500, 150));
+        eastPanel.add(tableScroll2, BorderLayout.NORTH);
+        eastPanel.add(graphicScroll, BorderLayout.SOUTH);
 
 
-     /*   //adding the eastern & the western part to the lower layer
+
+        //adding the eastern & the western part to the lower layer
         pane.add(eastPanel, BorderLayout.EAST);
         pane.add(west, BorderLayout.CENTER);
-        */
-        pane.add(test);
+
 
         //Menubar ---------------------------------------------------------------
         JMenuBar menu = new JMenuBar();

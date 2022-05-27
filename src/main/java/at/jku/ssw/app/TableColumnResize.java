@@ -5,7 +5,7 @@ import javax.swing.table.DefaultTableColumnModel;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
 import java.awt.*;
-import java.sql.SQLOutput;
+
 
 public class TableColumnResize {
     JTable table;
