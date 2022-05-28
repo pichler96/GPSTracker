@@ -4,6 +4,7 @@ import at.jku.ssw.tcxparser.schema.ActivityT;
 import at.jku.ssw.tcxparser.schema.TrainingCenterDatabaseT;
 
 import javax.xml.datatype.XMLGregorianCalendar;
+import java.text.DecimalFormat;
 import java.util.List;
 
 
@@ -13,7 +14,7 @@ public class TableData {
    public static String[][] getTable() {
        String id;
        String sport;
-       XMLGregorianCalendar startTime;
+       String date;
        double totalTime=0;
        double distance=0;
        double averageSpeed=0;
@@ -22,9 +23,10 @@ public class TableData {
        double counterHeartRate=0;
        int maxHeartRate=0;
        double averageHeartRate= 0;
+       int sumCalories=0;
 
 
-       String [][] table = new String[Main.getData().size()][9];
+       String [][] table = new String[Main.getData().size()][10];
        int counter=0;
 
        for (TrainingCenterDatabaseT training : Main.getData()) {
@@ -39,7 +41,18 @@ public class TableData {
                    id = activity.getCreator().getName().substring(24, activity.getCreator().getName().length() - 1);
                }
                sport= activity.getSport().value();
-               startTime= activity.getLap().get(0).getStartTime();
+
+               if(activity.getLap().get(0).getStartTime().getDay()<10){
+                   if(activity.getLap().get(0).getStartTime().getMonth()<10){
+                       date= activity.getLap().get(0).getStartTime().getYear()+"-0"+activity.getLap().get(0).getStartTime().getMonth()+"-0"+activity.getLap().get(0).getStartTime().getDay();
+                   }else{
+                       date= activity.getLap().get(0).getStartTime().getYear()+"-"+activity.getLap().get(0).getStartTime().getMonth()+"-0"+activity.getLap().get(0).getStartTime().getDay();
+                   }
+               }else if(activity.getLap().get(0).getStartTime().getMonth()<10){
+                   date= activity.getLap().get(0).getStartTime().getYear()+"-0"+activity.getLap().get(0).getStartTime().getMonth()+"-"+activity.getLap().get(0).getStartTime().getDay();
+               }else{
+                   date= activity.getLap().get(0).getStartTime().getYear()+"-"+activity.getLap().get(0).getStartTime().getMonth()+"-"+activity.getLap().get(0).getStartTime().getDay();
+               }
 
                for(int i=0; i< activity.getLap().size(); i++){
                    totalTime+= activity.getLap().get(i).getTotalTimeSeconds();
@@ -57,6 +70,8 @@ public class TableData {
                            maxHeartRate=activity.getLap().get(i).getMaximumHeartRateBpm().getValue();
                        }
                    }
+                   sumCalories+= activity.getLap().get(i).getCalories();
+
                }
                if(totalTime!=0){
                    averageSpeed = Math.round((distance/totalTime)*100.0)/100.0; // in meters per second
@@ -83,31 +98,46 @@ public class TableData {
                    table[counter][1]=sport;
                }
 
-               if(startTime==null){
+               if(date==null){
                    table[counter][2]="---";
                }
                else{
-                   table[counter][2]=startTime.toString();
+                   table[counter][2]=date.toString();
                }
 
-               table[counter][3]=Double.toString(Math.round(totalTime*100.0)/100.0);
 
-               table[counter][4]=Double.toString(Math.round(distance*100.0)/100.0);
+               int input = (int) totalTime;
+               final double scale3600 = 1.0/3600;
+               final double scale60 = 1.0/60;
+               int hh = (int) (input * scale3600);
+               int mm = (int) ((input- hh*3600) * scale60);
+               int ss = input - mm*60 - hh*3600;
+               DecimalFormat format = new DecimalFormat("00");
 
-               table[counter][5]=Double.toString(Math.round(averageSpeed*100.0)/100.0);
+               table[counter][3]=format.format(hh) + ":" + format.format(mm) + ":" + format.format(ss);
 
-               table[counter][6]=Double.toString(Math.round(maxSpeed*100.0)/100.0);
+               table[counter][4]=Math.round((distance/1000)*100.0)/100.0+" km";
+
+               table[counter][5]=Math.round((averageSpeed*3.6)*100.0)/100.0+" km/h";
+
+               table[counter][6]=Math.round((maxSpeed*3.6)*100.0)/100.0+" km/h";
 
                if(averageHeartRate==0){
                    table[counter][7]="---";
                }else {
-                   table[counter][7] = Double.toString(Math.round(averageHeartRate * 100.0) / 100.0);
+                   table[counter][7] = Math.round(averageHeartRate * 100.0) / 100.0+" bpm";
                }
 
                if(maxHeartRate==0){
                    table[counter][8]="---";
                }else{
-                   table[counter][8]=Integer.toString(maxHeartRate);
+                   table[counter][8]=maxHeartRate+" bpm";
+               }
+
+               if(sumCalories==0){
+                   table[counter][9]="---";
+               }else{
+                   table[counter][9]=sumCalories+" kcal";
                }
 
 
@@ -116,7 +146,7 @@ public class TableData {
                //reset variables:
                id= null;
                sport=null;
-               startTime= null;
+               date= null;
                totalTime=0;
                distance=0;
                averageSpeed=0;
@@ -125,6 +155,7 @@ public class TableData {
                maxHeartRate=0;
                sumHeartRate=0;
                counterHeartRate=0;
+               sumCalories=0;
 
            }
 
@@ -136,7 +167,7 @@ public class TableData {
     }
 
    public static String[] getTableColumnNames(){
-       return new String[]{"Device-ID", "Sport", "Start Time", "Total Time", "Distance", "Avg Speed", "Max Speed", "Avg Heartrate", "Max Heartrate"};
+       return new String[]{"Device-ID", "Sport", "Date", "Total Time", "Distance", "Avg Speed", "Max Speed", "Avg Heartrate", "Max Heartrate", "Calories"};
    }
 
 
@@ -157,15 +188,26 @@ public class TableData {
                     //table[counter][0]= activity.getCreator().getName(); // we decided to not show id/name and sport in this Lap-table
                     //table[counter][1]= activity.getSport().toString();
                     table[counter][0]= activity.getLap().get(i).getStartTime().toString(); //Start Time
-                    table[counter][1]= Double.toString(Math.round(activity.getLap().get(i).getTotalTimeSeconds()*100.0)/100.0); //TotalTime
-                    table[counter][2]= Double.toString(Math.round(activity.getLap().get(i).getMaximumSpeed()*100.0)/100.0);//Max Speed
+
+
+                    int input = (int) activity.getLap().get(i).getTotalTimeSeconds();
+                    final double scale3600 = 1.0/3600;
+                    final double scale60 = 1.0/60;
+                    int hh = (int) (input * scale3600);
+                    int mm = (int) ((input- hh*3600) * scale60);
+                    int ss = input - mm*60 - hh*3600;
+                    DecimalFormat format = new DecimalFormat("00");
+                    table[counter][1]= format.format(hh) + ":" + format.format(mm) + ":" + format.format(ss); //TotalTime
+
+
+                    table[counter][2]= Math.round((activity.getLap().get(i).getMaximumSpeed()*3.6)*100.0)/100.0+" km/h";//Max Speed
                     if(activity.getLap().get(i).getMaximumHeartRateBpm()==null) table[counter][3]="---";
                     else if(activity.getLap().get(i).getMaximumHeartRateBpm().getValue()==0) table[counter][3]="---";
-                    else table[counter][3]= Integer.toString(activity.getLap().get(i).getMaximumHeartRateBpm().getValue());//Max Heartrate
-                    table[counter][4]= Double.toString(Math.round(activity.getLap().get(i).getDistanceMeters()*100.0)/100.0);//Distance
+                    else table[counter][3]= Integer.toString(activity.getLap().get(i).getMaximumHeartRateBpm().getValue())+" bpm";//Max Heartrate
+                    table[counter][4]= Math.round((activity.getLap().get(i).getDistanceMeters()/1000)*100.0)/100.0+" km";//Distance
                     if(activity.getLap().get(i).getAverageHeartRateBpm()==null) table[counter][5]="---";
                     else if(activity.getLap().get(i).getAverageHeartRateBpm().getValue()==0) table[counter][5]="---";
-                    else table[counter][5]= Integer.toString(activity.getLap().get(i).getAverageHeartRateBpm().getValue());//Avg Heartrate
+                    else table[counter][5]= Integer.toString(activity.getLap().get(i).getAverageHeartRateBpm().getValue())+" bpm";//Avg Heartrate
                     table[counter][6]= Integer.toString(activity.getLap().get(i).getCalories());//Calories
                     counter++;
                 }
