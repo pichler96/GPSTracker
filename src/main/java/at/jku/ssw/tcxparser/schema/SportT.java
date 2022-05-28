@@ -37,8 +37,10 @@ public enum SportT {
     RUNNING("Running"),
     @XmlEnumValue("Biking")
     BIKING("Biking"),
-    @XmlEnumValue("Other")
-    OTHER("Other");
+    @XmlEnumValue("Hiking")
+    HIKING("Hiking"),
+    @XmlEnumValue("Skiing")
+    SKIING("Skiing");
     private final String value;
 
     SportT(String v) {
