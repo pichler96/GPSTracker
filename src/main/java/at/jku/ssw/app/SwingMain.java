@@ -230,6 +230,42 @@ public class SwingMain extends JFrame {
             }
         });
 
+        JMenuItem reloadData = new JMenuItem("reload Data");
+        reloadData.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    Main.data.load(); //lädt die TCX Files neu
+                    JPanel tablePanel1=getTablePanel();
+                    JScrollPane lapTableScroll1= getLapScrollPane(0);
+                    Component [] westComponents = west.getComponents();
+                    for(Component c: westComponents){
+                        west.remove(c);
+                    }
+                    Component [] eastComponents = eastPanel.getComponents();
+                    for(Component c: eastComponents){
+                        eastPanel.remove(c);
+                    }
+
+                    west.add(tablePanel1);
+                    west.revalidate();
+                    eastPanel.add(lapTableScroll1, BorderLayout.NORTH);
+                    eastPanel.revalidate();
+                    eastPanel.add(graphicScroll, BorderLayout.SOUTH);
+                    eastPanel.revalidate();
+                    listModel= table.getSelectionModel();
+                    triggerListSelectionListener();
+                    west.repaint();eastPanel.repaint();
+                    pane.revalidate();pane.repaint();
+
+                } catch (FileNotFoundException ex) {
+                    ex.printStackTrace();
+                } catch (JAXBException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
+
         JMenuItem search = new JMenuItem("search Track");
         search.addActionListener(e -> {
             // ...
@@ -238,8 +274,9 @@ public class SwingMain extends JFrame {
 
 
         //Menubar, adding the different "choice-options" to the menubar:
-        file.add(exit);file.addSeparator();
         file.add(deleteFilters);file.addSeparator();
+        file.add(reloadData);file.addSeparator();
+        file.add(exit);file.addSeparator();
         file.add(search);
 
         sports.add(biking); sports.addSeparator();

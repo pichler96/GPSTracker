@@ -45,7 +45,7 @@ public class TrainingsData {
         // Reset trainings
         trainings.clear();
 
-        //Parase all files at the path
+        //Parse all files at the path
         File directoryPath = new File(this.path);
         for(File training : directoryPath.listFiles()) {
             if (FilenameUtils.getExtension(training.getName()).equals("tcx")) {
