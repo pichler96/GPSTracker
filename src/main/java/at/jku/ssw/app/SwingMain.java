@@ -11,6 +11,7 @@ import javax.xml.datatype.DatatypeConfigurationException;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 public class SwingMain extends JFrame {
@@ -194,8 +195,39 @@ public class SwingMain extends JFrame {
         exit.addActionListener(e -> System.exit(0));
 
         JMenuItem deleteFilters = new JMenuItem("delete Filters");
-        deleteFilters.addActionListener(e -> {
-            // ...
+        deleteFilters.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    Main.data.load();
+                    JPanel tablePanel1=getTablePanel();
+                    JScrollPane lapTableScroll1= getLapScrollPane(0);
+                    Component [] westComponents = west.getComponents();
+                    for(Component c: westComponents){
+                        west.remove(c);
+                    }
+                    Component [] eastComponents = eastPanel.getComponents();
+                    for(Component c: eastComponents){
+                        eastPanel.remove(c);
+                    }
+
+                    west.add(tablePanel1);
+                    west.revalidate();
+                    eastPanel.add(lapTableScroll1, BorderLayout.NORTH);
+                    eastPanel.revalidate();
+                    eastPanel.add(graphicScroll, BorderLayout.SOUTH);
+                    eastPanel.revalidate();
+                    listModel= table.getSelectionModel();
+                    triggerListSelectionListener();
+                    west.repaint();eastPanel.repaint();
+                    pane.revalidate();pane.repaint();
+
+                } catch (FileNotFoundException ex) {
+                    ex.printStackTrace();
+                } catch (JAXBException ex) {
+                    ex.printStackTrace();
+                }
+            }
         });
 
         JMenuItem search = new JMenuItem("search Track");
