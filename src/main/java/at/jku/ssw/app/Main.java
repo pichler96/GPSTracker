@@ -12,7 +12,7 @@ import at.jku.ssw.tcxparser.schema.TrainingCenterDatabaseT;
 
 public class Main {
 
-    private static TrainingsData data;
+    public static TrainingsData data;
 
     public static void main(String[] args) {
 
