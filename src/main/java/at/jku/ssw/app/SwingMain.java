@@ -11,6 +11,8 @@ import javax.xml.datatype.DatatypeConfigurationException;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
@@ -45,6 +47,29 @@ public class SwingMain extends JFrame {
 
         JScrollPane lapTableScroll= getLapScrollPane(0);
 
+        /*
+        //Graphics start (Part of the Diagram) //neu vom Geri
+        Graphics graphics = new Graphics();
+        Container container = graphics.getContainer();
+        int westWith = west.getWidth();
+        int westHeight = west.getHeight();
+
+        graphics.addComponentListener(new ComponentAdapter() {
+            @Override
+            public void componentResized(ComponentEvent e) {
+                graphics.getChart().resize(westWith, westHeight);
+
+            }
+        });
+        JPanel jPanelGraphic = new JPanel();
+        jPanelGraphic.setLayout(new BorderLayout());
+        jPanelGraphic.add(container, BorderLayout.CENTER);
+        JScrollPane graphicScroll = new JScrollPane(jPanelGraphic);
+        graphicScroll.setVisible(true);
+        //west.add(graphicScroll); //hab i rausgemacht
+        //Graphics end*/
+
+
         //Graphics start (Part of the Diagram)
         Graphics graphics = new Graphics();
         Container container = graphics.getContainer();
@@ -60,7 +85,7 @@ public class SwingMain extends JFrame {
         eastPanel.setLayout(new BorderLayout());
         eastPanel.setPreferredSize(new Dimension(500,500));
         eastPanel.add(lapTableScroll, BorderLayout.NORTH);
-        eastPanel.add(graphicScroll, BorderLayout.SOUTH);
+        eastPanel.add(graphicScroll, BorderLayout.CENTER);
 
 
         //adding the eastern & the western part to the lower layer
