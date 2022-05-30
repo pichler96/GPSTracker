@@ -42,7 +42,6 @@ public class Main {
         });
     }
 
-
     public static List<TrainingCenterDatabaseT> getData() {
         return data.getTrainings();
     }

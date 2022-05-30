@@ -7,9 +7,9 @@ import at.jku.ssw.tcxparser.TcxParser;
 import at.jku.ssw.tcxparser.schema.TrainingCenterDatabaseT;
 import org.apache.commons.io.FilenameUtils;
 
+import javax.swing.*;
 import javax.xml.bind.JAXBException;
-import java.awt.Color;
-import java.awt.Graphics2D;
+import java.awt.*;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -67,14 +67,16 @@ public class Chart extends javax.swing.JPanel {
         }
     }
 
+    public void resize(int width, int height){
+        this.setPreferredSize(new Dimension(width, height));
+    }
+
     public static java.util.List<TrainingCenterDatabaseT> readInData() throws JAXBException, IOException {
         TcxParser parser = new TcxParser();
         List<TrainingCenterDatabaseT> trainings = new ArrayList<>();
 
-        //Parase all files in data
         File directoryPath = new File("data");
 
-        //List of all files and directories
         for(File training : directoryPath.listFiles()) {
             if (FilenameUtils.getExtension(training.getName()).equals("tcx")) {
                 trainings.add(parser.parseTCX(new FileInputStream(training.getPath())));
@@ -100,7 +102,7 @@ public class Chart extends javax.swing.JPanel {
                         .addGroup(layout.createSequentialGroup()
                                 .addContainerGap()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(panelLegend, javax.swing.GroupLayout.DEFAULT_SIZE, 573, Short.MAX_VALUE)
+                                        .addComponent(panelLegend, javax.swing.GroupLayout.DEFAULT_SIZE, 1000, Short.MAX_VALUE) //Diagrammhöhe
                                         .addComponent(blankPlotChart, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addContainerGap())
         );
@@ -108,9 +110,9 @@ public class Chart extends javax.swing.JPanel {
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
                                 .addContainerGap()
-                                .addComponent(blankPlotChart, javax.swing.GroupLayout.DEFAULT_SIZE, 342, Short.MAX_VALUE)
+                                .addComponent(blankPlotChart, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE) //Diagrammbreite
                                 .addGap(0, 0, 0)
-                                .addComponent(panelLegend, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(panelLegend, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addContainerGap())
         );
     }
