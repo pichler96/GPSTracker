@@ -89,8 +89,8 @@ public class SwingMain extends JFrame {
 
 
         //adding the eastern & the western part to the lower layer
-        pane.add(eastPanel, BorderLayout.EAST);
-        pane.add(west, BorderLayout.CENTER);
+        pane.add(eastPanel, BorderLayout.CENTER);
+        pane.add(west, BorderLayout.WEST);
 
 
 
