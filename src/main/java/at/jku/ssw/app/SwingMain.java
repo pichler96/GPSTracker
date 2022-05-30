@@ -30,13 +30,13 @@ public class SwingMain extends JFrame {
 
     public SwingMain () throws JAXBException, IOException, DatatypeConfigurationException {
         setTitle("GPSTracker");
-        setSize(1000,500);
+        setSize(1200,585); //schauen ob es Funktion gibt dass es die größe Fixieren tut Fix di ins Knie
         setLocationRelativeTo(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         pane = getContentPane(); // "lowes" level of the layout
 
         JPanel west = new JPanel(); //western part of the layout is saved here.
-        west.setPreferredSize(new Dimension(500,500));
+        west.setPreferredSize(new Dimension(651,500));
         west.setLayout(new GridLayout(1,0));
 
 

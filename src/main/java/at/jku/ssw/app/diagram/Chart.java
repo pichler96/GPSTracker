@@ -102,7 +102,7 @@ public class Chart extends javax.swing.JPanel {
                         .addGroup(layout.createSequentialGroup()
                                 .addContainerGap()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(panelLegend, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE) //Diagrammhöhe
+                                        .addComponent(panelLegend, javax.swing.GroupLayout.DEFAULT_SIZE, 490, Short.MAX_VALUE) //Diagrammhöhe
                                         .addComponent(blankPlotChart, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addContainerGap())
         );
