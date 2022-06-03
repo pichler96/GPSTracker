@@ -241,7 +241,7 @@ public class SwingMain extends JFrame {
                 west.revalidate();
                 eastPanel.add(lapTableScroll1, BorderLayout.NORTH);
                 eastPanel.revalidate();
-                eastPanel.add(graphicScroll, BorderLayout.SOUTH);
+                eastPanel.add(graphicScroll, BorderLayout.CENTER);
                 eastPanel.revalidate();
                 listModel= table.getSelectionModel();
                 triggerListSelectionListener();
@@ -272,7 +272,7 @@ public class SwingMain extends JFrame {
                     west.revalidate();
                     eastPanel.add(lapTableScroll1, BorderLayout.NORTH);
                     eastPanel.revalidate();
-                    eastPanel.add(graphicScroll, BorderLayout.SOUTH);
+                    eastPanel.add(graphicScroll, BorderLayout.CENTER);
                     eastPanel.revalidate();
                     listModel= table.getSelectionModel();
                     triggerListSelectionListener();
