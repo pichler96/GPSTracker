@@ -38,6 +38,7 @@ public class SwingMain extends JFrame {
         JPanel west = new JPanel(); //western part of the layout is saved here.
         west.setPreferredSize(new Dimension(651,500));
         west.setLayout(new GridLayout(1,0));
+        west.setBorder(BorderFactory.createTitledBorder("Tracks:"));
 
 
 
@@ -46,7 +47,7 @@ public class SwingMain extends JFrame {
 
 
         JScrollPane lapTableScroll= getLapScrollPane(0);
-
+        lapTableScroll.setBorder(BorderFactory.createTitledBorder("Laps:"));
         /*
         //Graphics start (Part of the Diagram) //neu vom Geri
         Graphics graphics = new Graphics();
@@ -78,6 +79,7 @@ public class SwingMain extends JFrame {
         jPanelGraphic.add(container, BorderLayout.CENTER);
         graphicScroll = new JScrollPane(jPanelGraphic);
         graphicScroll.setVisible(true);
+        graphicScroll.setBorder(BorderFactory.createTitledBorder("Diagram:"));
         //Graphics end
 
 
@@ -223,35 +225,29 @@ public class SwingMain extends JFrame {
         deleteFilters.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                try {
-                    Main.data.load();
-                    JPanel tablePanel1=getTablePanel();
-                    JScrollPane lapTableScroll1= getLapScrollPane(0);
-                    Component [] westComponents = west.getComponents();
-                    for(Component c: westComponents){
-                        west.remove(c);
-                    }
-                    Component [] eastComponents = eastPanel.getComponents();
-                    for(Component c: eastComponents){
-                        eastPanel.remove(c);
-                    }
-
-                    west.add(tablePanel1);
-                    west.revalidate();
-                    eastPanel.add(lapTableScroll1, BorderLayout.NORTH);
-                    eastPanel.revalidate();
-                    eastPanel.add(graphicScroll, BorderLayout.SOUTH);
-                    eastPanel.revalidate();
-                    listModel= table.getSelectionModel();
-                    triggerListSelectionListener();
-                    west.repaint();eastPanel.repaint();
-                    pane.revalidate();pane.repaint();
-
-                } catch (FileNotFoundException ex) {
-                    ex.printStackTrace();
-                } catch (JAXBException ex) {
-                    ex.printStackTrace();
+                Main.data.deleteFilter();
+                JPanel tablePanel1=getTablePanel();
+                JScrollPane lapTableScroll1= getLapScrollPane(0);
+                Component [] westComponents = west.getComponents();
+                for(Component c: westComponents){
+                    west.remove(c);
                 }
+                Component [] eastComponents = eastPanel.getComponents();
+                for(Component c: eastComponents){
+                    eastPanel.remove(c);
+                }
+
+                west.add(tablePanel1);
+                west.revalidate();
+                eastPanel.add(lapTableScroll1, BorderLayout.NORTH);
+                eastPanel.revalidate();
+                eastPanel.add(graphicScroll, BorderLayout.SOUTH);
+                eastPanel.revalidate();
+                listModel= table.getSelectionModel();
+                triggerListSelectionListener();
+                west.repaint();eastPanel.repaint();
+                pane.revalidate();pane.repaint();
+
             }
         });
 
@@ -423,6 +419,7 @@ public class SwingMain extends JFrame {
         TableColumnResize resizeLapTable = new TableColumnResize(lapTable);
         resizeLapTable.resize();
         tableScroll2.setPreferredSize(new Dimension(500, 150));
+        tableScroll2.setBorder(BorderFactory.createTitledBorder("Laps:"));
         return tableScroll2;
     }
 
