@@ -126,7 +126,7 @@ public class SwingMain extends JFrame {
                 west.revalidate();
                 eastPanel.add(lapTableScroll1, BorderLayout.NORTH);
                 eastPanel.revalidate();
-                eastPanel.add(graphicScroll, BorderLayout.SOUTH);
+                eastPanel.add(graphicScroll, BorderLayout.CENTER);
                 eastPanel.revalidate();
                 listModel= table.getSelectionModel();
                 triggerListSelectionListener();
@@ -155,7 +155,7 @@ public class SwingMain extends JFrame {
                 west.revalidate();
                 eastPanel.add(lapTableScroll1, BorderLayout.NORTH);
                 eastPanel.revalidate();
-                eastPanel.add(graphicScroll, BorderLayout.SOUTH);
+                eastPanel.add(graphicScroll, BorderLayout.CENTER);
                 eastPanel.revalidate();
                 listModel= table.getSelectionModel();
                 triggerListSelectionListener();
@@ -184,7 +184,7 @@ public class SwingMain extends JFrame {
                 west.revalidate();
                 eastPanel.add(lapTableScroll1, BorderLayout.NORTH);
                 eastPanel.revalidate();
-                eastPanel.add(graphicScroll, BorderLayout.SOUTH);
+                eastPanel.add(graphicScroll, BorderLayout.CENTER);
                 eastPanel.revalidate();
                 listModel= table.getSelectionModel();
                 triggerListSelectionListener();
@@ -241,7 +241,7 @@ public class SwingMain extends JFrame {
                 west.revalidate();
                 eastPanel.add(lapTableScroll1, BorderLayout.NORTH);
                 eastPanel.revalidate();
-                eastPanel.add(graphicScroll, BorderLayout.SOUTH);
+                eastPanel.add(graphicScroll, BorderLayout.CENTER);
                 eastPanel.revalidate();
                 listModel= table.getSelectionModel();
                 triggerListSelectionListener();
@@ -272,7 +272,7 @@ public class SwingMain extends JFrame {
                     west.revalidate();
                     eastPanel.add(lapTableScroll1, BorderLayout.NORTH);
                     eastPanel.revalidate();
-                    eastPanel.add(graphicScroll, BorderLayout.SOUTH);
+                    eastPanel.add(graphicScroll, BorderLayout.CENTER);
                     eastPanel.revalidate();
                     listModel= table.getSelectionModel();
                     triggerListSelectionListener();
@@ -327,11 +327,9 @@ public class SwingMain extends JFrame {
             @Override
             public void valueChanged(ListSelectionEvent e) {
                 if (!listModel.isSelectionEmpty()){
-                    //eastPanel.remove(eastPanel.getComponent(0));
                     int selectedRow= listModel.getMinSelectionIndex();
 
                     JScrollPane lapTablePane= getLapScrollPane(selectedRow);
-
                     //String [] [] data= TableData.getTableOfLaps(selectedRow);
                     //String [] header= TableData.getTableOfLapsColumnNames();
 
@@ -341,10 +339,13 @@ public class SwingMain extends JFrame {
                             eastPanel.remove(c);
                         }
                     }
-                    eastPanel.add(graphicScroll, BorderLayout.SOUTH);
+
                     //JScrollPane lapTablePane= getLapTable(header, data);
                     lapTablePane.setPreferredSize(new Dimension(500,150));
+
+                    eastPanel.add(graphicScroll, BorderLayout.CENTER);
                     eastPanel.add(lapTablePane, BorderLayout.NORTH);
+
                     eastPanel.revalidate();
                     eastPanel.repaint();
                     pane.revalidate();

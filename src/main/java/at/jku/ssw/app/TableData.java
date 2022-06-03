@@ -174,6 +174,9 @@ public class TableData {
     public static String [][] getTableOfLaps(int row) {
        int counter=0;
        int sizeCounter=row;
+       if (Main.getData().isEmpty()){
+           return new String[0][0];
+        }
        int size= Main.getData().get(row).getActivities().getActivity().get(0).getLap().size();
        String[][] table = new String[size][7];
 
