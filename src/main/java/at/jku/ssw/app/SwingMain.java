@@ -197,23 +197,119 @@ public class SwingMain extends JFrame {
 
 
         JMenuItem biking = new JMenuItem("Biking");
-        biking.addActionListener(e -> {
-            //...
+        biking.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Main.data.filterSports("Biking");
+                JPanel tablePanel1=getTablePanel();
+                JScrollPane lapTableScroll1= getLapScrollPane(0);
+                Component [] westComponents = west.getComponents();
+                for(Component c: westComponents){
+                    west.remove(c);
+                }
+                Component [] eastComponents = eastPanel.getComponents();
+                for(Component c: eastComponents){
+                    eastPanel.remove(c);
+                }
+
+                west.add(tablePanel1);
+                west.revalidate();
+                eastPanel.add(lapTableScroll1, BorderLayout.NORTH);
+                eastPanel.revalidate();
+                eastPanel.add(graphicScroll, BorderLayout.CENTER);
+                eastPanel.revalidate();
+                listModel= table.getSelectionModel();
+                triggerListSelectionListener();
+                west.repaint();eastPanel.repaint();
+                pane.revalidate();pane.repaint();
+            }
         });
 
         JMenuItem hiking = new JMenuItem("Hiking");
-        hiking.addActionListener(e -> {
-            //...
+        hiking.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Main.data.filterSports("Hiking");
+                JPanel tablePanel1=getTablePanel();
+                JScrollPane lapTableScroll1= getLapScrollPane(0);
+                Component [] westComponents = west.getComponents();
+                for(Component c: westComponents){
+                    west.remove(c);
+                }
+                Component [] eastComponents = eastPanel.getComponents();
+                for(Component c: eastComponents){
+                    eastPanel.remove(c);
+                }
+
+                west.add(tablePanel1);
+                west.revalidate();
+                eastPanel.add(lapTableScroll1, BorderLayout.NORTH);
+                eastPanel.revalidate();
+                eastPanel.add(graphicScroll, BorderLayout.CENTER);
+                eastPanel.revalidate();
+                listModel= table.getSelectionModel();
+                triggerListSelectionListener();
+                west.repaint();eastPanel.repaint();
+                pane.revalidate();pane.repaint();
+            }
         });
 
         JMenuItem running = new JMenuItem("Running");
-        running.addActionListener(e -> {
-            //...
+        running.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Main.data.filterSports("Running");
+                JPanel tablePanel1=getTablePanel();
+                JScrollPane lapTableScroll1= getLapScrollPane(0);
+                Component [] westComponents = west.getComponents();
+                for(Component c: westComponents){
+                    west.remove(c);
+                }
+                Component [] eastComponents = eastPanel.getComponents();
+                for(Component c: eastComponents){
+                    eastPanel.remove(c);
+                }
+
+                west.add(tablePanel1);
+                west.revalidate();
+                eastPanel.add(lapTableScroll1, BorderLayout.NORTH);
+                eastPanel.revalidate();
+                eastPanel.add(graphicScroll, BorderLayout.CENTER);
+                eastPanel.revalidate();
+                listModel= table.getSelectionModel();
+                triggerListSelectionListener();
+                west.repaint();eastPanel.repaint();
+                pane.revalidate();pane.repaint();
+            }
         });
 
         JMenuItem skiing = new JMenuItem("Skiing");
-        skiing.addActionListener(e -> {
-            //...
+        skiing.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Main.data.filterSports("Skiing");
+                JPanel tablePanel1=getTablePanel();
+                JScrollPane lapTableScroll1= getLapScrollPane(0);
+                Component [] westComponents = west.getComponents();
+                for(Component c: westComponents){
+                    west.remove(c);
+                }
+                Component [] eastComponents = eastPanel.getComponents();
+                for(Component c: eastComponents){
+                    eastPanel.remove(c);
+                }
+
+                west.add(tablePanel1);
+                west.revalidate();
+                eastPanel.add(lapTableScroll1, BorderLayout.NORTH);
+                eastPanel.revalidate();
+                eastPanel.add(graphicScroll, BorderLayout.CENTER);
+                eastPanel.revalidate();
+                listModel= table.getSelectionModel();
+                triggerListSelectionListener();
+                west.repaint();eastPanel.repaint();
+                pane.revalidate();pane.repaint();
+            }
         });
 
 
@@ -385,7 +481,13 @@ public class SwingMain extends JFrame {
 
         //JTable -left side (west):
         DefaultTableModel model = new DefaultTableModel(tableData, tableDataColumnNames);
-        table = new JTable(model);
+        table = new JTable(model){
+            private static final long serialVersionUID = 1L;
+
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            };
+        };
         table.setAutoResizeMode( JTable.AUTO_RESIZE_OFF );
         //Scrollbar for the Table of Data
         JScrollPane tableScroll = new JScrollPane(table);
@@ -409,7 +511,13 @@ public class SwingMain extends JFrame {
 
         //JTable right side:-----------
         DefaultTableModel model2 = new DefaultTableModel(lapData, lapTableColumnsNames);
-        JTable lapTable = new JTable(model2);
+        JTable lapTable = new JTable(model2){
+            private static final long serialVersionUID = 1L;
+
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            };
+        };
 
         lapTable.setAutoResizeMode( JTable.AUTO_RESIZE_OFF );
         //Scrollbar for the Table of Data
