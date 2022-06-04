@@ -9,22 +9,21 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class TrainingsData {
-    private String path;
+    private File directoryPath;
     private List<TrainingCenterDatabaseT> trainings = new ArrayList<>();
     private List<TrainingCenterDatabaseT> trainingbackup = new ArrayList<>();
-    private TcxParser parser = new TcxParser();
+    private final TcxParser parser = new TcxParser();
 
     /**
      * Data Object to parse and save a list of TrainingCenterDatabaseT Objects.
      * @param path to parse the .tcx Files.
-     * @throws JAXBException
-     * @throws FileNotFoundException
      */
     public TrainingsData(String path) throws JAXBException, FileNotFoundException {
-        this.path = path;
+        this.directoryPath = new File(path);
         load();
     }
 
@@ -38,16 +37,13 @@ public class TrainingsData {
 
     /**
      * Clear and Reload the List of TrainingCenterDatabaseT Objects.
-     * @throws FileNotFoundException
-     * @throws JAXBException
      */
     public void load() throws FileNotFoundException, JAXBException {
         // Reset trainings
         trainings.clear();
 
         //Parse all files at the path
-        File directoryPath = new File(this.path);
-        for(File training : directoryPath.listFiles()) {
+        for(File training : Objects.requireNonNull(directoryPath.listFiles())) {
             if (FilenameUtils.getExtension(training.getName()).equals("tcx")) {
                 trainings.add(parser.parseTCX(new FileInputStream(training.getPath())));
             }
@@ -60,7 +56,7 @@ public class TrainingsData {
      * @param sport sport type
      */
     public void filterSports (String sport) {
-        trainings = trainings.stream().filter(t -> t.getActivities().
+        trainings = trainingbackup.stream().filter(t -> t.getActivities().
                 getActivity().
                 get(0).
                 getSport().
@@ -74,7 +70,7 @@ public class TrainingsData {
      * @param year start year
      */
     public void filterStartYear (int year) {
-        trainings = trainings.stream().filter(t -> t.getActivities().
+        trainings = trainingbackup.stream().filter(t -> t.getActivities().
                 getActivity().
                 get(0).
                 getLap().
@@ -85,5 +81,10 @@ public class TrainingsData {
 
     public void deleteFilter() {
         trainings = trainingbackup;
+    }
+
+    public void setPath(File path) throws JAXBException, FileNotFoundException {
+        this.directoryPath = path;
+        load();
     }
 }

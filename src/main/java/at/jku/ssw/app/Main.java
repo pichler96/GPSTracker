@@ -18,14 +18,6 @@ public class Main {
 
         try {
             data = new TrainingsData("data");
-            // TODO: Add in UI:
-            // File: Reload -> data.load()
-            //       Delete Filter -> data.deleteFilter()
-
-            // Sports: Running, Biking, Hiking, Skiing, -> data.filterSports("Running"); ...
-
-            // Years: 2020, 2021,...  data.filterStartYear(2020) ...;
-
         } catch (JAXBException | FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -41,7 +33,6 @@ public class Main {
             if(m!=null) m.setVisible(true);
         });
     }
-
 
     public static List<TrainingCenterDatabaseT> getData() {
         return data.getTrainings();
