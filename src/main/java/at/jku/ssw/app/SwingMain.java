@@ -11,14 +11,50 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.Serial;
 
-public class SwingMain extends JFrame {
-    private JTable table;
-    ListSelectionModel listModel;
-    private final Container pane;
-    private final JPanel eastPanel;
-    private final JScrollPane graphicScroll;
-    private final JPanel west;
 
+/**
+ * This class contains the SWING Components in order to create the GUI, as well as repaint it if any user-actions are performed.
+ * @author Gruppe 3
+ */
+public class SwingMain extends JFrame {
+    /**
+     * pane represents the "lowest" level of the layout,
+     * therefore every GUI Component has to be added to it, else it won't be visible.
+     */
+    private final Container pane;
+    /**
+     * eastPanel represents the "eastern/right" part of the GUI.
+     * eastPanel is partitioned in 2 Components:
+     * 1. a Table which shows the Laps of one Track and is added to the northern/upper part of "eastPanel".
+     * 2. a Diagram which shows a graphical representation of the tracks and is added south/underneath the table of Laps.
+     */
+    private final JPanel eastPanel;
+    /**
+     * westPanel represents the "western/left" part of the GUI.
+     * west contains only one table of tracks, so it is not partitioned any further.
+     */
+    private final JPanel westPanel;
+    /**
+     * table the table of tracks, which is added to "westPanel", is saved in here.
+     */
+    private JTable table;
+    /**
+     * is needed in order to check if the user selects one row in the table.
+     */
+    ListSelectionModel listModel;
+    /**
+     * graphicScroll the Diagram, which is added to the southern part of "eastPanel", is saved in here.
+     */
+    private final JScrollPane graphicScroll;
+
+
+    /**
+     * This Object represents the running GUI.
+     * All Structural Elements are added in here to the "pane"
+     * @throws JAXBException keine Ahnung++++++++++++++++
+     * @throws IOException kkkkkkkkkkkkkkkkkk
+     * @throws DatatypeConfigurationException kkkkkkkkkkkkkkkkkk
+     */
     public SwingMain () throws JAXBException, IOException, DatatypeConfigurationException {
         setTitle("GPSTracker");
         setSize(1200,585);
@@ -26,13 +62,16 @@ public class SwingMain extends JFrame {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         pane = getContentPane(); // "lowes" level of the layout
 
-        west = new JPanel(); //western part of the layout is saved here.
-        west.setPreferredSize(new Dimension(651,500));
-        west.setLayout(new GridLayout(1,0));
-        west.setBorder(BorderFactory.createTitledBorder("Tracks:"));
+        westPanel = new JPanel(); //western part of the layout is saved here.
+        westPanel.setPreferredSize(new Dimension(651,500));
+        westPanel.setLayout(new GridLayout(1,0));
+        westPanel.setBorder(BorderFactory.createTitledBorder("Tracks:"));
 
+        /**
+         * tablePanel the table of laps, which is added to the northern part of "eastPanel", is saved in here.
+         */
         JPanel tablePanel= getTablePanel();
-        west.add(tablePanel); //"West" contains the western (left) part of our GUI
+        westPanel.add(tablePanel); //"West" contains the western (left) part of our GUI
         JScrollPane lapTableScroll= getLapScrollPane(0);
         lapTableScroll.setBorder(BorderFactory.createTitledBorder("Laps:"));
 
@@ -55,9 +94,12 @@ public class SwingMain extends JFrame {
 
         //adding the eastern & the western part to the lower layer
         pane.add(eastPanel, BorderLayout.CENTER);
-        pane.add(west, BorderLayout.WEST);
+        pane.add(westPanel, BorderLayout.WEST);
 
-        //Menubar ---------------------------------------------------------------
+
+        /**
+         * menu represents the menuBar where all Menus are added.
+         */
         JMenuBar menu = new JMenuBar();
         JMenu file = new JMenu("File");
         JMenu sports = new JMenu("Sports");
@@ -167,32 +209,47 @@ public class SwingMain extends JFrame {
         triggerListSelectionListener();
     }
 
+    /**
+     * This Method is called if there is activated or deactivated a Filter, but also if the data path has changed or the data is reloaded.
+     * It changes the content shown by the GUI based on the current needed data.
+     * At first, all components from "westPanel" and "eastPanel" are recreated.
+     * All components added to "westPanel" and "eastPanel" are deleted.
+     * Then it adds the just recreated components to "westPanel" and "eastPanel".
+     * In order to make these changes visible in the GUI "westPanel","eastPanel" and "pane" are revalidated and repainted.
+     */
     private void repaintTable() {
         JPanel tablePanel1 = getTablePanel();
         JScrollPane lapTableScroll1 = getLapScrollPane(0);
-        Component[] westComponents = west.getComponents();
+        Component[] westComponents = westPanel.getComponents();
         for (Component c : westComponents) {
-            west.remove(c);
+            westPanel.remove(c);
         }
         Component[] eastComponents = eastPanel.getComponents();
         for (Component c : eastComponents) {
             eastPanel.remove(c);
         }
 
-        west.add(tablePanel1);
-        west.revalidate();
+        westPanel.add(tablePanel1);
+        westPanel.revalidate();
         eastPanel.add(lapTableScroll1, BorderLayout.NORTH);
         eastPanel.revalidate();
         eastPanel.add(graphicScroll, BorderLayout.CENTER);
         eastPanel.revalidate();
         listModel = table.getSelectionModel();
         triggerListSelectionListener();
-        west.repaint();
+        westPanel.repaint();
         eastPanel.repaint();
         pane.revalidate();
         pane.repaint();
     }
 
+    /**
+     * This Method is called if the user selects one row in the table of tracks.
+     * It then checks which row/Track is selected and calls "getLapScrollPane" in order to receive the correct laps which belong to the selected Track.
+     * All components added to "eastPanel" are deleted.
+     * Then it adds the just received table of Laps and the diagram to "eastPanel".
+     * In order to make these changes visible in the GUI "eastPanel" and "pane" are revalidated and repainted.
+     */
     private void triggerListSelectionListener() {
         listModel.addListSelectionListener(e -> {
             if (!listModel.isSelectionEmpty()){
@@ -216,6 +273,14 @@ public class SwingMain extends JFrame {
         });
     }
 
+    /**
+     *This Method is called to get the table of tracks as a Panel.
+     * It calls the methods "getTable" and "getTableColumnNames" to receive the data as String-Arrays.
+     * Then a JTable is created which contains this data.
+     * It forbids a user-input in the table, calls "TableColumnResize" which formats the table,
+     * puts it in a JScrollPane and further in a JPanel.
+     * @return a Panel which contains the table of tracks.
+     */
     private JPanel getTablePanel(){
         // JTable -left side (west) - allData contains all data in "general form" (no lap-view) from TableData
         String[][] tableData = TableData.getTable();
@@ -248,6 +313,15 @@ public class SwingMain extends JFrame {
         return tablePanel;
     }
 
+    /**
+     *This Method is called to get the table of laps as a JScrollPane.
+     * It calls the methods "getTableOfLaps(row)" and "getTableOfLapsColumnNames(row)" to receive the data as String-Arrays.
+     * Then a JTable is created which contains this data.
+     * It forbids a user-input in the table, calls "TableColumnResize" which formats the table and
+     * puts it in a JScrollPane.
+     * @param row is needed to find the correct Track, which Laps should be shown.
+     * @return a JScrollPane which contains a table of Laps for a certain track.
+     */
     private JScrollPane getLapScrollPane(int row){
         //JTABLE -right side (east) contains LapTable and Diagram
         String[][] lapData = TableData.getTableOfLaps(row);
