@@ -3,7 +3,10 @@ package at.jku.ssw.app;
 import at.jku.ssw.app.diagram.Graphics;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableColumnModel;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellRenderer;
+import javax.swing.table.TableColumn;
 import javax.xml.bind.JAXBException;
 import javax.xml.datatype.DatatypeConfigurationException;
 import java.awt.*;
@@ -51,9 +54,9 @@ public class SwingMain extends JFrame {
     /**
      * This Object represents the running GUI.
      * All Structural Elements are added in here to the "pane"
-     * @throws JAXBException keine Ahnung++++++++++++++++
-     * @throws IOException kkkkkkkkkkkkkkkkkk
-     * @throws DatatypeConfigurationException kkkkkkkkkkkkkkkkkk
+     * @throws JAXBException is thrown by the TCX Parser, which reads the tcx - files.
+     * @throws IOException is also thrown by the TCX Parser if there can't be found a tcx-file in the source folder.
+     * @throws DatatypeConfigurationException *****.
      */
     public SwingMain () throws JAXBException, IOException, DatatypeConfigurationException {
         setTitle("GPSTracker");
@@ -67,7 +70,7 @@ public class SwingMain extends JFrame {
         westPanel.setLayout(new GridLayout(1,0));
         westPanel.setBorder(BorderFactory.createTitledBorder("Tracks:"));
 
-        /**
+        /*
          * tablePanel the table of laps, which is added to the northern part of "eastPanel", is saved in here.
          */
         JPanel tablePanel= getTablePanel();
@@ -97,7 +100,7 @@ public class SwingMain extends JFrame {
         pane.add(westPanel, BorderLayout.WEST);
 
 
-        /**
+        /*
          * menu represents the menuBar where all Menus are added.
          */
         JMenuBar menu = new JMenuBar();
@@ -303,8 +306,8 @@ public class SwingMain extends JFrame {
         JScrollPane tableScroll = new JScrollPane(table);
         tableScroll.setVisible(true);
 
-        TableColumnResize resizeTable = new TableColumnResize(table);
-        resizeTable.resize();
+        //Columns are displayed in a better way/size:
+        resize(table);
 
         // JTable(left) add it to the "TablePanel"
         JPanel tablePanel = new JPanel();
@@ -344,11 +347,48 @@ public class SwingMain extends JFrame {
         JScrollPane tableScroll2 = new JScrollPane(lapTable);
         tableScroll2.setVisible(true);
 
-        //Columns are displayed in the correct width:
-        TableColumnResize resizeLapTable = new TableColumnResize(lapTable);
-        resizeLapTable.resize();
+        //Columns are displayed in a better way/size:
+        resize(lapTable);
+
         tableScroll2.setPreferredSize(new Dimension(500, 150));
         tableScroll2.setBorder(BorderFactory.createTitledBorder("Laps:"));
         return tableScroll2;
+    }
+
+    public JTable resize(JTable resize){
+        for(int i=0;i<resize.getColumnCount();i++)
+        {
+            DefaultTableColumnModel colModel = (DefaultTableColumnModel) resize.getColumnModel();
+            TableColumn col = colModel.getColumn(i);
+            int width = 0;
+            TableCellRenderer renderer = col.getHeaderRenderer();
+            if (renderer == null)
+            {
+                renderer = resize.getTableHeader().getDefaultRenderer();
+            }
+            Component comp = renderer.getTableCellRendererComponent(resize, col.getHeaderValue(), false, false, 0, i);
+            if(resize.getRowCount()>0)
+            {
+                for(int r=0;r<resize.getRowCount();r++)
+                {
+                    renderer=resize.getCellRenderer(r,i);
+                    Component comp1=renderer.getTableCellRendererComponent(resize,resize.getValueAt(r, i),false,false, r, i);
+                    if(comp.getPreferredSize().width<comp1.getPreferredSize().width)
+                    {
+                        width=comp1.getPreferredSize().width;
+                    }
+                    else
+                    {
+                        width=comp.getPreferredSize().width;
+                    }
+                }
+            }
+            else
+            {
+                width=comp.getPreferredSize().width;
+            }
+            col.setPreferredWidth(width+4);
+        }
+        return resize;
     }
 }
