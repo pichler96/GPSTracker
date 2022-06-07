@@ -63,16 +63,15 @@ public class SwingMain extends JFrame {
         setSize(1200,585);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setResizable(false);
         pane = getContentPane(); // "lowes" level of the layout
 
         westPanel = new JPanel(); //western part of the layout is saved here.
-        westPanel.setPreferredSize(new Dimension(651,500));
+        westPanel.setPreferredSize(new Dimension(661,500));
         westPanel.setLayout(new GridLayout(1,0));
         westPanel.setBorder(BorderFactory.createTitledBorder("Tracks:"));
 
-        /*
-         * tablePanel the table of laps, which is added to the northern part of "eastPanel", is saved in here.
-         */
+        //tablePanel the table of laps, which is added to the northern part of "eastPanel", is saved in here.
         JPanel tablePanel= getTablePanel();
         westPanel.add(tablePanel); //"West" contains the western (left) part of our GUI
         JScrollPane lapTableScroll= getLapScrollPane(0);
@@ -100,9 +99,7 @@ public class SwingMain extends JFrame {
         pane.add(westPanel, BorderLayout.WEST);
 
 
-        /*
-         * menu represents the menuBar where all Menus are added.
-         */
+         // menu represents the menuBar where all Menus are added.
         JMenuBar menu = new JMenuBar();
         JMenu file = new JMenu("File");
         JMenu sports = new JMenu("Sports");
@@ -355,7 +352,7 @@ public class SwingMain extends JFrame {
         return tableScroll2;
     }
 
-    public JTable resize(JTable resize){
+    public void resize(JTable resize){
         for(int i=0;i<resize.getColumnCount();i++)
         {
             DefaultTableColumnModel colModel = (DefaultTableColumnModel) resize.getColumnModel();
@@ -389,6 +386,5 @@ public class SwingMain extends JFrame {
             }
             col.setPreferredWidth(width+4);
         }
-        return resize;
     }
 }
