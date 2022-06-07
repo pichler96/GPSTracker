@@ -14,7 +14,7 @@ public class TableData {
 
     /**
      * This method defines the data(, of all tracks,) in the track-table on the west/left side of the GUI.
-     * At first it iterates over the data-files, some information can be accessed directly over its activity,
+     * At first, it iterates over the data-files, some information can be accessed directly over its activity,
      * other information is reached by iteration over all laps from that certain activity and e.g. add the values up.
      * @return The data is returned as a String array (matrix), since there is a String array needed in order to create a JTable.
      */

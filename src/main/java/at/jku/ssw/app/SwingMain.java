@@ -159,7 +159,7 @@ public class SwingMain extends JFrame {
         JMenuItem reloadData = new JMenuItem("Reload Data");
         reloadData.addActionListener(e -> {
             try {
-                Main.data.load(); //lädt die TCX Files neu
+                Main.data.load(); //reloads the TCX-files
                 repaintTable();
 
             } catch (FileNotFoundException | JAXBException ex) {
@@ -183,7 +183,7 @@ public class SwingMain extends JFrame {
             }
         });
 
-        //Menubar, adding the different "choice-options" to the menubar:
+        //menu-bar, adding the different "choice-options" to the menu-bar:
         file.add(deleteFilters);file.addSeparator();
         file.add(reloadData);file.addSeparator();
         file.add(configureDataPath);file.addSeparator();
@@ -323,7 +323,7 @@ public class SwingMain extends JFrame {
      * @return a JScrollPane which contains a table of Laps for a certain track.
      */
     private JScrollPane getLapScrollPane(int row){
-        //JTABLE -right side (east) contains LapTable and Diagram
+        //JTable -right side (east) contains LapTable and Diagram
         String[][] lapData = TableData.getTableOfLaps(row);
         String[] lapTableColumnsNames = TableData.getTableOfLapsColumnNames();
 
@@ -352,6 +352,10 @@ public class SwingMain extends JFrame {
         return tableScroll2;
     }
 
+    /**
+     * This method changes the column width for each cell in a JTable in order to have a better formatted table.
+     * @param resize This is the JTable which column-widths are adapted.
+     */
     public void resize(JTable resize){
         for(int i=0;i<resize.getColumnCount();i++)
         {
