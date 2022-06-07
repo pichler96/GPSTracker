@@ -94,16 +94,16 @@ public class Graphics extends javax.swing.JFrame {
         layout.setHorizontalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 10, 80)
+                                .addGap(0, 6, 80)
                                 .addComponent(chart, GroupLayout.PREFERRED_SIZE, GroupLayout.PREFERRED_SIZE, Short.MAX_VALUE)
-                                .addGap(0, 10, 80))
+                                .addGap(0, 6, 80))
         );
         layout.setVerticalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 10, 80)
+                                .addGap(0, 8, 80)
                                 .addComponent(chart, GroupLayout.PREFERRED_SIZE, GroupLayout.PREFERRED_SIZE, Short.MAX_VALUE)
-                                .addGap(0, 10, 80))
+                                .addGap(0, 8, 80))
         );
 
         pack();
