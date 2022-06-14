@@ -108,43 +108,43 @@ public class SwingMain extends JFrame {
         JMenuItem twentyTwenty = new JMenuItem("2020");
         twentyTwenty.addActionListener(e -> {
             Main.data.filterStartYear(2020);
-            repaintTable();
+            repaintGUI();
         });
 
         JMenuItem twentyTwentyOne = new JMenuItem("2021");
         twentyTwentyOne.addActionListener(e -> {
             Main.data.filterStartYear(2021);
-            repaintTable();
+            repaintGUI();
         });
 
         JMenuItem twentyTwentyTwo = new JMenuItem("2022");
         twentyTwentyTwo.addActionListener(e -> {
             Main.data.filterStartYear(2022);
-            repaintTable();
+            repaintGUI();
         });
 
         JMenuItem biking = new JMenuItem("Biking");
         biking.addActionListener(e -> {
             Main.data.filterSports("Biking");
-            repaintTable();
+            repaintGUI();
         });
 
         JMenuItem hiking = new JMenuItem("Hiking");
         hiking.addActionListener(e -> {
             Main.data.filterSports("Hiking");
-            repaintTable();
+            repaintGUI();
         });
 
         JMenuItem running = new JMenuItem("Running");
         running.addActionListener(e -> {
             Main.data.filterSports("Running");
-            repaintTable();
+            repaintGUI();
         });
 
         JMenuItem skiing = new JMenuItem("Skiing");
         skiing.addActionListener(e -> {
             Main.data.filterSports("Skiing");
-            repaintTable();
+            repaintGUI();
         });
 
         JMenuItem exit = new JMenuItem("Exit");
@@ -153,14 +153,14 @@ public class SwingMain extends JFrame {
         JMenuItem deleteFilters = new JMenuItem("Delete Filters");
         deleteFilters.addActionListener(e -> {
             Main.data.deleteFilter();
-            repaintTable();
+            repaintGUI();
         });
 
         JMenuItem reloadData = new JMenuItem("Reload Data");
         reloadData.addActionListener(e -> {
             try {
                 Main.data.load(); //reloads the TCX-files
-                repaintTable();
+                repaintGUI();
 
             } catch (FileNotFoundException | JAXBException ex) {
                 ex.printStackTrace();
@@ -176,7 +176,7 @@ public class SwingMain extends JFrame {
             if (result == JFileChooser.APPROVE_OPTION) {
                 try {
                     Main.data.setPath(fc.getSelectedFile());
-                    repaintTable();
+                    repaintGUI();
                 } catch (JAXBException | FileNotFoundException jaxbException) {
                     jaxbException.printStackTrace();
                 }
@@ -217,7 +217,7 @@ public class SwingMain extends JFrame {
      * Then it adds the just recreated components to "westPanel" and "eastPanel".
      * In order to make these changes visible in the GUI "westPanel","eastPanel" and "pane" are revalidated and repainted.
      */
-    private void repaintTable() {
+    private void repaintGUI() {
         JPanel tablePanel1 = getTablePanel();
         JScrollPane lapTableScroll1 = getLapScrollPane(0);
         Component[] westComponents = westPanel.getComponents();
