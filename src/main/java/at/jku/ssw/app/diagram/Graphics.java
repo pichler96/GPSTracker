@@ -1,6 +1,5 @@
 package at.jku.ssw.app.diagram;
 import at.jku.ssw.app.Main;
-import at.jku.ssw.app.diagram.ModelChart;
 import at.jku.ssw.tcxparser.schema.ActivityT;
 import at.jku.ssw.tcxparser.schema.TrainingCenterDatabaseT;
 
@@ -8,13 +7,12 @@ import java.awt.Color;
 
 
 import javax.swing.*;
-import javax.swing.text.html.parser.Entity;
 import javax.xml.bind.JAXBException;
 import javax.xml.datatype.XMLGregorianCalendar;
 import java.awt.*;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -33,38 +31,45 @@ public class Graphics extends javax.swing.JFrame {
         double averageSpeed=0;
         int month;
         int year;
-        HashMap<Date, Double> hashMap = new HashMap<Date, Double>();
+        HashMap<Object, Double> hashMap = new HashMap<>();
+        ArrayList dateList = new ArrayList();
+
+        for(TrainingCenterDatabaseT trainingCenterDatabaseT : Main.getData()){
+            for(ActivityT activityT : trainingCenterDatabaseT.getActivities().getActivity()){
+                date = activityT.getLap().get(0).getStartTime();
+                month = date.getMonth();
+                year = date.getYear();
+                String dateListObject = month + "." + year;
+                dateList.add(dateListObject);
+                Comparator <String> comparator;
+                dateList.stream().sorted();
+                /*dateList.sort(comparator = new Comparator<String>() {
+                    @Override
+                    public int compare(String o1, String o2) {
+                        return o1.compareTo(o2);
+                    }
+                });*/
+            }
+        }
 
         for (TrainingCenterDatabaseT training : Main.getData()) {
 
             for (ActivityT activity : training.getActivities().getActivity()) {
 
-                date = activity.getLap().get(0).getStartTime();
-                month = date.getMonth();
-                year = date.getYear();
-                Date newDate = new Date(year, month, 1);
-
                 for (int i = 0; i < activity.getLap().size(); i++) {
                     totalTime += activity.getLap().get(i).getTotalTimeSeconds();
-                    if(hashMap.containsKey(newDate)){
-                        hashMap.replace(newDate,hashMap.get(newDate) + activity.getLap().get(i).getDistanceMeters());
+                    if(hashMap.containsKey(dateList.get(i))){
+                        hashMap.replace(dateList.get(i),hashMap.get(dateList.get(i)) + activity.getLap().get(i).getDistanceMeters());
                     }else{
-                        hashMap.put(newDate,  activity.getLap().get(i).getDistanceMeters());
+                        hashMap.put(dateList.get(i),  activity.getLap().get(i).getDistanceMeters());
                     }
                 }
-                if (totalTime != 0) {
-                    averageSpeed = distance / totalTime;
-                }
-
-                date = null;
                 totalTime = 0;
-                distance = 0;
-                averageSpeed = 0;
             }
         }
         //Daten einlesen
         chart.readInData();
-        for (Map.Entry<Date, Double> entry : hashMap.entrySet()){
+        for (Map.Entry<Object, Double> entry : hashMap.entrySet()){
             chart.addData(new ModelChart(entry.getKey().toString(), new double[] {entry.getValue()}));
         }
 
