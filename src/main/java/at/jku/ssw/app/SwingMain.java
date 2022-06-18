@@ -24,23 +24,23 @@ public class SwingMain extends JFrame {
      * pane represents the "lowest" level of the layout,
      * therefore every GUI Component has to be added to it, else it won't be visible.
      */
-    private final Container pane;
+    protected final Container pane;
     /**
      * eastPanel represents the "eastern/right" part of the GUI.
      * eastPanel is partitioned in 2 Components:
      * 1. a Table which shows the Laps of one Track and is added to the northern/upper part of "eastPanel".
      * 2. a Diagram which shows a graphical representation of the tracks and is added south/underneath the table of Laps.
      */
-    private final JPanel eastPanel;
+    protected final JPanel eastPanel;
     /**
      * westPanel represents the "western/left" part of the GUI.
      * west contains only one table of tracks, so it is not partitioned any further.
      */
-    private final JPanel westPanel;
+    protected final JPanel westPanel;
     /**
      * table the table of tracks, which is added to "westPanel", is saved in here.
      */
-    private JTable table;
+    protected JTable table;
     /**
      * is needed in order to check if the user selects one row in the table.
      */
@@ -48,7 +48,7 @@ public class SwingMain extends JFrame {
     /**
      * graphicScroll the Diagram, which is added to the southern part of "eastPanel", is saved in here.
      */
-    private final JScrollPane graphicScroll;
+    protected final JScrollPane graphicScroll;
 
 
     /**
@@ -58,7 +58,7 @@ public class SwingMain extends JFrame {
      * @throws IOException is also thrown by the TCX Parser if there can't be found a tcx-file in the source folder.
      * @throws DatatypeConfigurationException *****.
      */
-    public SwingMain () throws JAXBException, IOException, DatatypeConfigurationException {
+    protected SwingMain () throws JAXBException, IOException, DatatypeConfigurationException {
         setTitle("GPSTracker");
         setSize(1200,585);
         setLocationRelativeTo(null);
@@ -217,7 +217,7 @@ public class SwingMain extends JFrame {
      * Then it adds the just recreated components to "westPanel" and "eastPanel".
      * In order to make these changes visible in the GUI "westPanel","eastPanel" and "pane" are revalidated and repainted.
      */
-    private void repaintGUI() {
+    protected void repaintGUI() {
         JPanel tablePanel1 = getTablePanel();
         JScrollPane lapTableScroll1 = getLapScrollPane(0);
         Component[] westComponents = westPanel.getComponents();
@@ -250,7 +250,7 @@ public class SwingMain extends JFrame {
      * Then it adds the just received table of Laps and the diagram to "eastPanel".
      * In order to make these changes visible in the GUI "eastPanel" and "pane" are revalidated and repainted.
      */
-    private void triggerListSelectionListener() {
+    protected void triggerListSelectionListener() {
         listModel.addListSelectionListener(e -> {
             if (!listModel.isSelectionEmpty()){
                 int selectedRow= listModel.getMinSelectionIndex();
@@ -281,7 +281,7 @@ public class SwingMain extends JFrame {
      * puts it in a JScrollPane and further in a JPanel.
      * @return a Panel which contains the table of tracks.
      */
-    private JPanel getTablePanel(){
+    protected JPanel getTablePanel(){
         // JTable -left side (west) - allData contains all data in "general form" (no lap-view) from TableData
         String[][] tableData = TableData.getTable();
         String[] tableDataColumnNames = TableData.getTableColumnNames();
@@ -322,7 +322,7 @@ public class SwingMain extends JFrame {
      * @param row is needed to find the correct Track, which Laps should be shown.
      * @return a JScrollPane which contains a table of Laps for a certain track.
      */
-    private JScrollPane getLapScrollPane(int row){
+    protected JScrollPane getLapScrollPane(int row){
         //JTable -right side (east) contains LapTable and Diagram
         String[][] lapData = TableData.getTableOfLaps(row);
         String[] lapTableColumnsNames = TableData.getTableOfLapsColumnNames();
@@ -356,7 +356,7 @@ public class SwingMain extends JFrame {
      * This method changes the column width for each cell in a JTable in order to have a better formatted table.
      * @param resize This is the JTable which column-widths are adapted.
      */
-    public void resize(JTable resize){
+    protected void resize(JTable resize){
         for(int i=0;i<resize.getColumnCount();i++)
         {
             DefaultTableColumnModel colModel = (DefaultTableColumnModel) resize.getColumnModel();
