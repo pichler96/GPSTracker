@@ -58,7 +58,7 @@ public class SwingMain extends JFrame {
      * @throws IOException is also thrown by the TCX Parser if there can't be found a tcx-file in the source folder.
      * @throws DatatypeConfigurationException *****.
      */
-    protected SwingMain () throws JAXBException, IOException, DatatypeConfigurationException {
+    public SwingMain() throws JAXBException, IOException, DatatypeConfigurationException {
         setTitle("GPSTracker");
         setSize(1200,585);
         setLocationRelativeTo(null);

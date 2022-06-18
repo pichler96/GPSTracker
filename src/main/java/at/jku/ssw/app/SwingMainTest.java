@@ -82,12 +82,12 @@ class SwingMainTest{
 
         menuItem.menuSelectionChanged(true);//triggers repaint GUI
 
-        Main.data.filterStartYear(2020);
-        gui=new SwingMain();
+        Main.data.filterStartYear(2021);
+        SwingMain gui2=new SwingMain();
 
-        for (int i1 = 0; i1 < gui.getTablePanel().getComponents().length; i1++) {
-            if (gui.getTablePanel().getComponents()[i1] instanceof JScrollPane) {
-                scrollPane= (JScrollPane) gui.getTablePanel().getComponents()[i1];
+        for (int i1 = 0; i1 < gui2.getTablePanel().getComponents().length; i1++) {
+            if (gui2.getTablePanel().getComponents()[i1] instanceof JScrollPane) {
+                scrollPane= (JScrollPane) gui2.getTablePanel().getComponents()[i1];
                 System.out.println("gotScrollPane");
             }
         }
