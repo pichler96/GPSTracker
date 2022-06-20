@@ -95,8 +95,9 @@ public class SwingMain extends JFrame {
         eastPanel.add(graphicScroll, BorderLayout.CENTER);
 
         //adding the eastern & the western part to the lower layer
-        pane.add(eastPanel, BorderLayout.CENTER);
         pane.add(westPanel, BorderLayout.WEST);
+        pane.add(eastPanel, BorderLayout.CENTER);
+
 
 
          // menu represents the menuBar where all Menus are added.
