@@ -206,7 +206,7 @@ class SwingMainTest{
         }
 
         System.out.println(lapTable.getModel().getRowCount());
-        //gui.table.setRowSelectionInterval(2,2);
+        gui.table.setRowSelectionInterval(2,2);
         gui.listModel.setSelectionInterval(2,2);
         gui.triggerListSelectionListener();
         System.out.println(Arrays.toString(gui.listModel.getSelectedIndices()));
