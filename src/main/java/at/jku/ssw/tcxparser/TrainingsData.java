@@ -65,6 +65,21 @@ public class TrainingsData {
                 collect(Collectors.toList());
     }
 
+
+    /**
+     * Filter the list of TrainingCenterDatabaseT Objects based an the Distance of the Laps.
+     * @param distance of the Laps
+     */
+    public void filterAnyLapDistance (double distance) {
+        trainings = trainingbackup.stream().filter(t -> t.getActivities().
+                getActivity().
+                get(0).
+                getLap().
+                stream().
+                anyMatch(d -> d.getDistanceMeters() > distance)).
+                collect(Collectors.toList());
+    }
+
     /**
      * Filter the list of TrainingCenterDatabaseT Objects based an the start year.
      * @param year start year
