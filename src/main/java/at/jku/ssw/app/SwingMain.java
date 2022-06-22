@@ -295,6 +295,20 @@ public class SwingMain extends JFrame {
             public boolean isCellEditable(int row, int column) {
                 return false;
             }
+
+            public Component prepareRenderer(TableCellRenderer renderer,
+                                             int row, int column)
+            {
+                Component c = super.prepareRenderer(renderer, row, column);
+                Color color1 = new Color(220,220,220);
+                Color color2 = Color.WHITE;
+                if(!c.getBackground().equals(getSelectionBackground())) {
+                    Color coleur = (row % 2 == 0 ? color1 : color2);
+                    c.setBackground(coleur);
+                    coleur = null;
+                }
+                return c;
+            }
         };
 
         table.setAutoResizeMode( JTable.AUTO_RESIZE_OFF );
@@ -335,6 +349,20 @@ public class SwingMain extends JFrame {
             @Override
             public boolean isCellEditable(int row, int column) {
                 return false;
+            }
+
+            public Component prepareRenderer(TableCellRenderer renderer,
+                                             int row, int column)
+            {
+                Component c = super.prepareRenderer(renderer, row, column);
+                Color color1 = new Color(220,220,220);
+                Color color2 = Color.WHITE;
+                if(!c.getBackground().equals(getSelectionBackground())) {
+                    Color coleur = (row % 2 == 0 ? color1 : color2);
+                    c.setBackground(coleur);
+                    coleur = null;
+                }
+                return c;
             }
         };
 
