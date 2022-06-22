@@ -7,7 +7,6 @@ import javax.swing.table.*;
 import javax.xml.bind.JAXBException;
 import javax.xml.datatype.DatatypeConfigurationException;
 import java.awt.*;
-import java.awt.geom.Dimension2D;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.Serial;
@@ -303,9 +302,9 @@ public class SwingMain extends JFrame {
                 Color color1 = new Color(220,220,220);
                 Color color2 = Color.WHITE;
                 if(!c.getBackground().equals(getSelectionBackground())) {
-                    Color coleur = (row % 2 == 0 ? color1 : color2);
-                    c.setBackground(coleur);
-                    coleur = null;
+                    Color color = (row % 2 == 0 ? color1 : color2);
+                    c.setBackground(color);
+                    color = null;
                 }
                 return c;
             }
@@ -358,9 +357,9 @@ public class SwingMain extends JFrame {
                 Color color1 = new Color(220,220,220);
                 Color color2 = Color.WHITE;
                 if(!c.getBackground().equals(getSelectionBackground())) {
-                    Color coleur = (row % 2 == 0 ? color1 : color2);
-                    c.setBackground(coleur);
-                    coleur = null;
+                    Color color = (row % 2 == 0 ? color1 : color2);
+                    c.setBackground(color);
+                    color = null;
                 }
                 return c;
             }
