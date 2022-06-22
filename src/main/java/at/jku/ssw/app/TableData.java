@@ -11,6 +11,7 @@ import java.util.Objects;
  * puts it in an appropriate datatype in order to be able to work with it in SwingMain.
  */
 public class TableData {
+    public static DecimalFormat df = new DecimalFormat("0.00");
 
     /**
      * This method defines the data(, of all tracks,) in the track-table on the west/left side of the GUI.
@@ -100,13 +101,13 @@ public class TableData {
                int ss = input - mm*60 - hh*3600;
                DecimalFormat format = new DecimalFormat("00");
                table[counter][3]=format.format(hh) + ":" + format.format(mm) + ":" + format.format(ss);
-               table[counter][4]=Math.round((distance/1000)*100.0)/100.0+" km";
-               table[counter][5]=Math.round((averageSpeed*3.6)*100.0)/100.0+" km/h";
-               table[counter][6]=Math.round((maxSpeed*3.6)*100.0)/100.0+" km/h";
+               table[counter][4]=df.format(distance/1000)+" km";
+               table[counter][5]=df.format(averageSpeed*3.6)+" km/h";
+               table[counter][6]=df.format(maxSpeed*3.6)+" km/h";
                if(averageHeartRate==0){
                    table[counter][7]="---";
                }else {
-                   table[counter][7] = Math.round(averageHeartRate * 100.0) / 100.0+" bpm";
+                   table[counter][7] = df.format(averageHeartRate)+" bpm";
                }
                if(maxHeartRate==0){
                    table[counter][8]="---";
@@ -155,7 +156,6 @@ public class TableData {
         }
        int size= Main.getData().get(row).getActivities().getActivity().get(0).getLap().size();
        String[][] table;
-       size= Main.getData().get(row).getActivities().getActivity().get(0).getLap().size();
        table= new String[size][7];
        //activity: the track, which laps should be displayed
         ActivityT activity= Main.getData().get(row).getActivities().getActivity().get(0);
@@ -172,11 +172,11 @@ public class TableData {
             DecimalFormat format = new DecimalFormat("00");
             table[counter][1]= format.format(hh) + ":" + format.format(mm) + ":" + format.format(ss); //TotalTime
 
-            table[counter][2]= Math.round((activity.getLap().get(i).getMaximumSpeed()*3.6)*100.0)/100.0+" km/h";//Max Speed
+            table[counter][2]= df.format(activity.getLap().get(i).getMaximumSpeed()*3.6)+" km/h";//Max Speed
             if(activity.getLap().get(i).getMaximumHeartRateBpm()==null) table[counter][3]="---";
             else if(activity.getLap().get(i).getMaximumHeartRateBpm().getValue()==0) table[counter][3]="---";
             else table[counter][3]= Integer.toString(activity.getLap().get(i).getMaximumHeartRateBpm().getValue())+" bpm";//Max Heartrate
-            table[counter][4]= Math.round((activity.getLap().get(i).getDistanceMeters()/1000)*100.0)/100.0+" km";//Distance
+            table[counter][4]= df.format(activity.getLap().get(i).getDistanceMeters()/1000) +" km";//Distance
             if(activity.getLap().get(i).getAverageHeartRateBpm()==null) table[counter][5]="---";
             else if(activity.getLap().get(i).getAverageHeartRateBpm().getValue()==0) table[counter][5]="---";
             else table[counter][5]= Integer.toString(activity.getLap().get(i).getAverageHeartRateBpm().getValue())+" bpm";//Avg Heartrate

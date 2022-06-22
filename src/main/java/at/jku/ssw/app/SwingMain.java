@@ -284,6 +284,7 @@ public class SwingMain extends JFrame {
         String[][] tableData = TableData.getTable();
         String[] tableDataColumnNames = TableData.getTableColumnNames();
 
+
         //JTable -left side (west):
         DefaultTableModel model = new DefaultTableModel(tableData, tableDataColumnNames);
         table = new JTable(model){
@@ -309,6 +310,7 @@ public class SwingMain extends JFrame {
                 return c;
             }
         };
+
 
         table.setAutoResizeMode( JTable.AUTO_RESIZE_OFF );
         //Scrollbar for the Table of Data
@@ -432,5 +434,26 @@ public class SwingMain extends JFrame {
             width = Math.max(width, table.getColumnModel().getColumn(column).getPreferredWidth());
             columnModel.getColumn(column).setPreferredWidth(width);
         }*/
+
+        DefaultTableCellRenderer rightRenderer = new DefaultTableCellRenderer();
+        rightRenderer.setHorizontalAlignment(JLabel.RIGHT);
+        if(resize.getColumnCount()==10){
+            resize.getColumnModel().getColumn(2).setCellRenderer(rightRenderer);
+            resize.getColumnModel().getColumn(3).setCellRenderer(rightRenderer);
+            resize.getColumnModel().getColumn(4).setCellRenderer(rightRenderer);
+            resize.getColumnModel().getColumn(5).setCellRenderer(rightRenderer);
+            resize.getColumnModel().getColumn(6).setCellRenderer(rightRenderer);
+            resize.getColumnModel().getColumn(7).setCellRenderer(rightRenderer);
+            resize.getColumnModel().getColumn(8).setCellRenderer(rightRenderer);
+            resize.getColumnModel().getColumn(9).setCellRenderer(rightRenderer);
+        }
+        else{
+            resize.getColumnModel().getColumn(1).setCellRenderer(rightRenderer);
+            resize.getColumnModel().getColumn(2).setCellRenderer(rightRenderer);
+            resize.getColumnModel().getColumn(3).setCellRenderer(rightRenderer);
+            resize.getColumnModel().getColumn(4).setCellRenderer(rightRenderer);
+            resize.getColumnModel().getColumn(5).setCellRenderer(rightRenderer);
+            resize.getColumnModel().getColumn(6).setCellRenderer(rightRenderer);
+        }
     }
 }
