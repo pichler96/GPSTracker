@@ -17,9 +17,20 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * This class is a Test class for the GUI class - SwingMain but also for its "helper class" TableData
+ * It surely is not very easy to test a Swing GUI with unit tests, however our approach was still to
+ * try to have an appropriate coverage and check the class generally if its methods works basically.
+ */
 class SwingMainTest{
     public SwingMain gui;
 
+    /**
+     * This Method creates a new SwingMain/GUI, which will later be tested
+     * @throws DatatypeConfigurationException Exeption from getting Main.data
+     * @throws JAXBException Exeption from getting Main.data
+     * @throws IOException Exeption from getting Main.data
+     */
     @BeforeEach
     public void setUp() throws DatatypeConfigurationException, JAXBException, IOException {
         try {
@@ -30,28 +41,30 @@ class SwingMainTest{
         gui = new SwingMain();
     }
 
-
+    /**
+     * This method tests more or less the "running GUI" == "SwingMain" Constructor
+     * It gets some values from the Table (on the east side)
+     * Then it also activates a filter (year) and therefore tests the method "repaintGUI"
+     * After that it looks at the values from the Table (on the east side) again and checks whether the filter
+     * and the repaintGUI method have worked.
+     * The method "resize" is also covered, as it is called as soon as the GUI is created but also when it's repainted
+     */
     @Test
-    @Disabled
-    void ConstructorAndRepaintGUI() throws DatatypeConfigurationException, JAXBException, IOException {
+    void ConstructorAndRepaintGUIAndResize(){
         assertEquals(gui.getTitle(), "GPSTracker");
 
         JScrollPane scrollPane= new JScrollPane();
         for (int i1 = 0; i1 < gui.getTablePanel().getComponents().length; i1++) {
             if (gui.getTablePanel().getComponents()[i1] instanceof JScrollPane) {
                 scrollPane= (JScrollPane) gui.getTablePanel().getComponents()[i1];
-                //System.out.println("gotScrollPane");
             }
         }
         JTable table = new JTable();
         for (int i1 = 0; i1 < scrollPane.getViewport().getComponents().length; i1++) {
             if (scrollPane.getViewport().getComponents()[i1] instanceof JTable) {
                 table= (JTable) scrollPane.getViewport().getComponents()[i1];
-                //System.out.println("gotJTable");
             }
         }
-
-        //table.getSelectionModel().addSelectionInterval(2,3);
 
         String expectedYears[] = {"2020","2021","2022"};
         List <String> expectedYearsList = Arrays.asList(expectedYears);
@@ -67,23 +80,13 @@ class SwingMainTest{
         for (int i1 = 0; i1 < gui.getComponents().length; i1++) {
             if (gui.getContentPane().getComponents()[i1] instanceof Container) {
                 container= (Container) gui.getComponents()[i1];
-                //System.out.println("got Container");
             }
         }
 
-        /*
-        JMenuBar menuBar= new JMenuBar();
-        for (int i1 = 0; i1 < container.getComponents().length; i1++) {
-            if (container.getComponents()[i1] instanceof JMenuBar) {
-                menuBar= (JMenuBar) container.getComponents()[i1];
-                //System.out.println("got menuBar");
-            }
-        }*/
 
         JMenu menuYear = new JMenu();
         for (int i1 = 0; i1 < gui.getJMenuBar().getComponents().length; i1++) {
             if (gui.getJMenuBar().getComponents()[i1] instanceof JMenu) {
-                //System.out.println("got menu: "+gui.getJMenuBar().getComponents()[i1]);
                 menuYear= (JMenu) gui.getJMenuBar().getComponents()[i1];
             }
         }
@@ -91,7 +94,6 @@ class SwingMainTest{
         JMenuItem menuItem = new JMenuItem();
         if(menuYear.getMenuComponent(0) instanceof JMenuItem){
             menuItem= (JMenuItem) menuYear.getMenuComponent(0);
-            //System.out.println(menuItem.toString());
         }
 
         menuItem.menuSelectionChanged(true);//triggers repaint GUI
@@ -102,16 +104,13 @@ class SwingMainTest{
         for (int i1 = 0; i1 < gui.getTablePanel().getComponents().length; i1++) {
             if (gui.getTablePanel().getComponents()[i1] instanceof JScrollPane) {
                 scrollPane= (JScrollPane) gui.getTablePanel().getComponents()[i1];
-                //System.out.println("gotScrollPane");
             }
         }
         for (int i1 = 0; i1 < scrollPane.getViewport().getComponents().length; i1++) {
             if (scrollPane.getViewport().getComponents()[i1] instanceof JTable) {
                 table= (JTable) scrollPane.getViewport().getComponents()[i1];
-                //System.out.println("gotJTable");
             }
         }
-
 
         assertEquals("2021",table.getModel().getValueAt(0,2).toString().substring(0,4));
         assertEquals("2021",table.getModel().getValueAt(1,2).toString().substring(0,4));
@@ -121,21 +120,22 @@ class SwingMainTest{
         assertEquals("2021",table.getModel().getValueAt(5,2).toString().substring(0,4));
     }
 
+    /**
+     * This method uses the methods "getTablePanel" and "getLapScrollPane" in order to get their content.
+     * Then it checks whether the Track-Table and the Lap-Table represent the same Track.
+     */
     @Test
-    @Disabled
-    void getTablePanel() {
+    void getTablePanelAndGetLapScrollPane() {
         JScrollPane scrollPane= new JScrollPane();
         for (int i1 = 0; i1 < gui.getTablePanel().getComponents().length; i1++) {
             if (gui.getTablePanel().getComponents()[i1] instanceof JScrollPane) {
                 scrollPane= (JScrollPane) gui.getTablePanel().getComponents()[i1];
-                //System.out.println("gotScrollPane");
             }
         }
         JTable table = new JTable();
         for (int i1 = 0; i1 < scrollPane.getViewport().getComponents().length; i1++) {
             if (scrollPane.getViewport().getComponents()[i1] instanceof JTable) {
                 table= (JTable) scrollPane.getViewport().getComponents()[i1];
-                //System.out.println("gotJTable");
             }
         }
 
@@ -146,7 +146,6 @@ class SwingMainTest{
         for (int i1 = 0; i1 < LapscrollPane.getViewport().getComponents().length; i1++) {
             if (LapscrollPane.getViewport().getComponents()[i1] instanceof JTable) {
                 LapTable= (JTable) LapscrollPane.getViewport().getComponents()[i1];
-                //System.out.println("gotJTable");
             }
         }
 
@@ -157,26 +156,28 @@ class SwingMainTest{
             distance+=Double.valueOf(d);
         }
         int l=table.getModel().getValueAt(0,4).toString().length();
-        //System.out.println(table.getModel().getValueAt(0,4).toString().substring(0,(l-km)));
-        //System.out.println(distance);
 
         assertEquals(Double.valueOf(table.getModel().getValueAt(0,4).toString().substring(0,(l-km))),distance);
     }
 
+    /**
+     * This method tests the method "triggerListSelectionListener",
+     * which is called when a Lap in the Track-Table is selected by the user.
+     * It checks if the triggerListSelectionListener has worked, as it looks if the number of shown
+     * laps in the lap Table are coherent to the selected track.
+     */
     @Test
     void triggerListSelectionListener() {
         JScrollPane scrollPane= new JScrollPane();
         for (int i1 = 0; i1 < gui.getTablePanel().getComponents().length; i1++) {
             if (gui.getTablePanel().getComponents()[i1] instanceof JScrollPane) {
                 scrollPane= (JScrollPane) gui.getTablePanel().getComponents()[i1];
-                //System.out.println("gotScrollPane");
             }
         }
         JTable table = new JTable();
         for (int i1 = 0; i1 < scrollPane.getViewport().getComponents().length; i1++) {
             if (scrollPane.getViewport().getComponents()[i1] instanceof JTable) {
                 table= (JTable) scrollPane.getViewport().getComponents()[i1];
-                //System.out.println("gotJTable");
             }
         }
 
@@ -184,7 +185,6 @@ class SwingMainTest{
         for (int i1 = 0; i1 < gui.getContentPane().getComponents().length; i1++) {
             if (gui.getContentPane().getComponents()[i1] instanceof Container) {
                 container= (Container) gui.getContentPane().getComponents()[i1];
-                //System.out.println("got Container");
             }
         }
 
@@ -192,7 +192,6 @@ class SwingMainTest{
         for (int i1 = 0; i1 < container.getComponents().length; i1++) {
             if (container.getComponents()[i1] instanceof JScrollPane) {
                 lapScrollPane= (JScrollPane) container.getComponents()[i1];
-                //System.out.println("got JScrollPane");
                 break;
             }
         }
@@ -201,55 +200,42 @@ class SwingMainTest{
         for (int i1 = 0; i1 < lapScrollPane.getViewport().getComponents().length; i1++) {
             if (lapScrollPane.getViewport().getComponents()[i1] instanceof JTable) {
                 lapTable= (JTable) lapScrollPane.getViewport().getComponents()[i1];
-                //System.out.println("got JTable");
             }
         }
 
-        System.out.println(lapTable.getModel().getRowCount());
+        int size= Main.getData().get(0).getActivities().getActivity().get(0).getLap().size();
+        assertTrue(lapTable.getModel().getRowCount()==size);
+        //Number of Rows from lapTable is 5/size, because when the GUI starts it always shows the laps of the first Track.
+
         gui.table.setRowSelectionInterval(2,2);
         gui.listModel.setSelectionInterval(2,2);
         gui.triggerListSelectionListener();
-        System.out.println(Arrays.toString(gui.listModel.getSelectedIndices()));
+        //System.out.println(Arrays.toString(gui.listModel.getSelectedIndices()));
 
 
-
-
-         container= new Container();
+         Container container2= new Container();
         for (int i1 = 0; i1 < gui.getContentPane().getComponents().length; i1++) {
             if (gui.getContentPane().getComponents()[i1] instanceof Container) {
-                container= (Container) gui.getContentPane().getComponents()[i1];
-                //System.out.println("got Container");
+                container2= (Container) gui.getContentPane().getComponents()[i1];
             }
         }
 
-         lapScrollPane= new JScrollPane();
-        for (int i1 = 0; i1 < container.getComponents().length; i1++) {
-            if (container.getComponents()[i1] instanceof JScrollPane) {
-                lapScrollPane= (JScrollPane) container.getComponents()[i1];
-                //System.out.println("got JScrollPane");
-                break;
+         JScrollPane lapScrollPane2= new JScrollPane();
+        for (int i1 = 0; i1 < container2.getComponents().length; i1++) {
+            if (container2.getComponents()[i1] instanceof JScrollPane) {
+                lapScrollPane2= (JScrollPane) container2.getComponents()[i1];
             }
         }
 
-         lapTable= new JTable();
-        for (int i1 = 0; i1 < lapScrollPane.getViewport().getComponents().length; i1++) {
-            if (lapScrollPane.getViewport().getComponents()[i1] instanceof JTable) {
-                lapTable= (JTable) lapScrollPane.getViewport().getComponents()[i1];
-                //System.out.println("got JTable");
+         JTable lapTable2= new JTable();
+        for (int i1 = 0; i1 < lapScrollPane2.getViewport().getComponents().length; i1++) {
+            if (lapScrollPane2.getViewport().getComponents()[i1] instanceof JTable) {
+                lapTable2= (JTable) lapScrollPane2.getViewport().getComponents()[i1];
             }
         }
 
-        System.out.println(lapTable.getModel().getRowCount());
-
-    }
-
-    @Test
-    @Disabled
-    void getLapScrollPane() {
-    }
-
-    @Test
-    @Disabled
-    void resize() {
+        size= Main.getData().get(2).getActivities().getActivity().get(0).getLap().size();
+        assertTrue(lapTable2.getModel().getRowCount()==size);
+        //Number of Rows from the current LapTable, which shows the laps of the 3rd track (SelectionInterval(2,2)
     }
 }

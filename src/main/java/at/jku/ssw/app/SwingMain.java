@@ -3,13 +3,11 @@ package at.jku.ssw.app;
 import at.jku.ssw.app.diagram.Graphics;
 
 import javax.swing.*;
-import javax.swing.table.DefaultTableColumnModel;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableCellRenderer;
-import javax.swing.table.TableColumn;
+import javax.swing.table.*;
 import javax.xml.bind.JAXBException;
 import javax.xml.datatype.DatatypeConfigurationException;
 import java.awt.*;
+import java.awt.geom.Dimension2D;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.Serial;
@@ -358,6 +356,7 @@ public class SwingMain extends JFrame {
      * @param resize This is the JTable which column-widths are adapted.
      */
     protected void resize(JTable resize){
+
         for(int i=0;i<resize.getColumnCount();i++)
         {
             DefaultTableColumnModel colModel = (DefaultTableColumnModel) resize.getColumnModel();
@@ -379,7 +378,7 @@ public class SwingMain extends JFrame {
                     {
                         width=comp1.getPreferredSize().width;
                     }
-                    else
+                    else if(comp.getPreferredSize().width>width)
                     {
                         width=comp.getPreferredSize().width;
                     }
@@ -389,7 +388,22 @@ public class SwingMain extends JFrame {
             {
                 width=comp.getPreferredSize().width;
             }
-            col.setPreferredWidth(width+4);
+            col.setPreferredWidth(width+14);
         }
+
+/*
+        final TableColumnModel columnModel = resize.getColumnModel();
+        for (int column = 0; column < resize.getColumnCount(); column++) {
+            int width = 0; // Min width
+            for (int row = 0; row < resize.getRowCount(); row++) {
+                TableCellRenderer renderer = resize.getCellRenderer(row, column);
+                Component comp = resize.prepareRenderer(renderer, row, column);
+                width = Math.max(comp.getPreferredSize().width , width);
+            }
+            if(width > 300)
+                width=300;
+            width = Math.max(width, table.getColumnModel().getColumn(column).getPreferredWidth());
+            columnModel.getColumn(column).setPreferredWidth(width);
+        }*/
     }
 }
