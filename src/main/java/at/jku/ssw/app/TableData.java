@@ -31,6 +31,10 @@ public class TableData {
        int maxHeartRate=0;
        double averageHeartRate= 0;
        int sumCalories=0;
+
+       if(Main.getData().isEmpty()){
+           return new String[0][0];
+       }
        String [][] table = new String[Main.getData().size()][10];
        int counter=0;
        //iterate over the data-Files
