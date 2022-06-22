@@ -102,6 +102,31 @@ public class SwingMain extends JFrame {
         JMenu file = new JMenu("File");
         JMenu sports = new JMenu("Sports");
         JMenu years = new JMenu("Years");
+        JMenu distance = new JMenu("Lap Distance");
+
+        JMenuItem distance1000 = new JMenuItem("1000m");
+        distance1000.addActionListener(e -> {
+            Main.data.filterAnyLapDistance(1000);
+            repaintGUI();
+        });
+
+        JMenuItem distance3000 = new JMenuItem("3000m");
+        distance3000.addActionListener(e -> {
+            Main.data.filterAnyLapDistance(3000);
+            repaintGUI();
+        });
+
+        JMenuItem distance5000 = new JMenuItem("5000m");
+        distance5000.addActionListener(e -> {
+            Main.data.filterAnyLapDistance(5000);
+            repaintGUI();
+        });
+
+        JMenuItem distance10000 = new JMenuItem("10000m");
+        distance10000.addActionListener(e -> {
+            Main.data.filterAnyLapDistance(10000);
+            repaintGUI();
+        });
 
         JMenuItem twentyTwenty = new JMenuItem("2020");
         twentyTwenty.addActionListener(e -> {
@@ -196,9 +221,15 @@ public class SwingMain extends JFrame {
         years.add(twentyTwentyOne); years.addSeparator();
         years.add(twentyTwentyTwo);
 
+        distance.add(distance1000); distance.addSeparator();
+        distance.add(distance3000); distance.addSeparator();
+        distance.add(distance5000); distance.addSeparator();
+        distance.add(distance10000);
+
         menu.add(file);
         menu.add(sports);
         menu.add(years);
+        menu.add(distance);
 
         setJMenuBar(menu);
 
