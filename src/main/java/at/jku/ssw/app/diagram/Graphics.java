@@ -11,19 +11,19 @@ import javax.xml.bind.JAXBException;
 import javax.xml.datatype.XMLGregorianCalendar;
 import java.awt.*;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.Map;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class Graphics extends javax.swing.JFrame {
     Container container;
 
-    public Graphics() throws JAXBException, IOException {
+    public Graphics() throws JAXBException, IOException, ParseException {
         initComponents();
         container = getContentPane();
         container.setBackground(new Color(250, 250, 250));
-        chart.addLegend("Distance/Time", new Color(245, 135, 236));
+        chart.addLegend("Distance/Time", new Color(135, 245, 153));
 
         XMLGregorianCalendar date;
         double totalTime=0;
@@ -33,24 +33,36 @@ public class Graphics extends javax.swing.JFrame {
         int year;
         HashMap<Object, Double> hashMap = new HashMap<>();
         ArrayList dateList = new ArrayList();
+        ArrayList newDateList = new ArrayList();
 
         for(TrainingCenterDatabaseT trainingCenterDatabaseT : Main.getData()){
             for(ActivityT activityT : trainingCenterDatabaseT.getActivities().getActivity()){
                 date = activityT.getLap().get(0).getStartTime();
+                dateList.add(date);
+                Collections.sort(dateList, new Comparator<XMLGregorianCalendar>() {
+                    @Override
+                    public int compare(XMLGregorianCalendar o1, XMLGregorianCalendar o2) {
+                        if(o1.getYear() < o2.getYear()){
+                            return -1;
+                        }
+                        else if(o1.getYear() == o2.getYear()){
+                            if(o1.getMonth() < o2.getMonth()){
+                                return -1;
+                            }
+                            else if(o1.getMonth() > o2.getMonth()){
+                                return 1;
+                            }
+                        }
+                        return 1;
+                    }
+                });
                 month = date.getMonth();
                 year = date.getYear();
-                String dateListObject = month + "." + year;
-                dateList.add(dateListObject);
-                Comparator <String> comparator;
-                dateList.stream().sorted();
-                /*dateList.sort(comparator = new Comparator<String>() {
-                    @Override
-                    public int compare(String o1, String o2) {
-                        return o1.compareTo(o2);
-                    }
-                });*/
+                String dateObject = getDateTime(date, month + "." + year);
+                newDateList.add(dateObject);
             }
         }
+
 
         for (TrainingCenterDatabaseT training : Main.getData()) {
 
@@ -58,22 +70,38 @@ public class Graphics extends javax.swing.JFrame {
 
                 for (int i = 0; i < activity.getLap().size(); i++) {
                     totalTime += activity.getLap().get(i).getTotalTimeSeconds();
-                    if(hashMap.containsKey(dateList.get(i))){
-                        hashMap.replace(dateList.get(i),hashMap.get(dateList.get(i)) + activity.getLap().get(i).getDistanceMeters());
+                    if(hashMap.containsKey(newDateList.get(i))){
+                        hashMap.replace(newDateList.get(i),hashMap.get(newDateList.get(i)) + activity.getLap().get(i).getDistanceMeters());
                     }else{
-                        hashMap.put(dateList.get(i),  activity.getLap().get(i).getDistanceMeters());
+                        hashMap.put(newDateList.get(i),  activity.getLap().get(i).getDistanceMeters());
                     }
                 }
                 totalTime = 0;
             }
         }
-        //Daten einlesen
+
         chart.readInData();
+        sort(hashMap);
         for (Map.Entry<Object, Double> entry : hashMap.entrySet()){
             chart.addData(new ModelChart(entry.getKey().toString(), new double[] {entry.getValue()}));
         }
-
         container.add(chart);
+    }
+
+    public static LinkedHashMap sort(HashMap<Object, Double> hashMap) {
+        return (LinkedHashMap) hashMap;
+    }
+
+    public static String getDateTime(XMLGregorianCalendar gDate, String pattern){
+
+        return Optional.ofNullable(gDate)
+                .map(gdate -> {
+                    Calendar calendar = gDate.toGregorianCalendar();
+                    SimpleDateFormat formatter = new SimpleDateFormat(pattern);
+                    formatter.setTimeZone(calendar.getTimeZone());
+                    return formatter.format(calendar.getTime());
+                })
+                .orElse(null);
     }
 
     public Container getContainer() {
