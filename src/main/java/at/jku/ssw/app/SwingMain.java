@@ -334,7 +334,7 @@ public class SwingMain extends JFrame {
                 Color color1 = new Color(220,220,220);
                 Color color2 = Color.WHITE;
                 if(!c.getBackground().equals(getSelectionBackground())) {
-                    Color color = (row % 2 == 0 ? color1 : color2);
+                    Color color = (row % 2 == 0 ? color2 : color1);
                     c.setBackground(color);
                     color = null;
                 }
@@ -390,7 +390,7 @@ public class SwingMain extends JFrame {
                 Color color1 = new Color(220,220,220);
                 Color color2 = Color.WHITE;
                 if(!c.getBackground().equals(getSelectionBackground())) {
-                    Color color = (row % 2 == 0 ? color1 : color2);
+                    Color color = (row % 2 == 0 ? color2 : color1);
                     c.setBackground(color);
                     color = null;
                 }
