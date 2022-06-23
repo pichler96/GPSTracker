@@ -340,8 +340,8 @@ public class SwingMain extends JFrame {
                 }
                 return c;
             }
-        };
 
+        };
 
         table.setAutoResizeMode( JTable.AUTO_RESIZE_OFF );
         //Scrollbar for the Table of Data
@@ -448,23 +448,9 @@ public class SwingMain extends JFrame {
             {
                 width=comp.getPreferredSize().width;
             }
-            col.setPreferredWidth(width+14);
+            col.setPreferredWidth(width+12);
         }
 
-/*
-        final TableColumnModel columnModel = resize.getColumnModel();
-        for (int column = 0; column < resize.getColumnCount(); column++) {
-            int width = 0; // Min width
-            for (int row = 0; row < resize.getRowCount(); row++) {
-                TableCellRenderer renderer = resize.getCellRenderer(row, column);
-                Component comp = resize.prepareRenderer(renderer, row, column);
-                width = Math.max(comp.getPreferredSize().width , width);
-            }
-            if(width > 300)
-                width=300;
-            width = Math.max(width, table.getColumnModel().getColumn(column).getPreferredWidth());
-            columnModel.getColumn(column).setPreferredWidth(width);
-        }*/
 
         DefaultTableCellRenderer rightRenderer = new DefaultTableCellRenderer();
         rightRenderer.setHorizontalAlignment(JLabel.RIGHT);
@@ -486,5 +472,17 @@ public class SwingMain extends JFrame {
             resize.getColumnModel().getColumn(5).setCellRenderer(rightRenderer);
             resize.getColumnModel().getColumn(6).setCellRenderer(rightRenderer);
         }
+
+        resize.setTableHeader(new JTableHeader(resize.getColumnModel()) {
+            @Override
+            public void setBackground(Color bg) {
+                super.setBackground(Color.lightGray);
+            }
+
+            @Override public Dimension getPreferredSize() {
+                 Dimension d = super.getPreferredSize();
+                 d.height = 34;
+                 return d;
+             }});
     }
 }
