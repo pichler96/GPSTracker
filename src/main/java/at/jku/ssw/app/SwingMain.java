@@ -291,7 +291,7 @@ public class SwingMain extends JFrame {
      * In order to make these changes visible in the GUI "westPanel","eastPanel" and "pane" are revalidated and repainted.
      * @return
      */
-    private JScrollPane getDiagramm() throws JAXBException, IOException, ParseException {
+    private JScrollPane getNewDiagramm() throws JAXBException, IOException, ParseException {
         Graphics graphics = new Graphics();
         Container container = graphics.getContainer();
         JPanel jPanelGraphic = new JPanel();
@@ -299,17 +299,15 @@ public class SwingMain extends JFrame {
         jPanelGraphic.add(container, BorderLayout.CENTER);
         JScrollPane graphicScroll1 = new JScrollPane(jPanelGraphic);
         graphicScroll1.setVisible(true);
-        graphicScroll1.setBorder(BorderFactory.createTitledBorder("Diagram:"));
+        graphicScroll1.setBorder(BorderFactory.createTitledBorder("Diagram: "));
         return graphicScroll1;
     }
 
     private void repaintGUI() throws JAXBException, IOException, ParseException {
         JPanel tablePanel1 = getTablePanel();
         JScrollPane lapTableScroll1 = getLapScrollPane(0);
-        //Methode aufrufen um Diagramm neu zu erstellen
-        //In eastpanel.add wo jetzt graphicScroll steht - neu zeichnen
 
-        JScrollPane graphicScroll1 = getDiagramm();
+        JScrollPane graphicScroll1 = getNewDiagramm();
 
         Component[] westComponents = westPanel.getComponents();
         for (Component c : westComponents) {
