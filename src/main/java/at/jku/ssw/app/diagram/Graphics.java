@@ -46,7 +46,7 @@ public class Graphics extends javax.swing.JFrame {
                 }
             }
         }
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM-yyyy");
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM-yy");
         for(Map.Entry<Date, Double> e : groupedData.entrySet()) {
             chart.addData(new ModelChart(simpleDateFormat.format(e.getKey()), new double[] {e.getValue()}));
         }
