@@ -108,25 +108,57 @@ public class SwingMain extends JFrame {
         JMenuItem distance1000 = new JMenuItem("1000m");
         distance1000.addActionListener(e -> {
             Main.data.filterAnyLapDistance(1000);
-            repaintGUI();
+            try {
+                repaintGUI();
+            } catch (JAXBException ex) {
+                ex.printStackTrace();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            } catch (ParseException ex) {
+                ex.printStackTrace();
+            }
         });
 
         JMenuItem distance3000 = new JMenuItem("3000m");
         distance3000.addActionListener(e -> {
             Main.data.filterAnyLapDistance(3000);
-            repaintGUI();
+            try {
+                repaintGUI();
+            } catch (JAXBException ex) {
+                ex.printStackTrace();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            } catch (ParseException ex) {
+                ex.printStackTrace();
+            }
         });
 
         JMenuItem distance5000 = new JMenuItem("5000m");
         distance5000.addActionListener(e -> {
             Main.data.filterAnyLapDistance(5000);
-            repaintGUI();
+            try {
+                repaintGUI();
+            } catch (JAXBException ex) {
+                ex.printStackTrace();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            } catch (ParseException ex) {
+                ex.printStackTrace();
+            }
         });
 
         JMenuItem distance10000 = new JMenuItem("10000m");
         distance10000.addActionListener(e -> {
             Main.data.filterAnyLapDistance(10000);
-            repaintGUI();
+            try {
+                repaintGUI();
+            } catch (JAXBException ex) {
+                ex.printStackTrace();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            } catch (ParseException ex) {
+                ex.printStackTrace();
+            }
         });
 
         JMenuItem twentyTwenty = new JMenuItem("2020");
@@ -332,7 +364,7 @@ public class SwingMain extends JFrame {
         return graphicScroll1;
     }
 
-    private void repaintGUI() throws JAXBException, IOException, ParseException {
+    void repaintGUI() throws JAXBException, IOException, ParseException {
         JPanel tablePanel1 = getTablePanel();
         JScrollPane lapTableScroll1 = getLapScrollPane(0);
 

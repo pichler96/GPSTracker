@@ -12,6 +12,7 @@ import javax.xml.datatype.DatatypeConfigurationException;
 import java.awt.*;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.text.ParseException;
 import java.util.Arrays;
 import java.util.List;
 
@@ -32,7 +33,7 @@ class SwingMainTest{
      * @throws IOException Exeption from getting Main.data
      */
     @BeforeEach
-    public void setUp() throws DatatypeConfigurationException, JAXBException, IOException {
+    public void setUp() throws DatatypeConfigurationException, JAXBException, IOException, ParseException {
         try {
             Main.data = new TrainingsData("data");
         } catch (JAXBException | FileNotFoundException e) {
@@ -50,7 +51,7 @@ class SwingMainTest{
      * The method "resize" is also covered, as it is called as soon as the GUI is created but also when it's repainted
      */
     @Test
-    void ConstructorAndRepaintGUIAndResize(){
+    void ConstructorAndRepaintGUIAndResize() throws JAXBException, IOException, ParseException {
         assertEquals(gui.getTitle(), "GPSTracker");
 
         JScrollPane scrollPane= new JScrollPane();
