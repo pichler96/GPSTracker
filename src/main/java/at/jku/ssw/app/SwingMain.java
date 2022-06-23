@@ -3,10 +3,7 @@ package at.jku.ssw.app;
 import at.jku.ssw.app.diagram.Graphics;
 
 import javax.swing.*;
-import javax.swing.table.DefaultTableColumnModel;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableCellRenderer;
-import javax.swing.table.TableColumn;
+import javax.swing.table.*;
 import javax.xml.bind.JAXBException;
 import javax.xml.datatype.DatatypeConfigurationException;
 import java.awt.*;
@@ -25,23 +22,23 @@ public class SwingMain extends JFrame {
      * pane represents the "lowest" level of the layout,
      * therefore every GUI Component has to be added to it, else it won't be visible.
      */
-    private final Container pane;
+    protected final Container pane;
     /**
      * eastPanel represents the "eastern/right" part of the GUI.
      * eastPanel is partitioned in 2 Components:
      * 1. a Table which shows the Laps of one Track and is added to the northern/upper part of "eastPanel".
      * 2. a Diagram which shows a graphical representation of the tracks and is added south/underneath the table of Laps.
      */
-    private final JPanel eastPanel;
+    protected final JPanel eastPanel;
     /**
      * westPanel represents the "western/left" part of the GUI.
      * west contains only one table of tracks, so it is not partitioned any further.
      */
-    private final JPanel westPanel;
+    protected final JPanel westPanel;
     /**
      * table the table of tracks, which is added to "westPanel", is saved in here.
      */
-    private JTable table;
+    protected JTable table;
     /**
      * is needed in order to check if the user selects one row in the table.
      */
@@ -49,7 +46,7 @@ public class SwingMain extends JFrame {
     /**
      * graphicScroll the Diagram, which is added to the southern part of "eastPanel", is saved in here.
      */
-    private final JScrollPane graphicScroll;
+    protected final JScrollPane graphicScroll;
 
 
     /**
@@ -96,8 +93,9 @@ public class SwingMain extends JFrame {
         eastPanel.add(graphicScroll, BorderLayout.CENTER);
 
         //adding the eastern & the western part to the lower layer
-        pane.add(eastPanel, BorderLayout.CENTER);
         pane.add(westPanel, BorderLayout.WEST);
+        pane.add(eastPanel, BorderLayout.CENTER);
+
 
 
          // menu represents the menuBar where all Menus are added.
@@ -105,6 +103,31 @@ public class SwingMain extends JFrame {
         JMenu file = new JMenu("File");
         JMenu sports = new JMenu("Sports");
         JMenu years = new JMenu("Years");
+        JMenu distance = new JMenu("Lap Distance");
+
+        JMenuItem distance1000 = new JMenuItem("1000m");
+        distance1000.addActionListener(e -> {
+            Main.data.filterAnyLapDistance(1000);
+            repaintGUI();
+        });
+
+        JMenuItem distance3000 = new JMenuItem("3000m");
+        distance3000.addActionListener(e -> {
+            Main.data.filterAnyLapDistance(3000);
+            repaintGUI();
+        });
+
+        JMenuItem distance5000 = new JMenuItem("5000m");
+        distance5000.addActionListener(e -> {
+            Main.data.filterAnyLapDistance(5000);
+            repaintGUI();
+        });
+
+        JMenuItem distance10000 = new JMenuItem("10000m");
+        distance10000.addActionListener(e -> {
+            Main.data.filterAnyLapDistance(10000);
+            repaintGUI();
+        });
 
         JMenuItem twentyTwenty = new JMenuItem("2020");
         twentyTwenty.addActionListener(e -> {
@@ -271,9 +294,15 @@ public class SwingMain extends JFrame {
         years.add(twentyTwentyOne); years.addSeparator();
         years.add(twentyTwentyTwo);
 
+        distance.add(distance1000); distance.addSeparator();
+        distance.add(distance3000); distance.addSeparator();
+        distance.add(distance5000); distance.addSeparator();
+        distance.add(distance10000);
+
         menu.add(file);
         menu.add(sports);
         menu.add(years);
+        menu.add(distance);
 
         setJMenuBar(menu);
 
@@ -339,7 +368,7 @@ public class SwingMain extends JFrame {
      * Then it adds the just received table of Laps and the diagram to "eastPanel".
      * In order to make these changes visible in the GUI "eastPanel" and "pane" are revalidated and repainted.
      */
-    private void triggerListSelectionListener() {
+    protected void triggerListSelectionListener() {
         listModel.addListSelectionListener(e -> {
             if (!listModel.isSelectionEmpty()){
                 int selectedRow= listModel.getMinSelectionIndex();
@@ -370,10 +399,11 @@ public class SwingMain extends JFrame {
      * puts it in a JScrollPane and further in a JPanel.
      * @return a Panel which contains the table of tracks.
      */
-    private JPanel getTablePanel(){
+    protected JPanel getTablePanel(){
         // JTable -left side (west) - allData contains all data in "general form" (no lap-view) from TableData
         String[][] tableData = TableData.getTable();
         String[] tableDataColumnNames = TableData.getTableColumnNames();
+
 
         //JTable -left side (west):
         DefaultTableModel model = new DefaultTableModel(tableData, tableDataColumnNames);
@@ -385,6 +415,21 @@ public class SwingMain extends JFrame {
             public boolean isCellEditable(int row, int column) {
                 return false;
             }
+
+            public Component prepareRenderer(TableCellRenderer renderer,
+                                             int row, int column)
+            {
+                Component c = super.prepareRenderer(renderer, row, column);
+                Color color1 = new Color(220,220,220);
+                Color color2 = Color.WHITE;
+                if(!c.getBackground().equals(getSelectionBackground())) {
+                    Color color = (row % 2 == 0 ? color2 : color1);
+                    c.setBackground(color);
+                    color = null;
+                }
+                return c;
+            }
+
         };
 
         table.setAutoResizeMode( JTable.AUTO_RESIZE_OFF );
@@ -411,7 +456,7 @@ public class SwingMain extends JFrame {
      * @param row is needed to find the correct Track, which Laps should be shown.
      * @return a JScrollPane which contains a table of Laps for a certain track.
      */
-    private JScrollPane getLapScrollPane(int row){
+    protected JScrollPane getLapScrollPane(int row){
         //JTable -right side (east) contains LapTable and Diagram
         String[][] lapData = TableData.getTableOfLaps(row);
         String[] lapTableColumnsNames = TableData.getTableOfLapsColumnNames();
@@ -425,6 +470,20 @@ public class SwingMain extends JFrame {
             @Override
             public boolean isCellEditable(int row, int column) {
                 return false;
+            }
+
+            public Component prepareRenderer(TableCellRenderer renderer,
+                                             int row, int column)
+            {
+                Component c = super.prepareRenderer(renderer, row, column);
+                Color color1 = new Color(220,220,220);
+                Color color2 = Color.WHITE;
+                if(!c.getBackground().equals(getSelectionBackground())) {
+                    Color color = (row % 2 == 0 ? color2 : color1);
+                    c.setBackground(color);
+                    color = null;
+                }
+                return c;
             }
         };
 
@@ -445,7 +504,8 @@ public class SwingMain extends JFrame {
      * This method changes the column width for each cell in a JTable in order to have a better formatted table.
      * @param resize This is the JTable which column-widths are adapted.
      */
-    public void resize(JTable resize){
+    protected void resize(JTable resize){
+
         for(int i=0;i<resize.getColumnCount();i++)
         {
             DefaultTableColumnModel colModel = (DefaultTableColumnModel) resize.getColumnModel();
@@ -467,7 +527,7 @@ public class SwingMain extends JFrame {
                     {
                         width=comp1.getPreferredSize().width;
                     }
-                    else
+                    else if(comp.getPreferredSize().width>width)
                     {
                         width=comp.getPreferredSize().width;
                     }
@@ -477,7 +537,41 @@ public class SwingMain extends JFrame {
             {
                 width=comp.getPreferredSize().width;
             }
-            col.setPreferredWidth(width+4);
+            col.setPreferredWidth(width+12);
         }
+
+
+        DefaultTableCellRenderer rightRenderer = new DefaultTableCellRenderer();
+        rightRenderer.setHorizontalAlignment(JLabel.RIGHT);
+        if(resize.getColumnCount()==10){
+            resize.getColumnModel().getColumn(2).setCellRenderer(rightRenderer);
+            resize.getColumnModel().getColumn(3).setCellRenderer(rightRenderer);
+            resize.getColumnModel().getColumn(4).setCellRenderer(rightRenderer);
+            resize.getColumnModel().getColumn(5).setCellRenderer(rightRenderer);
+            resize.getColumnModel().getColumn(6).setCellRenderer(rightRenderer);
+            resize.getColumnModel().getColumn(7).setCellRenderer(rightRenderer);
+            resize.getColumnModel().getColumn(8).setCellRenderer(rightRenderer);
+            resize.getColumnModel().getColumn(9).setCellRenderer(rightRenderer);
+        }
+        else{
+            resize.getColumnModel().getColumn(1).setCellRenderer(rightRenderer);
+            resize.getColumnModel().getColumn(2).setCellRenderer(rightRenderer);
+            resize.getColumnModel().getColumn(3).setCellRenderer(rightRenderer);
+            resize.getColumnModel().getColumn(4).setCellRenderer(rightRenderer);
+            resize.getColumnModel().getColumn(5).setCellRenderer(rightRenderer);
+            resize.getColumnModel().getColumn(6).setCellRenderer(rightRenderer);
+        }
+
+        resize.setTableHeader(new JTableHeader(resize.getColumnModel()) {
+            @Override
+            public void setBackground(Color bg) {
+                super.setBackground(Color.lightGray);
+            }
+
+            @Override public Dimension getPreferredSize() {
+                 Dimension d = super.getPreferredSize();
+                 d.height = 34;
+                 return d;
+             }});
     }
 }
