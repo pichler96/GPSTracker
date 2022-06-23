@@ -10,6 +10,7 @@ import java.awt.*;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.Serial;
+import java.text.ParseException;
 
 
 /**
@@ -55,7 +56,7 @@ public class SwingMain extends JFrame {
      * @throws IOException is also thrown by the TCX Parser if there can't be found a tcx-file in the source folder.
      * @throws DatatypeConfigurationException *****.
      */
-    public SwingMain() throws JAXBException, IOException, DatatypeConfigurationException {
+    public SwingMain () throws JAXBException, IOException, DatatypeConfigurationException, ParseException {
         setTitle("GPSTracker");
         setSize(1200,585);
         setLocationRelativeTo(null);
@@ -131,43 +132,99 @@ public class SwingMain extends JFrame {
         JMenuItem twentyTwenty = new JMenuItem("2020");
         twentyTwenty.addActionListener(e -> {
             Main.data.filterStartYear(2020);
-            repaintGUI();
+            try {
+                repaintGUI();
+            } catch (JAXBException ex) {
+                ex.printStackTrace();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            } catch (ParseException ex) {
+                ex.printStackTrace();
+            }
         });
 
         JMenuItem twentyTwentyOne = new JMenuItem("2021");
         twentyTwentyOne.addActionListener(e -> {
             Main.data.filterStartYear(2021);
-            repaintGUI();
+            try {
+                repaintGUI();
+            } catch (JAXBException ex) {
+                ex.printStackTrace();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            } catch (ParseException ex) {
+                ex.printStackTrace();
+            }
         });
 
         JMenuItem twentyTwentyTwo = new JMenuItem("2022");
         twentyTwentyTwo.addActionListener(e -> {
             Main.data.filterStartYear(2022);
-            repaintGUI();
+            try {
+                repaintGUI();
+            } catch (JAXBException ex) {
+                ex.printStackTrace();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            } catch (ParseException ex) {
+                ex.printStackTrace();
+            }
         });
 
         JMenuItem biking = new JMenuItem("Biking");
         biking.addActionListener(e -> {
             Main.data.filterSports("Biking");
-            repaintGUI();
+            try {
+                repaintGUI();
+            } catch (JAXBException ex) {
+                ex.printStackTrace();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            } catch (ParseException ex) {
+                ex.printStackTrace();
+            }
         });
 
         JMenuItem hiking = new JMenuItem("Hiking");
         hiking.addActionListener(e -> {
             Main.data.filterSports("Hiking");
-            repaintGUI();
+            try {
+                repaintGUI();
+            } catch (JAXBException ex) {
+                ex.printStackTrace();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            } catch (ParseException ex) {
+                ex.printStackTrace();
+            }
         });
 
         JMenuItem running = new JMenuItem("Running");
         running.addActionListener(e -> {
             Main.data.filterSports("Running");
-            repaintGUI();
+            try {
+                repaintGUI();
+            } catch (JAXBException ex) {
+                ex.printStackTrace();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            } catch (ParseException ex) {
+                ex.printStackTrace();
+            }
         });
 
         JMenuItem skiing = new JMenuItem("Skiing");
         skiing.addActionListener(e -> {
             Main.data.filterSports("Skiing");
-            repaintGUI();
+            try {
+                repaintGUI();
+            } catch (JAXBException ex) {
+                ex.printStackTrace();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            } catch (ParseException ex) {
+                ex.printStackTrace();
+            }
         });
 
         JMenuItem exit = new JMenuItem("Exit");
@@ -176,7 +233,15 @@ public class SwingMain extends JFrame {
         JMenuItem deleteFilters = new JMenuItem("Delete Filters");
         deleteFilters.addActionListener(e -> {
             Main.data.deleteFilter();
-            repaintGUI();
+            try {
+                repaintGUI();
+            } catch (JAXBException ex) {
+                ex.printStackTrace();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            } catch (ParseException ex) {
+                ex.printStackTrace();
+            }
         });
 
         JMenuItem reloadData = new JMenuItem("Reload Data");
@@ -186,6 +251,10 @@ public class SwingMain extends JFrame {
                 repaintGUI();
 
             } catch (FileNotFoundException | JAXBException ex) {
+                ex.printStackTrace();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            } catch (ParseException ex) {
                 ex.printStackTrace();
             }
         });
@@ -202,6 +271,10 @@ public class SwingMain extends JFrame {
                     repaintGUI();
                 } catch (JAXBException | FileNotFoundException jaxbException) {
                     jaxbException.printStackTrace();
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                } catch (ParseException ex) {
+                    ex.printStackTrace();
                 }
             }
         });
@@ -245,10 +318,26 @@ public class SwingMain extends JFrame {
      * All components added to "westPanel" and "eastPanel" are deleted.
      * Then it adds the just recreated components to "westPanel" and "eastPanel".
      * In order to make these changes visible in the GUI "westPanel","eastPanel" and "pane" are revalidated and repainted.
+     * @return
      */
-    protected void repaintGUI() {
+    private JScrollPane getNewDiagramm() throws JAXBException, IOException, ParseException {
+        Graphics graphics = new Graphics();
+        Container container = graphics.getContainer();
+        JPanel jPanelGraphic = new JPanel();
+        jPanelGraphic.setLayout(new BorderLayout());
+        jPanelGraphic.add(container, BorderLayout.CENTER);
+        JScrollPane graphicScroll1 = new JScrollPane(jPanelGraphic);
+        graphicScroll1.setVisible(true);
+        graphicScroll1.setBorder(BorderFactory.createTitledBorder("Diagram: "));
+        return graphicScroll1;
+    }
+
+    private void repaintGUI() throws JAXBException, IOException, ParseException {
         JPanel tablePanel1 = getTablePanel();
         JScrollPane lapTableScroll1 = getLapScrollPane(0);
+
+        JScrollPane graphicScroll1 = getNewDiagramm();
+
         Component[] westComponents = westPanel.getComponents();
         for (Component c : westComponents) {
             westPanel.remove(c);
@@ -262,7 +351,7 @@ public class SwingMain extends JFrame {
         westPanel.revalidate();
         eastPanel.add(lapTableScroll1, BorderLayout.NORTH);
         eastPanel.revalidate();
-        eastPanel.add(graphicScroll, BorderLayout.CENTER);
+        eastPanel.add(graphicScroll1, BorderLayout.CENTER);
         eastPanel.revalidate();
         listModel = table.getSelectionModel();
         triggerListSelectionListener();

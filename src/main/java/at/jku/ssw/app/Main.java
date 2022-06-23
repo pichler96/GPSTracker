@@ -5,6 +5,7 @@ import javax.xml.datatype.DatatypeConfigurationException;
 import java.awt.*;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.text.ParseException;
 import java.util.List;
 
 import at.jku.ssw.tcxparser.TrainingsData;
@@ -28,6 +29,8 @@ public class Main {
             try {
                 m = new SwingMain();
             } catch (JAXBException | IOException | DatatypeConfigurationException e) {
+                e.printStackTrace();
+            } catch (ParseException e) {
                 e.printStackTrace();
             }
             if(m!=null) m.setVisible(true);

@@ -1,5 +1,6 @@
 package at.jku.ssw.app.diagram;
 import at.jku.ssw.app.Main;
+import at.jku.ssw.tcxparser.schema.ActivityLapT;
 import at.jku.ssw.tcxparser.schema.ActivityT;
 import at.jku.ssw.tcxparser.schema.TrainingCenterDatabaseT;
 
@@ -11,68 +12,44 @@ import javax.xml.bind.JAXBException;
 import javax.xml.datatype.XMLGregorianCalendar;
 import java.awt.*;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.Map;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
+
 
 public class Graphics extends javax.swing.JFrame {
     Container container;
+    private at.jku.ssw.app.diagram.Chart chart;
 
-    public Graphics() throws JAXBException, IOException {
+    public Graphics() throws JAXBException, IOException, ParseException {
         initComponents();
         container = getContentPane();
         container.setBackground(new Color(250, 250, 250));
-        chart.addLegend("Distance/Time", new Color(245, 135, 236));
+        chart.addLegend("Distance/Time", new Color(135, 245, 137));
 
-        XMLGregorianCalendar date;
-        double totalTime=0;
-        double distance=0;
-        double averageSpeed=0;
-        int month;
-        int year;
-        HashMap<Object, Double> hashMap = new HashMap<>();
-        ArrayList dateList = new ArrayList();
+        Map<Date, Double> groupedData = new TreeMap<>();
 
         for(TrainingCenterDatabaseT trainingCenterDatabaseT : Main.getData()){
-            for(ActivityT activityT : trainingCenterDatabaseT.getActivities().getActivity()){
-                date = activityT.getLap().get(0).getStartTime();
-                month = date.getMonth();
-                year = date.getYear();
-                String dateListObject = month + "." + year;
-                dateList.add(dateListObject);
-                Comparator <String> comparator;
-                dateList.stream().sorted();
-                /*dateList.sort(comparator = new Comparator<String>() {
-                    @Override
-                    public int compare(String o1, String o2) {
-                        return o1.compareTo(o2);
-                    }
-                });*/
-            }
-        }
-
-        for (TrainingCenterDatabaseT training : Main.getData()) {
-
-            for (ActivityT activity : training.getActivities().getActivity()) {
-
-                for (int i = 0; i < activity.getLap().size(); i++) {
-                    totalTime += activity.getLap().get(i).getTotalTimeSeconds();
-                    if(hashMap.containsKey(dateList.get(i))){
-                        hashMap.replace(dateList.get(i),hashMap.get(dateList.get(i)) + activity.getLap().get(i).getDistanceMeters());
-                    }else{
-                        hashMap.put(dateList.get(i),  activity.getLap().get(i).getDistanceMeters());
-                    }
+            for(ActivityT activityT : trainingCenterDatabaseT.getActivities().getActivity()) {
+                double distance_T = 0d;
+                //date1 = activityT.getId(); - Funktioniert nicht immer
+                Date date1 = null;
+                for(ActivityLapT activityLapT : activityT.getLap()){
+                    date1 = activityLapT.getStartTime().toGregorianCalendar().getTime();
+                    distance_T += activityLapT.getDistanceMeters();
                 }
-                totalTime = 0;
+                date1 = new Date(date1.getYear(), date1.getMonth(), 1);
+                if(groupedData.containsValue(date1)){
+                    groupedData.put(date1, distance_T + groupedData.get(date1));
+                }else{
+                    groupedData.put(date1, distance_T);
+                }
             }
         }
-        //Daten einlesen
-        chart.readInData();
-        for (Map.Entry<Object, Double> entry : hashMap.entrySet()){
-            chart.addData(new ModelChart(entry.getKey().toString(), new double[] {entry.getValue()}));
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM-yy");
+        for(Map.Entry<Date, Double> e : groupedData.entrySet()) {
+            chart.addData(new ModelChart(simpleDateFormat.format(e.getKey()), new double[] {e.getValue()}));
         }
-
         container.add(chart);
     }
 
@@ -89,7 +66,6 @@ public class Graphics extends javax.swing.JFrame {
     }
 
     private void initComponents() {
-
         chart = new Chart();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -114,6 +90,4 @@ public class Graphics extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }
-
-    private at.jku.ssw.app.diagram.Chart chart;
 }
