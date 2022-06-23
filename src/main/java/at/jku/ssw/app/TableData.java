@@ -101,23 +101,23 @@ public class TableData {
                int ss = input - mm*60 - hh*3600;
                DecimalFormat format = new DecimalFormat("00");
                table[counter][3]=format.format(hh) + ":" + format.format(mm) + ":" + format.format(ss);
-               table[counter][4]=df.format(distance/1000)+" km";
-               table[counter][5]=df.format(averageSpeed*3.6)+" km/h";
-               table[counter][6]=df.format(maxSpeed*3.6)+" km/h";
+               table[counter][4]=df.format(distance/1000);
+               table[counter][5]=df.format(averageSpeed*3.6);
+               table[counter][6]=df.format(maxSpeed*3.6);
                if(averageHeartRate==0){
                    table[counter][7]="---";
                }else {
-                   table[counter][7] = df.format(averageHeartRate)+" bpm";
+                   table[counter][7] = df.format(averageHeartRate);
                }
                if(maxHeartRate==0){
                    table[counter][8]="---";
                }else{
-                   table[counter][8]=maxHeartRate+" bpm";
+                   table[counter][8]=String.valueOf(maxHeartRate);
                }
                if(sumCalories==0){
                    table[counter][9]="---";
                }else{
-                   table[counter][9]=sumCalories+" kcal";
+                   table[counter][9]=String.valueOf(sumCalories);
                }
                counter ++;
 
@@ -141,7 +141,7 @@ public class TableData {
      * @return The headers are returned as a String array, since there is a String array needed in order to create a JTable.
      */
    public static String[] getTableColumnNames(){
-       return new String[]{"Device-ID", "Sport", "Date", "Total Time", "Distance", "Avg Speed", "Max Speed", "Avg Heartrate", "Max Heartrate", "Calories"};
+       return new String[]{"<html><b>Device-ID</b></html>", "<html><b>Sport</b></html>", "<html><center><b>Date</b><br>yyyy-mm-dd</center></html>", "<html><center><b>Total Time</b><br>hh:mm:ss</center></html>", "<html><center><b>Distance</b><br>km</center></html>", "<html><center><b>Avg Speed</b><br>km/h</center></html>", "<html><center><b>Max Speed</b><br>km/h</center></html>", "<html><center><b>Avg Heartrate</b><br>bpm</center></html>", "<html><center><b>Max Heartrate</b><br>bpm</center></html>", "<html><center><b>Avg Calories</b><br>kcal</center></html>"};
    }
 
     /**
@@ -172,14 +172,14 @@ public class TableData {
             DecimalFormat format = new DecimalFormat("00");
             table[counter][1]= format.format(hh) + ":" + format.format(mm) + ":" + format.format(ss); //TotalTime
 
-            table[counter][2]= df.format(activity.getLap().get(i).getMaximumSpeed()*3.6)+" km/h";//Max Speed
+            table[counter][2]= df.format(activity.getLap().get(i).getMaximumSpeed()*3.6);//Max Speed
             if(activity.getLap().get(i).getMaximumHeartRateBpm()==null) table[counter][3]="---";
             else if(activity.getLap().get(i).getMaximumHeartRateBpm().getValue()==0) table[counter][3]="---";
-            else table[counter][3]= Integer.toString(activity.getLap().get(i).getMaximumHeartRateBpm().getValue())+" bpm";//Max Heartrate
-            table[counter][4]= df.format(activity.getLap().get(i).getDistanceMeters()/1000) +" km";//Distance
+            else table[counter][3]= Integer.toString(activity.getLap().get(i).getMaximumHeartRateBpm().getValue());//Max Heartrate
+            table[counter][4]= df.format(activity.getLap().get(i).getDistanceMeters()/1000);//Distance
             if(activity.getLap().get(i).getAverageHeartRateBpm()==null) table[counter][5]="---";
             else if(activity.getLap().get(i).getAverageHeartRateBpm().getValue()==0) table[counter][5]="---";
-            else table[counter][5]= Integer.toString(activity.getLap().get(i).getAverageHeartRateBpm().getValue())+" bpm";//Avg Heartrate
+            else table[counter][5]= Integer.toString(activity.getLap().get(i).getAverageHeartRateBpm().getValue());//Avg Heartrate
             table[counter][6]= Integer.toString(activity.getLap().get(i).getCalories());//Calories
             counter++;
         }
@@ -191,7 +191,7 @@ public class TableData {
      * @return The headers are returned as a String array, since there is a String array needed in order to create a JTable.
      */
     public static String[] getTableOfLapsColumnNames(){
-        return new String[]{"Start Time", "Total Time", "Max Speed", "Max Heartrate", "Distance", "Avg Heartrate", "Calories"};
+        return new String[]{"<html><center><b>Start Time</b><br>yyyy-mm-dd hh:mm:ss</center></html>", "<html><center><b>Total Time</b><br>hh:mm:ss</center></html>", "<html><center><b>Max Speed</b><br>km/h</center></html>", "<html><center><b>Max Heartrate</b><br>bpm</center></html>", "<html><center><b>Distance</b><br>km</center></html>", "<html><center><b>Avg Heartrate</b><br>bpm</center></html>", "<html><center><b>Avg Calories</b><br>kcal</center></html>"};
     }
 
 }
