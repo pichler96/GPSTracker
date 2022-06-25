@@ -105,7 +105,7 @@ public class SwingMain extends JFrame {
         JMenu years = new JMenu("Years");
         JMenu distance = new JMenu("Lap Distance");
 
-        JMenuItem distance1000 = new JMenuItem("1000m");
+        JMenuItem distance1000 = new JMenuItem("> 1 km");
         distance1000.addActionListener(e -> {
             Main.data.filterAnyLapDistance(1000);
             try {
@@ -119,7 +119,7 @@ public class SwingMain extends JFrame {
             }
         });
 
-        JMenuItem distance3000 = new JMenuItem("3000m");
+        JMenuItem distance3000 = new JMenuItem("> 3 km");
         distance3000.addActionListener(e -> {
             Main.data.filterAnyLapDistance(3000);
             try {
@@ -133,7 +133,7 @@ public class SwingMain extends JFrame {
             }
         });
 
-        JMenuItem distance5000 = new JMenuItem("5000m");
+        JMenuItem distance5000 = new JMenuItem("> 5 km");
         distance5000.addActionListener(e -> {
             Main.data.filterAnyLapDistance(5000);
             try {
@@ -147,7 +147,7 @@ public class SwingMain extends JFrame {
             }
         });
 
-        JMenuItem distance10000 = new JMenuItem("10000m");
+        JMenuItem distance10000 = new JMenuItem("> 10 km");
         distance10000.addActionListener(e -> {
             Main.data.filterAnyLapDistance(10000);
             try {

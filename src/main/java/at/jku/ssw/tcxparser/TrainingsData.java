@@ -76,7 +76,7 @@ public class TrainingsData {
                 get(0).
                 getLap().
                 stream().
-                anyMatch(d -> d.getDistanceMeters() > distance)).
+                allMatch(d -> d.getDistanceMeters() > distance)).
                 collect(Collectors.toList());
     }
 
@@ -90,7 +90,7 @@ public class TrainingsData {
                 get(0).
                 getLap().
                 stream().
-                anyMatch(d -> d.getStartTime().getYear() == year)).
+                allMatch(d -> d.getStartTime().getYear() == year)).
                 collect(Collectors.toList());
     }
 
