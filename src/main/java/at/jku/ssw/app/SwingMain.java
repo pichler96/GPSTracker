@@ -323,8 +323,8 @@ public class SwingMain extends JFrame {
         distance.add(distance5000); distance.addSeparator();
         distance.add(distance10000);
 
-        changeDiagram.add(diagramForSpeed); changeDiagram.addSeparator();
         changeDiagram.add(diagramForDistance); changeDiagram.addSeparator();
+        changeDiagram.add(diagramForSpeed); changeDiagram.addSeparator();
         changeDiagram.add(diagramForHeartrate); changeDiagram.addSeparator();
         changeDiagram.add(diagramForCalories);
 
