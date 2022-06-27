@@ -56,7 +56,7 @@ public class Graphics extends javax.swing.JFrame {
         initComponents();
         container = getContentPane();
         container.setBackground(new Color(250, 250, 250));
-        chart.addLegend("Calories (kcal) / Time (mm-yy)", new Color(245, 236, 135));
+        chart.addLegend("Avg Calories (kcal) / Time (mm-yy)", new Color(245, 236, 135));
 
         Map<Date, Double> groupedData = new TreeMap<>();
 
@@ -90,7 +90,7 @@ public class Graphics extends javax.swing.JFrame {
         initComponents();
         container = getContentPane();
         container.setBackground(new Color(250, 250, 250));
-        chart.addLegend("Speed (km/h) / Time (mm-yy)", new Color(245, 135, 236));
+        chart.addLegend("Avg Speed (km/h) / Time (mm-yy)", new Color(245, 135, 236));
 
         Map<Date, Double> groupedData = new TreeMap<>();
 

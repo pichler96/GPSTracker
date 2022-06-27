@@ -119,7 +119,7 @@ public class SwingMain extends JFrame {
             }
         });
 
-        JMenuItem diagramForSpeed = new JMenuItem("Speed/Time");
+        JMenuItem diagramForSpeed = new JMenuItem("Avg Speed/Time");
         diagramForSpeed.addActionListener(e -> {
             try {
                 diagramDecision = 1;
