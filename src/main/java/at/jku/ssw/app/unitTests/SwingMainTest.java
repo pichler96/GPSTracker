@@ -1,9 +1,9 @@
-package at.jku.ssw.app;
+package at.jku.ssw.app.unitTests;
 
+import at.jku.ssw.app.Main;
+import at.jku.ssw.app.SwingMain;
 import at.jku.ssw.tcxparser.TrainingsData;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import javax.swing.*;
@@ -67,7 +67,7 @@ class SwingMainTest{
             }
         }
 
-        String expectedYears[] = {"2020","2021","2022"};
+        String[] expectedYears = {"2020","2021","2022"};
         List <String> expectedYearsList = Arrays.asList(expectedYears);
         assertTrue(expectedYearsList.contains(table.getModel().getValueAt(0,2).toString().substring(0,4)));
         assertTrue(expectedYearsList.contains(table.getModel().getValueAt(1,2).toString().substring(0,4)));
@@ -154,7 +154,7 @@ class SwingMainTest{
         int km=3;
         for(int i=0; i<LapTable.getModel().getRowCount();i++){
             String d=LapTable.getModel().getValueAt(i,4).toString().substring(0,(LapTable.getModel().getValueAt(i,4).toString().length()-km));
-            distance+=Double.valueOf(d);
+            distance+=Double.parseDouble(d);
         }
         int l=table.getModel().getValueAt(0,4).toString().length();
 
@@ -205,7 +205,7 @@ class SwingMainTest{
         }
 
         int size= Main.getData().get(0).getActivities().getActivity().get(0).getLap().size();
-        assertTrue(lapTable.getModel().getRowCount()==size);
+        assertEquals(lapTable.getModel().getRowCount(), size);
         //Number of Rows from lapTable is 5/size, because when the GUI starts it always shows the laps of the first Track.
 
         gui.table.setRowSelectionInterval(2,2);
@@ -236,7 +236,7 @@ class SwingMainTest{
         }
 
         size= Main.getData().get(2).getActivities().getActivity().get(0).getLap().size();
-        assertTrue(lapTable2.getModel().getRowCount()==size);
+        assertEquals(lapTable2.getModel().getRowCount(), size);
         //Number of Rows from the current LapTable, which shows the laps of the 3rd track (SelectionInterval(2,2)
     }
 }

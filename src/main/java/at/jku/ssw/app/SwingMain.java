@@ -38,11 +38,11 @@ public class SwingMain extends JFrame {
     /**
      * table the table of tracks, which is added to "westPanel", is saved in here.
      */
-    protected JTable table;
+    public JTable table;
     /**
      * is needed in order to check if the user selects one row in the table.
      */
-    ListSelectionModel listModel;
+    public ListSelectionModel listModel;
     /**
      * graphicScroll the Diagram, which is added to the southern part of "eastPanel", is saved in here.
      */
@@ -364,7 +364,7 @@ public class SwingMain extends JFrame {
         return graphicScroll1;
     }
 
-    void repaintGUI() throws JAXBException, IOException, ParseException {
+    public void repaintGUI() throws JAXBException, IOException, ParseException {
         JPanel tablePanel1 = getTablePanel();
         JScrollPane lapTableScroll1 = getLapScrollPane(0);
 
@@ -400,7 +400,7 @@ public class SwingMain extends JFrame {
      * Then it adds the just received table of Laps and the diagram to "eastPanel".
      * In order to make these changes visible in the GUI "eastPanel" and "pane" are revalidated and repainted.
      */
-    protected void triggerListSelectionListener() {
+    public void triggerListSelectionListener() {
         listModel.addListSelectionListener(e -> {
             if (!listModel.isSelectionEmpty()){
                 int selectedRow= listModel.getMinSelectionIndex();
@@ -439,7 +439,7 @@ public class SwingMain extends JFrame {
      * puts it in a JScrollPane and further in a JPanel.
      * @return a Panel which contains the table of tracks.
      */
-    protected JPanel getTablePanel(){
+    public JPanel getTablePanel(){
         // JTable -left side (west) - allData contains all data in "general form" (no lap-view) from TableData
         String[][] tableData = TableData.getTable();
         String[] tableDataColumnNames = TableData.getTableColumnNames();
@@ -496,7 +496,7 @@ public class SwingMain extends JFrame {
      * @param row is needed to find the correct Track, which Laps should be shown.
      * @return a JScrollPane which contains a table of Laps for a certain track.
      */
-    protected JScrollPane getLapScrollPane(int row){
+    public JScrollPane getLapScrollPane(int row){
         //JTable -right side (east) contains LapTable and Diagram
         String[][] lapData = TableData.getTableOfLaps(row);
         String[] lapTableColumnsNames = TableData.getTableOfLapsColumnNames();
