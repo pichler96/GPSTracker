@@ -11,7 +11,6 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.Serial;
 import java.text.ParseException;
-import java.util.Date;
 
 
 /**
@@ -20,7 +19,7 @@ import java.util.Date;
  */
 public class SwingMain extends JFrame {
 
-    protected int diagamDecision = 0;
+    protected int diagramDecision = 0;
 
     /**
      * pane represents the "lowest" level of the layout,
@@ -113,13 +112,9 @@ public class SwingMain extends JFrame {
         JMenuItem diagramForSpeed = new JMenuItem("Speed/Time");
         diagramForSpeed.addActionListener(e -> {
             try {
-                diagamDecision = 1;
+                diagramDecision = 1;
                 repaintGUI();
-            } catch (JAXBException ex) {
-                ex.printStackTrace();
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            } catch (ParseException ex) {
+            } catch (JAXBException | ParseException | IOException ex) {
                 ex.printStackTrace();
             }
         });
@@ -127,13 +122,9 @@ public class SwingMain extends JFrame {
         JMenuItem diagramForDistance = new JMenuItem("Distance/Time");
         diagramForDistance.addActionListener(e -> {
             try {
-                diagamDecision = 0;
+                diagramDecision = 0;
                 repaintGUI();
-            } catch (JAXBException ex) {
-                ex.printStackTrace();
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            } catch (ParseException ex) {
+            } catch (JAXBException | ParseException | IOException ex) {
                 ex.printStackTrace();
             }
         });
@@ -141,13 +132,9 @@ public class SwingMain extends JFrame {
         JMenuItem diagramForHeartrate = new JMenuItem("Avg Heartrate/Time");
         diagramForHeartrate.addActionListener(e -> {
             try {
-                diagamDecision = 2;
+                diagramDecision = 2;
                 repaintGUI();
-            } catch (JAXBException ex) {
-                ex.printStackTrace();
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            } catch (ParseException ex) {
+            } catch (JAXBException | IOException | ParseException ex) {
                 ex.printStackTrace();
             }
         });
@@ -157,11 +144,7 @@ public class SwingMain extends JFrame {
             Main.data.filterAnyLapDistance(1000);
             try {
                 repaintGUI();
-            } catch (JAXBException ex) {
-                ex.printStackTrace();
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            } catch (ParseException ex) {
+            } catch (JAXBException | ParseException | IOException ex) {
                 ex.printStackTrace();
             }
         });
@@ -171,11 +154,7 @@ public class SwingMain extends JFrame {
             Main.data.filterAnyLapDistance(3000);
             try {
                 repaintGUI();
-            } catch (JAXBException ex) {
-                ex.printStackTrace();
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            } catch (ParseException ex) {
+            } catch (JAXBException | IOException | ParseException ex) {
                 ex.printStackTrace();
             }
         });
@@ -185,11 +164,7 @@ public class SwingMain extends JFrame {
             Main.data.filterAnyLapDistance(5000);
             try {
                 repaintGUI();
-            } catch (JAXBException ex) {
-                ex.printStackTrace();
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            } catch (ParseException ex) {
+            } catch (JAXBException | IOException | ParseException ex) {
                 ex.printStackTrace();
             }
         });
@@ -199,11 +174,7 @@ public class SwingMain extends JFrame {
             Main.data.filterAnyLapDistance(10000);
             try {
                 repaintGUI();
-            } catch (JAXBException ex) {
-                ex.printStackTrace();
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            } catch (ParseException ex) {
+            } catch (JAXBException | IOException | ParseException ex) {
                 ex.printStackTrace();
             }
         });
@@ -213,11 +184,7 @@ public class SwingMain extends JFrame {
             Main.data.filterStartYear(2020);
             try {
                 repaintGUI();
-            } catch (JAXBException ex) {
-                ex.printStackTrace();
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            } catch (ParseException ex) {
+            } catch (JAXBException | IOException | ParseException ex) {
                 ex.printStackTrace();
             }
         });
@@ -227,11 +194,7 @@ public class SwingMain extends JFrame {
             Main.data.filterStartYear(2021);
             try {
                 repaintGUI();
-            } catch (JAXBException ex) {
-                ex.printStackTrace();
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            } catch (ParseException ex) {
+            } catch (JAXBException | IOException | ParseException ex) {
                 ex.printStackTrace();
             }
         });
@@ -241,11 +204,7 @@ public class SwingMain extends JFrame {
             Main.data.filterStartYear(2022);
             try {
                 repaintGUI();
-            } catch (JAXBException ex) {
-                ex.printStackTrace();
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            } catch (ParseException ex) {
+            } catch (JAXBException | IOException | ParseException ex) {
                 ex.printStackTrace();
             }
         });
@@ -255,11 +214,7 @@ public class SwingMain extends JFrame {
             Main.data.filterSports("Biking");
             try {
                 repaintGUI();
-            } catch (JAXBException ex) {
-                ex.printStackTrace();
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            } catch (ParseException ex) {
+            } catch (JAXBException | IOException | ParseException ex) {
                 ex.printStackTrace();
             }
         });
@@ -269,11 +224,7 @@ public class SwingMain extends JFrame {
             Main.data.filterSports("Hiking");
             try {
                 repaintGUI();
-            } catch (JAXBException ex) {
-                ex.printStackTrace();
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            } catch (ParseException ex) {
+            } catch (JAXBException | IOException | ParseException ex) {
                 ex.printStackTrace();
             }
         });
@@ -283,11 +234,7 @@ public class SwingMain extends JFrame {
             Main.data.filterSports("Running");
             try {
                 repaintGUI();
-            } catch (JAXBException ex) {
-                ex.printStackTrace();
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            } catch (ParseException ex) {
+            } catch (JAXBException | IOException | ParseException ex) {
                 ex.printStackTrace();
             }
         });
@@ -297,11 +244,7 @@ public class SwingMain extends JFrame {
             Main.data.filterSports("Skiing");
             try {
                 repaintGUI();
-            } catch (JAXBException ex) {
-                ex.printStackTrace();
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            } catch (ParseException ex) {
+            } catch (JAXBException | IOException | ParseException ex) {
                 ex.printStackTrace();
             }
         });
@@ -314,11 +257,7 @@ public class SwingMain extends JFrame {
             Main.data.deleteFilter();
             try {
                 repaintGUI();
-            } catch (JAXBException ex) {
-                ex.printStackTrace();
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            } catch (ParseException ex) {
+            } catch (JAXBException | IOException | ParseException ex) {
                 ex.printStackTrace();
             }
         });
@@ -329,11 +268,7 @@ public class SwingMain extends JFrame {
                 Main.data.load(); //reloads the TCX-files
                 repaintGUI();
 
-            } catch (FileNotFoundException | JAXBException ex) {
-                ex.printStackTrace();
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            } catch (ParseException ex) {
+            } catch (JAXBException | IOException | ParseException ex) {
                 ex.printStackTrace();
             }
         });
@@ -348,12 +283,8 @@ public class SwingMain extends JFrame {
                 try {
                     Main.data.setPath(fc.getSelectedFile());
                     repaintGUI();
-                } catch (JAXBException | FileNotFoundException jaxbException) {
+                } catch (JAXBException | IOException | ParseException jaxbException) {
                     jaxbException.printStackTrace();
-                } catch (IOException ex) {
-                    ex.printStackTrace();
-                } catch (ParseException ex) {
-                    ex.printStackTrace();
                 }
             }
         });
@@ -395,15 +326,7 @@ public class SwingMain extends JFrame {
         triggerListSelectionListener();
     }
 
-    /**
-     * This Method is called if there is activated or deactivated a Filter, but also if the data path has changed or the data is reloaded.
-     * It changes the content shown by the GUI based on the current needed data.
-     * At first, all components from "westPanel" and "eastPanel" are recreated.
-     * All components added to "westPanel" and "eastPanel" are deleted.
-     * Then it adds the just recreated components to "westPanel" and "eastPanel".
-     * In order to make these changes visible in the GUI "westPanel","eastPanel" and "pane" are revalidated and repainted.
-     * @return
-     */
+    
     private JScrollPane getNewDiagramm() throws JAXBException, IOException, ParseException {
         Graphics graphics = new Graphics();
         Container container = graphics.getContainer();
@@ -442,14 +365,22 @@ public class SwingMain extends JFrame {
         return graphicScroll1;
     }
 
+    /**
+     * This Method is called if there is activated or deactivated a Filter, but also if the data path has changed or the data is reloaded.
+     * It changes the content shown by the GUI based on the current needed data.
+     * At first, all components from "westPanel" and "eastPanel" are recreated.
+     * All components added to "westPanel" and "eastPanel" are deleted.
+     * Then it adds the just recreated components to "westPanel" and "eastPanel".
+     * In order to make these changes visible in the GUI "westPanel","eastPanel" and "pane" are revalidated and repainted.
+     */
     public void repaintGUI() throws JAXBException, IOException, ParseException {
         JPanel tablePanel1 = getTablePanel();
         JScrollPane lapTableScroll1 = getLapScrollPane(0);
         JScrollPane graphicScroll1;
 
-        if(diagamDecision == 0){
+        if(diagramDecision == 0){
             graphicScroll1 = getNewDiagramm();
-        }else if( diagamDecision == 1){
+        }else if( diagramDecision == 1){
             graphicScroll1 = getNewDiagrammForSpeed();
         }else{
             graphicScroll1 = getNewDiagrammForHeartrate();
@@ -500,18 +431,14 @@ public class SwingMain extends JFrame {
                 }
                 lapTablePane.setPreferredSize(new Dimension(500,150));
                 try {
-                    if(diagamDecision == 0){
+                    if(diagramDecision == 0){
                         eastPanel.add(getNewDiagramm(), BorderLayout.CENTER);
-                    }else if(diagamDecision == 1){
+                    }else if(diagramDecision == 1){
                         eastPanel.add(getNewDiagrammForSpeed(), BorderLayout.CENTER);
                     }else{
                         eastPanel.add(getNewDiagrammForHeartrate(), BorderLayout.CENTER);
                     }
-                } catch (JAXBException ex) {
-                    ex.printStackTrace();
-                } catch (IOException ex) {
-                    ex.printStackTrace();
-                } catch (ParseException ex) {
+                } catch (JAXBException | IOException | ParseException ex) {
                     ex.printStackTrace();
                 }
                 eastPanel.add(lapTablePane, BorderLayout.NORTH);
