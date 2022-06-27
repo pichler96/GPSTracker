@@ -11,6 +11,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.Serial;
 import java.text.ParseException;
+import java.util.Date;
 
 
 /**
@@ -18,6 +19,9 @@ import java.text.ParseException;
  * @author Gruppe 3
  */
 public class SwingMain extends JFrame {
+
+    protected int diagamDecision = 0;
+
     /**
      * pane represents the "lowest" level of the layout,
      * therefore every GUI Component has to be added to it, else it won't be visible.
@@ -104,6 +108,49 @@ public class SwingMain extends JFrame {
         JMenu sports = new JMenu("Sports");
         JMenu years = new JMenu("Years");
         JMenu distance = new JMenu("Lap Distance");
+        JMenu changeDiagram = new JMenu("Change Diagram");
+
+        JMenuItem diagramForSpeed = new JMenuItem("Speed/Time");
+        diagramForSpeed.addActionListener(e -> {
+            try {
+                diagamDecision = 1;
+                repaintGUI();
+            } catch (JAXBException ex) {
+                ex.printStackTrace();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            } catch (ParseException ex) {
+                ex.printStackTrace();
+            }
+        });
+
+        JMenuItem diagramForDistance = new JMenuItem("Distance/Time");
+        diagramForDistance.addActionListener(e -> {
+            try {
+                diagamDecision = 0;
+                repaintGUI();
+            } catch (JAXBException ex) {
+                ex.printStackTrace();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            } catch (ParseException ex) {
+                ex.printStackTrace();
+            }
+        });
+
+        JMenuItem diagramForHeartrate = new JMenuItem("Avg Heartrate/Time");
+        diagramForHeartrate.addActionListener(e -> {
+            try {
+                diagamDecision = 2;
+                repaintGUI();
+            } catch (JAXBException ex) {
+                ex.printStackTrace();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            } catch (ParseException ex) {
+                ex.printStackTrace();
+            }
+        });
 
         JMenuItem distance1000 = new JMenuItem("> 1 km");
         distance1000.addActionListener(e -> {
@@ -331,10 +378,15 @@ public class SwingMain extends JFrame {
         distance.add(distance5000); distance.addSeparator();
         distance.add(distance10000);
 
+        changeDiagram.add(diagramForSpeed); changeDiagram.addSeparator();
+        changeDiagram.add(diagramForDistance); changeDiagram.addSeparator();
+        changeDiagram.add(diagramForHeartrate);
+
         menu.add(file);
         menu.add(sports);
         menu.add(years);
         menu.add(distance);
+        menu.add(changeDiagram);
 
         setJMenuBar(menu);
 
@@ -364,11 +416,45 @@ public class SwingMain extends JFrame {
         return graphicScroll1;
     }
 
+    private JScrollPane getNewDiagrammForSpeed() throws JAXBException, IOException, ParseException {
+        double speedT = 0;
+        Graphics graphics = new Graphics(speedT);
+        Container container = graphics.getContainer();
+        JPanel jPanelGraphic = new JPanel();
+        jPanelGraphic.setLayout(new BorderLayout());
+        jPanelGraphic.add(container, BorderLayout.CENTER);
+        JScrollPane graphicScroll1 = new JScrollPane(jPanelGraphic);
+        graphicScroll1.setVisible(true);
+        graphicScroll1.setBorder(BorderFactory.createTitledBorder("Diagram: "));
+        return graphicScroll1;
+    }
+
+    private JScrollPane getNewDiagrammForHeartrate() throws JAXBException, IOException, ParseException {
+        int heartrateT = 0;
+        Graphics graphics = new Graphics(heartrateT);
+        Container container = graphics.getContainer();
+        JPanel jPanelGraphic = new JPanel();
+        jPanelGraphic.setLayout(new BorderLayout());
+        jPanelGraphic.add(container, BorderLayout.CENTER);
+        JScrollPane graphicScroll1 = new JScrollPane(jPanelGraphic);
+        graphicScroll1.setVisible(true);
+        graphicScroll1.setBorder(BorderFactory.createTitledBorder("Diagram: "));
+        return graphicScroll1;
+    }
+
     void repaintGUI() throws JAXBException, IOException, ParseException {
         JPanel tablePanel1 = getTablePanel();
         JScrollPane lapTableScroll1 = getLapScrollPane(0);
+        JScrollPane graphicScroll1;
 
-        JScrollPane graphicScroll1 = getNewDiagramm();
+        if(diagamDecision == 0){
+            graphicScroll1 = getNewDiagramm();
+        }else if( diagamDecision == 1){
+            graphicScroll1 = getNewDiagrammForSpeed();
+        }else{
+            graphicScroll1 = getNewDiagrammForHeartrate();
+        }
+
 
         Component[] westComponents = westPanel.getComponents();
         for (Component c : westComponents) {
@@ -414,7 +500,13 @@ public class SwingMain extends JFrame {
                 }
                 lapTablePane.setPreferredSize(new Dimension(500,150));
                 try {
-                    eastPanel.add(getNewDiagramm(), BorderLayout.CENTER);
+                    if(diagamDecision == 0){
+                        eastPanel.add(getNewDiagramm(), BorderLayout.CENTER);
+                    }else if(diagamDecision == 1){
+                        eastPanel.add(getNewDiagrammForSpeed(), BorderLayout.CENTER);
+                    }else{
+                        eastPanel.add(getNewDiagrammForHeartrate(), BorderLayout.CENTER);
+                    }
                 } catch (JAXBException ex) {
                     ex.printStackTrace();
                 } catch (IOException ex) {

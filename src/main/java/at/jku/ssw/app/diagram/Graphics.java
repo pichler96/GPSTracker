@@ -39,9 +39,92 @@ public class Graphics extends javax.swing.JFrame {
                 }
                 date1 = new Date(date1.getYear(), date1.getMonth(), 1);
                 if(groupedData.containsValue(date1)){
-                    groupedData.put(date1, distance_T + groupedData.get(date1));
+                    groupedData.put(date1, (distance_T + groupedData.get(date1))/1000);
                 }else{
-                    groupedData.put(date1, distance_T);
+                    groupedData.put(date1, distance_T/1000);
+                }
+            }
+        }
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM-yy");
+        for(Map.Entry<Date, Double> e : groupedData.entrySet()) {
+            chart.addData(new ModelChart(simpleDateFormat.format(e.getKey()), new double[] {e.getValue()}));
+        }
+        container.add(chart);
+    }
+
+    public Graphics(double avgSpeed) throws JAXBException, IOException, ParseException {
+        initComponents();
+        container = getContentPane();
+        container.setBackground(new Color(250, 250, 250));
+        chart.addLegend("Speed/Time", new Color(245, 135, 236));
+
+        Map<Date, Double> groupedData = new TreeMap<>();
+
+        for(TrainingCenterDatabaseT trainingCenterDatabaseT : Main.getData()){
+            int counter2 = 0;
+            for(ActivityT activityT : trainingCenterDatabaseT.getActivities().getActivity()) {
+                avgSpeed = 0d;
+                Date date1 = null;
+                int counter = 0;
+                for(ActivityLapT activityLapT : activityT.getLap()){
+                    date1 = activityLapT.getStartTime().toGregorianCalendar().getTime();
+                    avgSpeed += (activityLapT.getDistanceMeters()/activityLapT.getTotalTimeSeconds());
+                    counter += 1;
+                }
+                counter2 += counter;
+                avgSpeed = avgSpeed/counter;
+                avgSpeed = avgSpeed* 3.6;
+                date1 = new Date(date1.getYear(), date1.getMonth(), 1);
+                if(groupedData.containsValue(date1)){
+                    groupedData.put(date1, (avgSpeed + groupedData.get(date1))/2);
+                }else{
+                    groupedData.put(date1, avgSpeed);
+                }
+            }
+        }
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM-yy");
+        for(Map.Entry<Date, Double> e : groupedData.entrySet()) {
+            chart.addData(new ModelChart(simpleDateFormat.format(e.getKey()), new double[] {e.getValue()}));
+        }
+        container.add(chart);
+    }
+
+    public Graphics(int heartRate) throws JAXBException, IOException, ParseException {
+        initComponents();
+        container = getContentPane();
+        container.setBackground(new Color(250, 250, 250));
+        chart.addLegend("Avg Heartrate/Time", new Color(139, 135, 245));
+
+        Map<Date, Double> groupedData = new TreeMap<>();
+
+        for(TrainingCenterDatabaseT trainingCenterDatabaseT : Main.getData()){
+            int counter2 = 0;
+            for(ActivityT activityT : trainingCenterDatabaseT.getActivities().getActivity()) {
+                heartRate = 0;
+                Date date1 = null;
+                int counter = 0;
+                for(ActivityLapT activityLapT : activityT.getLap()){
+                    date1 = activityLapT.getStartTime().toGregorianCalendar().getTime();
+
+                    if(activityLapT.getAverageHeartRateBpm() != null){
+                        heartRate = heartRate + (activityLapT.getAverageHeartRateBpm().getValue());
+                    }else{
+                        heartRate = 0;
+                    }
+                    counter += 1;
+                }
+
+                if(heartRate == 0) {
+                    break;
+                }
+
+                counter2 += counter;
+                heartRate = heartRate/counter;
+                date1 = new Date(date1.getYear(), date1.getMonth(), 1);
+                if(groupedData.containsValue(date1)){
+                    groupedData.put(date1, (heartRate + groupedData.get(date1))/2);
+                }else{
+                    groupedData.put(date1, (double) heartRate);
                 }
             }
         }
