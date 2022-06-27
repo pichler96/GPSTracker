@@ -32,7 +32,6 @@ public class Graphics extends javax.swing.JFrame {
         for(TrainingCenterDatabaseT trainingCenterDatabaseT : Main.getData()){
             for(ActivityT activityT : trainingCenterDatabaseT.getActivities().getActivity()) {
                 double distance_T = 0d;
-                //date1 = activityT.getId(); - Funktioniert nicht immer
                 Date date1 = null;
                 for(ActivityLapT activityLapT : activityT.getLap()){
                     date1 = activityLapT.getStartTime().toGregorianCalendar().getTime();
