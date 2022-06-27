@@ -413,7 +413,15 @@ public class SwingMain extends JFrame {
                     }
                 }
                 lapTablePane.setPreferredSize(new Dimension(500,150));
-                eastPanel.add(graphicScroll, BorderLayout.CENTER);
+                try {
+                    eastPanel.add(getNewDiagramm(), BorderLayout.CENTER);
+                } catch (JAXBException ex) {
+                    ex.printStackTrace();
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                } catch (ParseException ex) {
+                    ex.printStackTrace();
+                }
                 eastPanel.add(lapTablePane, BorderLayout.NORTH);
                 eastPanel.revalidate();
                 eastPanel.repaint();
