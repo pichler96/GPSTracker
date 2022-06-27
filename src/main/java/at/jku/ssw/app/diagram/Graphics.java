@@ -52,6 +52,40 @@ public class Graphics extends javax.swing.JFrame {
         container.add(chart);
     }
 
+    public Graphics(double avgCalories, int placeholder) throws JAXBException, IOException, ParseException {
+        initComponents();
+        container = getContentPane();
+        container.setBackground(new Color(250, 250, 250));
+        chart.addLegend("Calories/Time", new Color(245, 236, 135));
+
+        Map<Date, Double> groupedData = new TreeMap<>();
+
+        for(TrainingCenterDatabaseT trainingCenterDatabaseT : Main.getData()){
+            for(ActivityT activityT : trainingCenterDatabaseT.getActivities().getActivity()) {
+                avgCalories = 0d;
+                Date date1 = null;
+                int counter = 0;
+                for(ActivityLapT activityLapT : activityT.getLap()){
+                    date1 = activityLapT.getStartTime().toGregorianCalendar().getTime();
+                    avgCalories += activityLapT.getCalories();
+                    counter += 1;
+                }
+                avgCalories = avgCalories/counter;
+                date1 = new Date(date1.getYear(), date1.getMonth(), 1);
+                if(groupedData.containsValue(date1)){
+                    groupedData.put(date1, (avgCalories + groupedData.get(date1))/2);
+                }else{
+                    groupedData.put(date1, avgCalories);
+                }
+            }
+        }
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM-yy");
+        for(Map.Entry<Date, Double> e : groupedData.entrySet()) {
+            chart.addData(new ModelChart(simpleDateFormat.format(e.getKey()), new double[] {e.getValue()}));
+        }
+        container.add(chart);
+    }
+
     public Graphics(double avgSpeed) throws JAXBException, IOException, ParseException {
         initComponents();
         container = getContentPane();
@@ -61,7 +95,6 @@ public class Graphics extends javax.swing.JFrame {
         Map<Date, Double> groupedData = new TreeMap<>();
 
         for(TrainingCenterDatabaseT trainingCenterDatabaseT : Main.getData()){
-            int counter2 = 0;
             for(ActivityT activityT : trainingCenterDatabaseT.getActivities().getActivity()) {
                 avgSpeed = 0d;
                 Date date1 = null;
@@ -71,7 +104,6 @@ public class Graphics extends javax.swing.JFrame {
                     avgSpeed += (activityLapT.getDistanceMeters()/activityLapT.getTotalTimeSeconds());
                     counter += 1;
                 }
-                counter2 += counter;
                 avgSpeed = avgSpeed/counter;
                 avgSpeed = avgSpeed* 3.6;
                 date1 = new Date(date1.getYear(), date1.getMonth(), 1);
@@ -98,7 +130,6 @@ public class Graphics extends javax.swing.JFrame {
         Map<Date, Double> groupedData = new TreeMap<>();
 
         for(TrainingCenterDatabaseT trainingCenterDatabaseT : Main.getData()){
-            int counter2 = 0;
             for(ActivityT activityT : trainingCenterDatabaseT.getActivities().getActivity()) {
                 heartRate = 0;
                 Date date1 = null;
@@ -118,7 +149,6 @@ public class Graphics extends javax.swing.JFrame {
                     break;
                 }
 
-                counter2 += counter;
                 heartRate = heartRate/counter;
                 date1 = new Date(date1.getYear(), date1.getMonth(), 1);
                 if(groupedData.containsValue(date1)){
