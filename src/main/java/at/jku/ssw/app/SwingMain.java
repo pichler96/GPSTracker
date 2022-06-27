@@ -7,7 +7,6 @@ import javax.swing.table.*;
 import javax.xml.bind.JAXBException;
 import javax.xml.datatype.DatatypeConfigurationException;
 import java.awt.*;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.Serial;
 import java.text.ParseException;
@@ -144,11 +143,7 @@ public class SwingMain extends JFrame {
             try {
                 diagramDecision = 3;
                 repaintGUI();
-            } catch (JAXBException ex) {
-                ex.printStackTrace();
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            } catch (ParseException ex) {
+            } catch (JAXBException | ParseException | IOException ex) {
                 ex.printStackTrace();
             }
         });
