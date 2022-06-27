@@ -109,20 +109,20 @@ public class SwingMain extends JFrame {
         JMenu distance = new JMenu("Lap Distance");
         JMenu changeDiagram = new JMenu("Change Diagram");
 
-        JMenuItem diagramForSpeed = new JMenuItem("Speed/Time");
-        diagramForSpeed.addActionListener(e -> {
+        JMenuItem diagramForDistance = new JMenuItem("Distance/Time");
+        diagramForDistance.addActionListener(e -> {
             try {
-                diagramDecision = 1;
+                diagamDecision = 0;
                 repaintGUI();
             } catch (JAXBException | ParseException | IOException ex) {
                 ex.printStackTrace();
             }
         });
 
-        JMenuItem diagramForDistance = new JMenuItem("Distance/Time");
-        diagramForDistance.addActionListener(e -> {
+        JMenuItem diagramForSpeed = new JMenuItem("Speed/Time");
+        diagramForSpeed.addActionListener(e -> {
             try {
-                diagramDecision = 0;
+                diagamDecision = 1;
                 repaintGUI();
             } catch (JAXBException | ParseException | IOException ex) {
                 ex.printStackTrace();
@@ -135,6 +135,20 @@ public class SwingMain extends JFrame {
                 diagramDecision = 2;
                 repaintGUI();
             } catch (JAXBException | IOException | ParseException ex) {
+                ex.printStackTrace();
+            }
+        });
+
+        JMenuItem diagramForCalories = new JMenuItem("Avg Calories/Time");
+        diagramForCalories.addActionListener(e -> {
+            try {
+                diagamDecision = 3;
+                repaintGUI();
+            } catch (JAXBException ex) {
+                ex.printStackTrace();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            } catch (ParseException ex) {
                 ex.printStackTrace();
             }
         });
@@ -311,7 +325,8 @@ public class SwingMain extends JFrame {
 
         changeDiagram.add(diagramForSpeed); changeDiagram.addSeparator();
         changeDiagram.add(diagramForDistance); changeDiagram.addSeparator();
-        changeDiagram.add(diagramForHeartrate);
+        changeDiagram.add(diagramForHeartrate); changeDiagram.addSeparator();
+        changeDiagram.add(diagramForCalories);
 
         menu.add(file);
         menu.add(sports);
@@ -365,6 +380,20 @@ public class SwingMain extends JFrame {
         return graphicScroll1;
     }
 
+    private JScrollPane getNewDiagrammForCalories() throws JAXBException, IOException, ParseException {
+        double caloriesT = 0;
+        int x = 0;
+        Graphics graphics = new Graphics(caloriesT, x);
+        Container container = graphics.getContainer();
+        JPanel jPanelGraphic = new JPanel();
+        jPanelGraphic.setLayout(new BorderLayout());
+        jPanelGraphic.add(container, BorderLayout.CENTER);
+        JScrollPane graphicScroll1 = new JScrollPane(jPanelGraphic);
+        graphicScroll1.setVisible(true);
+        graphicScroll1.setBorder(BorderFactory.createTitledBorder("Diagram: "));
+        return graphicScroll1;
+    }
+
     /**
      * This Method is called if there is activated or deactivated a Filter, but also if the data path has changed or the data is reloaded.
      * It changes the content shown by the GUI based on the current needed data.
@@ -382,8 +411,10 @@ public class SwingMain extends JFrame {
             graphicScroll1 = getNewDiagramm();
         }else if( diagramDecision == 1){
             graphicScroll1 = getNewDiagrammForSpeed();
-        }else{
+        }else if(diagamDecision == 2){
             graphicScroll1 = getNewDiagrammForHeartrate();
+        }else {
+            graphicScroll1 = getNewDiagrammForCalories();
         }
 
 
@@ -435,8 +466,10 @@ public class SwingMain extends JFrame {
                         eastPanel.add(getNewDiagramm(), BorderLayout.CENTER);
                     }else if(diagramDecision == 1){
                         eastPanel.add(getNewDiagrammForSpeed(), BorderLayout.CENTER);
-                    }else{
+                    }else if(diagamDecision == 2){
                         eastPanel.add(getNewDiagrammForHeartrate(), BorderLayout.CENTER);
+                    }else{
+                        eastPanel.add(getNewDiagrammForCalories(), BorderLayout.CENTER);
                     }
                 } catch (JAXBException | IOException | ParseException ex) {
                     ex.printStackTrace();
