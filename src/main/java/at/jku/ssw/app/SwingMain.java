@@ -112,7 +112,7 @@ public class SwingMain extends JFrame {
         JMenuItem diagramForDistance = new JMenuItem("Distance/Time");
         diagramForDistance.addActionListener(e -> {
             try {
-                diagamDecision = 0;
+                diagramDecision = 0;
                 repaintGUI();
             } catch (JAXBException | ParseException | IOException ex) {
                 ex.printStackTrace();
@@ -122,7 +122,7 @@ public class SwingMain extends JFrame {
         JMenuItem diagramForSpeed = new JMenuItem("Speed/Time");
         diagramForSpeed.addActionListener(e -> {
             try {
-                diagamDecision = 1;
+                diagramDecision = 1;
                 repaintGUI();
             } catch (JAXBException | ParseException | IOException ex) {
                 ex.printStackTrace();
@@ -142,7 +142,7 @@ public class SwingMain extends JFrame {
         JMenuItem diagramForCalories = new JMenuItem("Avg Calories/Time");
         diagramForCalories.addActionListener(e -> {
             try {
-                diagamDecision = 3;
+                diagramDecision = 3;
                 repaintGUI();
             } catch (JAXBException ex) {
                 ex.printStackTrace();
@@ -411,7 +411,7 @@ public class SwingMain extends JFrame {
             graphicScroll1 = getNewDiagramm();
         }else if( diagramDecision == 1){
             graphicScroll1 = getNewDiagrammForSpeed();
-        }else if(diagamDecision == 2){
+        }else if(diagramDecision == 2){
             graphicScroll1 = getNewDiagrammForHeartrate();
         }else {
             graphicScroll1 = getNewDiagrammForCalories();
@@ -466,7 +466,7 @@ public class SwingMain extends JFrame {
                         eastPanel.add(getNewDiagramm(), BorderLayout.CENTER);
                     }else if(diagramDecision == 1){
                         eastPanel.add(getNewDiagrammForSpeed(), BorderLayout.CENTER);
-                    }else if(diagamDecision == 2){
+                    }else if(diagramDecision == 2){
                         eastPanel.add(getNewDiagrammForHeartrate(), BorderLayout.CENTER);
                     }else{
                         eastPanel.add(getNewDiagrammForCalories(), BorderLayout.CENTER);
