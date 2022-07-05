@@ -7,7 +7,6 @@ import javax.swing.table.*;
 import javax.xml.bind.JAXBException;
 import javax.xml.datatype.DatatypeConfigurationException;
 import java.awt.*;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.Serial;
 import java.text.ParseException;
@@ -18,6 +17,10 @@ import java.text.ParseException;
  * @author Gruppe 3
  */
 public class SwingMain extends JFrame {
+
+    /**
+     * This variable is used to specified the current diagram and the further one
+     */
 
     protected int diagramDecision = 0;
 
@@ -78,7 +81,10 @@ public class SwingMain extends JFrame {
         JScrollPane lapTableScroll= getLapScrollPane(0);
         lapTableScroll.setBorder(BorderFactory.createTitledBorder("Laps:"));
 
-        //Graphics start (Part of the Diagram)
+        /**
+         * A new graphic is created here
+         */
+
         Graphics graphics = new Graphics();
         Container container = graphics.getContainer();
         JPanel jPanelGraphic = new JPanel();
@@ -87,7 +93,6 @@ public class SwingMain extends JFrame {
         graphicScroll = new JScrollPane(jPanelGraphic);
         graphicScroll.setVisible(true);
         graphicScroll.setBorder(BorderFactory.createTitledBorder("Diagram:"));
-        //Graphics end
 
         eastPanel = new JPanel(); //"EastPanel" contains the eastern part of our GUI
         eastPanel.setLayout(new BorderLayout());
@@ -109,25 +114,46 @@ public class SwingMain extends JFrame {
         JMenu distance = new JMenu("Lap Distance");
         JMenu changeDiagram = new JMenu("Change Diagram");
 
+        /**
+         * Diagram for distance in relation to time is created, and the variable diagramDecision which is
+         * above is specified for the type of diagram.
+         *
+         * Furthermore, the diagram is joined to the application
+         */
+
         JMenuItem diagramForDistance = new JMenuItem("Distance/Time");
         diagramForDistance.addActionListener(e -> {
             try {
-                diagamDecision = 0;
+                diagramDecision = 0;
                 repaintGUI();
             } catch (JAXBException | ParseException | IOException ex) {
                 ex.printStackTrace();
             }
         });
 
+        /**
+         * Diagram for speed in relation to time is created, and the variable diagramDecision which is
+         * above is specified for the type of diagram.
+         *
+         * Furthermore, the diagram is joined to the application
+         */
+
         JMenuItem diagramForSpeed = new JMenuItem("Speed/Time");
         diagramForSpeed.addActionListener(e -> {
             try {
-                diagamDecision = 1;
+                diagramDecision = 1;
                 repaintGUI();
             } catch (JAXBException | ParseException | IOException ex) {
                 ex.printStackTrace();
             }
         });
+
+        /**
+         * Diagram for the average heartrate in relation to time is created, and the variable diagramDecision which is
+         * above is specified for the type of diagram.
+         *
+         * Furthermore, the diagram is joined to the application
+         */
 
         JMenuItem diagramForHeartrate = new JMenuItem("Avg Heartrate/Time");
         diagramForHeartrate.addActionListener(e -> {
@@ -139,10 +165,17 @@ public class SwingMain extends JFrame {
             }
         });
 
+        /**
+         * Diagram for average of calories in relation to time is created, and the variable diagramDecision which is
+         * above is specified for the type of diagram.
+         *
+         * Furthermore, the diagram is joined to the application
+         */
+
         JMenuItem diagramForCalories = new JMenuItem("Avg Calories/Time");
         diagramForCalories.addActionListener(e -> {
             try {
-                diagamDecision = 3;
+                diagramDecision = 3;
                 repaintGUI();
             } catch (JAXBException ex) {
                 ex.printStackTrace();
@@ -341,8 +374,13 @@ public class SwingMain extends JFrame {
         triggerListSelectionListener();
     }
 
+    /**
+     * In relation to the decision variable created above the methode getNewDiagram is creating a new base diagram
+     * which is the base of the application, so the diagram is created before a filter is used
+     */
+
     
-    private JScrollPane getNewDiagramm() throws JAXBException, IOException, ParseException {
+    private JScrollPane getNewDiagram() throws JAXBException, IOException, ParseException {
         Graphics graphics = new Graphics();
         Container container = graphics.getContainer();
         JPanel jPanelGraphic = new JPanel();
@@ -354,7 +392,12 @@ public class SwingMain extends JFrame {
         return graphicScroll1;
     }
 
-    private JScrollPane getNewDiagrammForSpeed() throws JAXBException, IOException, ParseException {
+    /**
+     * In relation to the decision variable created above the methode getNewDiagramForSpeed is creating a new diagram
+     * which is used to have a look at the speed in relation to time, depending on the decision variable
+     */
+
+    private JScrollPane getNewDiagramForSpeed() throws JAXBException, IOException, ParseException {
         double speedT = 0;
         Graphics graphics = new Graphics(speedT);
         Container container = graphics.getContainer();
@@ -367,7 +410,12 @@ public class SwingMain extends JFrame {
         return graphicScroll1;
     }
 
-    private JScrollPane getNewDiagrammForHeartrate() throws JAXBException, IOException, ParseException {
+    /**
+     * In relation to the decision variable created above the methode getNewDiagramForHeartrate is creating a new diagram
+     * which is used to have a look at the hearthrate in relation to time, depending on the decision variable
+     */
+
+    private JScrollPane getNewDiagramForHeartrate() throws JAXBException, IOException, ParseException {
         int heartrateT = 0;
         Graphics graphics = new Graphics(heartrateT);
         Container container = graphics.getContainer();
@@ -380,7 +428,12 @@ public class SwingMain extends JFrame {
         return graphicScroll1;
     }
 
-    private JScrollPane getNewDiagrammForCalories() throws JAXBException, IOException, ParseException {
+    /**
+     * In relation to the decision variable created above the methode getNewDiagramForCalories is creating a new diagram
+     * which is used to have a look at the calories in relation to time, depending on the decision variable
+     */
+
+    private JScrollPane getNewDiagramForCalories() throws JAXBException, IOException, ParseException {
         double caloriesT = 0;
         int x = 0;
         Graphics graphics = new Graphics(caloriesT, x);
@@ -408,13 +461,13 @@ public class SwingMain extends JFrame {
         JScrollPane graphicScroll1;
 
         if(diagramDecision == 0){
-            graphicScroll1 = getNewDiagramm();
+            graphicScroll1 = getNewDiagram();
         }else if( diagramDecision == 1){
-            graphicScroll1 = getNewDiagrammForSpeed();
-        }else if(diagamDecision == 2){
-            graphicScroll1 = getNewDiagrammForHeartrate();
+            graphicScroll1 = getNewDiagramForSpeed();
+        }else if(diagramDecision == 2){
+            graphicScroll1 = getNewDiagramForHeartrate();
         }else {
-            graphicScroll1 = getNewDiagrammForCalories();
+            graphicScroll1 = getNewDiagramForCalories();
         }
 
 
@@ -463,13 +516,13 @@ public class SwingMain extends JFrame {
                 lapTablePane.setPreferredSize(new Dimension(500,150));
                 try {
                     if(diagramDecision == 0){
-                        eastPanel.add(getNewDiagramm(), BorderLayout.CENTER);
+                        eastPanel.add(getNewDiagram(), BorderLayout.CENTER);
                     }else if(diagramDecision == 1){
-                        eastPanel.add(getNewDiagrammForSpeed(), BorderLayout.CENTER);
-                    }else if(diagamDecision == 2){
-                        eastPanel.add(getNewDiagrammForHeartrate(), BorderLayout.CENTER);
+                        eastPanel.add(getNewDiagramForSpeed(), BorderLayout.CENTER);
+                    }else if(diagramDecision == 2){
+                        eastPanel.add(getNewDiagramForHeartrate(), BorderLayout.CENTER);
                     }else{
-                        eastPanel.add(getNewDiagrammForCalories(), BorderLayout.CENTER);
+                        eastPanel.add(getNewDiagramForCalories(), BorderLayout.CENTER);
                     }
                 } catch (JAXBException | IOException | ParseException ex) {
                     ex.printStackTrace();

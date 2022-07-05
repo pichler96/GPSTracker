@@ -2,7 +2,13 @@ package at.jku.ssw.app.diagram;
 
 import java.awt.*;
 
+/**
+ * @author DJ-Raven
+ */
+
+
 public class ModelLegend {
+
     public String getName() {
         return name;
     }

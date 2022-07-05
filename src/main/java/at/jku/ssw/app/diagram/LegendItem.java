@@ -1,4 +1,7 @@
 package at.jku.ssw.app.diagram;
+/**
+ * @author DJ-Raven
+ */
 
 public class LegendItem extends javax.swing.JPanel{
 

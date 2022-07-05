@@ -16,10 +16,22 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
+/**
+ * @author Gerald Waldburger, K12005573
+ */
 
 public class Graphics extends javax.swing.JFrame {
     Container container;
     private at.jku.ssw.app.diagram.Chart chart;
+
+    /**
+     *
+     * @throws JAXBException
+     * @throws IOException
+     * @throws ParseException
+     *
+     * Constructor for Graphics which, creates a graphic for distance and time
+     */
 
     public Graphics() throws JAXBException, IOException, ParseException {
         initComponents();
@@ -51,6 +63,17 @@ public class Graphics extends javax.swing.JFrame {
         }
         container.add(chart);
     }
+
+    /**
+     *
+     * @param avgCalories
+     * @param placeholder
+     * @throws JAXBException
+     * @throws IOException
+     * @throws ParseException
+     *
+     * Constructor for Graphics which, creates a graphic for calories and time
+     */
 
     public Graphics(double avgCalories, int placeholder) throws JAXBException, IOException, ParseException {
         initComponents();
@@ -86,6 +109,16 @@ public class Graphics extends javax.swing.JFrame {
         container.add(chart);
     }
 
+    /**
+     *
+     * @param avgSpeed
+     * @throws JAXBException
+     * @throws IOException
+     * @throws ParseException
+     *
+     * Constructor for Graphics which, creates a graphic for speed and time
+     */
+
     public Graphics(double avgSpeed) throws JAXBException, IOException, ParseException {
         initComponents();
         container = getContentPane();
@@ -120,6 +153,16 @@ public class Graphics extends javax.swing.JFrame {
         }
         container.add(chart);
     }
+
+    /**
+     *
+     * @param heartRate
+     * @throws JAXBException
+     * @throws IOException
+     * @throws ParseException
+     *
+     * Constructor for Graphics which, creates a graphic for average heartrate and time
+     */
 
     public Graphics(int heartRate) throws JAXBException, IOException, ParseException {
         initComponents();
@@ -165,19 +208,42 @@ public class Graphics extends javax.swing.JFrame {
         container.add(chart);
     }
 
+    /**
+     *
+     * @return a container, so its a getter for a container
+     */
+
     public Container getContainer() {
         return container;
     }
+
+    /**
+     *
+     * @param container
+     *
+     * its a setter for a container - so a container looks like the incoming one
+     */
 
     public void setContainer(Container container) {
         this.container = container;
     }
 
+    /**
+     *
+     * @return a chart, so its a getter for a chart
+     */
+
     public Chart getChart() {
         return chart;
     }
 
-    private void initComponents() {
+    /**
+     * creating a chart, and use it the create an above layout and the grouping.
+     * Within that, also the size is defined and the call to action for the applikation-diagram
+     */
+
+
+    public void initComponents() {
         chart = new Chart();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);

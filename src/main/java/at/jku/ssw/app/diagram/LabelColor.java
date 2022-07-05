@@ -4,6 +4,10 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.Graphics;
 
+/**
+ * @author DJ-Raven
+ */
+
 
 public class LabelColor extends JLabel {
 

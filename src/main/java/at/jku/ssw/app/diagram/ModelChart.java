@@ -1,5 +1,9 @@
 package at.jku.ssw.app.diagram;
 
+/**
+ * @author DJ-Raven
+ */
+
 public class ModelChart {
 
     public String getLabel() {

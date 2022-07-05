@@ -16,6 +16,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author DJ-Raven
+ */
+
 public class Chart extends javax.swing.JPanel {
 
     private List<ModelLegend> legends = new ArrayList<>();
@@ -102,7 +106,7 @@ public class Chart extends javax.swing.JPanel {
                         .addGroup(layout.createSequentialGroup()
                                 .addContainerGap()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(panelLegend, javax.swing.GroupLayout.DEFAULT_SIZE, 490, Short.MAX_VALUE) //Diagrammhöhe
+                                        .addComponent(panelLegend, javax.swing.GroupLayout.DEFAULT_SIZE, 490, Short.MAX_VALUE)
                                         .addComponent(blankPlotChart, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addContainerGap())
         );
@@ -110,7 +114,7 @@ public class Chart extends javax.swing.JPanel {
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
                                 .addContainerGap()
-                                .addComponent(blankPlotChart, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE) //Diagrammbreite
+                                .addComponent(blankPlotChart, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
                                 .addGap(0, 0, 0)
                                 .addComponent(panelLegend, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addContainerGap())

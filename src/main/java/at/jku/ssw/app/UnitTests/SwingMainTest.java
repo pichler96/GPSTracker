@@ -1,4 +1,4 @@
-package at.jku.ssw.app.unitTests;
+package at.jku.ssw.app.UnitTests;
 
 import at.jku.ssw.app.Main;
 import at.jku.ssw.app.SwingMain;
@@ -239,4 +239,9 @@ class SwingMainTest{
         assertEquals(lapTable2.getModel().getRowCount(), size);
         //Number of Rows from the current LapTable, which shows the laps of the 3rd track (SelectionInterval(2,2)
     }
+
+
+
+
+
 }

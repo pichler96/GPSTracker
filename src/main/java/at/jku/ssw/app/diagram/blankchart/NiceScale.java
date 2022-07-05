@@ -1,5 +1,9 @@
 package at.jku.ssw.app.diagram.blankchart;
 
+/**
+ * @author DJ-Raven
+ */
+
 public class NiceScale {
 
     private double min;
