@@ -13,17 +13,28 @@ import java.awt.*;
 import java.io.IOException;
 import java.util.logging.Logger;
 
+/**
+ * @author Gerald Waldburger, K12005573
+ */
+
+/**
+ * The class Chart test
+ */
 public class ChartTest {
 
     private Logger log = Logger.getLogger("Logger");
 
+    /**
+     * Test get label text
+     */
     @Test
-    public void getLabelText() {
+    public void testGetLabelText() {
+
         try {
             log.info("Starting execution of getLabelText");
-            String expectedValue = "";
+            String expectedValue = "test";
 
-            int index = 0;
+            int index = 5;
 
             Chart chart = new Chart();
 
@@ -38,8 +49,12 @@ public class ChartTest {
         }
     }
 
+    /**
+     * Test render series
+     */
     @Test
-    public void renderSeries() {
+    public void testRenderSeries() {
+
         try {
             log.info("Starting execution of renderSeries");
             Chart chart = null;
@@ -57,64 +72,79 @@ public class ChartTest {
         }
     }
 
+
+    /**
+     * Test add legend
+     */
     @Test
-    public void addLegend() {
+    public void testAddLegend() {
+
         try {
             log.info("Starting execution of addLegend");
             String name = "";
-            Color color = null;
-            ;
-            ;
+            Color color = Color.BLACK;
+
             Chart chart = new Chart();
             chart.addLegend(name, color);
             assertTrue(true);
 
         } catch (Exception exception) {
-            log.warning("Exception in execution ofaddLegend-" + exception);
+            log.warning("Exception in execution of add Legend-" + exception);
             exception.printStackTrace();
             assertFalse(false);
         }
     }
 
+    /**
+     * Test add data
+     */
     @Test
-    public void addData() {
+    public void testAddData() {
+
         try {
             log.info("Starting execution of addData");
-            ModelChart data = null;
-            ;
-            ;
+            ModelChart data = new ModelChart();
+
             Chart chart = new Chart();
             chart.addData(data);
             assertTrue(true);
 
         } catch (Exception exception) {
-            log.warning("Exception in execution ofaddData-" + exception);
+            log.warning("Exception in execution of add Data-" + exception);
             exception.printStackTrace();
             assertFalse(false);
         }
     }
 
+
+    /**
+     * Test resize
+     */
     @Test
-    public void resize() {
+    public void testResize() {
+
         try {
             log.info("Starting execution of resize");
             int width = 0;
             int height = 0;
-            ;
-            ;
+
             Chart chart = new Chart();
             chart.resize(width, height);
             assertTrue(true);
 
         } catch (Exception exception) {
-            log.warning("Exception in execution ofresize-" + exception);
+            log.warning("Exception in execution of resize-" + exception);
             exception.printStackTrace();
             assertFalse(false);
         }
     }
 
+    /**
+     * Test read in data
+     */
     @Test
-    public void readInData() {
+    public void testReadInData() {
+
         try {
             log.info("Starting execution of readInData");
             java.util.List<TrainingCenterDatabaseT> expectedValue = null;

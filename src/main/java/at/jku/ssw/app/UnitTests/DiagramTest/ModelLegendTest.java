@@ -8,12 +8,22 @@ import java.util.logging.Logger;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * @author Gerald Waldburger, K12005573
+ */
+/**
+ * The class Model legend test
+ */
 public class ModelLegendTest {
 
     private Logger log = Logger.getLogger("Logger");
 
+    /**
+     * Test get name
+     */
     @Test
-    public void getName() {
+    public void testGetName() {
+
         try {
             log.info("Starting execution of getName");
             String expectedValue = "";
@@ -25,34 +35,42 @@ public class ModelLegendTest {
             assertFalse(expectedValue.equals(actualValue));
 
         } catch (Exception exception) {
-            log.warning("Exception in execution of execute1GetAllLogFromFirstMovF-" + exception);
+            log.warning("Exception in execution of execute Get All Log From First Mov F-" + exception);
             exception.printStackTrace();
             assertFalse(false);
         }
     }
 
+    /**
+     * Test set name
+     */
     @Test
-    public void setName() {
+    public void testSetName() {
+
         try {
             log.info("Starting execution of setName");
-            String name = "";
+            String name = "Karl";
 
             ModelLegend modellegend = new ModelLegend();
             modellegend.setName(name);
-            assertTrue(true);
+            assertTrue(name.equals(modellegend.getName()));
 
         } catch (Exception exception) {
-            log.warning("Exception in execution ofsetName-" + exception);
+            log.warning("Exception in execution of set Name-" + exception);
             exception.printStackTrace();
             assertFalse(false);
         }
     }
 
+    /**
+     * Test get color
+     */
     @Test
-    public void getColor() {
+    public void testGetColor() {
+
         try {
             log.info("Starting execution of getColor");
-            Color expectedValue = null;
+            Color expectedValue = Color.BLACK;
 
             ModelLegend modellegend = new ModelLegend();
             Color actualValue = modellegend.getColor();
@@ -67,15 +85,19 @@ public class ModelLegendTest {
         }
     }
 
+    /**
+     * Test set color
+     */
     @Test
-    public void setColor() {
+    public void testSetColor() {
+
         try {
             log.info("Starting execution of setColor");
-            Color color = null;
+            Color color = Color.BLACK;
 
             ModelLegend modellegend = new ModelLegend();
             modellegend.setColor(color);
-            assertTrue(true);
+            assertTrue(color.equals(modellegend.getColor()));
 
         } catch (Exception exception) {
             log.warning("Exception in execution ofsetColor-" + exception);

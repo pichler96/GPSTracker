@@ -11,15 +11,26 @@ import org.junit.jupiter.api.Test;
 import java.awt.*;
 import java.util.logging.Logger;
 
+/**
+ * @author Gerald Waldburger, K12005573
+ */
+
+/**
+ * The class Graphics test
+ */
 public class GraphicsTest {
 
     private Logger log = Logger.getLogger("Logger");
 
+    /**
+     * Test get container
+     */
     @Test
-    public void getContainer() {
+    public void testGetContainer() {
+
         try {
             log.info("Starting execution of getContainer");
-            Container expectedValue = null;
+            Container expectedValue = new Container();
 
             int heartRatec = 0;
             at.jku.ssw.app.diagram.Graphics graphics = new at.jku.ssw.app.diagram.Graphics();
@@ -35,33 +46,39 @@ public class GraphicsTest {
         }
     }
 
+    /**
+     * Test set container
+     */
     @Test
-    public void setContainer() {
+    public void testSetContainer() {
+
         try {
             log.info("Starting execution of setContainer");
-            Container container = null;
-            ;
+            Container container = new Container();
             int heartRatec = 0;
-            ;
             at.jku.ssw.app.diagram.Graphics graphics = new at.jku.ssw.app.diagram.Graphics();
             graphics.setContainer(container);
             assertTrue(true);
 
         } catch (Exception exception) {
-            log.warning("Exception in execution ofsetContainer-" + exception);
+            log.warning("Exception in execution of set Container-" + exception);
             exception.printStackTrace();
             assertFalse(false);
         }
     }
 
+    /**
+     * Test get chart
+     */
     @Test
-    public void getChart() {
+    public void testGetChart() {
+
         try {
             log.info("Starting execution of getChart");
-            Chart expectedValue = null;
+            Chart expectedValue = new Chart();
 
             int heartRatec = 0;
-            ;
+
             at.jku.ssw.app.diagram.Graphics graphics = new at.jku.ssw.app.diagram.Graphics(heartRatec);
             Chart actualValue = graphics.getChart();
             log.info("Expected Value=" + expectedValue + " . Actual Value=" + actualValue);
@@ -75,8 +92,12 @@ public class GraphicsTest {
         }
     }
 
+    /**
+     * Test init components
+     */
     @Test
-    public void initComponents() {
+    public void testInitComponents() {
+
         try {
             log.info("Starting execution of initComponents");
             int heartRatec = 0;

@@ -9,15 +9,27 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.testng.Assert.assertEquals;
 
+/**
+ * @author Gerald Waldburger, K12005573
+ */
+/**
+ * The class Series size test
+ */
 public class SeriesSizeTest {
 
     private Logger log = Logger.getLogger("Logger");
 
+/**
+ *
+ * Test get X
+ *
+ */
     @Test
-    public void getX() {
+    public void testGetX() {
+
         try {
             log.info("Starting execution of getX");
-            double expectedValue = 0;
+            double expectedValue = 1.3;
 
             SeriesSize seriessize = new SeriesSize();
             double actualValue = seriessize.getX();
@@ -26,34 +38,46 @@ public class SeriesSizeTest {
             assertEquals(expectedValue, actualValue);
 
         } catch (Exception exception) {
-            log.warning("Exception in execution of execute1GetAllLogFromFirstMovF-" + exception);
+            log.warning("Exception in execution of execute 1 Get All Log From First Mov F-" + exception);
             exception.printStackTrace();
             assertFalse(false);
         }
     }
 
+/**
+ *
+ * Test set X
+ *
+ */
     @Test
-    public void setX() {
+    public void testSetX() {
+
         try {
             log.info("Starting execution of setX");
-            double x = 0;
+            double x = 1.3;
 
             SeriesSize seriessize = new SeriesSize();
             seriessize.setX(x);
-            assertTrue(true);
+            assertTrue(x == seriessize.getX());
 
         } catch (Exception exception) {
-            log.warning("Exception in execution ofsetX-" + exception);
+            log.warning("Exception in execution of setX-" + exception);
             exception.printStackTrace();
             assertFalse(false);
         }
     }
 
+/**
+ *
+ * Test get Y
+ *
+ */
     @Test
-    public void getY() {
+    public void testGetY() {
+
         try {
             log.info("Starting execution of getY");
-            double expectedValue = 0;
+            double expectedValue = 5.2;
 
             SeriesSize seriessize = new SeriesSize();
             double actualValue = seriessize.getY();
@@ -62,34 +86,46 @@ public class SeriesSizeTest {
             assertEquals(expectedValue, actualValue);
 
         } catch (Exception exception) {
-            log.warning("Exception in execution of execute1GetAllLogFromFirstMovF-" + exception);
+            log.warning("Exception in execution of execute 1 Get All Log From First Mov F-" + exception);
             exception.printStackTrace();
             assertFalse(false);
         }
     }
 
+/**
+ *
+ * Test set Y
+ *
+ */
     @Test
-    public void setY() {
+    public void testSetY() {
+
         try {
             log.info("Starting execution of setY");
-            double y = 0;
+            double y = 5.2;
 
             SeriesSize seriessize = new SeriesSize();
             seriessize.setY(y);
-            assertTrue(true);
+            assertTrue(y == seriessize.getY());
 
         } catch (Exception exception) {
-            log.warning("Exception in execution ofsetY-" + exception);
+            log.warning("Exception in execution of setY-" + exception);
             exception.printStackTrace();
             assertFalse(false);
         }
     }
 
+/**
+ *
+ * Test get width
+ *
+ */
     @Test
-    public void getWidth() {
+    public void testGetWidth() {
+
         try {
             log.info("Starting execution of getWidth");
-            double expectedValue = 0;
+            double expectedValue = 5.1;
 
             SeriesSize seriessize = new SeriesSize();
             double actualValue = seriessize.getWidth();
@@ -98,34 +134,46 @@ public class SeriesSizeTest {
             assertEquals(expectedValue, actualValue);
 
         } catch (Exception exception) {
-            log.warning("Exception in execution of execute1GetAllLogFromFirstMovF-" + exception);
+            log.warning("Exception in execution of execute 1 Get All Log From First Mov F-" + exception);
             exception.printStackTrace();
             assertFalse(false);
         }
     }
 
+/**
+ *
+ * Test set width
+ *
+ */
     @Test
-    public void setWidth() {
+    public void testSetWidth() {
+
         try {
             log.info("Starting execution of setWidth");
-            double width = 0;
+            double width = 5.1;
 
             SeriesSize seriessize = new SeriesSize();
             seriessize.setWidth(width);
-            assertTrue(true);
+            assertTrue(width == seriessize.getWidth());
 
         } catch (Exception exception) {
-            log.warning("Exception in execution ofsetWidth-" + exception);
+            log.warning("Exception in execution of setWidth-" + exception);
             exception.printStackTrace();
             assertFalse(false);
         }
     }
 
+/**
+ *
+ * Test get height
+ *
+ */
     @Test
-    public void getHeight() {
+    public void testGetHeight() {
+
         try {
             log.info("Starting execution of getHeight");
-            double expectedValue = 0;
+            double expectedValue = 12;
 
             SeriesSize seriessize = new SeriesSize();
             double actualValue = seriessize.getHeight();
@@ -134,24 +182,30 @@ public class SeriesSizeTest {
             assertEquals(expectedValue, actualValue);
 
         } catch (Exception exception) {
-            log.warning("Exception in execution of execute1GetAllLogFromFirstMovF-" + exception);
+            log.warning("Exception in execution of execute 1 Get All Log From First Mov F-" + exception);
             exception.printStackTrace();
             assertFalse(false);
         }
     }
 
+/**
+ *
+ * Test set height
+ *
+ */
     @Test
-    public void setHeight() {
+    public void testSetHeight() {
+
         try {
             log.info("Starting execution of setHeight");
-            double height = 0;
+            double height = 12;
 
             SeriesSize seriessize = new SeriesSize();
             seriessize.setHeight(height);
-            assertTrue(true);
+            assertTrue(height == seriessize.getHeight());
 
         } catch (Exception exception) {
-            log.warning("Exception in execution ofsetHeight-" + exception);
+            log.warning("Exception in execution of setHeight-" + exception);
             exception.printStackTrace();
             assertFalse(false);
         }

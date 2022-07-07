@@ -1,55 +1,123 @@
 package at.jku.ssw.app.diagram.blankchart;
 
 /**
- * @author DJ-Raven
+ * @author Gerald Waldburger, K12005573
  */
 
 public class SeriesSize {
-
-    public double getX() {
-        return x;
-    }
-
-    public void setX(double x) {
-        this.x = x;
-    }
-
-    public double getY() {
-        return y;
-    }
-
-    public void setY(double y) {
-        this.y = y;
-    }
-
-    public double getWidth() {
-        return width;
-    }
-
-    public void setWidth(double width) {
-        this.width = width;
-    }
-
-    public double getHeight() {
-        return height;
-    }
-
-    public void setHeight(double height) {
-        this.height = height;
-    }
-
-    public SeriesSize(double x, double y, double width, double height) {
-        this.x = x;
-        this.y = y;
-        this.width = width;
-        this.height = height;
-    }
-
-    public SeriesSize() {
-    }
-
     private double x;
     private double y;
     private double width;
     private double height;
+
+    /**
+     * It is a constructor.
+     *
+     * @param x      the x
+     * @param y      the y
+     * @param width  the width
+     * @param height the height
+     */
+    public SeriesSize(double x, double y, double width, double height) {
+
+        this.x = x;
+        this.y = y;
+        this.width = width;
+        this.height = height;
+    }
+
+
+    /**
+     * It is a constructor.
+     */
+    public SeriesSize() {
+
+    }
+
+    /**
+     * Gets the X
+     *
+     * @return the  X
+     */
+    public double getX() {
+
+        return x;
+    }
+
+
+    /**
+     * Sets the X
+     *
+     * @param x the x
+     */
+    public void setX(double x) {
+
+        this.x = x;
+    }
+
+
+    /**
+     * Gets the Y
+     *
+     * @return the  Y
+     */
+    public double getY() {
+
+        return y;
+    }
+
+
+    /**
+     * Sets the Y
+     *
+     * @param y the y
+     */
+    public void setY(double y) {
+
+        this.y = y;
+    }
+
+
+    /**
+     * Gets the width
+     *
+     * @return the width
+     */
+    public double getWidth() {
+
+        return width;
+    }
+
+
+    /**
+     * Sets the width
+     *
+     * @param width the width
+     */
+    public void setWidth(double width) {
+
+        this.width = width;
+    }
+
+
+    /**
+     * Gets the height
+     *
+     * @return the height
+     */
+    public double getHeight() {
+
+        return height;
+    }
+
+
+    /**
+     * Sets the height
+     *
+     * @param height the height
+     */
+    public void setHeight(double height) {
+
+        this.height = height;
+    }
 }

@@ -7,12 +7,22 @@ import java.util.logging.Logger;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * @author Gerald Waldburger, K12005573
+ */
+/**
+ * The class Model chart test
+ */
 public class ModelChartTest {
 
     private Logger log = Logger.getLogger("Logger");
 
+    /**
+     * Test get label
+     */
     @Test
-    public void getLabel() {
+    public void testGetLabel() {
+
         try {
             log.info("Starting execution of getLabel");
             String expectedValue = "";
@@ -30,8 +40,12 @@ public class ModelChartTest {
         }
     }
 
+    /**
+     * Test set label
+     */
     @Test
-    public void setLabel() {
+    public void testSetLabel() {
+
         try {
             log.info("Starting execution of setLabel");
             String label = "";
@@ -47,11 +61,15 @@ public class ModelChartTest {
         }
     }
 
+    /**
+     * Test get values
+     */
     @Test
-    public void getValues() {
+    public void testGetValues() {
+
         try {
             log.info("Starting execution of getValues");
-            double[] expectedValue = null;
+            double[] expectedValue = new double[0];
 
             ModelChart modelchart = new ModelChart();
             double[] actualValue = modelchart.getValues();
@@ -66,11 +84,16 @@ public class ModelChartTest {
         }
     }
 
+
+    /**
+     * Test set values
+     */
     @Test
-    public void setValues() {
+    public void testSetValues() {
+
         try {
             log.info("Starting execution of setValues");
-            double[] values = null;
+            double[] values = new double[0];
 
             ModelChart modelchart = new ModelChart();
             modelchart.setValues(values);
@@ -83,8 +106,12 @@ public class ModelChartTest {
         }
     }
 
+    /**
+     * Test get max values
+     */
     @Test
-    public void getMaxValues() {
+    public void testGetMaxValues() {
+
         try {
             log.info("Starting execution of getMaxValues");
             double expectedValue = 0;

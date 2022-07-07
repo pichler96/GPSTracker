@@ -7,12 +7,22 @@ import java.util.logging.Logger;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * @author Gerald Waldburger, K12005573
+ */
+/**
+ * The class Nice scale test
+ */
 public class NiceScaleTest {
 
     private Logger log = Logger.getLogger(String.valueOf(this.getClass()));
 
+    /**
+     * Test set min
+     */
     @Test
-    public void setMin() {
+    public void testSetMin() {
+
         try {
             log.info("Starting execution of setMin");
             double min = 0;
@@ -28,8 +38,12 @@ public class NiceScaleTest {
         }
     }
 
+    /**
+     * Test get max
+     */
     @Test
-    public void getMax() {
+    public void testGetMax() {
+
         try {
             log.info("Starting execution of getMax");
             double expectedValue = 0;
@@ -41,20 +55,22 @@ public class NiceScaleTest {
             assertEquals(expectedValue, actualValue);
 
         } catch (Exception exception) {
-            log.warning("Exception in execution of execute1GetAllLogFromFirstMovF-" + exception);
+            log.warning("Exception in execution of execute 1 Get All Log From First Mov F-" + exception);
             exception.printStackTrace();
             assertFalse(false);
         }
     }
 
+    /**
+     * Test set max
+     */
     @Test
-    public void setMax() {
+    public void testSetMax() {
+
         try {
             log.info("Starting execution of setMax");
             double max = 0;
-            ;
             final double c = Double.parseDouble(null);
-            ;
             NiceScale nicescale = new NiceScale(c, c);
             nicescale.setMax(max);
             assertTrue(true);
@@ -66,8 +82,12 @@ public class NiceScaleTest {
         }
     }
 
+    /**
+     * Test set min max
+     */
     @Test
-    public void setMinMax() {
+    public void testSetMinMax() {
+
         try {
             log.info("Starting execution of setMinMax");
             final double d = Double.parseDouble(String.valueOf(3));
@@ -84,14 +104,16 @@ public class NiceScaleTest {
         }
     }
 
+    /**
+     * Test set max ticks
+     */
     @Test
-    public void setMaxTicks() {
+    public void testSetMaxTicks() {
+
         try {
             log.info("Starting execution of setMaxTicks");
             final int d = Integer.parseInt(String.valueOf(2));
-            ;
             final double c = 4;
-            ;
             NiceScale nicescale = new NiceScale(d, c);
             nicescale.setMaxTicks(d);
             assertTrue(true);
@@ -103,8 +125,12 @@ public class NiceScaleTest {
         }
     }
 
+    /**
+     * Test get tick spacing
+     */
     @Test
-    public void getTickSpacing() {
+    public void testGetTickSpacing() {
+
         try {
             log.info("Starting execution of getTickSpacing");
             Object expectedValue = Double.parseDouble(String.valueOf(0));
@@ -123,8 +149,12 @@ public class NiceScaleTest {
         }
     }
 
+    /**
+     * Test get nice min
+     */
     @Test
-    public void getNiceMin() {
+    public void testGetNiceMin() {
+
         try {
             log.info("Starting execution of getNiceMin");
             Object expectedValue = Double.parseDouble(String.valueOf(2));
@@ -143,13 +173,17 @@ public class NiceScaleTest {
         }
     }
 
+    /**
+     * Test get nice max
+     */
     @Test
-    public void getNiceMax() {
+    public void testGetNiceMax() {
+
         try {
             log.info("Starting execution of getNiceMax");
             double expectedValue = 0;
             final double c = Double.parseDouble(null);
-            ;
+
             NiceScale nicescale = new NiceScale(c, expectedValue);
             double actualValue = nicescale.getNiceMax();
             log.info("Expected Value=" + expectedValue + " . Actual Value=" + actualValue);
@@ -163,8 +197,12 @@ public class NiceScaleTest {
         }
     }
 
+    /**
+     * Test get max ticks
+     */
     @Test
-    public void getMaxTicks() {
+    public void testGetMaxTicks() {
+
         try {
             log.info("Starting execution of getMaxTicks");
             int expectedValue = 0;
@@ -177,14 +215,18 @@ public class NiceScaleTest {
             assertEquals(expectedValue, actualValue);
 
         } catch (Exception exception) {
-            log.warning("Exception in execution of execute1GetAllLogFromFirstMovF-" + exception);
+            log.warning("Exception in execution of execute 1 Get All Log From First Mov F-" + exception);
             exception.printStackTrace();
             assertFalse(false);
         }
     }
 
+    /**
+     * Test get min
+     */
     @Test
-    public void getMin() {
+    public void testGetMin() {
+
         try {
             log.info("Starting execution of getMin");
             double expectedValue = 0;
@@ -197,7 +239,7 @@ public class NiceScaleTest {
             assertEquals(expectedValue, actualValue);
 
         } catch (Exception exception) {
-            log.warning("Exception in execution of execute1GetAllLogFromFirstMovF-" + exception);
+            log.warning("Exception in execution of execute 1 Get All Log From First Mov F-" + exception);
             exception.printStackTrace();
             assertFalse(false);
         }

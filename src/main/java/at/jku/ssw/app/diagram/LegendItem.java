@@ -1,18 +1,33 @@
 package at.jku.ssw.app.diagram;
+
 /**
- * @author DJ-Raven
+ * @author Gerald Waldburger, K12005573
  */
 
-public class LegendItem extends javax.swing.JPanel{
+public class LegendItem extends javax.swing.JPanel {
+    private LabelColor lbColor;
+    private javax.swing.JLabel lbName;
 
+    /**
+     * Legend item
+     *
+     * @param data the data
+     * @return public
+     */
     public LegendItem(ModelLegend data) {
+
         initComponents();
         setOpaque(false);
         lbColor.setBackground(data.getColor());
         lbName.setText(data.getName());
     }
 
+
+    /**
+     * Init components and defines the legend-item on the group layout of the chart
+     */
     private void initComponents() {
+
 
         lbColor = new LabelColor();
         lbName = new javax.swing.JLabel();
@@ -46,6 +61,4 @@ public class LegendItem extends javax.swing.JPanel{
         );
     }
 
-    private LabelColor lbColor;
-    private javax.swing.JLabel lbName;
 }

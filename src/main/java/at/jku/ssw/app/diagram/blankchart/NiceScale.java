@@ -1,7 +1,7 @@
 package at.jku.ssw.app.diagram.blankchart;
 
 /**
- * @author DJ-Raven
+ * @author Gerald Waldburger, K12005573
  */
 
 public class NiceScale {
@@ -14,12 +14,20 @@ public class NiceScale {
     private double niceMin;
     private double niceMax;
 
+
+    /**
+     * It is a constructor.
+     */
     public NiceScale(final double MIN, final double MAX) {
         min = MIN;
         max = MAX;
         calculate();
     }
 
+
+    /**
+     * Calculate a range, tickSpacing, niceMin and niceMax
+     */
     private void calculate() {
         range = niceNum(max - min, false);
         tickSpacing = niceNum(range / (maxTicks - 1), true);
@@ -27,10 +35,17 @@ public class NiceScale {
         niceMax = Math.ceil(max / tickSpacing) * tickSpacing;
     }
 
+
+    /**
+     * Round based on the range of fraction
+     *
+     * @return double
+     */
     private double niceNum(final double RANGE, final boolean ROUND) {
-        double exponent;     // exponent of RANGE
-        double fraction;     // fractional part of RANGE
-        double niceFraction; // nice, rounded fraction
+
+        double exponent;
+        double fraction;
+        double niceFraction;
 
         exponent = Math.floor(Math.log10(RANGE));
         fraction = RANGE / Math.pow(10, exponent);
@@ -59,47 +74,113 @@ public class NiceScale {
         return niceFraction * Math.pow(10, exponent);
     }
 
+
+    /**
+     * Sets the min max
+     */
     public void setMinMax(final double MIN, final double MAX) {
+
         min = MIN;
         max = MAX;
         calculate();
     }
 
+
+    /**
+     * Sets the max ticks
+     */
     public void setMaxTicks(final int MAX_TICKS) {
+
         maxTicks = MAX_TICKS;
         calculate();
     }
 
+
+    /**
+     * Gets the tick spacing
+     *
+     * @return the tick spacing
+     */
     public double getTickSpacing() {
+
         return tickSpacing;
     }
 
+
+    /**
+     * Gets the nice min
+     *
+     * @return the nice min
+     */
     public double getNiceMin() {
+
         return niceMin;
     }
 
+
+    /**
+     * Gets the nice max
+     *
+     * @return the nice max
+     */
     public double getNiceMax() {
+
         return niceMax;
     }
 
+
+    /**
+     * Gets the max ticks
+     *
+     * @return the max ticks
+     */
     public int getMaxTicks() {
+
         return maxTicks;
     }
 
+
+    /**
+     * Gets the min
+     *
+     * @return the min
+     */
     public double getMin() {
+
         return min;
     }
 
+
+    /**
+     * Sets the min
+     *
+     * @param min the min
+     */
     public void setMin(double min) {
+
         this.min = min;
         calculate();
     }
 
+
+    /**
+     * Gets the max
+     *
+     * @return the max
+     */
     public double getMax() {
+
         return max;
     }
 
+
+    /**
+     * Sets the max
+     *
+     * @param max the max
+     */
     public void setMax(double max) {
+
         this.max = max;
         calculate();
     }

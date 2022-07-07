@@ -9,12 +9,24 @@ import java.util.logging.Logger;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * @author Gerald Waldburger, K12005573
+ */
+
+/**
+ * The class Blank plot chart test
+ */
 public class BlankPlotChartTest {
 
     private Logger log = Logger.getLogger(String.valueOf(this.getClass()));
 
+
+    /**
+     * Tests the get blank plot chat render
+     */
     @Test
-    public void getBlankPlotChatRender() {
+    public void testGetBlankPlotChatRender() {
+
         try {
             log.info("Starting execution of getBlankPlotChatRender");
             BlankPlotChatRender expectedValue = null;
@@ -31,8 +43,13 @@ public class BlankPlotChartTest {
         }
     }
 
+
+    /**
+     * Tests the set blank plot chat render
+     */
     @Test
-    public void setBlankPlotChatRender() {
+    public void testSetBlankPlotChatRender() {
+
         try {
             log.info("Starting execution of setBlankPlotChatRender");
             BlankPlotChatRender blankPlotChatRender = null;
@@ -47,8 +64,13 @@ public class BlankPlotChartTest {
         }
     }
 
+
+    /**
+     * tests the Init values
+     */
     @Test
-    public void initValues() {
+    public void testInitValues() {
+
         try {
             log.info("Starting execution of initValues");
             double minValues = 0;
@@ -64,8 +86,13 @@ public class BlankPlotChartTest {
         }
     }
 
+
+    /**
+     * Tests the Get of the rectangle
+     */
     @Test
-    public void getRectangle() {
+    public void testGetRectangle() {
+
         try {
             log.info("Starting execution of getRectangle");
             SeriesSize expectedValue = null;
@@ -90,8 +117,13 @@ public class BlankPlotChartTest {
         }
     }
 
+
+    /**
+     * Tests the Gets of the max values
+     */
     @Test
-    public void getMaxValues() {
+    public void testGetMaxValues() {
+
         try {
             log.info("Starting execution of getMaxValues");
             Object expectedValue = Double.valueOf(String.valueOf(0));
@@ -109,8 +141,13 @@ public class BlankPlotChartTest {
         }
     }
 
+
+    /**
+     * Tests the Get of the series values
+     */
     @Test
-    public void getSeriesValuesOf() {
+    public void testGetSeriesValuesOf() {
+
         try {
             log.info("Starting execution of getSeriesValuesOf");
             double expectedValue = 0;
@@ -130,8 +167,13 @@ public class BlankPlotChartTest {
         }
     }
 
+
+    /**
+     * Tests the Set of the max values
+     */
     @Test
-    public void setMaxValues() {
+    public void testSetMaxValues() {
+
         try {
             log.info("Starting execution of setMaxValues");
             double maxValues = 0;
@@ -146,8 +188,13 @@ public class BlankPlotChartTest {
         }
     }
 
+
+    /**
+     * Tests the Get of the min values
+     */
     @Test
-    public void getMinValues() {
+    public void testGetMinValues() {
+
         try {
             log.info("Starting execution of getMinValues");
             double expectedValue = 0;
@@ -165,11 +212,16 @@ public class BlankPlotChartTest {
         }
     }
 
+
+    /**
+     * Tests the Get of the label count
+     */
     @Test
-    public void getLabelCount() {
+    public void testGetLabelCount() {
+
         try {
             log.info("Starting execution of getLabelCount");
-            int expectedValue = 0;
+            int expectedValue = 12;
             BlankPlotChart blankplotchart = new BlankPlotChart();
             int actualValue = blankplotchart.getLabelCount();
             log.info("Expected Value=" + expectedValue + " . Actual Value=" + actualValue);
@@ -183,11 +235,16 @@ public class BlankPlotChartTest {
         }
     }
 
+
+    /**
+     * Tests the Set of the label count
+     */
     @Test
-    public void setLabelCount() {
+    public void testSetLabelCount() {
+
         try {
             log.info("Starting execution of setLabelCount");
-            int labelCount = 0;
+            int labelCount = 12;
             BlankPlotChart blankplotchart = new BlankPlotChart();
             blankplotchart.setLabelCount(labelCount);
             assertTrue(true);
@@ -199,11 +256,16 @@ public class BlankPlotChartTest {
         }
     }
 
+
+    /**
+     * Tests the Get of the values format
+     */
     @Test
-    public void getValuesFormat() {
+    public void testGetValuesFormat() {
+
         try {
             log.info("Starting execution of getValuesFormat");
-            String expectedValue = "";
+            String expectedValue = "test";
 
             BlankPlotChart blankplotchart = new BlankPlotChart();
             String actualValue = blankplotchart.getValuesFormat();
@@ -218,8 +280,13 @@ public class BlankPlotChartTest {
         }
     }
 
+
+    /**
+     * Tests the Set of the values format
+     */
     @Test
-    public void setValuesFormat() {
+    public void testSetValuesFormat() {
+
         try {
             log.info("Starting execution of setValuesFormat");
             String valuesFormat = "";
