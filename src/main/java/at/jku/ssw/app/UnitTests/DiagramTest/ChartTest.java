@@ -4,13 +4,11 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import at.jku.ssw.app.diagram.Chart;
 import at.jku.ssw.app.diagram.ModelChart;
-import at.jku.ssw.app.diagram.blankchart.BlankPlotChart;
 import at.jku.ssw.app.diagram.blankchart.SeriesSize;
-import at.jku.ssw.tcxparser.schema.TrainingCenterDatabaseT;
+import at.jku.ssw.model.schema.TrainingCenterDatabaseT;
 import org.junit.jupiter.api.Test;
 
 import java.awt.*;
-import java.io.IOException;
 import java.util.logging.Logger;
 
 /**
@@ -19,7 +17,7 @@ import java.util.logging.Logger;
  */
 public class ChartTest {
 
-    private Logger log = Logger.getLogger("Logger");
+    private final Logger log = Logger.getLogger("Logger");
 
     /**
      * Test get label text.
@@ -147,7 +145,7 @@ public class ChartTest {
             java.util.List<TrainingCenterDatabaseT> expectedValue = null;
 
             Chart chart = new Chart();
-            java.util.List<TrainingCenterDatabaseT> actualValue = chart.readInData();
+            java.util.List<TrainingCenterDatabaseT> actualValue = Chart.readInData();
             log.info("Expected Value=" + expectedValue + " . Actual Value=" + actualValue);
             System.out.println("Expected Value=" + expectedValue + " . Actual Value=" + actualValue);
             assertFalse(expectedValue.equals(actualValue));

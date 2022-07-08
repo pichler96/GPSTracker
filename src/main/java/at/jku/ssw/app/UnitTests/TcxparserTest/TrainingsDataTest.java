@@ -1,8 +1,8 @@
 package at.jku.ssw.app.UnitTests.TcxparserTest;
 
-import at.jku.ssw.tcxparser.TrainingsData;
-import at.jku.ssw.tcxparser.schema.ActivityLapT;
-import at.jku.ssw.tcxparser.schema.ActivityT;
+import at.jku.ssw.model.TrainingsData;
+import at.jku.ssw.model.schema.ActivityLapT;
+import at.jku.ssw.model.schema.ActivityT;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

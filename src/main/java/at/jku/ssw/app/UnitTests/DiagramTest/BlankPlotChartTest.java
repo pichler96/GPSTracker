@@ -16,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class BlankPlotChartTest {
 
-    private Logger log = Logger.getLogger(String.valueOf(this.getClass()));
+    private final Logger log = Logger.getLogger(String.valueOf(this.getClass()));
 
 
     /**

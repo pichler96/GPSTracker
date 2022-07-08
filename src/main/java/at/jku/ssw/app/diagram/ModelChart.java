@@ -13,7 +13,7 @@ public class ModelChart {
     /**
      * array of all values which are added to the model
      */
-    private double values[];
+    private double[] values;
 
     /**
      * It is a constructor.

@@ -3,11 +3,10 @@ package at.jku.ssw.app.diagram;
 import at.jku.ssw.app.diagram.blankchart.BlankPlotChart;
 import at.jku.ssw.app.diagram.blankchart.BlankPlotChatRender;
 import at.jku.ssw.app.diagram.blankchart.SeriesSize;
-import at.jku.ssw.tcxparser.TcxParser;
-import at.jku.ssw.tcxparser.schema.TrainingCenterDatabaseT;
+import at.jku.ssw.model.TcxParser;
+import at.jku.ssw.model.schema.TrainingCenterDatabaseT;
 import org.apache.commons.io.FilenameUtils;
 
-import javax.swing.*;
 import javax.xml.bind.JAXBException;
 import java.awt.*;
 import java.io.File;
@@ -33,11 +32,11 @@ public class Chart extends javax.swing.JPanel {
     /**
      * list of modellegend to add and remove or work with the legend
      */
-    private List<ModelLegend> legends = new ArrayList<>();
+    private final List<ModelLegend> legends = new ArrayList<>();
     /**
      * list of modelcharts to make a diagram with dynamic chartinstances
      */
-    private List<ModelChart> model = new ArrayList<>();
+    private final List<ModelChart> model = new ArrayList<>();
     /**
      * Is used in the methode renderSeries for the Modellegend and the rectangle building
      */
