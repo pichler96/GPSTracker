@@ -392,7 +392,7 @@ public class SwingMain extends JFrame {
      * @throws IOException
      * @throws ParseException
      */
-    private JScrollPane getNewDiagram() throws JAXBException, IOException, ParseException {
+    private JScrollPane getNewDiagramForDistance() throws JAXBException, IOException, ParseException {
         Graphics graphics = new Graphics();
         Container container = graphics.getContainer();
         JPanel jPanelGraphic = new JPanel();
@@ -492,7 +492,7 @@ public class SwingMain extends JFrame {
         JScrollPane graphicScroll1;
 
         if (diagramDecision == 0) {
-            graphicScroll1 = getNewDiagram();
+            graphicScroll1 = getNewDiagramForDistance();
         } else if (diagramDecision == 1) {
             graphicScroll1 = getNewDiagramForSpeed();
         } else if (diagramDecision == 2) {
@@ -547,7 +547,7 @@ public class SwingMain extends JFrame {
                 lapTablePane.setPreferredSize(new Dimension(500, 150));
                 try {
                     if (diagramDecision == 0) {
-                        eastPanel.add(getNewDiagram(), BorderLayout.CENTER);
+                        eastPanel.add(getNewDiagramForDistance(), BorderLayout.CENTER);
                     } else if (diagramDecision == 1) {
                         eastPanel.add(getNewDiagramForSpeed(), BorderLayout.CENTER);
                     } else if (diagramDecision == 2) {
