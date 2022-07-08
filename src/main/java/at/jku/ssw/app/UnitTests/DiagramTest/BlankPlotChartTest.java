@@ -16,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class BlankPlotChartTest {
 
-    private Logger log = Logger.getLogger(String.valueOf(this.getClass()));
+    private final Logger log = Logger.getLogger(String.valueOf(this.getClass()));
 
 
     /**
@@ -95,18 +95,18 @@ public class BlankPlotChartTest {
             log.info("Starting execution of getRectangle");
             SeriesSize expectedValue = null;
 
-            int index = Integer.valueOf(String.valueOf(0));
-            double height = Double.valueOf(String.valueOf(0));
-            double space = Double.valueOf(String.valueOf(0));
-            double startX = Double.valueOf(String.valueOf(0));
-            double startY = Double.valueOf(String.valueOf(0));
+            int index = Integer.parseInt(String.valueOf(0));
+            double height = Double.parseDouble(String.valueOf(0));
+            double space = Double.parseDouble(String.valueOf(0));
+            double startX = Double.parseDouble(String.valueOf(0));
+            double startY = Double.parseDouble(String.valueOf(0));
 
 
             BlankPlotChart blankplotchart = new BlankPlotChart();
             SeriesSize actualValue = blankplotchart.getRectangle(index, height, space, startX, startY);
             log.info("Expected Value=" + expectedValue + " . Actual Value=" + actualValue);
             System.out.println("Expected Value=" + expectedValue + " . Actual Value=" + actualValue);
-            assertFalse(expectedValue.equals(actualValue));
+            assertNotEquals(expectedValue, actualValue);
 
         } catch (Exception exception) {
             log.warning("Exception in execution of execute1GetAllLogFromFirstMovF-" + exception);
@@ -130,7 +130,7 @@ public class BlankPlotChartTest {
             double actualValue = blankplotchart.getMaxValues();
             log.info("Expected Value=" + expectedValue + " . Actual Value=" + actualValue);
             System.out.println("Expected Value=" + expectedValue + " . Actual Value=" + actualValue);
-            assertFalse(expectedValue.equals(actualValue));
+            assertNotEquals((Double) expectedValue, actualValue, 0.0);
 
         } catch (Exception exception) {
             log.warning("Exception in execution of execute1GetAllLogFromFirstMovF-" + exception);
@@ -269,7 +269,7 @@ public class BlankPlotChartTest {
             String actualValue = blankplotchart.getValuesFormat();
             log.info("Expected Value=" + expectedValue + " . Actual Value=" + actualValue);
             System.out.println("Expected Value=" + expectedValue + " . Actual Value=" + actualValue);
-            assertFalse(expectedValue.equals(actualValue));
+            assertNotEquals(expectedValue, actualValue);
 
         } catch (Exception exception) {
             log.warning("Exception in execution of execute1GetAllLogFromFirstMovF-" + exception);

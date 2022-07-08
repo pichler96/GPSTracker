@@ -7,7 +7,6 @@ import at.jku.ssw.tcxparser.TcxParser;
 import at.jku.ssw.tcxparser.schema.TrainingCenterDatabaseT;
 import org.apache.commons.io.FilenameUtils;
 
-import javax.swing.*;
 import javax.xml.bind.JAXBException;
 import java.awt.*;
 import java.io.File;
@@ -15,6 +14,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Chart is a class, which provides a chart abstraction, and defines the base of a diagram
@@ -33,11 +33,11 @@ public class Chart extends javax.swing.JPanel {
     /**
      * list of modellegend to add and remove or work with the legend
      */
-    private List<ModelLegend> legends = new ArrayList<>();
+    private final List<ModelLegend> legends = new ArrayList<>();
     /**
      * list of modelcharts to make a diagram with dynamic chartinstances
      */
-    private List<ModelChart> model = new ArrayList<>();
+    private final List<ModelChart> model = new ArrayList<>();
     /**
      * Is used in the methode renderSeries for the Modellegend and the rectangle building
      */
@@ -141,7 +141,7 @@ public class Chart extends javax.swing.JPanel {
 
         File directoryPath = new File("data");
 
-        for (File training : directoryPath.listFiles()) {
+        for (File training : Objects.requireNonNull(directoryPath.listFiles())) {
             if (FilenameUtils.getExtension(training.getName()).equals("tcx")) {
                 trainings.add(parser.parseTCX(new FileInputStream(training.getPath())));
             }

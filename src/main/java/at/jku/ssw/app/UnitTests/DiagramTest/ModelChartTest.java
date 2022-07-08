@@ -3,6 +3,7 @@ package at.jku.ssw.app.UnitTests.DiagramTest;
 import at.jku.ssw.app.diagram.ModelChart;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
 import java.util.logging.Logger;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -13,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 public class ModelChartTest {
 
-    private Logger log = Logger.getLogger("Logger");
+    private final Logger log = Logger.getLogger("Logger");
 
     /**
      * Test get label.
@@ -29,7 +30,7 @@ public class ModelChartTest {
             String actualValue = modelchart.getLabel();
             log.info("Expected Value=" + expectedValue + " . Actual Value=" + actualValue);
             System.out.println("Expected Value=" + expectedValue + " . Actual Value=" + actualValue);
-            assertFalse(expectedValue.equals(actualValue));
+            assertNotEquals(expectedValue, actualValue);
 
         } catch (Exception exception) {
             log.warning("Exception in execution of execute1GetAllLogFromFirstMovF-" + exception);
@@ -71,8 +72,8 @@ public class ModelChartTest {
 
             ModelChart modelchart = new ModelChart();
             double[] actualValue = modelchart.getValues();
-            log.info("Expected Value=" + expectedValue + " . Actual Value=" + actualValue);
-            System.out.println("Expected Value=" + expectedValue + " . Actual Value=" + actualValue);
+            log.info("Expected Value=" + Arrays.toString(expectedValue) + " . Actual Value=" + Arrays.toString(actualValue));
+            System.out.println("Expected Value=" + Arrays.toString(expectedValue) + " . Actual Value=" + Arrays.toString(actualValue));
             assertEquals(expectedValue, actualValue);
 
         } catch (Exception exception) {

@@ -1,12 +1,12 @@
 package at.jku.ssw.app.UnitTests.DiagramTest;
 
 import at.jku.ssw.app.diagram.blankchart.SeriesSize;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.logging.Logger;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.testng.Assert.assertEquals;
 
 /**
@@ -15,7 +15,7 @@ import static org.testng.Assert.assertEquals;
  */
 public class SeriesSizeTest {
 
-    private Logger log = Logger.getLogger("Logger");
+    private final Logger log = Logger.getLogger("Logger");
 
 /**
  *
@@ -56,7 +56,7 @@ public class SeriesSizeTest {
 
             SeriesSize seriessize = new SeriesSize();
             seriessize.setX(x);
-            assertTrue(x == seriessize.getX());
+            Assertions.assertEquals(x, seriessize.getX());
 
         } catch (Exception exception) {
             log.warning("Exception in execution of setX-" + exception);
@@ -104,7 +104,7 @@ public class SeriesSizeTest {
 
             SeriesSize seriessize = new SeriesSize();
             seriessize.setY(y);
-            assertTrue(y == seriessize.getY());
+            Assertions.assertEquals(y, seriessize.getY());
 
         } catch (Exception exception) {
             log.warning("Exception in execution of setY-" + exception);
@@ -152,7 +152,7 @@ public class SeriesSizeTest {
 
             SeriesSize seriessize = new SeriesSize();
             seriessize.setWidth(width);
-            assertTrue(width == seriessize.getWidth());
+            Assertions.assertEquals(width, seriessize.getWidth());
 
         } catch (Exception exception) {
             log.warning("Exception in execution of setWidth-" + exception);
@@ -200,7 +200,7 @@ public class SeriesSizeTest {
 
             SeriesSize seriessize = new SeriesSize();
             seriessize.setHeight(height);
-            assertTrue(height == seriessize.getHeight());
+            Assertions.assertEquals(height, seriessize.getHeight());
 
         } catch (Exception exception) {
             log.warning("Exception in execution of setHeight-" + exception);

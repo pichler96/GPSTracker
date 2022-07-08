@@ -18,7 +18,7 @@ import java.util.logging.Logger;
 
 public class GraphicsTest {
 
-    private Logger log = Logger.getLogger("Logger");
+    private final Logger log = Logger.getLogger("Logger");
 
     /**
      * Test get container.
@@ -30,7 +30,6 @@ public class GraphicsTest {
             log.info("Starting execution of getContainer");
             Container expectedValue = new Container();
 
-            int heartRatec = 0;
             at.jku.ssw.app.diagram.Graphics graphics = new at.jku.ssw.app.diagram.Graphics();
             Container actualValue = graphics.getContainer();
             log.info("Expected Value=" + expectedValue + " . Actual Value=" + actualValue);
@@ -53,7 +52,6 @@ public class GraphicsTest {
         try {
             log.info("Starting execution of setContainer");
             Container container = new Container();
-            int heartRatec = 0;
             at.jku.ssw.app.diagram.Graphics graphics = new at.jku.ssw.app.diagram.Graphics();
             graphics.setContainer(container);
             assertTrue(true);

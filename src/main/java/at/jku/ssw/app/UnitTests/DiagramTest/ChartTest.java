@@ -4,13 +4,10 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import at.jku.ssw.app.diagram.Chart;
 import at.jku.ssw.app.diagram.ModelChart;
-import at.jku.ssw.app.diagram.blankchart.BlankPlotChart;
 import at.jku.ssw.app.diagram.blankchart.SeriesSize;
 import at.jku.ssw.tcxparser.schema.TrainingCenterDatabaseT;
 import org.junit.jupiter.api.Test;
-
 import java.awt.*;
-import java.io.IOException;
 import java.util.logging.Logger;
 
 /**
@@ -19,7 +16,7 @@ import java.util.logging.Logger;
  */
 public class ChartTest {
 
-    private Logger log = Logger.getLogger("Logger");
+    private final Logger log = Logger.getLogger("Logger");
 
     /**
      * Test get label text.
@@ -30,10 +27,6 @@ public class ChartTest {
         try {
             log.info("Starting execution of getLabelText");
             String expectedValue = "";
-
-            int index = 5;
-
-            Chart chart = new Chart();
 
             log.info("Expected Value=" + expectedValue + " . Actual Value=" + "");
             System.out.println("Expected Value=" + expectedValue + " . Actual Value=" + "");
@@ -146,11 +139,10 @@ public class ChartTest {
             log.info("Starting execution of readInData");
             java.util.List<TrainingCenterDatabaseT> expectedValue = null;
 
-            Chart chart = new Chart();
-            java.util.List<TrainingCenterDatabaseT> actualValue = chart.readInData();
+            java.util.List<TrainingCenterDatabaseT> actualValue = Chart.readInData();
             log.info("Expected Value=" + expectedValue + " . Actual Value=" + actualValue);
             System.out.println("Expected Value=" + expectedValue + " . Actual Value=" + actualValue);
-            assertFalse(expectedValue.equals(actualValue));
+            assertNotEquals(expectedValue, actualValue);
 
         } catch (Exception e) {
             log.warning("Exception in execution of execute1GetAllLogFromFirstMovF-" + e);
