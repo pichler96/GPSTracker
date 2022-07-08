@@ -1,4 +1,5 @@
 package at.jku.ssw.app.UnitTests;
+
 import at.jku.ssw.app.Main;
 import at.jku.ssw.tcxparser.schema.TrainingCenterDatabaseT;
 import org.junit.jupiter.api.Assertions;
@@ -14,11 +15,20 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertThrows;
 
+
+/**
+ * The class Main test
+ * @author Gruppe 3
+ */
 public class MainTest {
     private Logger log = Logger.getLogger(String.valueOf(this.getClass()));
 
+    /**
+     * controls the Main class and tests all application functions
+     */
     @Test
     public void main() {
+
         try {
             log.info("Starting execution of main");
             String[] args = new String[0];
@@ -32,13 +42,17 @@ public class MainTest {
         }
     }
 
+    /**
+     * tests the methode getdata in main
+     */
     @Test
     public void getData() {
-       Exception exception = Assertions.assertThrows(NullPointerException.class, () -> {
-           Main.getData();
-       });
-       String expectedMessage = "";
-       String actualMessage = exception.getMessage();
-       assertTrue(actualMessage.contains(expectedMessage));
+
+        Exception exception = Assertions.assertThrows(NullPointerException.class, () -> {
+            Main.getData();
+        });
+        String expectedMessage = "";
+        String actualMessage = exception.getMessage();
+        assertTrue(actualMessage.contains(expectedMessage));
     }
 }
