@@ -18,7 +18,7 @@ import java.util.logging.Logger;
 
 public class GraphicsTest {
 
-    private Logger log = Logger.getLogger("Logger");
+    private final Logger log = Logger.getLogger("Logger");
 
     /**
      * Test get container.

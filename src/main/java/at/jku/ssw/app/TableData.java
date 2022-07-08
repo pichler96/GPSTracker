@@ -1,7 +1,7 @@
 package at.jku.ssw.app;
 
-import at.jku.ssw.tcxparser.schema.ActivityT;
-import at.jku.ssw.tcxparser.schema.TrainingCenterDatabaseT;
+import at.jku.ssw.model.schema.ActivityT;
+import at.jku.ssw.model.schema.TrainingCenterDatabaseT;
 import java.text.DecimalFormat;
 import java.util.Objects;
 

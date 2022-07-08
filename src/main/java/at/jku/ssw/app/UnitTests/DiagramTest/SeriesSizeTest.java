@@ -15,7 +15,7 @@ import static org.testng.Assert.assertEquals;
  */
 public class SeriesSizeTest {
 
-    private Logger log = Logger.getLogger("Logger");
+    private final Logger log = Logger.getLogger("Logger");
 
 /**
  *

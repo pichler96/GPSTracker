@@ -1,6 +1,6 @@
 package at.jku.ssw.app.UnitTests.TcxparserTest;
 
-import at.jku.ssw.tcxparser.TcxParser;
+import at.jku.ssw.model.TcxParser;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

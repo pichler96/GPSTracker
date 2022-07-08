@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 public class ModelChartTest {
 
-    private Logger log = Logger.getLogger("Logger");
+    private final Logger log = Logger.getLogger("Logger");
 
     /**
      * Test get label.

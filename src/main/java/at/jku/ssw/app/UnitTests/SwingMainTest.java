@@ -2,8 +2,7 @@ package at.jku.ssw.app.UnitTests;
 
 import at.jku.ssw.app.Main;
 import at.jku.ssw.app.SwingMain;
-import at.jku.ssw.app.diagram.Graphics;
-import at.jku.ssw.tcxparser.TrainingsData;
+import at.jku.ssw.model.TrainingsData;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
