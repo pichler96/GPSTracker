@@ -5,8 +5,6 @@ import java.awt.*;
 /**
  * @author Gerald Waldburger, K12005573
  */
-
-
 public class ModelLegend {
 
     private String name;

@@ -7,7 +7,6 @@ import java.awt.Graphics2D;
 /**
  * @author Gerald Waldburger, K12005573
  */
-
 public abstract class BlankPlotChatRender {
 
     public abstract String getLabelText(int index);

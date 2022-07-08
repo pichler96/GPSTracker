@@ -7,14 +7,11 @@ import java.awt.Graphics;
 /**
  * @author Gerald Waldburger, K12005573
  */
-
-
 public class LabelColor extends JLabel {
 
     /**
      * paints the diagram, which is given in the methode and define a size for it
      */
-
     @Override
     protected void paintComponent(Graphics grphcs) {
         Graphics2D g2 = (Graphics2D) grphcs;

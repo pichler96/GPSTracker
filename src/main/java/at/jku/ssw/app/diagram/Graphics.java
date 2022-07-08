@@ -20,7 +20,6 @@ import java.util.*;
 /**
  * @author Gerald Waldburger, K12005573
  */
-
 public class Graphics extends javax.swing.JFrame {
     Container container;
     private at.jku.ssw.app.diagram.Chart chart;
@@ -30,7 +29,6 @@ public class Graphics extends javax.swing.JFrame {
      * @throws IOException
      * @throws ParseException Constructor for Graphics which, creates a graphic for distance and time
      */
-
     public Graphics() throws JAXBException, IOException, ParseException {
 
         initComponents();
@@ -70,7 +68,6 @@ public class Graphics extends javax.swing.JFrame {
      * @throws IOException
      * @throws ParseException Constructor for Graphics which, creates a graphic for calories and time
      */
-
     public Graphics(double avgCalories, int placeholder) throws JAXBException, IOException, ParseException {
 
         initComponents();
@@ -112,7 +109,6 @@ public class Graphics extends javax.swing.JFrame {
      * @throws IOException
      * @throws ParseException Constructor for Graphics which, creates a graphic for speed and time
      */
-
     public Graphics(double avgSpeed) throws JAXBException, IOException, ParseException {
 
         initComponents();
@@ -155,7 +151,6 @@ public class Graphics extends javax.swing.JFrame {
      * @throws IOException
      * @throws ParseException Constructor for Graphics which, creates a graphic for average heartrate and time
      */
-
     public Graphics(int heartRate) throws JAXBException, IOException, ParseException {
 
         initComponents();
@@ -204,7 +199,6 @@ public class Graphics extends javax.swing.JFrame {
     /**
      * @return a container, so its a getter for a container
      */
-
     public Container getContainer() {
 
         return container;
@@ -213,7 +207,6 @@ public class Graphics extends javax.swing.JFrame {
     /**
      * @param container its a setter for a container - so a container looks like the incoming one
      */
-
     public void setContainer(Container container) {
 
         this.container = container;
@@ -222,7 +215,6 @@ public class Graphics extends javax.swing.JFrame {
     /**
      * @return a chart, so its a getter for a chart
      */
-
     public Chart getChart() {
 
         return chart;
@@ -232,7 +224,6 @@ public class Graphics extends javax.swing.JFrame {
      * creating a chart, and use it the create an above layout and the grouping.
      * Within that, also the size is defined and the call to action for the application-diagram
      */
-
     public void initComponents() {
 
         chart = new Chart();

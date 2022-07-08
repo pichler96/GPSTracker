@@ -14,6 +14,7 @@ import java.text.ParseException;
 
 /**
  * This class contains the SWING Components in order to create the GUI, as well as repaint it if any user-actions are performed.
+ *
  * @author Gruppe 3
  */
 public class SwingMain extends JFrame {
@@ -56,27 +57,29 @@ public class SwingMain extends JFrame {
     /**
      * This Object represents the running GUI.
      * All Structural Elements are added in here to the "pane"
-     * @throws JAXBException is thrown by the TCX Parser, which reads the tcx - files.
-     * @throws IOException is also thrown by the TCX Parser if there can't be found a tcx-file in the source folder.
-     * @throws DatatypeConfigurationException *****.
+     *
+     * @throws JAXBException                  is thrown by the TCX Parser, which reads the tcx - files.
+     * @throws IOException                    is also thrown by the TCX Parser if there can't be found a tcx-file in the source folder.
+     * @throws DatatypeConfigurationException a null value is permitted, and indicates that the cause is nonexistent or unknown.
+     * @throws ParseException                 Signals that an error has been reached unexpectedly while parsing.
      */
-    public SwingMain () throws JAXBException, IOException, DatatypeConfigurationException, ParseException {
+    public SwingMain() throws JAXBException, IOException, DatatypeConfigurationException, ParseException {
         setTitle("GPSTracker");
-        setSize(1200,585);
+        setSize(1200, 585);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setResizable(false);
         pane = getContentPane(); // "lowes" level of the layout
 
         westPanel = new JPanel(); //western part of the layout is saved here.
-        westPanel.setPreferredSize(new Dimension(661,500));
-        westPanel.setLayout(new GridLayout(1,0));
+        westPanel.setPreferredSize(new Dimension(661, 500));
+        westPanel.setLayout(new GridLayout(1, 0));
         westPanel.setBorder(BorderFactory.createTitledBorder("Tracks:"));
 
         //tablePanel the table of laps, which is added to the northern part of "eastPanel", is saved in here.
-        JPanel tablePanel= getTablePanel();
+        JPanel tablePanel = getTablePanel();
         westPanel.add(tablePanel); //"West" contains the western (left) part of our GUI
-        JScrollPane lapTableScroll= getLapScrollPane(0);
+        JScrollPane lapTableScroll = getLapScrollPane(0);
         lapTableScroll.setBorder(BorderFactory.createTitledBorder("Laps:"));
 
         /**
@@ -94,7 +97,7 @@ public class SwingMain extends JFrame {
 
         eastPanel = new JPanel(); //"EastPanel" contains the eastern part of our GUI
         eastPanel.setLayout(new BorderLayout());
-        eastPanel.setPreferredSize(new Dimension(500,500));
+        eastPanel.setPreferredSize(new Dimension(500, 500));
         eastPanel.add(lapTableScroll, BorderLayout.NORTH);
         eastPanel.add(graphicScroll, BorderLayout.CENTER);
 
@@ -103,8 +106,7 @@ public class SwingMain extends JFrame {
         pane.add(eastPanel, BorderLayout.CENTER);
 
 
-
-         // menu represents the menuBar where all Menus are added.
+        // menu represents the menuBar where all Menus are added.
         JMenuBar menu = new JMenuBar();
         JMenu file = new JMenu("File");
         JMenu sports = new JMenu("Sports");
@@ -135,7 +137,6 @@ public class SwingMain extends JFrame {
          *
          * Furthermore, the diagram is joined to the application
          */
-        JMenuItem diagramForSpeed = new JMenuItem("Speed/Time");
         JMenuItem diagramForSpeed = new JMenuItem("Avg Speed/Time");
 
         diagramForSpeed.addActionListener(e -> {
@@ -153,7 +154,6 @@ public class SwingMain extends JFrame {
          *
          * Furthermore, the diagram is joined to the application
          */
-
         JMenuItem diagramForHeartrate = new JMenuItem("Avg Heartrate/Time");
         diagramForHeartrate.addActionListener(e -> {
             try {
@@ -170,7 +170,6 @@ public class SwingMain extends JFrame {
          *
          * Furthermore, the diagram is joined to the application
          */
-
         JMenuItem diagramForCalories = new JMenuItem("Avg Calories/Time");
         diagramForCalories.addActionListener(e -> {
             try {
@@ -317,7 +316,7 @@ public class SwingMain extends JFrame {
 
         JMenuItem configureDataPath = new JMenuItem("Change Data Path");
         configureDataPath.addActionListener(e -> {
-            JFileChooser fc=new JFileChooser();
+            JFileChooser fc = new JFileChooser();
             fc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
             int result = fc.showOpenDialog(null);
 
@@ -332,28 +331,42 @@ public class SwingMain extends JFrame {
         });
 
         //menu-bar, adding the different "choice-options" to the menu-bar:
-        file.add(deleteFilters);file.addSeparator();
-        file.add(reloadData);file.addSeparator();
-        file.add(configureDataPath);file.addSeparator();
+        file.add(deleteFilters);
+        file.addSeparator();
+        file.add(reloadData);
+        file.addSeparator();
+        file.add(configureDataPath);
+        file.addSeparator();
         file.add(exit);
 
-        sports.add(biking); sports.addSeparator();
-        sports.add(running);sports.addSeparator();
-        sports.add(hiking);sports.addSeparator();
+        sports.add(biking);
+        sports.addSeparator();
+        sports.add(running);
+        sports.addSeparator();
+        sports.add(hiking);
+        sports.addSeparator();
         sports.add(skiing);
 
-        years.add(twentyTwenty); years.addSeparator();
-        years.add(twentyTwentyOne); years.addSeparator();
+        years.add(twentyTwenty);
+        years.addSeparator();
+        years.add(twentyTwentyOne);
+        years.addSeparator();
         years.add(twentyTwentyTwo);
 
-        distance.add(distance1000); distance.addSeparator();
-        distance.add(distance3000); distance.addSeparator();
-        distance.add(distance5000); distance.addSeparator();
+        distance.add(distance1000);
+        distance.addSeparator();
+        distance.add(distance3000);
+        distance.addSeparator();
+        distance.add(distance5000);
+        distance.addSeparator();
         distance.add(distance10000);
 
-        changeDiagram.add(diagramForDistance); changeDiagram.addSeparator();
-        changeDiagram.add(diagramForSpeed); changeDiagram.addSeparator();
-        changeDiagram.add(diagramForHeartrate); changeDiagram.addSeparator();
+        changeDiagram.add(diagramForDistance);
+        changeDiagram.addSeparator();
+        changeDiagram.add(diagramForSpeed);
+        changeDiagram.addSeparator();
+        changeDiagram.add(diagramForHeartrate);
+        changeDiagram.addSeparator();
         changeDiagram.add(diagramForCalories);
 
         menu.add(file);
@@ -365,16 +378,20 @@ public class SwingMain extends JFrame {
         setJMenuBar(menu);
 
         //show the correct Laps for the chosen Track
-        listModel= table.getSelectionModel();
+        listModel = table.getSelectionModel();
         triggerListSelectionListener();
     }
+
 
     /**
      * In relation to the decision variable created above the methode getNewDiagram is creating a new base diagram
      * which is the base of the application, so the diagram is created before a filter is used
+     *
+     * @return
+     * @throws JAXBException
+     * @throws IOException
+     * @throws ParseException
      */
-
-    
     private JScrollPane getNewDiagram() throws JAXBException, IOException, ParseException {
         Graphics graphics = new Graphics();
         Container container = graphics.getContainer();
@@ -387,11 +404,16 @@ public class SwingMain extends JFrame {
         return graphicScroll1;
     }
 
+
     /**
      * In relation to the decision variable created above the methode getNewDiagramForSpeed is creating a new diagram
      * which is used to have a look at the speed in relation to time, depending on the decision variable
+     *
+     * @return
+     * @throws JAXBException
+     * @throws IOException
+     * @throws ParseException
      */
-
     private JScrollPane getNewDiagramForSpeed() throws JAXBException, IOException, ParseException {
         double speedT = 0;
         Graphics graphics = new Graphics(speedT);
@@ -405,11 +427,16 @@ public class SwingMain extends JFrame {
         return graphicScroll1;
     }
 
+
     /**
      * In relation to the decision variable created above the methode getNewDiagramForHeartrate is creating a new diagram
-     * which is used to have a look at the hearthrate in relation to time, depending on the decision variable
+     * which is used to have a look at the hearthrate in relation to time, depending on the decision variable.
+     *
+     * @return
+     * @throws JAXBException
+     * @throws IOException
+     * @throws ParseException
      */
-
     private JScrollPane getNewDiagramForHeartrate() throws JAXBException, IOException, ParseException {
         int heartrateT = 0;
         Graphics graphics = new Graphics(heartrateT);
@@ -426,8 +453,12 @@ public class SwingMain extends JFrame {
     /**
      * In relation to the decision variable created above the methode getNewDiagramForCalories is creating a new diagram
      * which is used to have a look at the calories in relation to time, depending on the decision variable
+     *
+     * @return
+     * @throws JAXBException
+     * @throws IOException
+     * @throws ParseException
      */
-
     private JScrollPane getNewDiagramForCalories() throws JAXBException, IOException, ParseException {
         double caloriesT = 0;
         int x = 0;
@@ -442,6 +473,7 @@ public class SwingMain extends JFrame {
         return graphicScroll1;
     }
 
+
     /**
      * This Method is called if there is activated or deactivated a Filter, but also if the data path has changed or the data is reloaded.
      * It changes the content shown by the GUI based on the current needed data.
@@ -449,19 +481,23 @@ public class SwingMain extends JFrame {
      * All components added to "westPanel" and "eastPanel" are deleted.
      * Then it adds the just recreated components to "westPanel" and "eastPanel".
      * In order to make these changes visible in the GUI "westPanel","eastPanel" and "pane" are revalidated and repainted.
+     *
+     * @throws JAXBException  is thrown by the TCX Parser, which reads the tcx - files.
+     * @throws IOException    is also thrown by the TCX Parser if there can't be found a tcx-file in the source folder.
+     * @throws ParseException Signals that an error has been reached unexpectedly while parsing.
      */
     public void repaintGUI() throws JAXBException, IOException, ParseException {
         JPanel tablePanel1 = getTablePanel();
         JScrollPane lapTableScroll1 = getLapScrollPane(0);
         JScrollPane graphicScroll1;
 
-        if(diagramDecision == 0){
+        if (diagramDecision == 0) {
             graphicScroll1 = getNewDiagram();
-        }else if( diagramDecision == 1){
+        } else if (diagramDecision == 1) {
             graphicScroll1 = getNewDiagramForSpeed();
-        }else if(diagramDecision == 2){
+        } else if (diagramDecision == 2) {
             graphicScroll1 = getNewDiagramForHeartrate();
-        }else {
+        } else {
             graphicScroll1 = getNewDiagramForCalories();
         }
 
@@ -498,26 +534,26 @@ public class SwingMain extends JFrame {
      */
     public void triggerListSelectionListener() {
         listModel.addListSelectionListener(e -> {
-            if (!listModel.isSelectionEmpty()){
-                int selectedRow= listModel.getMinSelectionIndex();
+            if (!listModel.isSelectionEmpty()) {
+                int selectedRow = listModel.getMinSelectionIndex();
 
-                JScrollPane lapTablePane= getLapScrollPane(selectedRow);
-                Component [] componentArray = eastPanel.getComponents();
-                for(Component c: componentArray){
-                    if(c instanceof JScrollPane){
+                JScrollPane lapTablePane = getLapScrollPane(selectedRow);
+                Component[] componentArray = eastPanel.getComponents();
+                for (Component c : componentArray) {
+                    if (c instanceof JScrollPane) {
                         eastPanel.remove(c);
                     }
                 }
-                lapTablePane.setPreferredSize(new Dimension(500,150));
+                lapTablePane.setPreferredSize(new Dimension(500, 150));
                 try {
-                    if(diagramDecision == 0){
+                    if (diagramDecision == 0) {
                         eastPanel.add(getNewDiagram(), BorderLayout.CENTER);
-                    }else if(diagramDecision == 1){
+                    } else if (diagramDecision == 1) {
                         eastPanel.add(getNewDiagramForSpeed(), BorderLayout.CENTER);
-                    }else if(diagramDecision == 2){
+                    } else if (diagramDecision == 2) {
                         eastPanel.add(getNewDiagramForHeartrate(), BorderLayout.CENTER);
 
-                    }else{
+                    } else {
                         eastPanel.add(getNewDiagramForCalories(), BorderLayout.CENTER);
                     }
                 } catch (JAXBException | IOException | ParseException ex) {
@@ -533,14 +569,15 @@ public class SwingMain extends JFrame {
     }
 
     /**
-     *This Method is called to get the table of tracks as a Panel.
+     * This Method is called to get the table of tracks as a Panel.
      * It calls the methods "getTable" and "getTableColumnNames" to receive the data as String-Arrays.
      * Then a JTable is created which contains this data.
      * It forbids a user-input in the table, calls "TableColumnResize" which formats the table,
      * puts it in a JScrollPane and further in a JPanel.
+     *
      * @return a Panel which contains the table of tracks.
      */
-    public JPanel getTablePanel(){
+    public JPanel getTablePanel() {
         // JTable -left side (west) - allData contains all data in "general form" (no lap-view) from TableData
         String[][] tableData = TableData.getTable();
         String[] tableDataColumnNames = TableData.getTableColumnNames();
@@ -548,7 +585,7 @@ public class SwingMain extends JFrame {
 
         //JTable -left side (west):
         DefaultTableModel model = new DefaultTableModel(tableData, tableDataColumnNames);
-        table = new JTable(model){
+        table = new JTable(model) {
             @Serial
             private static final long serialVersionUID = 1L;
 
@@ -558,12 +595,11 @@ public class SwingMain extends JFrame {
             }
 
             public Component prepareRenderer(TableCellRenderer renderer,
-                                             int row, int column)
-            {
+                                             int row, int column) {
                 Component c = super.prepareRenderer(renderer, row, column);
-                Color color1 = new Color(220,220,220);
+                Color color1 = new Color(220, 220, 220);
                 Color color2 = Color.WHITE;
-                if(!c.getBackground().equals(getSelectionBackground())) {
+                if (!c.getBackground().equals(getSelectionBackground())) {
                     Color color = (row % 2 == 0 ? color2 : color1);
                     c.setBackground(color);
                     color = null;
@@ -573,7 +609,7 @@ public class SwingMain extends JFrame {
 
         };
 
-        table.setAutoResizeMode( JTable.AUTO_RESIZE_OFF );
+        table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
         //Scrollbar for the Table of Data
         JScrollPane tableScroll = new JScrollPane(table);
         tableScroll.setVisible(true);
@@ -589,22 +625,23 @@ public class SwingMain extends JFrame {
     }
 
     /**
-     *This Method is called to get the table of laps as a JScrollPane.
+     * This Method is called to get the table of laps as a JScrollPane.
      * It calls the methods "getTableOfLaps(row)" and "getTableOfLapsColumnNames(row)" to receive the data as String-Arrays.
      * Then a JTable is created which contains this data.
      * It forbids a user-input in the table, calls "TableColumnResize" which formats the table and
      * puts it in a JScrollPane.
+     *
      * @param row is needed to find the correct Track, which Laps should be shown.
      * @return a JScrollPane which contains a table of Laps for a certain track.
      */
-    public JScrollPane getLapScrollPane(int row){
+    public JScrollPane getLapScrollPane(int row) {
         //JTable -right side (east) contains LapTable and Diagram
         String[][] lapData = TableData.getTableOfLaps(row);
         String[] lapTableColumnsNames = TableData.getTableOfLapsColumnNames();
 
         //JTable right side:-----------
         DefaultTableModel model2 = new DefaultTableModel(lapData, lapTableColumnsNames);
-        JTable lapTable = new JTable(model2){
+        JTable lapTable = new JTable(model2) {
             @Serial
             private static final long serialVersionUID = 1L;
 
@@ -614,12 +651,11 @@ public class SwingMain extends JFrame {
             }
 
             public Component prepareRenderer(TableCellRenderer renderer,
-                                             int row, int column)
-            {
+                                             int row, int column) {
                 Component c = super.prepareRenderer(renderer, row, column);
-                Color color1 = new Color(220,220,220);
+                Color color1 = new Color(220, 220, 220);
                 Color color2 = Color.WHITE;
-                if(!c.getBackground().equals(getSelectionBackground())) {
+                if (!c.getBackground().equals(getSelectionBackground())) {
                     Color color = (row % 2 == 0 ? color2 : color1);
                     c.setBackground(color);
                     color = null;
@@ -628,7 +664,7 @@ public class SwingMain extends JFrame {
             }
         };
 
-        lapTable.setAutoResizeMode( JTable.AUTO_RESIZE_OFF );
+        lapTable.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
         //Scrollbar for the Table of Data
         JScrollPane tableScroll2 = new JScrollPane(lapTable);
         tableScroll2.setVisible(true);
@@ -643,48 +679,40 @@ public class SwingMain extends JFrame {
 
     /**
      * This method changes the column width for each cell in a JTable in order to have a better formatted table.
+     *
      * @param resize This is the JTable which column-widths are adapted.
      */
-    protected void resize(JTable resize){
+    protected void resize(JTable resize) {
 
-        for(int i=0;i<resize.getColumnCount();i++)
-        {
+        for (int i = 0; i < resize.getColumnCount(); i++) {
             DefaultTableColumnModel colModel = (DefaultTableColumnModel) resize.getColumnModel();
             TableColumn col = colModel.getColumn(i);
             int width = 0;
             TableCellRenderer renderer = col.getHeaderRenderer();
-            if (renderer == null)
-            {
+            if (renderer == null) {
                 renderer = resize.getTableHeader().getDefaultRenderer();
             }
             Component comp = renderer.getTableCellRendererComponent(resize, col.getHeaderValue(), false, false, 0, i);
-            if(resize.getRowCount()>0)
-            {
-                for(int r=0;r<resize.getRowCount();r++)
-                {
-                    renderer=resize.getCellRenderer(r,i);
-                    Component comp1=renderer.getTableCellRendererComponent(resize,resize.getValueAt(r, i),false,false, r, i);
-                    if(comp.getPreferredSize().width<comp1.getPreferredSize().width)
-                    {
-                        width=comp1.getPreferredSize().width;
-                    }
-                    else if(comp.getPreferredSize().width>width)
-                    {
-                        width=comp.getPreferredSize().width;
+            if (resize.getRowCount() > 0) {
+                for (int r = 0; r < resize.getRowCount(); r++) {
+                    renderer = resize.getCellRenderer(r, i);
+                    Component comp1 = renderer.getTableCellRendererComponent(resize, resize.getValueAt(r, i), false, false, r, i);
+                    if (comp.getPreferredSize().width < comp1.getPreferredSize().width) {
+                        width = comp1.getPreferredSize().width;
+                    } else if (comp.getPreferredSize().width > width) {
+                        width = comp.getPreferredSize().width;
                     }
                 }
+            } else {
+                width = comp.getPreferredSize().width;
             }
-            else
-            {
-                width=comp.getPreferredSize().width;
-            }
-            col.setPreferredWidth(width+12);
+            col.setPreferredWidth(width + 12);
         }
 
 
         DefaultTableCellRenderer rightRenderer = new DefaultTableCellRenderer();
         rightRenderer.setHorizontalAlignment(JLabel.RIGHT);
-        if(resize.getColumnCount()==10){
+        if (resize.getColumnCount() == 10) {
             resize.getColumnModel().getColumn(2).setCellRenderer(rightRenderer);
             resize.getColumnModel().getColumn(3).setCellRenderer(rightRenderer);
             resize.getColumnModel().getColumn(4).setCellRenderer(rightRenderer);
@@ -693,8 +721,7 @@ public class SwingMain extends JFrame {
             resize.getColumnModel().getColumn(7).setCellRenderer(rightRenderer);
             resize.getColumnModel().getColumn(8).setCellRenderer(rightRenderer);
             resize.getColumnModel().getColumn(9).setCellRenderer(rightRenderer);
-        }
-        else{
+        } else {
             resize.getColumnModel().getColumn(1).setCellRenderer(rightRenderer);
             resize.getColumnModel().getColumn(2).setCellRenderer(rightRenderer);
             resize.getColumnModel().getColumn(3).setCellRenderer(rightRenderer);
@@ -709,10 +736,12 @@ public class SwingMain extends JFrame {
                 super.setBackground(Color.lightGray);
             }
 
-            @Override public Dimension getPreferredSize() {
-                 Dimension d = super.getPreferredSize();
-                 d.height = 34;
-                 return d;
-             }});
+            @Override
+            public Dimension getPreferredSize() {
+                Dimension d = super.getPreferredSize();
+                d.height = 34;
+                return d;
+            }
+        });
     }
 }

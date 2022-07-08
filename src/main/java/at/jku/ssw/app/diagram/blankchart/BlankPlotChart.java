@@ -14,7 +14,6 @@ import javax.swing.border.EmptyBorder;
 /**
  * @author Gerald Waldburger, K12005573
  */
-
 public class BlankPlotChart extends JComponent {
 
     private final DecimalFormat format = new DecimalFormat("#,##0.##");

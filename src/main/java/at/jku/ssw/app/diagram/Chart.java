@@ -19,7 +19,6 @@ import java.util.List;
 /**
  * @author Gerald Waldburger, K12005573
  */
-
 public class Chart extends javax.swing.JPanel {
 
     private at.jku.ssw.app.diagram.blankchart.BlankPlotChart blankPlotChart;
@@ -141,7 +140,6 @@ public class Chart extends javax.swing.JPanel {
     /**
      * Read in data
      *
-     * @param {             the {
      * @return java.util.List<TrainingCenterDatabaseT>
      * @throws JAXBException
      * @throws IOException
@@ -164,7 +162,6 @@ public class Chart extends javax.swing.JPanel {
     /**
      * Insert components and define the vertical and horizontal layout
      */
-
     void initComponents() {
 
         blankPlotChart = new at.jku.ssw.app.diagram.blankchart.BlankPlotChart();

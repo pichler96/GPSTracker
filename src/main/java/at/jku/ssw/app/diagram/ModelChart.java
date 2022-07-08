@@ -3,7 +3,6 @@ package at.jku.ssw.app.diagram;
 /**
  * @author Gerald Waldburger, K12005573
  */
-
 public class ModelChart {
     private String label;
     private double values[];

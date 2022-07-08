@@ -32,7 +32,7 @@ public class ChartTest {
 
         try {
             log.info("Starting execution of getLabelText");
-            String expectedValue = "test";
+            String expectedValue = "";
 
             int index = 5;
 

@@ -11,6 +11,9 @@ import java.util.List;
 import at.jku.ssw.tcxparser.TrainingsData;
 import at.jku.ssw.tcxparser.schema.TrainingCenterDatabaseT;
 
+/**
+ * Main class of the Application in order to start it.
+ */
 public class Main {
 
     public static TrainingsData data;
@@ -28,15 +31,17 @@ public class Main {
             SwingMain m = null;
             try {
                 m = new SwingMain();
-            } catch (JAXBException | IOException | DatatypeConfigurationException e) {
-                e.printStackTrace();
-            } catch (ParseException e) {
+            } catch (JAXBException | IOException | DatatypeConfigurationException | ParseException e) {
                 e.printStackTrace();
             }
             if(m!=null) m.setVisible(true);
         });
     }
 
+    /**
+     * Method in order to get the Data which is saved as a public static variable in this class.
+     * @return the data from the tcx parser.
+     */
     public static List<TrainingCenterDatabaseT> getData() {
         return data.getTrainings();
     }

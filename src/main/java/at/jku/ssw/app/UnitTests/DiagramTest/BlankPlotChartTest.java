@@ -221,7 +221,7 @@ public class BlankPlotChartTest {
 
         try {
             log.info("Starting execution of getLabelCount");
-            int expectedValue = 12;
+            int expectedValue = 0;
             BlankPlotChart blankplotchart = new BlankPlotChart();
             int actualValue = blankplotchart.getLabelCount();
             log.info("Expected Value=" + expectedValue + " . Actual Value=" + actualValue);

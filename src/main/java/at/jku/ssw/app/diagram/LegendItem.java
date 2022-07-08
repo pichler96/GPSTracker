@@ -3,7 +3,6 @@ package at.jku.ssw.app.diagram;
 /**
  * @author Gerald Waldburger, K12005573
  */
-
 public class LegendItem extends javax.swing.JPanel {
     private LabelColor lbColor;
     private javax.swing.JLabel lbName;

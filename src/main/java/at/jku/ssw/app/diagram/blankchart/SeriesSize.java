@@ -3,7 +3,6 @@ package at.jku.ssw.app.diagram.blankchart;
 /**
  * @author Gerald Waldburger, K12005573
  */
-
 public class SeriesSize {
     private double x;
     private double y;

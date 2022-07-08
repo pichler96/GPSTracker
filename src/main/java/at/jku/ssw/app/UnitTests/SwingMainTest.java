@@ -241,17 +241,4 @@ class SwingMainTest{
         //Number of Rows from the current LapTable, which shows the laps of the 3rd track (SelectionInterval(2,2)
     }
 
-    @Test
-    void triggerDiagram() throws JAXBException, IOException, ParseException {
-        double avgCalories = 0.0;
-        int placeholder = 0;
-        double speed = 0.0;
-        int heart_rate = 0;
-
-        Graphics graphicsWithNoParameter = new Graphics();
-        Graphics graphicsForCalories = new Graphics(avgCalories, placeholder);
-        Graphics graphicsForSpeed = new Graphics(speed);
-        Graphics graphicsForHeartRate = new Graphics(heart_rate);
-    }
-
 }
