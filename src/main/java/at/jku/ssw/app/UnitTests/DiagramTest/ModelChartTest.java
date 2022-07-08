@@ -8,17 +8,17 @@ import java.util.logging.Logger;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
- * @author Gerald Waldburger, K12005573
+ * @author Gruppe 3.
  */
 /**
- * The class Model chart test
+ * The class Model chart test.
  */
 public class ModelChartTest {
 
     private Logger log = Logger.getLogger("Logger");
 
     /**
-     * Test get label
+     * Test get label.
      */
     @Test
     public void testGetLabel() {
@@ -41,7 +41,7 @@ public class ModelChartTest {
     }
 
     /**
-     * Test set label
+     * Test set label.
      */
     @Test
     public void testSetLabel() {
@@ -62,7 +62,7 @@ public class ModelChartTest {
     }
 
     /**
-     * Test get values
+     * Test get values.
      */
     @Test
     public void testGetValues() {
@@ -86,7 +86,7 @@ public class ModelChartTest {
 
 
     /**
-     * Test set values
+     * Test set values.
      */
     @Test
     public void testSetValues() {
@@ -107,7 +107,7 @@ public class ModelChartTest {
     }
 
     /**
-     * Test get max values
+     * Test get max values.
      */
     @Test
     public void testGetMaxValues() {

@@ -18,16 +18,19 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**
- * @author Gerald Waldburger, K12005573
+ * @author Gruppe 3.
  */
 public class Graphics extends javax.swing.JFrame {
     Container container;
     private at.jku.ssw.app.diagram.Chart chart;
 
     /**
-     * @throws JAXBException
-     * @throws IOException
-     * @throws ParseException Constructor for Graphics which, creates a graphic for distance and time
+     * Creating a diagram for the distance regarding a specific time period and set the background and adds
+     * the legend to the diagram.
+     *
+     * @throws JAXBException  is thrown by the TCX Parser, which reads the tcx - files.
+     * @throws IOException    is also thrown by the TCX Parser if there can't be found a tcx-file in the source folder.
+     * @throws ParseException Constructor for Graphics which, creates a graphic for distance and time.
      */
     public Graphics() throws JAXBException, IOException, ParseException {
 
@@ -62,10 +65,12 @@ public class Graphics extends javax.swing.JFrame {
     }
 
     /**
+     * Creating a diagram for the average of the calories regarding a specific time period and set the background and adds
+     * the legend to the diagram.
      * @param avgCalories
      * @param placeholder
-     * @throws JAXBException
-     * @throws IOException
+     * @throws JAXBException  is thrown by the TCX Parser, which reads the tcx - files.
+     * @throws IOException    is also thrown by the TCX Parser if there can't be found a tcx-file in the source folder.
      * @throws ParseException Constructor for Graphics which, creates a graphic for calories and time
      */
     public Graphics(double avgCalories, int placeholder) throws JAXBException, IOException, ParseException {
@@ -104,9 +109,11 @@ public class Graphics extends javax.swing.JFrame {
     }
 
     /**
+     * Creating a diagram for the average of the speed regarding a specific time period and set the background and adds
+     * the legend to the diagram.
      * @param avgSpeed
-     * @throws JAXBException
-     * @throws IOException
+     * @throws JAXBException  is thrown by the TCX Parser, which reads the tcx - files.
+     * @throws IOException    is also thrown by the TCX Parser if there can't be found a tcx-file in the source folder.
      * @throws ParseException Constructor for Graphics which, creates a graphic for speed and time
      */
     public Graphics(double avgSpeed) throws JAXBException, IOException, ParseException {
@@ -146,9 +153,11 @@ public class Graphics extends javax.swing.JFrame {
     }
 
     /**
+     * Creating a diagram for the average of the hearth rate regarding a specific time period and set the background and adds
+     * the legend to the diagram.
      * @param heartRate
-     * @throws JAXBException
-     * @throws IOException
+     * @throws JAXBException  is thrown by the TCX Parser, which reads the tcx - files.
+     * @throws IOException    is also thrown by the TCX Parser if there can't be found a tcx-file in the source folder.
      * @throws ParseException Constructor for Graphics which, creates a graphic for average heartrate and time
      */
     public Graphics(int heartRate) throws JAXBException, IOException, ParseException {
@@ -197,7 +206,7 @@ public class Graphics extends javax.swing.JFrame {
     }
 
     /**
-     * @return a container, so its a getter for a container
+     * @return a container, so its a getter for a container.
      */
     public Container getContainer() {
 
@@ -205,7 +214,7 @@ public class Graphics extends javax.swing.JFrame {
     }
 
     /**
-     * @param container its a setter for a container - so a container looks like the incoming one
+     * @param container its a setter for a container - so a container looks like the incoming one.
      */
     public void setContainer(Container container) {
 
@@ -222,7 +231,7 @@ public class Graphics extends javax.swing.JFrame {
 
     /**
      * creating a chart, and use it the create an above layout and the grouping.
-     * Within that, also the size is defined and the call to action for the application-diagram
+     * Within that, also the size is defined and the call to action for the application-diagram.
      */
     public void initComponents() {
 

@@ -12,7 +12,7 @@ import javax.swing.JComponent;
 import javax.swing.border.EmptyBorder;
 
 /**
- * @author Gerald Waldburger, K12005573
+ * @author Gruppe 3.
  */
 public class BlankPlotChart extends JComponent {
 
@@ -26,9 +26,9 @@ public class BlankPlotChart extends JComponent {
 
 
     /**
-     * Gets the blank plot chat render
+     * Gets the blank plot chat render.
      *
-     * @return the blank plot chat render
+     * @return the blank plot chat render.
      */
     public BlankPlotChatRender getBlankPlotChatRender() {
 
@@ -37,9 +37,9 @@ public class BlankPlotChart extends JComponent {
 
 
     /**
-     * Sets the blank plot chat render
+     * Sets the blank plot chat render.
      *
-     * @param blankPlotChatRender the blank plot chat render
+     * @param blankPlotChatRender the blank plot chat render.
      */
     public void setBlankPlotChatRender(BlankPlotChatRender blankPlotChatRender) {
 
@@ -48,9 +48,9 @@ public class BlankPlotChart extends JComponent {
 
 
     /**
-     * Gets the max values
+     * Gets the max values.
      *
-     * @return the max values
+     * @return the max values.
      */
     public double getMaxValues() {
 
@@ -59,9 +59,9 @@ public class BlankPlotChart extends JComponent {
 
 
     /**
-     * Sets the max values
+     * Sets the max values.
      *
-     * @param maxValues the max values
+     * @param maxValues the max values.
      */
     public void setMaxValues(double maxValues) {
 
@@ -72,9 +72,9 @@ public class BlankPlotChart extends JComponent {
 
 
     /**
-     * Gets the min values
+     * Gets the min values.
      *
-     * @return the min values
+     * @return the min values.
      */
     public double getMinValues() {
 
@@ -83,9 +83,9 @@ public class BlankPlotChart extends JComponent {
 
 
     /**
-     * Gets the label count
+     * Gets the label count.
      *
-     * @return the label count
+     * @return the label count.
      */
     public int getLabelCount() {
 
@@ -94,9 +94,9 @@ public class BlankPlotChart extends JComponent {
 
 
     /**
-     * Sets the label count
+     * Sets the label count.
      *
-     * @param labelCount the label count
+     * @param labelCount the label count.
      */
     public void setLabelCount(int labelCount) {
 
@@ -105,9 +105,9 @@ public class BlankPlotChart extends JComponent {
 
 
     /**
-     * Gets the values format
+     * Gets the values format.
      *
-     * @return the values format
+     * @return the values format.
      */
     public String getValuesFormat() {
 
@@ -116,9 +116,9 @@ public class BlankPlotChart extends JComponent {
 
 
     /**
-     * Sets the values format
+     * Sets the values format.
      *
-     * @param valuesFormat the values format
+     * @param valuesFormat the values format.
      */
     public void setValuesFormat(String valuesFormat) {
 
@@ -127,9 +127,7 @@ public class BlankPlotChart extends JComponent {
     }
 
     /**
-     * Blank plot chart
-     *
-     * @return public
+     * creates Blank plot chart.
      */
     public BlankPlotChart() {
 
@@ -142,7 +140,7 @@ public class BlankPlotChart extends JComponent {
 
 
     /**
-     * Init
+     * Init some values.
      */
     private void init() {
 
@@ -151,10 +149,10 @@ public class BlankPlotChart extends JComponent {
 
 
     /**
-     * Init values
+     * Init values.
      *
-     * @param minValues the min values
-     * @param maxValues the max values
+     * @param minValues the min values.
+     * @param maxValues the max values.
      */
     public void initValues(double minValues, double maxValues) {
 
@@ -164,6 +162,11 @@ public class BlankPlotChart extends JComponent {
         repaint();
     }
 
+    /**
+     * A paint methode for a graphic.
+     *
+     * @param grphcs is a graphics, which needs to be painted.
+     */
     @Override
     protected void paintComponent(Graphics grphcs) {
         super.paintComponent(grphcs);
@@ -179,9 +182,9 @@ public class BlankPlotChart extends JComponent {
 
 
     /**
-     * Create line
+     * Create line.
      *
-     * @param g2 the g2
+     * @param g2 the g2.
      */
     private void createLine(Graphics2D g2) {
 
@@ -203,9 +206,9 @@ public class BlankPlotChart extends JComponent {
 
 
     /**
-     * Create values
+     * Create values.
      *
-     * @param g2 the g2
+     * @param g2 the g2.
      */
     private void createValues(Graphics2D g2) {
 
@@ -230,9 +233,9 @@ public class BlankPlotChart extends JComponent {
 
 
     /**
-     * Create label text
+     * Create label text.
      *
-     * @param g2 the g2
+     * @param g2 the g2.
      */
     private void createLabelText(Graphics2D g2) {
 
@@ -259,9 +262,9 @@ public class BlankPlotChart extends JComponent {
 
 
     /**
-     * Render series
+     * Render series.
      *
-     * @param g2 the g2
+     * @param g2 the g2.
      */
     private void renderSeries(Graphics2D g2) {
 
@@ -282,10 +285,10 @@ public class BlankPlotChart extends JComponent {
 
 
     /**
-     * Gets the max values text width
+     * Gets the max values text width.
      *
-     * @param g2 the g2
-     * @return the max values text width
+     * @param g2 the g2.
+     * @return the max values text width.
      */
     private double getMaxValuesTextWidth(Graphics2D g2) {
 
@@ -306,10 +309,10 @@ public class BlankPlotChart extends JComponent {
 
 
     /**
-     * Gets the label text height
+     * Gets the label text height.
      *
-     * @param g2 the g2
-     * @return the label text height
+     * @param g2 the g2.
+     * @return the label text height.
      */
     private int getLabelTextHeight(Graphics2D g2) {
 
@@ -319,10 +322,10 @@ public class BlankPlotChart extends JComponent {
 
 
     /**
-     * Gets the chart text
+     * Gets the chart text.
      *
-     * @param index the index
-     * @return the chart text
+     * @param index the index.
+     * @return the chart text.
      */
     private String getChartText(int index) {
 
@@ -335,14 +338,14 @@ public class BlankPlotChart extends JComponent {
 
 
     /**
-     * Gets the rectangle
+     * Gets the rectangle.
      *
-     * @param index  the index
-     * @param height the height
-     * @param space  the space
-     * @param startX the start X
-     * @param startY the start Y
-     * @return the rectangle
+     * @param index  the index.
+     * @param height the height.
+     * @param space  the space.
+     * @param startX the start X.
+     * @param startY the start Y.
+     * @return the rectangle.
      */
     public SeriesSize getRectangle(int index, double height, double space, double startX, double startY) {
 
@@ -353,11 +356,11 @@ public class BlankPlotChart extends JComponent {
 
 
     /**
-     * Gets the series values of
+     * Gets the series values of.
      *
-     * @param values the values
-     * @param height the height
-     * @return the series values of
+     * @param values the values.
+     * @param height the height.
+     * @return the series values of.
      */
     public double getSeriesValuesOf(double values, double height) {
 

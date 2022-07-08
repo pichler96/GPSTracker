@@ -14,18 +14,18 @@ import java.io.IOException;
 import java.util.logging.Logger;
 
 /**
- * @author Gerald Waldburger, K12005573
+ * @author Gruppe 3.
  */
 
 /**
- * The class Chart test
+ * The class Chart test.
  */
 public class ChartTest {
 
     private Logger log = Logger.getLogger("Logger");
 
     /**
-     * Test get label text
+     * Test get label text.
      */
     @Test
     public void testGetLabelText() {
@@ -50,7 +50,7 @@ public class ChartTest {
     }
 
     /**
-     * Test render series
+     * Test render series.
      */
     @Test
     public void testRenderSeries() {
@@ -74,7 +74,7 @@ public class ChartTest {
 
 
     /**
-     * Test add legend
+     * Test add legend.
      */
     @Test
     public void testAddLegend() {
@@ -96,7 +96,7 @@ public class ChartTest {
     }
 
     /**
-     * Test add data
+     * Test add data.
      */
     @Test
     public void testAddData() {
@@ -118,7 +118,7 @@ public class ChartTest {
 
 
     /**
-     * Test resize
+     * Test resize.
      */
     @Test
     public void testResize() {
@@ -140,7 +140,7 @@ public class ChartTest {
     }
 
     /**
-     * Test read in data
+     * Test read in data.
      */
     @Test
     public void testReadInData() {

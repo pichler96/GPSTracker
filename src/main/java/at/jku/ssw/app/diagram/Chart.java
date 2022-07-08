@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author Gerald Waldburger, K12005573
+ * @author Gruppe 3
  */
 public class Chart extends javax.swing.JPanel {
 
@@ -31,36 +31,17 @@ public class Chart extends javax.swing.JPanel {
 
 
     /**
-     * Chart
-     *
-     * @return public
+     * Creates a new chart which defines the label text and render the series with a new chart, and a graphics and a size
      */
     public Chart() {
 
         initComponents();
         blankPlotChart.setBlankPlotChatRender(new BlankPlotChatRender() {
-
-            /**
-             *
-             * Gets the label text
-             *
-             * @param index  the index
-             * @return the label text
-             */
             public String getLabelText(int index) {
 
                 return model.get(index).getLabel();
             }
 
-            /**
-             *
-             * Render series
-             *
-             * @param chart  the chart
-             * @param g2  the g2
-             * @param size  the size
-             * @param index  the index
-             */
             @Override
             public void renderSeries(BlankPlotChart chart, Graphics2D g2, SeriesSize size, int index) {
 
@@ -75,15 +56,6 @@ public class Chart extends javax.swing.JPanel {
                 }
             }
 
-            /**
-             *
-             * Render series
-             *
-             * @param chart  the chart
-             * @param g2  the g2
-             * @param size  the size
-             * @param index  the index
-             */
             @Override
             public void renderSeries(Chart chart, Graphics2D g2, SeriesSize size, int index) {
 
@@ -141,8 +113,8 @@ public class Chart extends javax.swing.JPanel {
      * Read in data
      *
      * @return java.util.List<TrainingCenterDatabaseT>
-     * @throws JAXBException
-     * @throws IOException
+     * @throws JAXBException                  is thrown by the TCX Parser, which reads the tcx - files.
+     * @throws IOException                    is also thrown by the TCX Parser if there can't be found a tcx-file in the source folder.
      */
     public static java.util.List<TrainingCenterDatabaseT> readInData() throws JAXBException, IOException {
 

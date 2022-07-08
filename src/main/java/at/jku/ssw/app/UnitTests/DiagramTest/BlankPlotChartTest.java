@@ -10,11 +10,11 @@ import java.util.logging.Logger;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
- * @author Gerald Waldburger, K12005573
+ * @author Gruppe 3.
  */
 
 /**
- * The class Blank plot chart test
+ * The class Blank plot chart test.
  */
 public class BlankPlotChartTest {
 
@@ -22,7 +22,7 @@ public class BlankPlotChartTest {
 
 
     /**
-     * Tests the get blank plot chat render
+     * Tests the get blank plot chat render.
      */
     @Test
     public void testGetBlankPlotChatRender() {
@@ -45,7 +45,7 @@ public class BlankPlotChartTest {
 
 
     /**
-     * Tests the set blank plot chat render
+     * Tests the set blank plot chat render.
      */
     @Test
     public void testSetBlankPlotChatRender() {
@@ -66,7 +66,7 @@ public class BlankPlotChartTest {
 
 
     /**
-     * tests the Init values
+     * tests the Init values.
      */
     @Test
     public void testInitValues() {
@@ -88,7 +88,7 @@ public class BlankPlotChartTest {
 
 
     /**
-     * Tests the Get of the rectangle
+     * Tests the Get of the rectangle.
      */
     @Test
     public void testGetRectangle() {
@@ -119,7 +119,7 @@ public class BlankPlotChartTest {
 
 
     /**
-     * Tests the Gets of the max values
+     * Tests the Gets of the max values.
      */
     @Test
     public void testGetMaxValues() {
@@ -143,7 +143,7 @@ public class BlankPlotChartTest {
 
 
     /**
-     * Tests the Get of the series values
+     * Tests the Get of the series values.
      */
     @Test
     public void testGetSeriesValuesOf() {
@@ -169,7 +169,7 @@ public class BlankPlotChartTest {
 
 
     /**
-     * Tests the Set of the max values
+     * Tests the Set of the max values.
      */
     @Test
     public void testSetMaxValues() {
@@ -190,7 +190,7 @@ public class BlankPlotChartTest {
 
 
     /**
-     * Tests the Get of the min values
+     * Tests the Get of the min values.
      */
     @Test
     public void testGetMinValues() {
@@ -214,7 +214,7 @@ public class BlankPlotChartTest {
 
 
     /**
-     * Tests the Get of the label count
+     * Tests the Get of the label count.
      */
     @Test
     public void testGetLabelCount() {
@@ -237,7 +237,7 @@ public class BlankPlotChartTest {
 
 
     /**
-     * Tests the Set of the label count
+     * Tests the Set of the label count.
      */
     @Test
     public void testSetLabelCount() {
@@ -258,7 +258,7 @@ public class BlankPlotChartTest {
 
 
     /**
-     * Tests the Get of the values format
+     * Tests the Get of the values format.
      */
     @Test
     public void testGetValuesFormat() {
@@ -282,7 +282,7 @@ public class BlankPlotChartTest {
 
 
     /**
-     * Tests the Set of the values format
+     * Tests the Set of the values format.
      */
     @Test
     public void testSetValuesFormat() {

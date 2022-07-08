@@ -1,20 +1,18 @@
 package at.jku.ssw.app.diagram;
 
 /**
- * @author Gerald Waldburger, K12005573
+ * @author Gruppe 3.
  */
 public class LegendItem extends javax.swing.JPanel {
     private LabelColor lbColor;
     private javax.swing.JLabel lbName;
 
     /**
-     * Legend item
+     * Legend item constructor - paints the text and the background, and sets some components.
      *
-     * @param data the data
-     * @return public
+     * @param data contains the data of the legend.
      */
     public LegendItem(ModelLegend data) {
-
         initComponents();
         setOpaque(false);
         lbColor.setBackground(data.getColor());
@@ -23,7 +21,7 @@ public class LegendItem extends javax.swing.JPanel {
 
 
     /**
-     * Init components and defines the legend-item on the group layout of the chart
+     * Init components and defines the legend-item on the group layout of the chart.
      */
     private void initComponents() {
 
@@ -59,5 +57,4 @@ public class LegendItem extends javax.swing.JPanel {
                                 .addContainerGap())
         );
     }
-
 }

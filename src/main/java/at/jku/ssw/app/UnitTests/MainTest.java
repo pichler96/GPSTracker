@@ -17,14 +17,14 @@ import static org.testng.Assert.assertThrows;
 
 
 /**
- * The class Main test
- * @author Gruppe 3
+ * The class Main test.
+ * @author Gruppe 3.
  */
 public class MainTest {
     private Logger log = Logger.getLogger(String.valueOf(this.getClass()));
 
     /**
-     * controls the Main class and tests all application functions
+     * controls the Main class and tests all application functions.
      */
     @Test
     public void main() {
@@ -43,7 +43,7 @@ public class MainTest {
     }
 
     /**
-     * tests the methode getdata in main
+     * tests the methode get data in main.
      */
     @Test
     public void getData() {

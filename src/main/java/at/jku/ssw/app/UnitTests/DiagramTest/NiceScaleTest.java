@@ -8,17 +8,17 @@ import java.util.logging.Logger;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
- * @author Gerald Waldburger, K12005573
+ * @author Gruppe 3.
  */
 /**
- * The class Nice scale test
+ * The class Nice scale test.
  */
 public class NiceScaleTest {
 
     private Logger log = Logger.getLogger(String.valueOf(this.getClass()));
 
     /**
-     * Test set min
+     * Test set min.
      */
     @Test
     public void testSetMin() {
@@ -39,7 +39,7 @@ public class NiceScaleTest {
     }
 
     /**
-     * Test get max
+     * Test get max.
      */
     @Test
     public void testGetMax() {
@@ -62,7 +62,7 @@ public class NiceScaleTest {
     }
 
     /**
-     * Test set max
+     * Test set max.
      */
     @Test
     public void testSetMax() {
@@ -83,7 +83,7 @@ public class NiceScaleTest {
     }
 
     /**
-     * Test set min max
+     * Test set min max.
      */
     @Test
     public void testSetMinMax() {
@@ -105,7 +105,7 @@ public class NiceScaleTest {
     }
 
     /**
-     * Test set max ticks
+     * Test set max ticks.
      */
     @Test
     public void testSetMaxTicks() {
@@ -126,7 +126,7 @@ public class NiceScaleTest {
     }
 
     /**
-     * Test get tick spacing
+     * Test get tick spacing.
      */
     @Test
     public void testGetTickSpacing() {
@@ -150,7 +150,7 @@ public class NiceScaleTest {
     }
 
     /**
-     * Test get nice min
+     * Test get nice min.
      */
     @Test
     public void testGetNiceMin() {
@@ -174,7 +174,7 @@ public class NiceScaleTest {
     }
 
     /**
-     * Test get nice max
+     * Test get nice max.
      */
     @Test
     public void testGetNiceMax() {
@@ -198,7 +198,7 @@ public class NiceScaleTest {
     }
 
     /**
-     * Test get max ticks
+     * Test get max ticks.
      */
     @Test
     public void testGetMaxTicks() {
@@ -222,7 +222,7 @@ public class NiceScaleTest {
     }
 
     /**
-     * Test get min
+     * Test get min.
      */
     @Test
     public void testGetMin() {

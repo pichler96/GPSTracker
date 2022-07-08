@@ -5,12 +5,12 @@ import java.awt.*;
 import java.awt.Graphics;
 
 /**
- * @author Gerald Waldburger, K12005573
+ * @author Gruppe 3.
  */
 public class LabelColor extends JLabel {
 
     /**
-     * paints the diagram, which is given in the methode and define a size for it
+     * paints the diagram, which is given in the methode and define a size for it.
      */
     @Override
     protected void paintComponent(Graphics grphcs) {

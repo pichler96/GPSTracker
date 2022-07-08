@@ -1,7 +1,7 @@
 package at.jku.ssw.app.diagram.blankchart;
 
 /**
- * @author Gerald Waldburger, K12005573
+ * @author Gruppe 3.
  */
 public class NiceScale {
 
@@ -25,7 +25,7 @@ public class NiceScale {
 
 
     /**
-     * Calculate a range, tickSpacing, niceMin and niceMax
+     * Calculate a range, tickSpacing, niceMin and niceMax.
      */
     private void calculate() {
         range = niceNum(max - min, false);
@@ -36,9 +36,9 @@ public class NiceScale {
 
 
     /**
-     * Round based on the range of fraction
+     * Round based on the range of fraction.
      *
-     * @return double
+     * @return double.
      */
     private double niceNum(final double RANGE, final boolean ROUND) {
 
@@ -75,7 +75,7 @@ public class NiceScale {
 
 
     /**
-     * Sets the min max
+     * Sets the min max.
      */
     public void setMinMax(final double MIN, final double MAX) {
 
@@ -86,7 +86,7 @@ public class NiceScale {
 
 
     /**
-     * Sets the max ticks
+     * Sets the max ticks.
      */
     public void setMaxTicks(final int MAX_TICKS) {
 
@@ -96,9 +96,9 @@ public class NiceScale {
 
 
     /**
-     * Gets the tick spacing
+     * Gets the tick spacing.
      *
-     * @return the tick spacing
+     * @return the tick spacing.
      */
     public double getTickSpacing() {
 
@@ -107,9 +107,9 @@ public class NiceScale {
 
 
     /**
-     * Gets the nice min
+     * Gets the nice min.
      *
-     * @return the nice min
+     * @return the nice min.
      */
     public double getNiceMin() {
 
@@ -118,9 +118,9 @@ public class NiceScale {
 
 
     /**
-     * Gets the nice max
+     * Gets the nice max.
      *
-     * @return the nice max
+     * @return the nice max.
      */
     public double getNiceMax() {
 
@@ -129,9 +129,9 @@ public class NiceScale {
 
 
     /**
-     * Gets the max ticks
+     * Gets the max ticks.
      *
-     * @return the max ticks
+     * @return the max ticks.
      */
     public int getMaxTicks() {
 
@@ -140,9 +140,9 @@ public class NiceScale {
 
 
     /**
-     * Gets the min
+     * Gets the min.
      *
-     * @return the min
+     * @return the min.
      */
     public double getMin() {
 
@@ -151,9 +151,9 @@ public class NiceScale {
 
 
     /**
-     * Sets the min
+     * Sets the min.
      *
-     * @param min the min
+     * @param min the min.
      */
     public void setMin(double min) {
 
@@ -163,9 +163,9 @@ public class NiceScale {
 
 
     /**
-     * Gets the max
+     * Gets the max.
      *
-     * @return the max
+     * @return the max.
      */
     public double getMax() {
 
@@ -174,9 +174,9 @@ public class NiceScale {
 
 
     /**
-     * Sets the max
+     * Sets the max.
      *
-     * @param max the max
+     * @param max the max.
      */
     public void setMax(double max) {
 

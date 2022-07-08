@@ -28,10 +28,10 @@ class SwingMainTest{
     public SwingMain gui;
 
     /**
-     * This Method creates a new SwingMain/GUI, which will later be tested
-     * @throws DatatypeConfigurationException Exeption from getting Main.data
-     * @throws JAXBException Exeption from getting Main.data
-     * @throws IOException Exeption from getting Main.data
+     * This Method creates a new SwingMain/GUI, which will later be tested.
+     * @throws DatatypeConfigurationException Exeption from getting Main.data.
+     * @throws JAXBException Exeption from getting Main.data.
+     * @throws IOException Exeption from getting Main.data.
      */
     @BeforeEach
     public void setUp() throws DatatypeConfigurationException, JAXBException, IOException, ParseException {
@@ -44,12 +44,12 @@ class SwingMainTest{
     }
 
     /**
-     * This method tests more or less the "running GUI" == "SwingMain" Constructor
-     * It gets some values from the Table (on the east side)
-     * Then it also activates a filter (year) and therefore tests the method "repaintGUI"
+     * This method tests more or less the "running GUI" == "SwingMain" Constructor.
+     * It gets some values from the Table (on the east side).
+     * Then it also activates a filter (year) and therefore tests the method "repaintGUI".
      * After that it looks at the values from the Table (on the east side) again and checks whether the filter
      * and the repaintGUI method have worked.
-     * The method "resize" is also covered, as it is called as soon as the GUI is created but also when it's repainted
+     * The method "resize" is also covered, as it is called as soon as the GUI is created but also when it's repainted.
      */
     @Test
     void ConstructorAndRepaintGUIAndResize() throws JAXBException, IOException, ParseException {

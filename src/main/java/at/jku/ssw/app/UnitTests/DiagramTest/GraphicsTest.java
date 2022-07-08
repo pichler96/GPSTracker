@@ -12,18 +12,18 @@ import java.awt.*;
 import java.util.logging.Logger;
 
 /**
- * @author Gerald Waldburger, K12005573
+ * @author Gruppe 3.
  */
 
 /**
- * The class Graphics test
+ * The class Graphics test.
  */
 public class GraphicsTest {
 
     private Logger log = Logger.getLogger("Logger");
 
     /**
-     * Test get container
+     * Test get container.
      */
     @Test
     public void testGetContainer() {
@@ -47,7 +47,7 @@ public class GraphicsTest {
     }
 
     /**
-     * Test set container
+     * Test set container.
      */
     @Test
     public void testSetContainer() {
@@ -68,7 +68,7 @@ public class GraphicsTest {
     }
 
     /**
-     * Test get chart
+     * Test get chart.
      */
     @Test
     public void testGetChart() {
@@ -93,7 +93,7 @@ public class GraphicsTest {
     }
 
     /**
-     * Test init components
+     * Test init components.
      */
     @Test
     public void testInitComponents() {

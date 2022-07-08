@@ -3,7 +3,7 @@ package at.jku.ssw.app.diagram;
 import java.awt.*;
 
 /**
- * @author Gerald Waldburger, K12005573
+ * @author Gruppe 3.
  */
 public class ModelLegend {
 
@@ -13,8 +13,8 @@ public class ModelLegend {
     /**
      * It is a constructor.
      *
-     * @param name  the name
-     * @param color the color
+     * @param name  the name.
+     * @param color the color.
      */
     public ModelLegend(String name, Color color) {
 
@@ -31,9 +31,9 @@ public class ModelLegend {
     }
 
     /**
-     * Gets the name
+     * Gets the name.
      *
-     * @return the name
+     * @return the name.
      */
     public String getName() {
 
@@ -42,9 +42,9 @@ public class ModelLegend {
 
 
     /**
-     * Sets the name
+     * Sets the name.
      *
-     * @param name the name
+     * @param name the name.
      */
     public void setName(String name) {
 
@@ -53,9 +53,9 @@ public class ModelLegend {
 
 
     /**
-     * Gets the color
+     * Gets the color.
      *
-     * @return the color
+     * @return the color.
      */
     public Color getColor() {
 
@@ -64,9 +64,9 @@ public class ModelLegend {
 
 
     /**
-     * Sets the color
+     * Sets the color.
      *
-     * @param color the color
+     * @param color the color.
      */
     public void setColor(Color color) {
 

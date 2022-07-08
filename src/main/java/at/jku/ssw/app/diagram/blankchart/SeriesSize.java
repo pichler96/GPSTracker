@@ -1,7 +1,7 @@
 package at.jku.ssw.app.diagram.blankchart;
 
 /**
- * @author Gerald Waldburger, K12005573
+ * @author Gruppe 3.
  */
 public class SeriesSize {
     private double x;
@@ -34,9 +34,9 @@ public class SeriesSize {
     }
 
     /**
-     * Gets the X
+     * Gets the X.
      *
-     * @return the  X
+     * @return the  X.
      */
     public double getX() {
 
@@ -45,9 +45,9 @@ public class SeriesSize {
 
 
     /**
-     * Sets the X
+     * Sets the X.
      *
-     * @param x the x
+     * @param x the x.
      */
     public void setX(double x) {
 
@@ -56,9 +56,9 @@ public class SeriesSize {
 
 
     /**
-     * Gets the Y
+     * Gets the Y.
      *
-     * @return the  Y
+     * @return the  Y.
      */
     public double getY() {
 
@@ -67,9 +67,9 @@ public class SeriesSize {
 
 
     /**
-     * Sets the Y
+     * Sets the Y.
      *
-     * @param y the y
+     * @param y the y.
      */
     public void setY(double y) {
 
@@ -78,9 +78,9 @@ public class SeriesSize {
 
 
     /**
-     * Gets the width
+     * Gets the width.
      *
-     * @return the width
+     * @return the width.
      */
     public double getWidth() {
 
@@ -89,9 +89,9 @@ public class SeriesSize {
 
 
     /**
-     * Sets the width
+     * Sets the width.
      *
-     * @param width the width
+     * @param width the width.
      */
     public void setWidth(double width) {
 
@@ -100,9 +100,9 @@ public class SeriesSize {
 
 
     /**
-     * Gets the height
+     * Gets the height.
      *
-     * @return the height
+     * @return the height.
      */
     public double getHeight() {
 
@@ -111,9 +111,9 @@ public class SeriesSize {
 
 
     /**
-     * Sets the height
+     * Sets the height.
      *
-     * @param height the height
+     * @param height the height.
      */
     public void setHeight(double height) {
 

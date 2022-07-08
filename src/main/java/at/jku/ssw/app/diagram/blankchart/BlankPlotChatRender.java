@@ -5,7 +5,7 @@ import at.jku.ssw.app.diagram.Chart;
 import java.awt.Graphics2D;
 
 /**
- * @author Gerald Waldburger, K12005573
+ * @author Gruppe 3.
  */
 public abstract class BlankPlotChatRender {
 

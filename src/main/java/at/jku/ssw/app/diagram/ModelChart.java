@@ -1,7 +1,7 @@
 package at.jku.ssw.app.diagram;
 
 /**
- * @author Gerald Waldburger, K12005573
+ * @author Gruppe 3.
  */
 public class ModelChart {
     private String label;
@@ -10,8 +10,8 @@ public class ModelChart {
     /**
      * It is a constructor.
      *
-     * @param label  the label
-     * @param values the values
+     * @param label  the label.
+     * @param values the values.
      */
     public ModelChart(String label, double[] values) {
 
@@ -28,9 +28,9 @@ public class ModelChart {
     }
 
     /**
-     * Gets the label
+     * Gets the label.
      *
-     * @return the label
+     * @return the label.
      */
     public String getLabel() {
 
@@ -39,9 +39,9 @@ public class ModelChart {
 
 
     /**
-     * Sets the label
+     * Sets the label.
      *
-     * @param label the label
+     * @param label the label.
      */
     public void setLabel(String label) {
 
@@ -50,9 +50,9 @@ public class ModelChart {
 
 
     /**
-     * Gets the values
+     * Gets the values.
      *
-     * @return the values
+     * @return the values.
      */
     public double[] getValues() {
 
@@ -61,9 +61,9 @@ public class ModelChart {
 
 
     /**
-     * Sets the values
+     * Sets the values.
      *
-     * @param values the values
+     * @param values the values.
      */
     public void setValues(double[] values) {
 
@@ -71,9 +71,9 @@ public class ModelChart {
     }
 
     /**
-     * Gets the max values
+     * Gets the max values.
      *
-     * @return the max values
+     * @return the max values.
      */
     public double getMaxValues() {
 

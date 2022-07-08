@@ -10,10 +10,10 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.testng.Assert.assertEquals;
 
 /**
- * @author Gerald Waldburger, K12005573
+ * @author Gruppe 3.
  */
 /**
- * The class Series size test
+ * The class Series size test.
  */
 public class SeriesSizeTest {
 
@@ -21,7 +21,7 @@ public class SeriesSizeTest {
 
 /**
  *
- * Test get X
+ * Test get X.
  *
  */
     @Test
@@ -46,7 +46,7 @@ public class SeriesSizeTest {
 
 /**
  *
- * Test set X
+ * Test set X.
  *
  */
     @Test
@@ -69,7 +69,7 @@ public class SeriesSizeTest {
 
 /**
  *
- * Test get Y
+ * Test get Y.
  *
  */
     @Test
@@ -94,7 +94,7 @@ public class SeriesSizeTest {
 
 /**
  *
- * Test set Y
+ * Test set Y.
  *
  */
     @Test
@@ -117,7 +117,7 @@ public class SeriesSizeTest {
 
 /**
  *
- * Test get width
+ * Test get width.
  *
  */
     @Test
@@ -142,7 +142,7 @@ public class SeriesSizeTest {
 
 /**
  *
- * Test set width
+ * Test set width.
  *
  */
     @Test
@@ -165,7 +165,7 @@ public class SeriesSizeTest {
 
 /**
  *
- * Test get height
+ * Test get height.
  *
  */
     @Test
@@ -190,7 +190,7 @@ public class SeriesSizeTest {
 
 /**
  *
- * Test set height
+ * Test set height.
  *
  */
     @Test

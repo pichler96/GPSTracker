@@ -9,17 +9,17 @@ import java.util.logging.Logger;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
- * @author Gerald Waldburger, K12005573
+ * @author Gruppe 3.
  */
 /**
- * The class Model legend test
+ * The class Model legend test.
  */
 public class ModelLegendTest {
 
     private Logger log = Logger.getLogger("Logger");
 
     /**
-     * Test get name
+     * Test get name.
      */
     @Test
     public void testGetName() {
@@ -42,7 +42,7 @@ public class ModelLegendTest {
     }
 
     /**
-     * Test set name
+     * Test set name.
      */
     @Test
     public void testSetName() {
@@ -63,7 +63,7 @@ public class ModelLegendTest {
     }
 
     /**
-     * Test get color
+     * Test get color.
      */
     @Test
     public void testGetColor() {
@@ -86,7 +86,7 @@ public class ModelLegendTest {
     }
 
     /**
-     * Test set color
+     * Test set color.
      */
     @Test
     public void testSetColor() {
