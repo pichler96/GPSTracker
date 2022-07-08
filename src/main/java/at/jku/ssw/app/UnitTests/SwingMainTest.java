@@ -1,7 +1,8 @@
-package at.jku.ssw.app.unitTests;
+package at.jku.ssw.app.UnitTests;
 
 import at.jku.ssw.app.Main;
 import at.jku.ssw.app.SwingMain;
+import at.jku.ssw.app.diagram.Graphics;
 import at.jku.ssw.tcxparser.TrainingsData;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -239,4 +240,18 @@ class SwingMainTest{
         assertEquals(lapTable2.getModel().getRowCount(), size);
         //Number of Rows from the current LapTable, which shows the laps of the 3rd track (SelectionInterval(2,2)
     }
+
+    @Test
+    void triggerDiagram() throws JAXBException, IOException, ParseException {
+        double avgCalories = 0.0;
+        int placeholder = 0;
+        double speed = 0.0;
+        int heart_rate = 0;
+
+        Graphics graphicsWithNoParameter = new Graphics();
+        Graphics graphicsForCalories = new Graphics(avgCalories, placeholder);
+        Graphics graphicsForSpeed = new Graphics(speed);
+        Graphics graphicsForHeartRate = new Graphics(heart_rate);
+    }
+
 }

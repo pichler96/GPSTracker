@@ -11,46 +11,11 @@ import java.text.DecimalFormat;
 import javax.swing.JComponent;
 import javax.swing.border.EmptyBorder;
 
+/**
+ * @author Gerald Waldburger, K12005573
+ */
+
 public class BlankPlotChart extends JComponent {
-
-    public BlankPlotChatRender getBlankPlotChatRender() {
-        return blankPlotChatRender;
-    }
-
-    public void setBlankPlotChatRender(BlankPlotChatRender blankPlotChatRender) {
-        this.blankPlotChatRender = blankPlotChatRender;
-    }
-
-    public double getMaxValues() {
-        return maxValues;
-    }
-
-    public void setMaxValues(double maxValues) {
-        this.maxValues = maxValues;
-        niceScale.setMax(maxValues);
-        repaint();
-    }
-
-    public double getMinValues() {
-        return minValues;
-    }
-
-    public int getLabelCount() {
-        return labelCount;
-    }
-
-    public void setLabelCount(int labelCount) {
-        this.labelCount = labelCount;
-    }
-
-    public String getValuesFormat() {
-        return valuesFormat;
-    }
-
-    public void setValuesFormat(String valuesFormat) {
-        this.valuesFormat = valuesFormat;
-        format.applyPattern(valuesFormat);
-    }
 
     private final DecimalFormat format = new DecimalFormat("#,##0.##");
     private NiceScale niceScale;
@@ -60,7 +25,115 @@ public class BlankPlotChart extends JComponent {
     private String valuesFormat = "#,##0.##";
     private BlankPlotChatRender blankPlotChatRender;
 
+
+    /**
+     * Gets the blank plot chat render
+     *
+     * @return the blank plot chat render
+     */
+    public BlankPlotChatRender getBlankPlotChatRender() {
+
+        return blankPlotChatRender;
+    }
+
+
+    /**
+     * Sets the blank plot chat render
+     *
+     * @param blankPlotChatRender the blank plot chat render
+     */
+    public void setBlankPlotChatRender(BlankPlotChatRender blankPlotChatRender) {
+
+        this.blankPlotChatRender = blankPlotChatRender;
+    }
+
+
+    /**
+     * Gets the max values
+     *
+     * @return the max values
+     */
+    public double getMaxValues() {
+
+        return maxValues;
+    }
+
+
+    /**
+     * Sets the max values
+     *
+     * @param maxValues the max values
+     */
+    public void setMaxValues(double maxValues) {
+
+        this.maxValues = maxValues;
+        niceScale.setMax(maxValues);
+        repaint();
+    }
+
+
+    /**
+     * Gets the min values
+     *
+     * @return the min values
+     */
+    public double getMinValues() {
+
+        return minValues;
+    }
+
+
+    /**
+     * Gets the label count
+     *
+     * @return the label count
+     */
+    public int getLabelCount() {
+
+        return labelCount;
+    }
+
+
+    /**
+     * Sets the label count
+     *
+     * @param labelCount the label count
+     */
+    public void setLabelCount(int labelCount) {
+
+        this.labelCount = labelCount;
+    }
+
+
+    /**
+     * Gets the values format
+     *
+     * @return the values format
+     */
+    public String getValuesFormat() {
+
+        return valuesFormat;
+    }
+
+
+    /**
+     * Sets the values format
+     *
+     * @param valuesFormat the values format
+     */
+    public void setValuesFormat(String valuesFormat) {
+
+        this.valuesFormat = valuesFormat;
+        format.applyPattern(valuesFormat);
+    }
+
+    /**
+     * Blank plot chart
+     *
+     * @return public
+     */
     public BlankPlotChart() {
+
         setBackground(Color.WHITE);
         setOpaque(false);
         setForeground(new Color(100, 100, 100));
@@ -68,11 +141,24 @@ public class BlankPlotChart extends JComponent {
         init();
     }
 
+
+    /**
+     * Init
+     */
     private void init() {
+
         initValues(0, 10);
     }
 
+
+    /**
+     * Init values
+     *
+     * @param minValues the min values
+     * @param maxValues the max values
+     */
     public void initValues(double minValues, double maxValues) {
+
         this.minValues = minValues;
         this.maxValues = maxValues;
         niceScale = new NiceScale(minValues, maxValues);
@@ -92,7 +178,14 @@ public class BlankPlotChart extends JComponent {
         }
     }
 
+
+    /**
+     * Create line
+     *
+     * @param g2 the g2
+     */
     private void createLine(Graphics2D g2) {
+
         g2.setColor(new Color(220, 220, 220));
         Insets insets = getInsets();
         double textHeight = getLabelTextHeight(g2);
@@ -109,7 +202,14 @@ public class BlankPlotChart extends JComponent {
 
     }
 
+
+    /**
+     * Create values
+     *
+     * @param g2 the g2
+     */
     private void createValues(Graphics2D g2) {
+
         g2.setColor(getForeground());
         Insets insets = getInsets();
         double textHeight = getLabelTextHeight(g2);
@@ -129,7 +229,14 @@ public class BlankPlotChart extends JComponent {
         }
     }
 
+
+    /**
+     * Create label text
+     *
+     * @param g2 the g2
+     */
     private void createLabelText(Graphics2D g2) {
+
         if (labelCount > 0) {
             Insets insets = getInsets();
             double textWidth = getMaxValuesTextWidth(g2);
@@ -151,7 +258,14 @@ public class BlankPlotChart extends JComponent {
         }
     }
 
+
+    /**
+     * Render series
+     *
+     * @param g2 the g2
+     */
     private void renderSeries(Graphics2D g2) {
+
         if (blankPlotChatRender != null) {
             Insets insets = getInsets();
             double textWidth = getMaxValuesTextWidth(g2);
@@ -167,7 +281,15 @@ public class BlankPlotChart extends JComponent {
         }
     }
 
+
+    /**
+     * Gets the max values text width
+     *
+     * @param g2 the g2
+     * @return the max values text width
+     */
     private double getMaxValuesTextWidth(Graphics2D g2) {
+
         double width = 0;
         FontMetrics ft = g2.getFontMetrics();
         double valuesCount = niceScale.getNiceMin();
@@ -183,12 +305,28 @@ public class BlankPlotChart extends JComponent {
         return width;
     }
 
+
+    /**
+     * Gets the label text height
+     *
+     * @param g2 the g2
+     * @return the label text height
+     */
     private int getLabelTextHeight(Graphics2D g2) {
+
         FontMetrics ft = g2.getFontMetrics();
         return ft.getHeight();
     }
 
+
+    /**
+     * Gets the chart text
+     *
+     * @param index the index
+     * @return the chart text
+     */
     private String getChartText(int index) {
+
         if (blankPlotChatRender != null) {
             return blankPlotChatRender.getLabelText(index);
         } else {
@@ -196,13 +334,34 @@ public class BlankPlotChart extends JComponent {
         }
     }
 
+
+    /**
+     * Gets the rectangle
+     *
+     * @param index  the index
+     * @param height the height
+     * @param space  the space
+     * @param startX the start X
+     * @param startY the start Y
+     * @return the rectangle
+     */
     public SeriesSize getRectangle(int index, double height, double space, double startX, double startY) {
+
         double x = startX + space * index;
-        SeriesSize size = new SeriesSize(x, startY+1, space, height);
+        SeriesSize size = new SeriesSize(x, startY + 1, space, height);
         return size;
     }
 
+
+    /**
+     * Gets the series values of
+     *
+     * @param values the values
+     * @param height the height
+     * @return the series values of
+     */
     public double getSeriesValuesOf(double values, double height) {
+
         double max = niceScale.getTickSpacing() * niceScale.getMaxTicks();
         double percentValues = values * 100d / max;
         return height * percentValues / 100d;
