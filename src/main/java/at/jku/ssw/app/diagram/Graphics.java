@@ -215,7 +215,8 @@ public class Graphics extends javax.swing.JFrame {
     }
 
     /**
-     * @return a container, so its a getter for a container.
+     * its a getter for a container
+     * @return a container.
      */
     public Container getContainer() {
 
@@ -223,7 +224,8 @@ public class Graphics extends javax.swing.JFrame {
     }
 
     /**
-     * @param container its a setter for a container - so a container looks like the incoming one.
+     * A setter for a container - so a container looks like the incoming one.
+     * @param container
      */
     public void setContainer(Container container) {
 
@@ -231,7 +233,8 @@ public class Graphics extends javax.swing.JFrame {
     }
 
     /**
-     * @return a chart, so its a getter for a chart
+     * its a getter for a chart.
+     * @return a chart.
      */
     public Chart getChart() {
 

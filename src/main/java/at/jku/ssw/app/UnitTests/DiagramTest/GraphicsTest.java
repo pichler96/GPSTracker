@@ -12,12 +12,10 @@ import java.awt.*;
 import java.util.logging.Logger;
 
 /**
+ * The class Graphics test.
  * @author Gruppe 3.
  */
 
-/**
- * The class Graphics test.
- */
 public class GraphicsTest {
 
     private Logger log = Logger.getLogger("Logger");

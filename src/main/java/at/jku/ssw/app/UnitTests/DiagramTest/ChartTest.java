@@ -14,11 +14,8 @@ import java.io.IOException;
 import java.util.logging.Logger;
 
 /**
- * @author Gruppe 3.
- */
-
-/**
  * The class Chart test.
+ * @author Gruppe 3.
  */
 public class ChartTest {
 

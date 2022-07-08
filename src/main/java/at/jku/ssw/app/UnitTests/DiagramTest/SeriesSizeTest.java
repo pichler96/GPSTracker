@@ -10,10 +10,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.testng.Assert.assertEquals;
 
 /**
- * @author Gruppe 3.
- */
-/**
  * The class Series size test.
+ * @author Gruppe 3.
  */
 public class SeriesSizeTest {
 

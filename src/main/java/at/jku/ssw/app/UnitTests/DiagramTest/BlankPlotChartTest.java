@@ -10,12 +10,10 @@ import java.util.logging.Logger;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
+ *  The class Blank plot chart test.
  * @author Gruppe 3.
  */
 
-/**
- * The class Blank plot chart test.
- */
 public class BlankPlotChartTest {
 
     private Logger log = Logger.getLogger(String.valueOf(this.getClass()));

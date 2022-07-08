@@ -8,10 +8,8 @@ import java.util.logging.Logger;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
- * @author Gruppe 3.
- */
-/**
  * The class Nice scale test.
+ * @author Gruppe 3.
  */
 public class NiceScaleTest {
 
