@@ -82,10 +82,6 @@ public class SwingMain extends JFrame {
         JScrollPane lapTableScroll = getLapScrollPane(0);
         lapTableScroll.setBorder(BorderFactory.createTitledBorder("Laps:"));
 
-        /**
-         * A new graphic is created here
-         */
-
         Graphics graphics = new Graphics();
         Container container = graphics.getContainer();
         JPanel jPanelGraphic = new JPanel();
@@ -114,13 +110,6 @@ public class SwingMain extends JFrame {
         JMenu distance = new JMenu("Lap Distance");
         JMenu changeDiagram = new JMenu("Change Diagram");
 
-        /**
-         * Diagram for distance in relation to time is created, and the variable diagramDecision which is
-         * above is specified for the type of diagram.
-         *
-         * Furthermore, the diagram is joined to the application
-         */
-
         JMenuItem diagramForDistance = new JMenuItem("Distance/Time");
         diagramForDistance.addActionListener(e -> {
             try {
@@ -131,12 +120,6 @@ public class SwingMain extends JFrame {
             }
         });
 
-        /**
-         * Diagram for speed in relation to time is created, and the variable diagramDecision which is
-         * above is specified for the type of diagram.
-         *
-         * Furthermore, the diagram is joined to the application
-         */
         JMenuItem diagramForSpeed = new JMenuItem("Avg Speed/Time");
 
         diagramForSpeed.addActionListener(e -> {
@@ -148,12 +131,6 @@ public class SwingMain extends JFrame {
             }
         });
 
-        /**
-         * Diagram for the average heartrate in relation to time is created, and the variable diagramDecision which is
-         * above is specified for the type of diagram.
-         *
-         * Furthermore, the diagram is joined to the application
-         */
         JMenuItem diagramForHeartrate = new JMenuItem("Avg Heartrate/Time");
         diagramForHeartrate.addActionListener(e -> {
             try {
@@ -164,12 +141,6 @@ public class SwingMain extends JFrame {
             }
         });
 
-        /**
-         * Diagram for average of calories in relation to time is created, and the variable diagramDecision which is
-         * above is specified for the type of diagram.
-         *
-         * Furthermore, the diagram is joined to the application
-         */
         JMenuItem diagramForCalories = new JMenuItem("Avg Calories/Time");
         diagramForCalories.addActionListener(e -> {
             try {
@@ -387,10 +358,10 @@ public class SwingMain extends JFrame {
      * In relation to the decision variable created above the methode getNewDiagram is creating a new base diagram
      * which is the base of the application, so the diagram is created before a filter is used
      *
-     * @return
-     * @throws JAXBException
-     * @throws IOException
-     * @throws ParseException
+     * @return JScrollPane
+     * @throws JAXBException                  is thrown by the TCX Parser, which reads the tcx - files.
+     * @throws IOException                    is also thrown by the TCX Parser if there can't be found a tcx-file in the source folder.
+     * @throws ParseException                 Signals that an error has been reached unexpectedly while parsing.
      */
     private JScrollPane getNewDiagramForDistance() throws JAXBException, IOException, ParseException {
         Graphics graphics = new Graphics();
@@ -409,10 +380,10 @@ public class SwingMain extends JFrame {
      * In relation to the decision variable created above the methode getNewDiagramForSpeed is creating a new diagram
      * which is used to have a look at the speed in relation to time, depending on the decision variable
      *
-     * @return
-     * @throws JAXBException
-     * @throws IOException
-     * @throws ParseException
+     * @return JScrollPane
+     * @throws JAXBException                  is thrown by the TCX Parser, which reads the tcx - files.
+     * @throws IOException                    is also thrown by the TCX Parser if there can't be found a tcx-file in the source folder.
+     * @throws ParseException                 Signals that an error has been reached unexpectedly while parsing.
      */
     private JScrollPane getNewDiagramForSpeed() throws JAXBException, IOException, ParseException {
         double speedT = 0;
@@ -432,10 +403,10 @@ public class SwingMain extends JFrame {
      * In relation to the decision variable created above the methode getNewDiagramForHeartrate is creating a new diagram
      * which is used to have a look at the hearthrate in relation to time, depending on the decision variable.
      *
-     * @return
-     * @throws JAXBException
-     * @throws IOException
-     * @throws ParseException
+     * @return JScrollPane
+     * @throws JAXBException                  is thrown by the TCX Parser, which reads the tcx - files.
+     * @throws IOException                    is also thrown by the TCX Parser if there can't be found a tcx-file in the source folder.
+     * @throws ParseException                 Signals that an error has been reached unexpectedly while parsing.
      */
     private JScrollPane getNewDiagramForHeartrate() throws JAXBException, IOException, ParseException {
         int heartrateT = 0;
@@ -454,10 +425,10 @@ public class SwingMain extends JFrame {
      * In relation to the decision variable created above the methode getNewDiagramForCalories is creating a new diagram
      * which is used to have a look at the calories in relation to time, depending on the decision variable
      *
-     * @return
-     * @throws JAXBException
-     * @throws IOException
-     * @throws ParseException
+     * @return JScrollPane
+     * @throws JAXBException                  is thrown by the TCX Parser, which reads the tcx - files.
+     * @throws IOException                    is also thrown by the TCX Parser if there can't be found a tcx-file in the source folder.
+     * @throws ParseException                 Signals that an error has been reached unexpectedly while parsing.
      */
     private JScrollPane getNewDiagramForCalories() throws JAXBException, IOException, ParseException {
         double caloriesT = 0;

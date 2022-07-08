@@ -17,6 +17,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * Chart is a class, which provides a chart abstraction, and defines the base of a diagram
+ *
  * @author Gruppe 3
  */
 public class Chart extends javax.swing.JPanel {
