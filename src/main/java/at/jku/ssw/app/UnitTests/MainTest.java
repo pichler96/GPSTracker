@@ -17,7 +17,7 @@ import static org.testng.Assert.assertThrows;
 
 
 /**
- * The class Main test.
+ * The MainTest class tests the main.
  * @author Gruppe 3.
  */
 public class MainTest {
