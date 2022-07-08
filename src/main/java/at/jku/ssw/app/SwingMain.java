@@ -21,9 +21,7 @@ public class SwingMain extends JFrame {
     /**
      * This variable is used to specified the current diagram and the further one
      */
-
     protected int diagramDecision = 0;
-
     /**
      * pane represents the "lowest" level of the layout,
      * therefore every GUI Component has to be added to it, else it won't be visible.
@@ -137,8 +135,9 @@ public class SwingMain extends JFrame {
          *
          * Furthermore, the diagram is joined to the application
          */
-
         JMenuItem diagramForSpeed = new JMenuItem("Speed/Time");
+        JMenuItem diagramForSpeed = new JMenuItem("Avg Speed/Time");
+
         diagramForSpeed.addActionListener(e -> {
             try {
                 diagramDecision = 1;
@@ -177,11 +176,7 @@ public class SwingMain extends JFrame {
             try {
                 diagramDecision = 3;
                 repaintGUI();
-            } catch (JAXBException ex) {
-                ex.printStackTrace();
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            } catch (ParseException ex) {
+            } catch (JAXBException | ParseException | IOException ex) {
                 ex.printStackTrace();
             }
         });
@@ -356,8 +351,8 @@ public class SwingMain extends JFrame {
         distance.add(distance5000); distance.addSeparator();
         distance.add(distance10000);
 
-        changeDiagram.add(diagramForSpeed); changeDiagram.addSeparator();
         changeDiagram.add(diagramForDistance); changeDiagram.addSeparator();
+        changeDiagram.add(diagramForSpeed); changeDiagram.addSeparator();
         changeDiagram.add(diagramForHeartrate); changeDiagram.addSeparator();
         changeDiagram.add(diagramForCalories);
 
@@ -521,6 +516,7 @@ public class SwingMain extends JFrame {
                         eastPanel.add(getNewDiagramForSpeed(), BorderLayout.CENTER);
                     }else if(diagramDecision == 2){
                         eastPanel.add(getNewDiagramForHeartrate(), BorderLayout.CENTER);
+
                     }else{
                         eastPanel.add(getNewDiagramForCalories(), BorderLayout.CENTER);
                     }
