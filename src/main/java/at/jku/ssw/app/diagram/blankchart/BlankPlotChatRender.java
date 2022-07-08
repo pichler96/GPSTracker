@@ -5,6 +5,7 @@ import at.jku.ssw.app.diagram.Chart;
 import java.awt.Graphics2D;
 
 /**
+ * Is an interface for blankplotchart
  * @author Gruppe 3.
  */
 public abstract class BlankPlotChatRender {
