@@ -1,10 +1,18 @@
 package at.jku.ssw.app.diagram;
 
 /**
+ * Is used in chart in a list to define the legend as an item.
+ *
  * @author Gruppe 3.
  */
 public class LegendItem extends javax.swing.JPanel {
+    /**
+     * Is the color of the label.
+     */
     private LabelColor lbColor;
+    /**
+     * defines the name of the jlabel.
+     */
     private javax.swing.JLabel lbName;
 
     /**

@@ -22,13 +22,29 @@ import java.util.List;
  * @author Gruppe 3
  */
 public class Chart extends javax.swing.JPanel {
-
+    /**
+     * instance of blankplotchart
+     */
     private at.jku.ssw.app.diagram.blankchart.BlankPlotChart blankPlotChart;
+    /**
+     * instance of a panelLegend defined by jpanel
+     */
     private javax.swing.JPanel panelLegend;
-
+    /**
+     * list of modellegend to add and remove or work with the legend
+     */
     private List<ModelLegend> legends = new ArrayList<>();
+    /**
+     * list of modelcharts to make a diagram with dynamic chartinstances
+     */
     private List<ModelChart> model = new ArrayList<>();
+    /**
+     * Is used in the methode renderSeries for the Modellegend and the rectangle building
+     */
     private final int seriesSize = 12;
+    /**
+     * SeriesSpace is the space between all the sizes in the diagram definition.
+     */
     private final int seriesSpace = 6;
 
 

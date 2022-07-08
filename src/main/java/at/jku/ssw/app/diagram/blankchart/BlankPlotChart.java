@@ -12,16 +12,39 @@ import javax.swing.JComponent;
 import javax.swing.border.EmptyBorder;
 
 /**
+ * Creates a chart without any values and setup.
+ *
  * @author Gruppe 3.
  */
 public class BlankPlotChart extends JComponent {
 
+    /**
+     * Is a format defined for the blankplot
+     */
     private final DecimalFormat format = new DecimalFormat("#,##0.##");
+    /**
+     * an instance of the niceScale
+     */
     private NiceScale niceScale;
+    /**
+     * is a double value of a maximum value
+     */
     private double maxValues;
+    /**
+     * is a double value of a minimum value
+     */
     private double minValues;
+    /**
+     * a counter for all labels, to how many labels are accurate.
+     */
     private int labelCount;
+    /**
+     * Format for the value to compare
+     */
     private String valuesFormat = "#,##0.##";
+    /**
+     * an instance of the interface of blankblotchart
+     */
     private BlankPlotChatRender blankPlotChatRender;
 
 

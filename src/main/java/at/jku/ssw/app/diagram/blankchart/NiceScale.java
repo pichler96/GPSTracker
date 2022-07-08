@@ -1,16 +1,38 @@
 package at.jku.ssw.app.diagram.blankchart;
 
 /**
+ * Nicescale is used in BlankPlotChart as a value to operate and set the max value.
+ *
  * @author Gruppe 3.
  */
 public class NiceScale {
-
+    /**
+     * minimum value to compare.
+     */
     private double min;
+    /**
+     * maximum value to compare.
+     */
     private double max;
+    /**
+     * maxTicks to focus on the values.
+     */
     private int maxTicks = 10;
+    /**
+     * value to make a division.
+     */
     private double tickSpacing;
+    /**
+     * range is just to know the tickspacing.
+     */
     private double range;
+    /**
+     * minimum to define the nicenumber.
+     */
     private double niceMin;
+    /**
+     * maximum to define the nicenumber.
+     */
     private double niceMax;
 
 

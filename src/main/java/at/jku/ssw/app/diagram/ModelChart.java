@@ -1,10 +1,18 @@
 package at.jku.ssw.app.diagram;
 
 /**
+ * Modelchart is used in chart to add and define data in the chart.
+ *
  * @author Gruppe 3.
  */
 public class ModelChart {
+    /**
+     * is the label for the modelchart
+     */
     private String label;
+    /**
+     * array of all values which are added to the model
+     */
     private double values[];
 
     /**

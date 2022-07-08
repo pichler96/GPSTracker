@@ -18,10 +18,19 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**
+ * Graphics is a class, which provides a graphics abstraction, and defines the base of a diagram
+ * also generates different types of diagrams which are needed in the application.
+ *
  * @author Gruppe 3.
  */
 public class Graphics extends javax.swing.JFrame {
+    /**
+     * container defined from jframe.
+     */
     Container container;
+    /**
+     * chart instance used to create a well performing diagram.
+     */
     private at.jku.ssw.app.diagram.Chart chart;
 
     /**

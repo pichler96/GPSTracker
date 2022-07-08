@@ -5,6 +5,8 @@ import java.awt.*;
 import java.awt.Graphics;
 
 /**
+ * Labelcolor paints with one methode all the instance of the graphics.
+ *
  * @author Gruppe 3.
  */
 public class LabelColor extends JLabel {

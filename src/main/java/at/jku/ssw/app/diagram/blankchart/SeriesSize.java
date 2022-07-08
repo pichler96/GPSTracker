@@ -1,21 +1,35 @@
 package at.jku.ssw.app.diagram.blankchart;
 
 /**
+ * SeriesSize is a class which supports the creation of the rectangles in the diagram.
+ *
  * @author Gruppe 3.
  */
 public class SeriesSize {
+    /**
+     * value to set the size of the series for the rectangle which is used in the graph.
+     */
     private double x;
+    /**
+     * value to set the size of the series for the rectangle which is used in the graph.
+     */
     private double y;
+    /**
+     * width to set the size of the series for the rectangle which is used in the graph.
+     */
     private double width;
+    /**
+     * height to set the size of the series for the rectangle which is used in the graph.
+     */
     private double height;
 
     /**
      * It is a constructor.
      *
-     * @param x      the x
-     * @param y      the y
-     * @param width  the width
-     * @param height the height
+     * @param x      the x.
+     * @param y      the y.
+     * @param width  the width.
+     * @param height the height.
      */
     public SeriesSize(double x, double y, double width, double height) {
 
