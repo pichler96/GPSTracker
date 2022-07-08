@@ -15,21 +15,8 @@ public class TcxParser {
     private final Unmarshaller jaxbUnmarshaller;
 
     public TcxParser() throws JAXBException {
-
         JAXBContext jaxbContext = JAXBContext.newInstance(TrainingCenterDatabaseT.class);
         jaxbUnmarshaller = jaxbContext.createUnmarshaller();
-    }
-
-
-    /**
-     * Parses a stream containing TCX data
-     *
-     * @param stream the input stream
-     * @return {@link TrainingCenterDatabaseT} object containing parsed data
-     * @throws Exception when TCX file is invalid
-     */
-    public TrainingCenterDatabaseT parseTCX(String stream) throws JAXBException {
-        return parseTCX(new ByteArrayInputStream(stream.getBytes()));
     }
 
     /**
