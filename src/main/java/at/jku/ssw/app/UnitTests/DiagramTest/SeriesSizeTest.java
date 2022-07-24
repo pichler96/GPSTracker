@@ -27,7 +27,7 @@ public class SeriesSizeTest {
 
         try {
             log.info("Starting execution of getX");
-            double expectedValue = 1.3;
+            double expectedValue = 0.0;
 
             SeriesSize seriessize = new SeriesSize();
             double actualValue = seriessize.getX();
@@ -75,7 +75,7 @@ public class SeriesSizeTest {
 
         try {
             log.info("Starting execution of getY");
-            double expectedValue = 5.2;
+            double expectedValue = 0.0;
 
             SeriesSize seriessize = new SeriesSize();
             double actualValue = seriessize.getY();
@@ -100,7 +100,7 @@ public class SeriesSizeTest {
 
         try {
             log.info("Starting execution of setY");
-            double y = 5.2;
+            double y = 0.0;
 
             SeriesSize seriessize = new SeriesSize();
             seriessize.setY(y);
@@ -123,7 +123,7 @@ public class SeriesSizeTest {
 
         try {
             log.info("Starting execution of getWidth");
-            double expectedValue = 5.1;
+            double expectedValue = 0.0;
 
             SeriesSize seriessize = new SeriesSize();
             double actualValue = seriessize.getWidth();
@@ -171,7 +171,7 @@ public class SeriesSizeTest {
 
         try {
             log.info("Starting execution of getHeight");
-            double expectedValue = 12;
+            double expectedValue = 0.0;
 
             SeriesSize seriessize = new SeriesSize();
             double actualValue = seriessize.getHeight();
@@ -196,7 +196,7 @@ public class SeriesSizeTest {
 
         try {
             log.info("Starting execution of setHeight");
-            double height = 12;
+            double height = 0.0;
 
             SeriesSize seriessize = new SeriesSize();
             seriessize.setHeight(height);
