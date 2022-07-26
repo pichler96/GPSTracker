@@ -8,8 +8,8 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.util.List;
 
-import at.jku.ssw.tcxparser.TrainingsData;
-import at.jku.ssw.tcxparser.schema.TrainingCenterDatabaseT;
+import at.jku.ssw.model.TrainingsData;
+import at.jku.ssw.model.schema.TrainingCenterDatabaseT;
 
 /**
  * Main class of the Application in order to start it.

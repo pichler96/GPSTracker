@@ -25,6 +25,8 @@ public class MainTest {
         try {
             log.info("Starting execution of main");
             String[] args = new String[0];
+
+            Main main = new Main();
             Main.main(args);
             assertTrue(true);
         } catch (Exception exception) {

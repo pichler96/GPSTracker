@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import at.jku.ssw.app.diagram.Chart;
 import at.jku.ssw.app.diagram.ModelChart;
 import at.jku.ssw.app.diagram.blankchart.SeriesSize;
-import at.jku.ssw.tcxparser.schema.TrainingCenterDatabaseT;
+import at.jku.ssw.model.schema.TrainingCenterDatabaseT;
 import org.junit.jupiter.api.Test;
 import java.awt.*;
 import java.util.logging.Logger;
@@ -139,6 +139,7 @@ public class ChartTest {
             log.info("Starting execution of readInData");
             java.util.List<TrainingCenterDatabaseT> expectedValue = null;
 
+            Chart chart = new Chart();
             java.util.List<TrainingCenterDatabaseT> actualValue = Chart.readInData();
             log.info("Expected Value=" + expectedValue + " . Actual Value=" + actualValue);
             System.out.println("Expected Value=" + expectedValue + " . Actual Value=" + actualValue);
