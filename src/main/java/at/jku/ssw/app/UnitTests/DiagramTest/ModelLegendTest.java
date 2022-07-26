@@ -30,7 +30,7 @@ public class ModelLegendTest {
             String actualValue = modellegend.getName();
             log.info("Expected Value=" + expectedValue + " . Actual Value=" + actualValue);
             System.out.println("Expected Value=" + expectedValue + " . Actual Value=" + actualValue);
-            assertFalse(expectedValue.equals(actualValue));
+            assertNotEquals(expectedValue, actualValue);
 
         } catch (Exception exception) {
             log.warning("Exception in execution of execute Get All Log From First Mov F-" + exception);
@@ -51,7 +51,7 @@ public class ModelLegendTest {
 
             ModelLegend modellegend = new ModelLegend();
             modellegend.setName(name);
-            assertTrue(name.equals(modellegend.getName()));
+            assertEquals(name, modellegend.getName());
 
         } catch (Exception exception) {
             log.warning("Exception in execution of set Name-" + exception);
@@ -95,7 +95,7 @@ public class ModelLegendTest {
 
             ModelLegend modellegend = new ModelLegend();
             modellegend.setColor(color);
-            assertTrue(color.equals(modellegend.getColor()));
+            assertEquals(color, modellegend.getColor());
 
         } catch (Exception exception) {
             log.warning("Exception in execution ofsetColor-" + exception);

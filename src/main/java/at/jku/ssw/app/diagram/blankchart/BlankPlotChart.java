@@ -371,10 +371,8 @@ public class BlankPlotChart extends JComponent {
      * @return the rectangle.
      */
     public SeriesSize getRectangle(int index, double height, double space, double startX, double startY) {
-
         double x = startX + space * index;
-        SeriesSize size = new SeriesSize(x, startY + 1, space, height);
-        return size;
+        return new SeriesSize(x, startY + 1, space, height);
     }
 
 

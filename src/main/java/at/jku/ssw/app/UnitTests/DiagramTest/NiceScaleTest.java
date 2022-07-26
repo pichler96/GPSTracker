@@ -1,6 +1,7 @@
 package at.jku.ssw.app.UnitTests.DiagramTest;
 
 import at.jku.ssw.app.diagram.blankchart.NiceScale;
+import com.sun.istack.NotNull;
 import org.junit.jupiter.api.Test;
 
 import java.util.logging.Logger;
@@ -24,6 +25,7 @@ public class NiceScaleTest {
         try {
             log.info("Starting execution of setMin");
             double min = 0;
+            @NotNull
             final double c = Double.parseDouble(null);
             NiceScale nicescale = new NiceScale(c, c);
             nicescale.setMin(min);
@@ -45,6 +47,7 @@ public class NiceScaleTest {
         try {
             log.info("Starting execution of getMax");
             double expectedValue = 0;
+            @NotNull
             final double c = Double.parseDouble(null);
             NiceScale nicescale = new NiceScale(c, c);
             double actualValue = nicescale.getMax();
@@ -68,6 +71,7 @@ public class NiceScaleTest {
         try {
             log.info("Starting execution of setMax");
             double max = 0;
+            @NotNull
             final double c = Double.parseDouble(null);
             NiceScale nicescale = new NiceScale(c, c);
             nicescale.setMax(max);
@@ -131,14 +135,14 @@ public class NiceScaleTest {
 
         try {
             log.info("Starting execution of getTickSpacing");
-            Object expectedValue = Double.parseDouble(String.valueOf(0));
-            final Object c = Double.parseDouble(String.valueOf(2.5));
+            double expectedValue = Double.parseDouble(String.valueOf(0));
+            final double c = Double.parseDouble(String.valueOf(2.5));
 
-            NiceScale nicescale = new NiceScale((Double) c, (Double) expectedValue);
+            NiceScale nicescale = new NiceScale(c, expectedValue);
             double actualValue = nicescale.getTickSpacing();
             log.info("Expected Value=" + expectedValue + " . Actual Value=" + actualValue);
             System.out.println("Expected Value=" + expectedValue + " . Actual Value=" + actualValue);
-            assertFalse(expectedValue.equals(actualValue));
+            assertNotEquals(expectedValue, actualValue, 0.0);
 
         } catch (Exception exception) {
             log.warning("Exception in execution of execute1GetAllLogFromFirstMovF-" + exception);
@@ -155,14 +159,14 @@ public class NiceScaleTest {
 
         try {
             log.info("Starting execution of getNiceMin");
-            Object expectedValue = Double.parseDouble(String.valueOf(2));
+            double expectedValue = Double.parseDouble(String.valueOf(2));
 
-            final Object c = Double.parseDouble(String.valueOf(9.5));
-            NiceScale nicescale = new NiceScale((Double) c, (Double) expectedValue);
+            final double c = Double.parseDouble(String.valueOf(9.5));
+            NiceScale nicescale = new NiceScale(c, expectedValue);
             double actualValue = nicescale.getNiceMin();
             log.info("Expected Value=" + expectedValue + " . Actual Value=" + actualValue);
             System.out.println("Expected Value=" + expectedValue + " . Actual Value=" + actualValue);
-            assertFalse(expectedValue.equals(actualValue));
+            assertNotEquals(expectedValue, actualValue, 0.0);
 
         } catch (Exception exception) {
             log.warning("Exception in execution of execute1GetAllLogFromFirstMovF-" + exception);
@@ -180,6 +184,7 @@ public class NiceScaleTest {
         try {
             log.info("Starting execution of getNiceMax");
             double expectedValue = 0;
+            @NotNull
             final double c = Double.parseDouble(null);
 
             NiceScale nicescale = new NiceScale(c, expectedValue);
@@ -204,7 +209,7 @@ public class NiceScaleTest {
         try {
             log.info("Starting execution of getMaxTicks");
             int expectedValue = 0;
-
+            @NotNull
             final double c = Double.parseDouble(null);
             NiceScale nicescale = new NiceScale(c, expectedValue);
             int actualValue = nicescale.getMaxTicks();
@@ -228,7 +233,7 @@ public class NiceScaleTest {
         try {
             log.info("Starting execution of getMin");
             double expectedValue = 0;
-
+            @NotNull
             final double c = Double.parseDouble(null);
             NiceScale nicescale = new NiceScale(c, expectedValue);
             double actualValue = nicescale.getMin();

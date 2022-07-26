@@ -14,6 +14,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Chart is a class, which provides a chart abstraction, and defines the base of a diagram
@@ -140,7 +141,7 @@ public class Chart extends javax.swing.JPanel {
 
         File directoryPath = new File("data");
 
-        for (File training : directoryPath.listFiles()) {
+        for (File training : Objects.requireNonNull(directoryPath.listFiles())) {
             if (FilenameUtils.getExtension(training.getName()).equals("tcx")) {
                 trainings.add(parser.parseTCX(new FileInputStream(training.getPath())));
             }

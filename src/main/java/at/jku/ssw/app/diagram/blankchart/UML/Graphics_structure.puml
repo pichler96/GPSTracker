@@ -1,0 +1,261 @@
+@startuml
+
+/' diagram meta data start
+config=StructureConfiguration;
+{
+  "projectClassification": {
+    "searchMode": "OpenProject", // OpenProject, AllProjects
+    "includedProjects": "",
+    "pathEndKeywords": "*.impl",
+    "isClientPath": "",
+    "isClientName": "",
+    "isTestPath": "",
+    "isTestName": "",
+    "isMappingPath": "",
+    "isMappingName": "",
+    "isDataAccessPath": "",
+    "isDataAccessName": "",
+    "isDataStructurePath": "",
+    "isDataStructureName": "",
+    "isInterfaceStructuresPath": "",
+    "isInterfaceStructuresName": "",
+    "isEntryPointPath": "",
+    "isEntryPointName": "",
+    "treatFinalFieldsAsMandatory": false
+  },
+  "graphRestriction": {
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "removeByInheritance": "", // inheritance/annotation based filtering is done in a second step
+    "removeByAnnotation": "",
+    "removeByClassPackage": "", // cleanup the graph after inheritance/annotation based filtering is done
+    "removeByClassName": "",
+    "cutMappings": false,
+    "cutEnum": true,
+    "cutTests": true,
+    "cutClient": true,
+    "cutDataAccess": true,
+    "cutInterfaceStructures": true,
+    "cutDataStructures": true,
+    "cutGetterAndSetter": true,
+    "cutConstructors": true
+  },
+  "graphTraversal": {
+    "forwardDepth": 3,
+    "backwardDepth": 3,
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "hideMappings": false,
+    "hideDataStructures": false,
+    "hidePrivateMethods": true,
+    "hideInterfaceCalls": true, // indirection: implementation -> interface (is hidden) -> implementation
+    "onlyShowApplicationEntryPoints": false, // root node is included
+    "useMethodCallsForStructureDiagram": "ForwardOnly" // ForwardOnly, BothDirections, No
+  },
+  "details": {
+    "aggregation": "GroupByClass", // ByClass, GroupByClass, None
+    "showClassGenericTypes": true,
+    "showMethods": true,
+    "showMethodParameterNames": true,
+    "showMethodParameterTypes": true,
+    "showMethodReturnType": true,
+    "showPackageLevels": 2,
+    "showDetailedClassStructure": true
+  },
+  "rootClass": "at.jku.ssw.app.diagram.Graphics",
+  "extensionCallbackMethod": "" // qualified.class.name#methodName - signature: public static String method(String)
+}
+diagram meta data end '/
+
+
+
+digraph g {
+    rankdir="TB"
+    splines=polyline
+    
+
+'nodes 
+subgraph cluster_105300 { 
+   	label=jku
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   subgraph cluster_1536001923 { 
+   	label=ssw
+	labeljust=l
+	fillcolor="#d8d8d8"
+	style=filled
+   
+   BlankPlotChart466326114[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)BlankPlotChart</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   blankPlotChatRender: BlankPlotChatRender [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   format: DecimalFormat [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   labelCount: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   maxValues: double [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   minValues: double [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   niceScale: NiceScale [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   valuesFormat: String [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >- createLabelText(g2: Graphics2D)</TD></TR>
+<TR><TD ALIGN="LEFT" >- createLine(g2: Graphics2D)</TD></TR>
+<TR><TD ALIGN="LEFT" >- createValues(g2: Graphics2D)</TD></TR>
+<TR><TD ALIGN="LEFT" >- getChartText(index: int): String</TD></TR>
+<TR><TD ALIGN="LEFT" >- getLabelTextHeight(g2: Graphics2D): int</TD></TR>
+<TR><TD ALIGN="LEFT" >- getMaxValuesTextWidth(g2: Graphics2D): double</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getRectangle(index: int, height: double, space: double, startX: double, startY: double): SeriesSize</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getSeriesValuesOf(values: double, height: double): double</TD></TR>
+<TR><TD ALIGN="LEFT" >- init()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ initValues(minValues: double, maxValues: double)</TD></TR>
+<TR><TD ALIGN="LEFT" ># paintComponent(grphcs: Graphics)</TD></TR>
+<TR><TD ALIGN="LEFT" >- renderSeries(g2: Graphics2D)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+BlankPlotChatRender466326114[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)BlankPlotChatRender</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ getLabelText(index: int): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ renderSeries(chart: BlankPlotChart, g2: Graphics2D, size: SeriesSize, index: int)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ renderSeries(chart: Chart, g2: Graphics2D, size: SeriesSize, index: int)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Chart1330061274[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Chart</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   blankPlotChart: BlankPlotChart [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   legends: List&lt;ModelLegend&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   model: List&lt;ModelChart&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   panelLegend: JPanel [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   seriesSize: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   seriesSpace: int [1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ addData(data: ModelChart)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ addLegend(name: String, color: Color)</TD></TR>
+<TR><TD ALIGN="LEFT" ># initComponents()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ readInData(): List&lt;TrainingCenterDatabaseT&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ resize(width: int, height: int)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Graphics1330061274[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Graphics</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   chart: Chart [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   container: Container [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ initComponents()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ModelChart1330061274[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ModelChart</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   label: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   values: double[] [0..*]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ModelLegend1330061274[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ModelLegend</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   color: Color [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   name: String [0..1]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+NiceScale466326114[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)NiceScale</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   max: double [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   maxTicks: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   min: double [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   niceMax: double [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   niceMin: double [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   range: double [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   tickSpacing: double [1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >- calculate()</TD></TR>
+<TR><TD ALIGN="LEFT" >- niceNum(RANGE: double, ROUND: boolean): double</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+TcxParser1040507932[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)TcxParser</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   jaxbUnmarshaller: Unmarshaller [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ parseTCX(stream: String): TrainingCenterDatabaseT</TD></TR>
+<TR><TD ALIGN="LEFT" >+ parseTCX(stream: InputStream): TrainingCenterDatabaseT</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+} 
+
+'edges    
+BlankPlotChart466326114 -> BlankPlotChatRender466326114[label="blankPlotChatRender
+[0..1]"];
+BlankPlotChart466326114 -> NiceScale466326114[label="niceScale
+[0..1]"];
+Chart1330061274 -> BlankPlotChart466326114[label="blankPlotChart
+[0..1]"];
+Chart1330061274 -> ModelChart1330061274[label="model
+[0..*]"];
+Chart1330061274 -> ModelLegend1330061274[label="legends
+[0..*]"];
+Chart1330061274 -> TcxParser1040507932[label="readInData() -> parseTCX()"];
+Graphics1330061274 -> Chart1330061274[label="chart
+[0..1]"];
+    
+}
+@enduml

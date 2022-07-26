@@ -1,13 +1,11 @@
 package at.jku.ssw.app.diagram;
 
 import at.jku.ssw.app.Main;
+
 import at.jku.ssw.model.schema.ActivityLapT;
 import at.jku.ssw.model.schema.ActivityT;
 import at.jku.ssw.model.schema.TrainingCenterDatabaseT;
-
 import java.awt.Color;
-
-
 import javax.swing.*;
 import javax.xml.bind.JAXBException;
 import java.awt.*;

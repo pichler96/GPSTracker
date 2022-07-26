@@ -1,0 +1,191 @@
+@startuml
+
+/' diagram meta data start
+config=CallConfiguration;
+{
+  "rootMethod": "at.jku.ssw.app.diagram.Graphics#Graphics()",
+  "projectClassification": {
+    "searchMode": "OpenProject", // OpenProject, AllProjects
+    "includedProjects": "",
+    "pathEndKeywords": "*.impl",
+    "isClientPath": "",
+    "isClientName": "",
+    "isTestPath": "",
+    "isTestName": "",
+    "isMappingPath": "",
+    "isMappingName": "",
+    "isDataAccessPath": "",
+    "isDataAccessName": "",
+    "isDataStructurePath": "",
+    "isDataStructureName": "",
+    "isInterfaceStructuresPath": "",
+    "isInterfaceStructuresName": "",
+    "isEntryPointPath": "",
+    "isEntryPointName": "",
+    "treatFinalFieldsAsMandatory": false
+  },
+  "graphRestriction": {
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "removeByInheritance": "", // inheritance/annotation based filtering is done in a second step
+    "removeByAnnotation": "",
+    "removeByClassPackage": "", // cleanup the graph after inheritance/annotation based filtering is done
+    "removeByClassName": "",
+    "cutMappings": false,
+    "cutEnum": true,
+    "cutTests": true,
+    "cutClient": true,
+    "cutDataAccess": true,
+    "cutInterfaceStructures": true,
+    "cutDataStructures": true,
+    "cutGetterAndSetter": true,
+    "cutConstructors": true
+  },
+  "graphTraversal": {
+    "forwardDepth": 3,
+    "backwardDepth": 3,
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "hideMappings": false,
+    "hideDataStructures": false,
+    "hidePrivateMethods": true,
+    "hideInterfaceCalls": true, // indirection: implementation -> interface (is hidden) -> implementation
+    "onlyShowApplicationEntryPoints": false, // root node is included
+    "useMethodCallsForStructureDiagram": "ForwardOnly" // ForwardOnly, BothDirections, No
+  },
+  "details": {
+    "aggregation": "GroupByClass", // ByClass, GroupByClass, None
+    "showMethodParametersTypes": false,
+    "showMethodParametersNames": false,
+    "showMethodReturnType": false,
+    "showPackageLevels": 2,
+    "showCallOrder": false,
+    "edgeMode": "MethodsOnly", // TypesOnly, MethodsOnly, TypesAndMethods, MethodsAndDirectTypeUsage
+    "showDetailedClassStructure": false
+  },
+  "rootClass": "at.jku.ssw.app.diagram.Graphics",
+  "extensionCallbackMethod": "" // qualified.class.name#methodName - signature: public static String method(String)
+}
+diagram meta data end '/
+
+
+
+digraph g {
+    rankdir="LR"
+    splines=polyline
+    
+
+'nodes 
+subgraph cluster_105300 { 
+   	label=jku
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   subgraph cluster_1536001923 { 
+   	label=ssw
+	labeljust=l
+	fillcolor="#d8d8d8"
+	style=filled
+   
+   subgraph cluster_1113446230 { 
+   	label=Chart
+	labeljust=l
+	fillcolor=white
+	style=filled
+   
+   Chart1330061274XXXaddData222668203[
+	label="+ addData()"
+	style=filled
+	fillcolor=white
+	tooltip="Chart
+
+&#10;  Add data&#10; &#10;  @param data the data&#10; "
+	fontcolor=darkgreen
+];
+
+Chart1330061274XXXaddLegend604196094[
+	label="+ addLegend()"
+	style=filled
+	fillcolor=white
+	tooltip="Chart
+
+&#10;  Add legend&#10; &#10;  @param name the name&#10;  @param color the color&#10; "
+	fontcolor=darkgreen
+];
+} 
+
+subgraph cluster_1571796944 { 
+   	label=GraphicsTest
+	labeljust=l
+	fillcolor=white
+	style=filled
+   
+   GraphicsTest820981477XXXtestGetContainer0[
+	label="+ testGetContainer()"
+	style=filled
+	fillcolor=white
+	tooltip="GraphicsTest
+
+&#10;  Test get container.&#10; "
+	fontcolor=darkgreen
+];
+
+GraphicsTest820981477XXXtestSetContainer0[
+	label="+ testSetContainer()"
+	style=filled
+	fillcolor=white
+	tooltip="GraphicsTest
+
+&#10;  Test set container.&#10; "
+	fontcolor=darkgreen
+];
+} 
+
+subgraph cluster_1979902401 { 
+   	label=Graphics
+	labeljust=l
+	fillcolor=white
+	style=filled
+   
+   Graphics1330061274XXXGraphics0[
+	label="+ Graphics()"
+	style=filled
+	fillcolor=white
+	tooltip="Graphics
+
+&#10;  Creating a diagram for the distance regarding a specific time period and set the background and adds&#10;  the legend to the diagram.&#10; &#10;  @throws JAXBException is thrown by the TCX Parser, which reads the tcx - files.&#10;  @throws IOExceptionis also thrown by the TCX Parser if there can't be found a tcx-file in the source folder.&#10;  @throws ParseException Constructor for Graphics which, creates a graphic for distance and time.&#10; "
+	penwidth=4
+	fontcolor=darkgreen
+];
+
+Graphics1330061274XXXinitComponents0[
+	label="+ initComponents()"
+	style=filled
+	fillcolor=white
+	tooltip="Graphics
+
+&#10;  creating a chart, and use it the create an above layout and the grouping.&#10;  Within that, also the size is defined and the call to action for the application-diagram.&#10; "
+	fontcolor=darkgreen
+];
+} 
+} 
+} 
+
+'edges    
+Graphics1330061274XXXGraphics0 -> Chart1330061274XXXaddData222668203;
+Graphics1330061274XXXGraphics0 -> Chart1330061274XXXaddLegend604196094;
+Graphics1330061274XXXGraphics0 -> Graphics1330061274XXXinitComponents0;
+GraphicsTest820981477XXXtestGetContainer0 -> Graphics1330061274XXXGraphics0;
+GraphicsTest820981477XXXtestSetContainer0 -> Graphics1330061274XXXGraphics0;
+    
+}
+@enduml

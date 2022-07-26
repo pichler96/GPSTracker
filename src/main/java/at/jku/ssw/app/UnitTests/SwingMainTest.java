@@ -5,7 +5,6 @@ import at.jku.ssw.app.SwingMain;
 import at.jku.ssw.model.TrainingsData;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
 import javax.swing.*;
 import javax.xml.bind.JAXBException;
 import javax.xml.datatype.DatatypeConfigurationException;

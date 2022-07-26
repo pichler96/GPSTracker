@@ -3,13 +3,10 @@ package at.jku.ssw.app.UnitTests;
 import at.jku.ssw.app.Main;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
 import java.util.logging.Logger;
-
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertThrows;
+
 
 
 /**
@@ -28,6 +25,7 @@ public class MainTest {
         try {
             log.info("Starting execution of main");
             String[] args = new String[0];
+
             Main main = new Main();
             Main.main(args);
             assertTrue(true);
@@ -44,9 +42,7 @@ public class MainTest {
     @Test
     public void getData() {
 
-        Exception exception = Assertions.assertThrows(NullPointerException.class, () -> {
-            Main.getData();
-        });
+        Exception exception = Assertions.assertThrows(NullPointerException.class, Main::getData);
         String expectedMessage = "";
         String actualMessage = exception.getMessage();
         assertTrue(actualMessage.contains(expectedMessage));

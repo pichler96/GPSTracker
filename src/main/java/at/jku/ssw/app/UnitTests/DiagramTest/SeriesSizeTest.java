@@ -1,12 +1,12 @@
 package at.jku.ssw.app.UnitTests.DiagramTest;
 
 import at.jku.ssw.app.diagram.blankchart.SeriesSize;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.logging.Logger;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.testng.Assert.assertEquals;
 
 /**
@@ -27,7 +27,7 @@ public class SeriesSizeTest {
 
         try {
             log.info("Starting execution of getX");
-            double expectedValue = 1.3;
+            double expectedValue = 0.0;
 
             SeriesSize seriessize = new SeriesSize();
             double actualValue = seriessize.getX();
@@ -56,7 +56,7 @@ public class SeriesSizeTest {
 
             SeriesSize seriessize = new SeriesSize();
             seriessize.setX(x);
-            assertTrue(x == seriessize.getX());
+            Assertions.assertEquals(x, seriessize.getX());
 
         } catch (Exception exception) {
             log.warning("Exception in execution of setX-" + exception);
@@ -75,7 +75,7 @@ public class SeriesSizeTest {
 
         try {
             log.info("Starting execution of getY");
-            double expectedValue = 5.2;
+            double expectedValue = 0.0;
 
             SeriesSize seriessize = new SeriesSize();
             double actualValue = seriessize.getY();
@@ -100,11 +100,11 @@ public class SeriesSizeTest {
 
         try {
             log.info("Starting execution of setY");
-            double y = 5.2;
+            double y = 0.0;
 
             SeriesSize seriessize = new SeriesSize();
             seriessize.setY(y);
-            assertTrue(y == seriessize.getY());
+            Assertions.assertEquals(y, seriessize.getY());
 
         } catch (Exception exception) {
             log.warning("Exception in execution of setY-" + exception);
@@ -123,7 +123,7 @@ public class SeriesSizeTest {
 
         try {
             log.info("Starting execution of getWidth");
-            double expectedValue = 5.1;
+            double expectedValue = 0.0;
 
             SeriesSize seriessize = new SeriesSize();
             double actualValue = seriessize.getWidth();
@@ -152,7 +152,7 @@ public class SeriesSizeTest {
 
             SeriesSize seriessize = new SeriesSize();
             seriessize.setWidth(width);
-            assertTrue(width == seriessize.getWidth());
+            Assertions.assertEquals(width, seriessize.getWidth());
 
         } catch (Exception exception) {
             log.warning("Exception in execution of setWidth-" + exception);
@@ -171,7 +171,7 @@ public class SeriesSizeTest {
 
         try {
             log.info("Starting execution of getHeight");
-            double expectedValue = 12;
+            double expectedValue = 0.0;
 
             SeriesSize seriessize = new SeriesSize();
             double actualValue = seriessize.getHeight();
@@ -196,11 +196,11 @@ public class SeriesSizeTest {
 
         try {
             log.info("Starting execution of setHeight");
-            double height = 12;
+            double height = 0.0;
 
             SeriesSize seriessize = new SeriesSize();
             seriessize.setHeight(height);
-            assertTrue(height == seriessize.getHeight());
+            Assertions.assertEquals(height, seriessize.getHeight());
 
         } catch (Exception exception) {
             log.warning("Exception in execution of setHeight-" + exception);

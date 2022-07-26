@@ -7,7 +7,6 @@ import at.jku.ssw.app.diagram.ModelChart;
 import at.jku.ssw.app.diagram.blankchart.SeriesSize;
 import at.jku.ssw.model.schema.TrainingCenterDatabaseT;
 import org.junit.jupiter.api.Test;
-
 import java.awt.*;
 import java.util.logging.Logger;
 
@@ -28,10 +27,6 @@ public class ChartTest {
         try {
             log.info("Starting execution of getLabelText");
             String expectedValue = "";
-
-            int index = 5;
-
-            Chart chart = new Chart();
 
             log.info("Expected Value=" + expectedValue + " . Actual Value=" + "");
             System.out.println("Expected Value=" + expectedValue + " . Actual Value=" + "");
@@ -148,7 +143,7 @@ public class ChartTest {
             java.util.List<TrainingCenterDatabaseT> actualValue = Chart.readInData();
             log.info("Expected Value=" + expectedValue + " . Actual Value=" + actualValue);
             System.out.println("Expected Value=" + expectedValue + " . Actual Value=" + actualValue);
-            assertFalse(expectedValue.equals(actualValue));
+            assertNotEquals(expectedValue, actualValue);
 
         } catch (Exception e) {
             log.warning("Exception in execution of execute1GetAllLogFromFirstMovF-" + e);
