@@ -20,6 +20,7 @@ public class TcxParser {
     private final Unmarshaller jaxbUnmarshaller;
 
     public TcxParser() throws JAXBException {
+        System.setProperty("com.sun.xml.bind.v2.runtime.reflect.opt.OptimizedAccessorFactory.noOptimization", "true");
         JAXBContext jaxbContext = JAXBContext.newInstance(TrainingCenterDatabaseT.class);
         jaxbUnmarshaller = jaxbContext.createUnmarshaller();
     }
