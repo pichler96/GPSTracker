@@ -29,7 +29,7 @@ public class TrainingsData {
      * @param path to parse the .tcx Files.
      */
     public TrainingsData(String path) throws JAXBException, FileNotFoundException {
-        this.directoryPath = new File("C:\\UE04\\GPSTracker\\data");
+        this.directoryPath = new File(path);
         load();
     }
 
