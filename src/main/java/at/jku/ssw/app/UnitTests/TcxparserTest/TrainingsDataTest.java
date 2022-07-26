@@ -13,6 +13,10 @@ import java.io.FileNotFoundException;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+/**
+ * Tests the data model of the application -"Trainingsdata"
+ * @author Gruppe 3
+ */
 class TrainingsDataTest {
 
     private TrainingsData trainings;

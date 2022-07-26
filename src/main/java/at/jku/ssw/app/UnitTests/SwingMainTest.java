@@ -22,6 +22,7 @@ import static org.junit.jupiter.api.Assertions.*;
  * This class is a Test class for the GUI class - SwingMain but also for its "helper class" TableData
  * It surely is not very easy to test a Swing GUI with unit tests, however our approach was still to
  * try to have an appropriate coverage and check the class generally if its methods works basically.
+ * @author Gruppe 3
  */
 class SwingMainTest{
     public SwingMain gui;

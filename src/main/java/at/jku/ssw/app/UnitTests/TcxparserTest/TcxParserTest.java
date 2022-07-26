@@ -10,6 +10,10 @@ import java.io.InputStream;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+/**
+ * Tests the class "TcxParser"
+ * @author Gruppe 3
+ */
 class TcxParserTest {
 
     private TcxParser parser;
